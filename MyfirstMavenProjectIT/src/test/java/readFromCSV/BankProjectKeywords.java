@@ -14,7 +14,7 @@ import frameworkclasses.SeleniumFunctions;
 
 public class BankProjectKeywords {
 
-	// Selenium Functions 
+		// Selenium Functions 
 		SeleniumFunctions sfSelenium = new SeleniumFunctions();
 		
 		// driver variable
@@ -61,7 +61,7 @@ public class BankProjectKeywords {
 			String pPassword = "";
 			String pUserName = "";
 			String pOutcome = "";
-			String csvfile = getProperties("csvlogon"); 
+			String csvfile = getProperties("csvlogin"); 
 					
 			BufferedReader br = new BufferedReader(new FileReader(csvfile)); 
 			String line;
@@ -77,13 +77,11 @@ public class BankProjectKeywords {
 				    pPassword = cols[1];
 				    pOutcome = cols[2];
 				}
-			    
 			} 
-			
 		}
 		
 		public void Logon() {
-			
+			//TO DO
 		}
 		
 		public void runTestStart() {
