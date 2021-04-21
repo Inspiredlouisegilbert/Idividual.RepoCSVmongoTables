@@ -36,19 +36,19 @@ public class BankProjectKeywords {
 		}
 		
 		public String getProperties(String pPropertyKey) {
-					//DATA CONFIG SETUP
-					Properties p = new Properties();
-					InputStream is = null;
-					try {
-						is = new FileInputStream("dataConfig.properties");
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
-					try {
-						p.load(is);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+			//DATA CONFIG SETUP
+			Properties p = new Properties();
+			InputStream is = null;
+			try {
+				is = new FileInputStream("dataConfig.properties");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			try {
+					p.load(is);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			return p.getProperty(pPropertyKey);
 		}
 		
