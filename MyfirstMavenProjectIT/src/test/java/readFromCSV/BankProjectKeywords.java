@@ -54,11 +54,8 @@ public class BankProjectKeywords {
 		
 		public void runTestReadFromFile() throws IOException, InterruptedException {
 
-			//CREATE REPORT
-			sfSelenium.startReport("Reading Data", "Reading data from the csv");
-			
-			//CREATE TEST
-			sfSelenium.createTest("Run Test: Read From File");
+			sfSelenium.startReport("Reading Data", "Reading data from the csv");		//CREATE REPORT
+			sfSelenium.createTest("Run Test: Read From File");		//CREATE TEST
 			
 			//INPUT TEST DATA
 			String pPassword = "";
