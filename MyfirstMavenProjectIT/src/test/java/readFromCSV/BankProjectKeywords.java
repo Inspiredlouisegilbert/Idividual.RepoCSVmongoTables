@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -86,24 +87,25 @@ public class BankProjectKeywords {
 		
 		// Capture User Details
 		
-		public void captureUserDetails(String pUserName, String pPassword) throws IOException {
+		public void captureUserDetails(String pUserName, String pPassword) throws IOException, InterruptedException {
 			// Capture UserName
 			sfSelenium.populateInputField(By.name("uid"), pUserName);
 			
 			// Capture Password
 			sfSelenium.populateInputField(By.name("password"), pPassword);
 			
+			//CSS SELECTOR FOR SUBMIT BUTTON
 			driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1)")).click();
 			
-			//Check for Image
-			driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(2)"));
+			testSuccessPopup();				//ASSERT FOR SUCCESSFUL LOGIN
+			testUnsuccessfulPopup();		//ASSERT FOR UNSUCCESSFUL LOGIN AND POPUP TEXT
 			
 			// Log a Screenshot to the report
 			sfSelenium.logScreenShot();
 			
+			clickBankProject();		//NAVIGATE BACK TO THE BANK PROJET LINK FOR NEXT INOUT FROM CSV FILE
 		}
 			
-		
 		public void runTestStart() {
 			this.driver = sfSelenium.getDriver();
 			navigateToURL(pURL);
@@ -115,6 +117,38 @@ public class BankProjectKeywords {
 			
 			//GENERATE REPORT
 			//SCREENSHOTS
+		}
+		
+		public void testSuccessPopup() {
+			//ASSERT FOR IMAGES AND/OR TEXT
+			//Check for Image
+			//boolean eleSelected = driver.findElement(By.xpath("xpath")).isDisplayed();		//ELEMENT FOR IMAGE ASSERT
+			boolean eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
+			System.out.println(eleDisplayed);
+		}
+		
+		public void testUnsuccessfulPopup() throws InterruptedException {
+			//HANDLE UNSUCCESSFUL POPUP ALERT
+			sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
+			String pExpectedMessage = "User is not valid";
+			// End of - Input Test Data
+			
+			// Keywords
+			navigateToURL(pURL);
+			clickBankProject();
+			
+			//captureUserDetails(pUserName, pPassword);
+			//this.driver.findElement(By.name("btnLogin")).click();
+
+			//Create an object of the alert
+			Alert alert = this.driver.switchTo().alert();
+			String sAlertMessage = alert.getText();
+			System.out.println(sAlertMessage);
+
+			alert.accept();
+			sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
+			
+			Thread.sleep(500);
 		}
 		
 		//CLEANUP
