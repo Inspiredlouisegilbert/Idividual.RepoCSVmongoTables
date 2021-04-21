@@ -175,12 +175,10 @@ public class SeleniumFunctions {
 		// in future we will add validations and screenshots to this method
 	}
 	
-	
 	public void logScreenShot() throws IOException {
 		this.extReports.logScreenshot(this.driver);
 	}
 	
-
 	public void CloseSelenium() {
 		//this.reports.FinaliseExtentReport();
 		////driver.close will close the original browser window
@@ -220,8 +218,6 @@ public class SeleniumFunctions {
 	public void maximiseBrowserWindow() {
 		driver.manage().window().maximize();
 	}
-	
-
 }
 
 
