@@ -81,12 +81,25 @@ public class BankProjectKeywords {
 				    
 				    captureUserDetails(pUserName, pPassword);
 				    
+				    if (pOutcome.equals("successful login")) {
+				    	
+				    	testSuccessPopup();				//ASSERT FOR SUCCESSFUL LOGIN
+				    }
+				    else {
+				    	
+				    	testUnsuccessfulPopup();		//ASSERT FOR UNSUCCESSFUL LOGIN AND POPUP TEXT
+				    }
+					
+				    clickBankProject();		//NAVIGATE BACK TO THE BANK PROJET LINK FOR NEXT INOUT FROM CSV FILE
+				    
+					// Log a Screenshot to the report
+					sfSelenium.logScreenShot();
 				}
 			} 
 		}
 		
-		// Capture User Details
 		
+		// Capture User Details
 		public void captureUserDetails(String pUserName, String pPassword) throws IOException, InterruptedException {
 			// Capture UserName
 			sfSelenium.populateInputField(By.name("uid"), pUserName);
@@ -96,14 +109,7 @@ public class BankProjectKeywords {
 			
 			//CSS SELECTOR FOR SUBMIT BUTTON
 			driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1)")).click();
-			
-			testSuccessPopup();				//ASSERT FOR SUCCESSFUL LOGIN
-			testUnsuccessfulPopup();		//ASSERT FOR UNSUCCESSFUL LOGIN AND POPUP TEXT
-			
-			// Log a Screenshot to the report
-			sfSelenium.logScreenShot();
-			
-			clickBankProject();		//NAVIGATE BACK TO THE BANK PROJET LINK FOR NEXT INOUT FROM CSV FILE
+
 		}
 			
 		public void runTestStart() {
@@ -134,20 +140,21 @@ public class BankProjectKeywords {
 			// End of - Input Test Data
 			
 			// Keywords
-			navigateToURL(pURL);
-			clickBankProject();
-			
+//			navigateToURL(pURL);
+//			clickBankProject();
+//			
 			//captureUserDetails(pUserName, pPassword);
 			//this.driver.findElement(By.name("btnLogin")).click();
 
 			//Create an object of the alert
-			Alert alert = this.driver.switchTo().alert();
-			String sAlertMessage = alert.getText();
-			System.out.println(sAlertMessage);
-
-			alert.accept();
-			sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
 			
+				Alert alert = this.driver.switchTo().alert();
+				String sAlertMessage = alert.getText();
+				System.out.println(sAlertMessage);
+
+				alert.accept();
+				sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
+				
 			Thread.sleep(500);
 		}
 		
