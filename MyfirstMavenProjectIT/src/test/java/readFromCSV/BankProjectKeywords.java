@@ -19,6 +19,7 @@ public class BankProjectKeywords {
 		//INITIATE SELENIUM FUNCTIONS 
 		SeleniumFunctions sfSelenium = new SeleniumFunctions();
 		
+		
 		//DRIVER VARIABLE
 		WebDriver driver;
 		
@@ -166,5 +167,5 @@ public class BankProjectKeywords {
 			sfSelenium.CloseSelenium();
 		}
 		
-		//CLOSE THE BUFFER READER
+		//CLOSE Selenium
 }

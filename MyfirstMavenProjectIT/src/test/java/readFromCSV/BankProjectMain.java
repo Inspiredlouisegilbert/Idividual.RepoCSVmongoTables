@@ -9,5 +9,6 @@ public class BankProjectMain {
 		BankProjectKeywords bpKeywords = new BankProjectKeywords();
 		bpKeywords.runTestStart();
 		bpKeywords.runTestReadFromFile();
+		bpKeywords.cleanup();
 	}
 }
