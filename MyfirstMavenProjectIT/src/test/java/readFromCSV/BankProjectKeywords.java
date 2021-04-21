@@ -22,7 +22,7 @@ public class BankProjectKeywords {
 		WebDriver driver;
 		
 		String pURL = "http://demo.guru99.com";
-		String pPropertyKey = "csvlogon";
+		String pPropertyKey = "csvlogin";
 		
 		//NAVIGATE TO URL
 		public void navigateToURL(String pURL) {
@@ -78,16 +78,8 @@ public class BankProjectKeywords {
 				    pPassword = cols[1];
 				    pOutcome = cols[2];
 				    
-				    //ASSERT ONE - BLANK INPUT FIELDS
-				    driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1))")).click();
-				    		//ASSERT POPUP ONE TEXT User is not valid
+				    captureUserDetails(pUserName, pPassword);
 				    
-				    //READ IN VALUES FROM CSV
-				    		//USERID FIELD table:nth-child(1) tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > input:nth-child(1)
-				    		//PASSWORD FIELD table:nth-child(1) tbody:nth-child(1) tr:nth-child(2) td:nth-child(2) > input:nth-child(1)
-				    
-				    //CLICK LOGIN
-				    //driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1))")).click();
 				}
 			} 
 		}
@@ -100,6 +92,11 @@ public class BankProjectKeywords {
 			
 			// Capture Password
 			sfSelenium.populateInputField(By.name("password"), pPassword);
+			
+			driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1)")).click();
+			
+			//Check for Image
+			driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(2)"));
 			
 			// Log a Screenshot to the report
 			sfSelenium.logScreenShot();
