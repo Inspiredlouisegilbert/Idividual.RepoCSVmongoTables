@@ -70,16 +70,16 @@ public class BankProjectKeywords {
 				if(line.length() > 0) {
 					//SPECIFY SEPERATOR
 				    String[] cols = line.split(";"); 
-				    System.out.println(cols[0]);		//USERNAME COLUMN	
-				    System.out.println(cols[1]);		//PASSWORD COLUMN
-				    System.out.println(cols[2]);		//OUTCOME COLUMN
+				    System.out.println("UserName" + cols[0] + "Password" + cols [1] + "OutCome" + cols[2]);		//USERNAME COLUMN	
+				    //System.out.println(cols[1]);		//PASSWORD COLUMN
+				    //System.out.println(cols[2]);		//OUTCOME COLUMN
 				    
 				    pUserName = cols[0];
 				    pPassword = cols[1];
 				    pOutcome = cols[2];
 				    
 				    //ASSERT ONE - BLANK INPUT FIELDS
-				    //driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1))")).click();
+				    driver.findElement(By.cssSelector("table:nth-child(1) tbody:nth-child(1) tr:nth-child(3) td:nth-child(2) > input:nth-child(1))")).click();
 				    		//ASSERT POPUP ONE TEXT User is not valid
 				    
 				    //READ IN VALUES FROM CSV
@@ -91,6 +91,21 @@ public class BankProjectKeywords {
 				}
 			} 
 		}
+		
+		// Capture User Details
+		
+		public void captureUserDetails(String pUserName, String pPassword) throws IOException {
+			// Capture UserName
+			sfSelenium.populateInputField(By.name("uid"), pUserName);
+			
+			// Capture Password
+			sfSelenium.populateInputField(By.name("password"), pPassword);
+			
+			// Log a Screenshot to the report
+			sfSelenium.logScreenShot();
+			
+		}
+			
 		
 		public void runTestStart() {
 			this.driver = sfSelenium.getDriver();
