@@ -96,6 +96,8 @@ public class BankProjectKeywords {
 					// Log a Screenshot to the report
 					sfSelenium.logScreenShot();
 				}
+				
+				br.close();
 			} 
 		}
 		

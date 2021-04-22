@@ -491,6 +491,7 @@ public class PaymentGatewayKeywords {
 			    clickPay();   
 			}
 		}
+		br.close();
 	}
 	
 	public void cleanup () throws IOException, InterruptedException {
