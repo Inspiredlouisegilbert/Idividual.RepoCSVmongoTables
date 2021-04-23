@@ -97,8 +97,9 @@ public class BankProjectKeywords {
 					sfSelenium.logScreenShot();
 				}
 				
-				br.close();
 			} 
+			// close the buffer
+			br.close();
 		}
 		
 		

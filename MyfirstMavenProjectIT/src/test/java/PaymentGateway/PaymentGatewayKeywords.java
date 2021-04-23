@@ -491,6 +491,7 @@ public class PaymentGatewayKeywords {
 			    clickPay();   
 			}
 		}
+		// close the buffer
 		br.close();
 	}
 	
