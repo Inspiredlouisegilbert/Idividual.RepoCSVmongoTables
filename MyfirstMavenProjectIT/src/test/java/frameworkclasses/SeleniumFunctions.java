@@ -1,8 +1,10 @@
 package frameworkclasses;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Files;
 import java.rmi.UnknownHostException;
 import java.util.ArrayList;
@@ -18,6 +20,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.pdfbox.pdmodel.PDDocument;
+import org.pdfbox.util.PDFTextStripper;
+import org.testng.Assert;
+
 import frameworkclasses.ExtentReportClass;
 
 // Mongo DB imports
@@ -218,6 +224,49 @@ public class SeleniumFunctions {
 	public void maximiseBrowserWindow() {
 		driver.manage().window().maximize();
 	}
+	
+	// Get Detail
+	public String getDetail(String sCssOfField) throws IOException {
+		// get field text
+		String sFieldText = this.driver.findElement(By.cssSelector(sCssOfField)).getText();
+		// print but remove this later
+	    System.out.println("getDetail: " + sFieldText);
+	    // return
+		return sFieldText;
+	}
+	
+    public String readPDFContent(String appUrl, int expectedNoPages) throws Exception {
+
+        URL url = new URL(appUrl);
+        InputStream input = url.openStream();
+        BufferedInputStream fileToParse = new BufferedInputStream(input);
+        PDDocument document = null;
+        String output = null;
+
+        try {
+            document = PDDocument.load(fileToParse);
+            output = new PDFTextStripper().getText(document);
+            // ensure the number of pages is correct
+            int numberOfPages = getPageCount(document);
+            Assert.assertEquals(numberOfPages,expectedNoPages);
+     
+            
+        } finally {
+            if (document != null) {
+                document.close();
+            }
+            fileToParse.close();
+            input.close();
+        }
+        return output;
+    }
+    
+    public static int getPageCount(PDDocument doc) {
+		//get the total number of pages in the pdf document
+		int pageCount = doc.getNumberOfPages();
+		return pageCount;
+	}
+	
 }
 
 
