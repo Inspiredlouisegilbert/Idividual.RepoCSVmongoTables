@@ -51,8 +51,11 @@ public class BankProjectGenerateDataKeywords {
 	//TAKE SCREENSHOTS
 	
 	//RUN TESTS
-		public void runTestReadFromFile () throws IOException, InterruptedException {
+		public void runTest () throws IOException, InterruptedException {
+		
+			this.driver = sfSelenium.getDriver();
 			navigateToURL(pURL);
+			
 		}
 		
 	//GENERATE REPORT
