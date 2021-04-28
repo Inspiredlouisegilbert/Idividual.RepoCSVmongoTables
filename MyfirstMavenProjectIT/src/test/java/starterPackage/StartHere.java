@@ -65,7 +65,7 @@ public class StartHere {
 
 	
 	@Test
-	public void testEnsurePDFdoesNotContain() throws Exception {
+	public void testFirst() throws Exception {
 		System.out.println("Test");
 	}
 	
