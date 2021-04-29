@@ -181,7 +181,7 @@ public class SeleniumFunctions {
 	}
 	
 
-	public void CloseSelenium() {
+	public void CloseSelenium() throws IOException {
 		//this.reports.FinaliseExtentReport();
 		////driver.close will close the original browser window
 		//this.driver.close();
@@ -189,6 +189,8 @@ public class SeleniumFunctions {
 		this.driver.quit();
 		// Also finalise and close the test report for us
 		extReports.closeReport();
+		Runtime.getRuntime().exec("taskkill /F /IM ChromeDriver.exe");
+		Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
 	}
 	
 	// Switch between tabs
