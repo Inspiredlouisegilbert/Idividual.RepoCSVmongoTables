@@ -11,20 +11,17 @@ import java.util.Properties;
 public class DemoReadFromCSV {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		
+
 		Properties p = new Properties();
 		InputStream is = null;
 		try {
 			is = new FileInputStream("dataConfig.properties");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			p.load(is);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -41,9 +38,6 @@ public class DemoReadFromCSV {
 			String[] cols = line.split(";"); 
 		    String firstColumn = cols[0];
 		    System.out.println(firstColumn);
-		    
 		}
-
 	}
-
 }
