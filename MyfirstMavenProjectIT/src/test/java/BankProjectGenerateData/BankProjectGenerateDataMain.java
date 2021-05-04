@@ -7,7 +7,8 @@ public class BankProjectGenerateDataMain {
 		//CALL METHODS FROM KEYWORDS
 		
 		BankProjectGenerateDataKeywords bpGenerateInput = new BankProjectGenerateDataKeywords();
-		bpGenerateInput.runTest();
+		bpGenerateInput.testCase1();
+		bpGenerateInput.testCase2();
 		bpGenerateInput.cleanup();
 	}
 

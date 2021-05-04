@@ -18,6 +18,10 @@ public class BankProjectGenerateDataKeywords {
 	String pURL = "http://demo.guru99.com";
 	String sValidateEmailAddress = "email@gmail.com";
 	
+	//
+	String sInvalidId = "test@test";
+	String sInvalidPassword = "Passwo";
+	
 	//NAVIGATE TO URL
 	public void navigateToURL(String pURL) {
 		driver.get(pURL);
@@ -28,18 +32,21 @@ public class BankProjectGenerateDataKeywords {
 	//CLICK ON THE BANKING LINK
 		public void clickBankProject() {
 			sfSelenium.clickLink("Bank Project");
-			sfSelenium.clickLink("here");
+			//sfSelenium.clickLink("here");
 		}
 		
 		public void validateEmailAddress() {
 			//CREATE TEST TO VALIDATE EMAIL ADRESS
 			//BY XPATH TEMPLATE (By.xpath("//input[@='']"))
+			sfSelenium.clickLink("here");
 			driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(sValidateEmailAddress);
 			driver.findElement(By.name("btnLogin")).click();
 		}
 	
 		//GENERATE USERNAME AND PASSWORD
 		public void generateValidLogins() throws IOException {
+			//sfSelenium.clickLink("Bank Project");
+			//sfSelenium.clickLink("here");
 			String cssUserID = "body:nth-child(2) table:nth-child(10) tbody:nth-child(1) tr:nth-child(4) > td:nth-child(2)";
 			String sUserID = this.driver.findElement(By.cssSelector(cssUserID)).getText();
 			String cssPassword = "body:nth-child(2) table:nth-child(10) tbody:nth-child(1) tr:nth-child(5) > td:nth-child(2)";
@@ -48,11 +55,19 @@ public class BankProjectGenerateDataKeywords {
 			
 			//NAVIGATE BACK TO THE BANK PROJECT
 			sfSelenium.clickLink("Bank Project");
+			//sfSelenium.clickLink("here");
+			populateInpute(sUserID,sPassword);
+			
+		}
+			
 			
 			//POPULATE INPUT FIELDS
-			sfSelenium.populateInputField(By.name("uid"), sUserID);
-			sfSelenium.populateInputField(By.name("password"), sPassword);
+		public void populateInpute(String pUsersID ,String pPassword) {
+			sfSelenium.populateInputField(By.name("uid"), pUsersID);
+			sfSelenium.populateInputField(By.name("password"), pPassword);
+		
 			driver.findElement(By.name("btnLogin")).click();
+			
 			
 //			if	(pOutcome.equals(driver.findElement() {
 //					successfulLogin();
@@ -101,7 +116,7 @@ public class BankProjectGenerateDataKeywords {
 	//TAKE SCREENSHOTS
 	
 	//RUN TESTS
-		public void runTest () throws IOException, InterruptedException {
+		public void testCase1 () throws IOException, InterruptedException {
 			sfSelenium.startReport("Bank  Project", "Generate Input Data");
 			sfSelenium.createTest("Start Test");
 			this.driver = sfSelenium.getDriver();
@@ -109,9 +124,26 @@ public class BankProjectGenerateDataKeywords {
 			clickBankProject();
 			validateEmailAddress();
 			generateValidLogins();
+			
 			successfulLogin();
 			//unsuccessfulPopup();
 		}
+		
+		public void testCase2 () throws IOException, InterruptedException {
+			//sfSelenium.startReport("Bank  Project", "Generate Input Data");
+			sfSelenium.createTest("Validate Login Test");
+			//this.driver = sfSelenium.getDriver();
+			navigateToURL(pURL);
+			clickBankProject();
+			//validateEmailAddress();
+			//generateValidLogins();
+			
+			//successfulLogin();
+			populateInpute(sInvalidId,sInvalidPassword);
+			unsuccessfulPopup();
+		}
+		
+		
 		
 	//GENERATE REPORT
 	//TAKE SCREENSHOTS
