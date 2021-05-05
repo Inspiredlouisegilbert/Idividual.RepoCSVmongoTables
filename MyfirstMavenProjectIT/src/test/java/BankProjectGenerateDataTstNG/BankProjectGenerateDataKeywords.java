@@ -191,6 +191,7 @@ public class BankProjectGenerateDataKeywords {
 			//successfulLogin();
 		}
 		
+		@Test
 		public void testCase2 () throws IOException, InterruptedException {
 			sfSelenium.createTest("Validate Login Test");
 			navigateToURL(pURL);
