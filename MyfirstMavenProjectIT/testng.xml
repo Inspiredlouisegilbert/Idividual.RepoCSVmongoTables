@@ -4,7 +4,8 @@
   <test thread-count="5" name="Demo101">
     <classes>
       <class name="testngdemo.Testngdemo"/>
-      <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywords"/>   
+      <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywords"/> 
+      <class name="testngdemo.Testngdemo2"/>  
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
