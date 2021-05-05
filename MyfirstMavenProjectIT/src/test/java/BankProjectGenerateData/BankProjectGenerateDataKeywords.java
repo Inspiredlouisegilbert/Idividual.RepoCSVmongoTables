@@ -124,7 +124,7 @@ public class BankProjectGenerateDataKeywords {
 
 				alert.accept();
 				sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
-				eleDisplayed = false;
+				eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
 				
 				Thread.sleep(500);
 		}
