@@ -55,12 +55,12 @@ public class BankProjectGenerateDataKeywords {
 	//CLICK ON THE BANKING LINK
 		public void clickBankProject() {
 			sfSelenium.clickLink("Bank Project");
-			//sfSelenium.clickLink("here");
+			
 		}
 		
 		public void validateEmailAddress(String sValidateEmailAddress) {
 			//CREATE TEST TO VALIDATE EMAIL ADRESS
-			//BY XPATH TEMPLATE (By.xpath("//input[@='']"))
+			
 			sfSelenium.clickLink("here");
 			driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(sValidateEmailAddress);
 			driver.findElement(By.name("btnLogin")).click();
@@ -92,15 +92,6 @@ public class BankProjectGenerateDataKeywords {
 		
 			driver.findElement(By.name("btnLogin")).click();
 			
-			
-//			if	(pOutcome.equals(driver.findElement() {
-//					successfulLogin();
-//					sfSelenium.createTest("Successful login: Login was successful");
-//			}
-//				else {
-//					unsuccessfulPopup();
-//					sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
-//			}
 		}
 		
 		//CREATE METHOD TO CLICK ON CLEAR AND ASSERT THAT INPUT FIELDS HAS BEEN REMOVED
