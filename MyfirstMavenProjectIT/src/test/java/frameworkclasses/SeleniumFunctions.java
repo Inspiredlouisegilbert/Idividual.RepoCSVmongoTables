@@ -100,10 +100,8 @@ public class SeleniumFunctions {
 		extReports.createTest(sName);
 	}
 	
-	public int generateRandomData() {		
-		int min= 0;
-		int max = 1000;
-		int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+	public int generateRandomData(int pMin, int pMax) {		
+		int randomNum = ThreadLocalRandom.current().nextInt(pMin, pMax + 1);
 		
 		return randomNum;
 	}

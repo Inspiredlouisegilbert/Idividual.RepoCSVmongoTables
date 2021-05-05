@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -24,7 +25,8 @@ public class BankProjectGenerateDataKeywords {
 	// Set URL
 	String pURL = "http://demo.guru99.com";
 	
-
+	//Temp
+	boolean eleDisplayed;
 	
 	//Set invalid data
 	String sInvalidId = "test@test";
@@ -32,7 +34,7 @@ public class BankProjectGenerateDataKeywords {
 	
 	//Create a new file
 	String sFormatedData = createNewCSVFile();
-	File log = new File("C:\\tmp\\IDs"+sFormatedData+".csv");
+	File log = new File("C:\\temp\\"+sFormatedData+".csv");
 	
 	//Return the date string
 	public String createNewCSVFile() {
@@ -80,8 +82,9 @@ public class BankProjectGenerateDataKeywords {
 			sfSelenium.clickLink("Bank Project");
 			//sfSelenium.clickLink("here");
 			populateInpute(sUserID,sPassword);
-			writeToFile(sUserID,sPassword,randomisednumber);
-			
+			//I'd probably call successfulLogin() here
+			successfulLogin();
+			writeToFile(sUserID,sPassword,randomisednumber, eleDisplayed);
 		}
 			
 			
@@ -97,17 +100,23 @@ public class BankProjectGenerateDataKeywords {
 		//CREATE METHOD TO CLICK ON CLEAR AND ASSERT THAT INPUT FIELDS HAS BEEN REMOVED
 		public void successfulLogin() {
 			//ASSERT FOR IMAGE AFTER SUCCESSFUL LOGIN
-			boolean eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
-			System.out.println("Successful Login Assertion passed: " + eleDisplayed);
-			sfSelenium.createTest("Successful Login");
+			try {
+				eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
+				System.out.println("Successful Login Assertion passed: " + eleDisplayed);
+				sfSelenium.createTest("Successful Login");
+			}
+			catch(NoSuchElementException e) {
+				System.out.println(e);
+			}
 		}
 		
 		public void unsuccessfulPopup() throws InterruptedException {
-			//HANDLE UNSUCCESSFUL POPUP ALERT
-			sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
-			String pExpectedMessage = "User is not valid";
-			
-			//CREATE AN OBJECT OF THE POPUP
+			try {
+				//HANDLE UNSUCCESSFUL POPUP ALERT
+				sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
+				String pExpectedMessage = "User is not valid";
+				
+				//CREATE AN OBJECT OF THE POPUP
 			
 				Alert alert = this.driver.switchTo().alert();
 				String sAlertMessage = alert.getText();
@@ -115,11 +124,16 @@ public class BankProjectGenerateDataKeywords {
 
 				alert.accept();
 				sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
+				eleDisplayed = false;
 				
-			Thread.sleep(500);
+				Thread.sleep(500);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
 		}
 		
-		public void writeToFile (String p1, String p2, int randomisednumber) throws IOException, InterruptedException {
+		public void writeToFile (String p1, String p2, int randomisednumber, boolean pEleDisplayed) throws IOException, InterruptedException {
 			
 			this.driver = sfSelenium.getDriver();
 	
@@ -130,8 +144,15 @@ public class BankProjectGenerateDataKeywords {
 					            log.createNewFile();
 					    }
 					    PrintWriter out = new PrintWriter(new FileWriter(log, true));
+					    String outCome;
+					    if (pEleDisplayed) {
+					    	outCome = "Testcase Successful";
+					    }
+					    else {
+					    	outCome = "Testcase Unsuccessful";
+					    }
 					    
-						out.append(p1 + "," + p2 + "," +randomisednumber+"\n");
+						out.append(p1 + "," + p2 + "," +randomisednumber+ ","+outCome+"\n");
 					    out.close();
 					    }catch(IOException e){
 					        System.out.println("COULD NOT LOG!!");
@@ -152,7 +173,9 @@ public class BankProjectGenerateDataKeywords {
 	//RUN TESTS
 		public void testCase1 () throws IOException, InterruptedException {
 			//Create a randomised email address
-			int randomisednumber = sfSelenium.generateRandomData();
+			int iMin = 0;
+			int iMax = 1000;
+			int randomisednumber = sfSelenium.generateRandomData(iMin, iMax);
 			String sValidateEmailAddress = randomisednumber+"@gmail.com";
 			sfSelenium.startReport("Bank  Project", "Generate Input Data");
 			sfSelenium.createTest("Start Test");
@@ -161,7 +184,7 @@ public class BankProjectGenerateDataKeywords {
 			clickBankProject();
 			validateEmailAddress(sValidateEmailAddress);
 			generateValidLogins(randomisednumber);
-			successfulLogin();
+			//successfulLogin();
 		}
 		
 		public void testCase2 () throws IOException, InterruptedException {
@@ -169,8 +192,8 @@ public class BankProjectGenerateDataKeywords {
 			navigateToURL(pURL);
 			clickBankProject();
 			populateInpute(sInvalidId,sInvalidPassword);
-			writeToFile(sInvalidId,sInvalidPassword,-1);
 			unsuccessfulPopup();
+			writeToFile(sInvalidId,sInvalidPassword,-1, eleDisplayed);
 		}
 	
 		public void cleanup () throws IOException, InterruptedException {
