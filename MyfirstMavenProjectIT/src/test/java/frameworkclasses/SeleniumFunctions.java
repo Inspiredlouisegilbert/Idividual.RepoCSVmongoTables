@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.rmi.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.bson.Document;
 import org.json.simple.JSONArray;
@@ -97,6 +98,14 @@ public class SeleniumFunctions {
 	
 	public void createTest(String sName) {
 		extReports.createTest(sName);
+	}
+	
+	public int generateRandomData() {		
+		int min= 0;
+		int max = 1000;
+		int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+		
+		return randomNum;
 	}
 	
 	// Reusable method to perform validations for us

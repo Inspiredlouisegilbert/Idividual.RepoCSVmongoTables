@@ -8,6 +8,7 @@ public class BankProjectGenerateDataMain {
 		
 		BankProjectGenerateDataKeywords bpGenerateInput = new BankProjectGenerateDataKeywords();
 		bpGenerateInput.testCase1();
+		bpGenerateInput.testCase1();
 		bpGenerateInput.testCase2();
 		bpGenerateInput.cleanup();
 	}
