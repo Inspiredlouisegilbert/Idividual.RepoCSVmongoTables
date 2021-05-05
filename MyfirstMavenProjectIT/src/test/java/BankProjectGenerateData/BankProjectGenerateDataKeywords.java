@@ -177,7 +177,6 @@ public class BankProjectGenerateDataKeywords {
 			//Create a randomised email address
 			int randomisednumber = sfSelenium.generateRandomData();
 			String sValidateEmailAddress = randomisednumber+"@gmail.com";
-			
 			sfSelenium.startReport("Bank  Project", "Generate Input Data");
 			sfSelenium.createTest("Start Test");
 			this.driver = sfSelenium.getDriver();
@@ -185,42 +184,23 @@ public class BankProjectGenerateDataKeywords {
 			clickBankProject();
 			validateEmailAddress(sValidateEmailAddress);
 			generateValidLogins(randomisednumber);
-			
 			successfulLogin();
-			//unsuccessfulPopup();
 		}
 		
 		public void testCase2 () throws IOException, InterruptedException {
-			//sfSelenium.startReport("Bank  Project", "Generate Input Data");
 			sfSelenium.createTest("Validate Login Test");
-			//this.driver = sfSelenium.getDriver();
 			navigateToURL(pURL);
 			clickBankProject();
-			//validateEmailAddress();
-			//generateValidLogins();
-			
-			//successfulLogin();
 			populateInpute(sInvalidId,sInvalidPassword);
 			writeToFile(sInvalidId,sInvalidPassword,-1);
 			unsuccessfulPopup();
 		}
-		
-
-		
-		
-		
-	//GENERATE REPORT
-	//TAKE SCREENSHOTS
-	//CLICK ON LOGOUT
-		
-	//LOGOUT
-		//ASSERT SUCCESSFUL LOGOUT POPUP ALERT
 	
 		public void cleanup () throws IOException, InterruptedException {
 			sfSelenium.createTest("Run Test: clean up");
 			// set the value for driver
 			this.driver = sfSelenium.getDriver();
-			Thread.sleep(5000);
+			//Thread.sleep(5000);
 			sfSelenium.CloseSelenium();
 			this.driver.quit();
 		}
