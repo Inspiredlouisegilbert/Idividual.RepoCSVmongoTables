@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -133,20 +131,8 @@ public class BankProjectGenerateDataKeywords {
 		public void writeToFile (String p1, String p2, int randomisednumber) throws IOException, InterruptedException {
 			
 			this.driver = sfSelenium.getDriver();
-//			
-			//String randomnum = String.valueOf(sfSelenium.generateRandomData());
-//			FileWriter csvWriter = new FileWriter("C:\\tmp\\new.csv");
-//			csvWriter.append("UserName,");
-//			//csvWriter.append(",");
-//			csvWriter.append("ID");
-//			csvWriter.append("\n");
-//			csvWriter.append(sValidateEmailAddress+",");
-//			csvWriter.append(randomnum);
-//			csvWriter.append("\n");			
-//			csvWriter.flush();
-//			csvWriter.close();
-			
-			 //File log = new File("C:\\tmp\\new.csv");
+	
+
 					    try{
 					    if(log.exists()==false){
 					            System.out.println("We had to make a new file.");
