@@ -41,55 +41,56 @@ import com.mongodb.DB;
 
 
 // This class manages all Selenium Functions and the Driver
-public class SeleniumFunctions {
+public class ReusableFunctions extends DriverSetup
+{
 	// Class Private Variables
-	private  WebDriver driver;
+	//private  WebDriver driver;
 	ExtentReportClass extReports = new ExtentReportClass();
 	public String gatewayurl;
 	
 	//private ReportingClass reports = new ReportingClass();
 	
 	
-	// Constructor
-	public SeleniumFunctions()  {
-		
-		// Tell Java where the chromedriver.exe sits & Create a new instance of Chrome Driver
-		SetupSelenium();
-		
-	}
-
-	public void SetupSelenium() {
-		
-		
-		// Properties setup
-		Properties p = new Properties();
-		InputStream is = null;
-		try {
-			is = new FileInputStream("dataConfig.properties");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			p.load(is);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//System.out.println(p.getProperty("driverdir"));
-		//System.out.println(p.getProperty("gatewayurl"));
-
-		System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir")); 
-		//System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir"));
-		// For Mac
-		//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-		
-		// For Window
-				//System.setProperty("webdriver.chrome.driver", "c:\\chromedriver_win32\\chromedriver.exe"); 
-
-		// Create an instance of ChromeDriver to execute our tests
-		 this.driver = new ChromeDriver();	
-	}
+//	// Constructor
+//	public SeleniumFunctions2()  {
+//		
+//		// Tell Java where the chromedriver.exe sits & Create a new instance of Chrome Driver
+//		SetupSelenium();
+//		
+//	}
+//
+//	public void SetupSelenium() {
+//		
+//		
+//		// Properties setup
+//		Properties p = new Properties();
+//		InputStream is = null;
+//		try {
+//			is = new FileInputStream("dataConfig.properties");
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			p.load(is);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		//System.out.println(p.getProperty("driverdir"));
+//		//System.out.println(p.getProperty("gatewayurl"));
+//
+//		System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir")); 
+//		//System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir"));
+//		// For Mac
+//		//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+//		
+//		// For Window
+//				//System.setProperty("webdriver.chrome.driver", "c:\\chromedriver_win32\\chromedriver.exe"); 
+//
+//		// Create an instance of ChromeDriver to execute our tests
+//		 this.driver = new ChromeDriver();	
+//	}
 	
 
 	public void startReport(String sReportName, String sTitle) {
@@ -163,17 +164,18 @@ public class SeleniumFunctions {
 	}
 	
 	// function to populate an input field using multiple By clauses
-	public void populateInputField(By byClause, String inputValue) {
-		this.driver.findElement(byClause).sendKeys(inputValue);
+	public void populateInputField(By byClause, String inputValue,WebDriver driver) {
+		//this.driver.findElement(byClause).sendKeys(inputValue);
+		driver.findElement(byClause).sendKeys(inputValue);
 		
 		// Reads the value that was typed into the field
 		//String sActualValue = this.driver.findElement(byClause).getText();
-		String sActualValue = this.driver.findElement(byClause).getAttribute("value");
+		//String sActualValue = this.driver.findElement(byClause).getAttribute("value");
 		
 		// set the value for ExpectedValue 
-		String sExpectedValue = inputValue;
+		//String sExpectedValue = inputValue;
 		
-		this.doValidation(sExpectedValue, sActualValue);
+		//this.doValidation(sExpectedValue, sActualValue);
 		
 	}
 	
