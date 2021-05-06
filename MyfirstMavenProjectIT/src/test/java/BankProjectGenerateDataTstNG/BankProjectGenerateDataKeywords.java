@@ -1,4 +1,4 @@
-package BankProjectGenerateData;
+package BankProjectGenerateDataTstNG;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +12,9 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
+
 import frameworkclasses.SeleniumFunctions;
 
 public class BankProjectGenerateDataKeywords {
@@ -171,6 +174,7 @@ public class BankProjectGenerateDataKeywords {
 	//TAKE SCREENSHOTS
 	
 	//RUN TESTS
+		@Test 
 		public void testCase1 () throws IOException, InterruptedException {
 			//Create a randomised email address
 			int iMin = 0;
@@ -187,6 +191,7 @@ public class BankProjectGenerateDataKeywords {
 			//successfulLogin();
 		}
 		
+		@Test
 		public void testCase2 () throws IOException, InterruptedException {
 			sfSelenium.createTest("Validate Login Test");
 			navigateToURL(pURL);
@@ -195,7 +200,8 @@ public class BankProjectGenerateDataKeywords {
 			unsuccessfulPopup();
 			writeToFile(sInvalidId,sInvalidPassword,-1, eleDisplayed);
 		}
-	
+		
+	@AfterSuite
 		public void cleanup () throws IOException, InterruptedException {
 			sfSelenium.createTest("Run Test: clean up");
 			// set the value for driver
