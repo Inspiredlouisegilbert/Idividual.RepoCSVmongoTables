@@ -1,4 +1,4 @@
-package frameworkclasses;
+package Refactored;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +29,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import frameworkclasses.DriverSetup;
+import frameworkclasses.ExtentReportClass;
+import frameworkclasses.ReusableFunctions;
 
 // Mongo DB imports
 import com.mongodb.MongoClient;

@@ -10,6 +10,7 @@ import java.rmi.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import org.bson.Document;
 import org.json.simple.JSONArray;
@@ -89,6 +90,9 @@ public class SeleniumFunctions {
 
 		// Create an instance of ChromeDriver to execute our tests
 		 this.driver = new ChromeDriver();	
+		 
+		// set the implicit wait
+		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 
@@ -193,7 +197,7 @@ public class SeleniumFunctions {
 		this.extReports.logScreenshot(this.driver);
 	}
 	
-	public void CloseSelenium() {
+	public void CloseSelenium() throws IOException {
 		//this.reports.FinaliseExtentReport();
 		////driver.close will close the original browser window
 		//this.driver.close();
@@ -201,6 +205,8 @@ public class SeleniumFunctions {
 		this.driver.quit();
 		// Also finalise and close the test report for us
 		extReports.closeReport();
+		Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
+		Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
 	}
 	
 	// Switch between tabs
