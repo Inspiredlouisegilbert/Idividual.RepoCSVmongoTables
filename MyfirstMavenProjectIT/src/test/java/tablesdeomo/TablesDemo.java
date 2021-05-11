@@ -1,4 +1,4 @@
-package tables;
+package tablesdeomo;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -60,8 +60,18 @@ public class TablesDemo {
 		
 		WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
 		List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
-
 		System.out.println("Total Number of cells in the table are: "+TotalColsList.size());
+		
+		List<WebElement> TotalColsListrow4 = ToGetColumns.findElements(By.xpath("tr[3]/td"));
+		System.out.println("Total Number of columns in the row 4 are: "+TotalColsListrow4.size());
+		WebElement getValueCell1 = driver.findElement(By.xpath("//tbody/tr[1]/td[1]"));
+		System.out.println("The cell value of row 1 column 1 is: " + getValueCell1.getText());
+		WebElement getValueCell2 = driver.findElement(By.xpath("//tbody/tr[4]/td[3]"));
+		System.out.println("The cell value of row 4 column 3 is: " + getValueCell2.getText());
+		WebElement getValueCell3 = driver.findElement(By.xpath("//tbody/tr[1]/td[2]"));
+		System.out.println("The cell value of row 1 column 2 is: " + getValueCell3.getText());
+		
+		
 		
 		sfSelenium.logScreenShot();	
 	}
