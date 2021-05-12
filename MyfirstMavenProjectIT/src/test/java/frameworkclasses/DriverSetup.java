@@ -60,7 +60,7 @@ public class DriverSetup {
 		Properties p = new Properties();
 		InputStream is = null;
 		try {
-			is = new FileInputStream("dataConfig.properties");
+			is = new FileInputStream("config.properties");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
