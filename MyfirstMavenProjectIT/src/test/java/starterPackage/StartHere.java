@@ -28,30 +28,12 @@ import frameworkclasses.SeleniumFunctions;
 public class StartHere {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	
+	//Instantiate Selenium Functions
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
 	
 	// driver variable
 	WebDriver driver;
 	
-	public String getProperties(String pPropertyKey) {
-		// Properties setup
-				Properties p = new Properties();
-				InputStream is = null;
-				try {
-					is = new FileInputStream("dataConfig.properties");
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					p.load(is);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		return p.getProperty(pPropertyKey);
-	}
-
 
 	
 	// Run Test Section
@@ -62,14 +44,12 @@ public class StartHere {
 		sfSelenium.createTest("Test Started: Read From PDF Report");
 	}
 	
-
 	
 	@Test
 	public void testFirst() throws Exception {
 		System.out.println("Test");
 	}
 	
-
 	
 	@AfterTest
 	public void afterTest() throws Exception {
