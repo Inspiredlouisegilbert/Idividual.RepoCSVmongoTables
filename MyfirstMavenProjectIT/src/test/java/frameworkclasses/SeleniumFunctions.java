@@ -205,8 +205,8 @@ public class SeleniumFunctions {
 		this.driver.quit();
 		// Also finalise and close the test report for us
 		extReports.closeReport();
-		Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
-		Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
+		//Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
+		//Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
 	}
 	
 	// Switch between tabs
