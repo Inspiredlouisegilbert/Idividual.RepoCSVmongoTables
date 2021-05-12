@@ -24,7 +24,6 @@ import org.testng.annotations.Test;
 
 import frameworkclasses.SeleniumFunctions;
 
-
 public class StartHere {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	
@@ -34,8 +33,6 @@ public class StartHere {
 	// driver variable
 	WebDriver driver;
 	
-
-	
 	// Run Test Section
 	@BeforeTest
 	public void beforeClass() throws Exception {
@@ -44,16 +41,13 @@ public class StartHere {
 		sfSelenium.createTest("Test Started: Read From PDF Report");
 	}
 	
-	
 	@Test
 	public void testFirst() throws Exception {
 		System.out.println("Test");
 	}
 	
-	
 	@AfterTest
 	public void afterTest() throws Exception {
 		sfSelenium.CloseSelenium();
 	}
-
 }

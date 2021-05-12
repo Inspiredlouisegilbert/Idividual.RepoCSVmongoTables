@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import org.junit.AfterClass;
@@ -30,9 +31,10 @@ public class TelcoProjectOneTstNG {
 	String sLastname = "Kruger";
 	String sEmailInvalid = "email@gmail";		//INVALID EMAIL ADDRESS FOR ASSERTION
 	String sEmailValid = "email@gmail.com";
-	String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION
+	String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION		//ESCAPE THE SPECIAL CHARACTER
 	String sAddressValid = "1010 hollywood drive new york";
 	String sContactnumber = "0115678989";
+	boolean eleDisplayed;
 	
 	//Instantiate Selenium Functions
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
@@ -51,14 +53,46 @@ public class TelcoProjectOneTstNG {
 		sfSelenium.clickLink("Add Customer");
 	}
 		
-	public void generateInputData() {
-		driver.findElement(By.xpath("//label[@for='done']")).click();						//SELECT RADIO BUTTON
-		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys(sFirstname);		//INPUT VALID FIRST NAME
-		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);			//INPUT VALID LAST NAME NAME
-		driver.findElement(By.id("email")).sendKeys(sEmailInvalid);							//INPUT INVALID EMAIL ADDRESS
-		driver.findElement(By.xpath("//textare[@name='addr'][@id='message']")).sendKeys(sAddressInvalid);	//INPUT INVALID ADDRESS
+	public void generateInvalidInputData() {
 		
-		//ASSERTIONS
+		//ASSERTION THAT GURU99 TELECOM TEXT IS VISIBLE
+		try {
+			eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
+			System.out.println("Assertion One: Guru99 telecom text is visible: " + eleDisplayed);
+			sfSelenium.createTest("Guru99 telecom text is visible");
+		}
+		catch(NoSuchElementException e) {
+			System.out.println(e);
+		}
+		
+		//ASSERTION THAT ADD CUSTOMER TEXT IS VISIBLE
+		try {
+			eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center:nth-child(1) > h1:nth-child(1)")).isDisplayed();
+			System.out.println("Assertion Two: Add customer text is visible: " + eleDisplayed);
+			sfSelenium.createTest("Add customer text is visible");
+		}
+			catch(NoSuchElementException e) {
+				System.out.println(e);
+		}
+		
+		driver.findElement(By.xpath("//label[@for='done']")).click();										//SELECT RADIO BUTTON
+		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys(sFirstname);						//INPUT VALID FIRST NAME
+		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);							//INPUT VALID LAST NAME NAME
+		driver.findElement(By.id("email")).sendKeys(sEmailInvalid);											//INPUT INVALID EMAIL ADDRESS
+		driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressInvalid);	//INPUT INVALID ADDRESS
+		
+		//ASSERTIONS FOR INVALID EMAIL ADDRESS
+		try {
+		boolean eleDisplayed = driver.findElement(By.cssSelector("#message9")).isDisplayed();
+		System.out.println("Assertion Three: Invalid email address check passed: " + eleDisplayed);
+		sfSelenium.createTest("Invalid email address check passed");
+		System.out.println(eleDisplayed);
+		}
+		catch(NoSuchElementException e) {
+			System.out.println(e);
+		}
+		
+		//ASSERT FOR INVALID ADDRESS
 	}
 	
 	// Run Test Section
@@ -76,7 +110,7 @@ public class TelcoProjectOneTstNG {
 		this.driver = sfSelenium.getDriver();
 		navigateToURL(pURL);
 		clickBankProject();
-		generateInputData();
+		generateInvalidInputData();
 		System.out.println("Test One");
 		Thread.sleep(5000);
 	}
