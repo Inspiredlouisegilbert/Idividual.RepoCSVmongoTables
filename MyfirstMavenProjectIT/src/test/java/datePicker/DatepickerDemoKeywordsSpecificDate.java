@@ -54,8 +54,15 @@ public class DatepickerDemoKeywordsSpecificDate {
 		
         //Date and Time to be set in textbox
 
-        String dateTime ="12/07/2019 8:00 PM";
-        
+        String dateTime ="12/07/2035 8:00 PM";
+
+        //String dateTime ="12/07/2019 8:00 PM";
+//        12
+//        07
+//        2035
+//        8:00
+//        PM
+//        
    
         //button to open calendar
 		sfSelenium.createTest("Run Test: DatePicker");
