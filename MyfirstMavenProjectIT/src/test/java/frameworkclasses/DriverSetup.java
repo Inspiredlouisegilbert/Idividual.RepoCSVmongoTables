@@ -12,22 +12,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DriverSetup {
 	public WebDriver driver;
+	
+	//ReusableFunctions sfSelenium = new ReusableFunctions();
 
 	/**
 	 * This function will execute before each Test tag in testng.xml
 	 * @param browser
 	 * @throws Exception
 	 */
-	@BeforeTest
+	@BeforeClass
 	@Parameters("browser")
 	public void setup(String browser) throws Exception{
-		String pdriverDir = this.getProperties("driverdir");
+		
+		String pdriverDir = getDataConfigProperties("driverdir");
 		//Check if parameter passed from TestNG is 'firefox'
 		if(browser.equalsIgnoreCase("firefox")){
 		//create firefox instance
@@ -44,7 +48,7 @@ public class DriverSetup {
 		//Check if parameter passed as 'Edge'
 				else if(browser.equalsIgnoreCase("Edge")){
 					//set path to Edge.exe
-					System.setProperty("webdriver.edge.driver",".\\MicrosoftWebDriver.exe");
+					System.setProperty("webdriver.edge.driver",pdriverDir+"MicrosoftWebDriver.exe");
 					//create Edge instance
 					setDriver(new EdgeDriver());
 				}
@@ -52,24 +56,29 @@ public class DriverSetup {
 			//If no browser passed throw exception
 			throw new Exception("Browser is not correct");
 		}
-		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().setScriptTimeout(4, TimeUnit.SECONDS);
 	}
 	
-	//DATA CONFIG SETUP
-	public String getProperties(String pPropertyKey) {
+	public String getDataConfigProperties(String propertyName) {
+		// Properties setup
 		Properties p = new Properties();
 		InputStream is = null;
 		try {
 			is = new FileInputStream("config.properties");
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		try {
-				p.load(is);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		return p.getProperty(pPropertyKey);
+			p.load(is);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	return p.getProperty(propertyName);
+
 	}
 
 	public WebDriver getDriver() {
@@ -79,7 +88,4 @@ public class DriverSetup {
 	public void setDriver(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-	
-	
 }

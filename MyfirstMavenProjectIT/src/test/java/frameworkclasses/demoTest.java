@@ -26,6 +26,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.util.PDFTextStripper;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -48,12 +50,25 @@ public class demoTest extends DriverSetup {
 	
 	
 	ReusableFunctions sfSelenium = new ReusableFunctions();
+	int randomisednumber = sfSelenium.generateRandomData(1, 7);
 	
 	@Test
 	public void testParameterWithXML() throws InterruptedException{
 		driver.get("http://demo.guru99.com/V4/");
 		sfSelenium.populateInputField(By.name("uid"), "guru99",driver);
 		sfSelenium.populateInputField(By.name("password"), "guru99",driver);
+		sfSelenium.clickLink("Bank Project",driver);
+		
+		System.out.println("Random number" + randomisednumber );
+		System.out.println(getDataConfigProperties("tmpdir"));
+		//System.out.println(randomisednumber);
+		//sfSelenium.CloseSelenium(driver);
+
+	}
+	
+	@AfterClass
+	public void cleanup() throws InterruptedException{
+		sfSelenium.CloseSelenium(driver);
 
 	}
 }
