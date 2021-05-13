@@ -58,29 +58,33 @@ public class SeleniumFunctions {
 		SetupSelenium();
 		
 	}
+	
+	public String getDataConfigProperties(String propertyName) {
+				// Properties setup
+				Properties p = new Properties();
+				InputStream is = null;
+				try {
+					is = new FileInputStream("dataConfig.properties");
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p.load(is);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			return p.getProperty(propertyName);
+		
+	}
 
 	public void SetupSelenium() {
 		
-		
-		// Properties setup
-		Properties p = new Properties();
-		InputStream is = null;
-		try {
-			is = new FileInputStream("dataConfig.properties");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			p.load(is);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//System.out.println(p.getProperty("driverdir"));
-		//System.out.println(p.getProperty("gatewayurl"));
+		String propertyName = getDataConfigProperties("driverdir");
 
-		System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir")); 
+		System.setProperty("webdriver.chrome.driver", propertyName); 
 		//System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir"));
 		// For Mac
 		//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
@@ -205,6 +209,8 @@ public class SeleniumFunctions {
 		this.driver.quit();
 		// Also finalise and close the test report for us
 		extReports.closeReport();
+		//Runtime.getRuntime().exec("pgrep 'firefox' | xargs kill");
+		//Runtime.getRuntime().exec("pgrep 'chromeDriver' | xargs kill");
 		Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
 		Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
 	}
