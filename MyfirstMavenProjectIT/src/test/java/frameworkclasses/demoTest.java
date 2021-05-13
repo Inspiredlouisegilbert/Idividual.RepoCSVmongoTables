@@ -60,7 +60,7 @@ public class demoTest extends DriverSetup {
 		sfSelenium.clickLink("Bank Project",driver);
 		
 		System.out.println("Random number" + randomisednumber );
-		System.out.println(getDataConfigProperties("tmpdir"));
+		System.out.println(getDataConfigProperties("logFileDir"));
 		//System.out.println(randomisednumber);
 		//sfSelenium.CloseSelenium(driver);
 
