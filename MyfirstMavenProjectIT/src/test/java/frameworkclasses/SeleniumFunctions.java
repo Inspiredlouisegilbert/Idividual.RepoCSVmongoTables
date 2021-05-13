@@ -209,15 +209,10 @@ public class SeleniumFunctions {
 		this.driver.quit();
 		// Also finalise and close the test report for us
 		extReports.closeReport();
-<<<<<<< HEAD
+
 		//Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
 		//Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
-=======
-		//Runtime.getRuntime().exec("pgrep 'firefox' | xargs kill");
-		//Runtime.getRuntime().exec("pgrep 'chromeDriver' | xargs kill");
-		Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
-		Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
->>>>>>> origin/master
+
 	}
 	
 	// Switch between tabs
