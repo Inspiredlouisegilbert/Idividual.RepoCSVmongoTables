@@ -8,22 +8,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.NoSuchElementException;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
+import frameworkclasses.DriverSetup;
+import frameworkclasses.ReusableFunctions;
 
-import frameworkclasses.SeleniumFunctions;
 
-public class BankProjectGenerateDataKeywords {
+public class BankProjectGenerateDataKeywordsRefactored extends DriverSetup{
 
 	//INSTANTIATE NEW INSTANCE OF SELENIUM FUNCTIONS
-	SeleniumFunctions sfSelenium = new SeleniumFunctions();
-	
-	//DRIVER VARIABLE
-	WebDriver driver;
+	ReusableFunctions sfSelenium = new ReusableFunctions();
 	
 	// Set URL
 	String pURL = "http://demo.guru99.com";
@@ -42,8 +38,6 @@ public class BankProjectGenerateDataKeywords {
 	
 	
 	public String constructFileName() {
-		//Get config property
-		//Set the date string
 		Date date = Calendar.getInstance().getTime();  
 	    DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");  
 	    String strDate = dateFormat.format(date);  
@@ -52,23 +46,20 @@ public class BankProjectGenerateDataKeywords {
 	}
 	
 	//NAVIGATE TO URL
-	
 	public void navigateToURL(String pURL) {
 		driver.get(pURL);
 		//sfSelenium.maximiseBrowserWindow();
 	}
 	
-	//NAVIGATE TO BANK PROJECT
-	//CLICK ON THE BANKING LINK
+		//NAVIGATE TO BANK PROJECT
 		public void clickBankProject() {
-			sfSelenium.clickLink("Bank Project");
+			sfSelenium.clickLink("Bank Project",driver);
 			
 		}
 		
 		public void validateEmailAddress(String sValidateEmailAddress) {
 			//CREATE TEST TO VALIDATE EMAIL ADRESS
-			
-			sfSelenium.clickLink("here");
+			sfSelenium.clickLink("here",driver);
 			driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(sValidateEmailAddress);
 			driver.findElement(By.name("btnLogin")).click();
 		}
@@ -84,20 +75,16 @@ public class BankProjectGenerateDataKeywords {
 			String pOutcome = "";
 			
 			//NAVIGATE BACK TO THE BANK PROJECT
-			sfSelenium.clickLink("Bank Project");
-			//sfSelenium.clickLink("here");
+			sfSelenium.clickLink("Bank Project",driver);
 			populateInpute(sUserID,sPassword);
-			//I'd probably call successfulLogin() here
 			successfulLogin();
 			writeToFile(sUserID,sPassword,randomisednumber, eleDisplayed);
 		}
 			
-			
-			//POPULATE INPUT FIELDS
+		//POPULATE INPUT FIELDS
 		public void populateInpute(String pUsersID ,String pPassword) {
-			sfSelenium.populateInputField(By.name("uid"), pUsersID);
-			sfSelenium.populateInputField(By.name("password"), pPassword);
-		
+			sfSelenium.populateInputField(By.name("uid"), pUsersID,driver);
+			sfSelenium.populateInputField(By.name("password"), pPassword,driver);
 			driver.findElement(By.name("btnLogin")).click();
 			
 		}
@@ -108,7 +95,7 @@ public class BankProjectGenerateDataKeywords {
 			try {
 				eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
 				System.out.println("Successful Login Assertion passed: " + eleDisplayed);
-				sfSelenium.createTest("Successful Login");
+				//sfSelenium.createTest("Successful Login");
 			}
 			catch(NoSuchElementException e) {
 				System.out.println(e);
@@ -118,17 +105,14 @@ public class BankProjectGenerateDataKeywords {
 		public void unsuccessfulPopup() throws InterruptedException {
 			try {
 				//HANDLE UNSUCCESSFUL POPUP ALERT
-				sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
 				String pExpectedMessage = "User is not valid";
 				
 				//CREATE AN OBJECT OF THE POPUP
-			
 				Alert alert = this.driver.switchTo().alert();
 				String sAlertMessage = alert.getText();
 				System.out.println(sAlertMessage);
 
 				alert.accept();
-				sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
 				eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
 				
 				Thread.sleep(500);
@@ -139,9 +123,6 @@ public class BankProjectGenerateDataKeywords {
 		}
 		
 		public void writeToFile (String p1, String p2, int randomisednumber, boolean pEleDisplayed) throws IOException, InterruptedException {
-			
-			this.driver = sfSelenium.getDriver();
-	
 
 					    try{
 					    if(log.exists()==false){
@@ -164,18 +145,7 @@ public class BankProjectGenerateDataKeywords {
 					    }
 	}
 	
-	//IF STATEMENT FOR SUCCESS
-	//GENERATE REPORT
-	//TAKE SCREENSHOTS
-	//ASSERT ON IMAGE
-	//ADDITIONAL ASSERT ON IS DISPLAYED TEXT
-	
-	//IF STATEMENT FOR UNSUCCESSFUL LOGIN
-	//HANDLE THE ALERT POPUP
-	//GENERATE REPORT
-	//TAKE SCREENSHOTS
-	
-	//RUN TESTS
+		//RUN TESTS
 		@Test 
 		public void testCase1 () throws IOException, InterruptedException {
 			//Create a randomised email address
@@ -183,19 +153,14 @@ public class BankProjectGenerateDataKeywords {
 			int iMax = 1000;
 			int randomisednumber = sfSelenium.generateRandomData(iMin, iMax);
 			String sValidateEmailAddress = randomisednumber+"@gmail.com";
-			sfSelenium.startReport("Bank  Project", "Generate Input Data");
-			sfSelenium.createTest("Start Test");
-			this.driver = sfSelenium.getDriver();
 			navigateToURL(pURL);
 			clickBankProject();
 			validateEmailAddress(sValidateEmailAddress);
 			generateValidLogins(randomisednumber);
-			//successfulLogin();
 		}
 		
 		@Test
 		public void testCase2 () throws IOException, InterruptedException {
-			sfSelenium.createTest("Validate Login Test");
 			navigateToURL(pURL);
 			clickBankProject();
 			populateInpute(sInvalidId,sInvalidPassword);
@@ -205,11 +170,6 @@ public class BankProjectGenerateDataKeywords {
 		
 		@AfterSuite
 		public void cleanup () throws IOException, InterruptedException {
-			sfSelenium.createTest("Run Test: clean up");
-			// set the value for driver
-			this.driver = sfSelenium.getDriver();
-			//Thread.sleep(5000);
-			sfSelenium.CloseSelenium();
-			this.driver.quit();
+			sfSelenium.CloseSelenium(driver);
 		}
 }
