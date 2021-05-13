@@ -57,7 +57,7 @@ public class DriverSetup {
 			throw new Exception("Browser is not correct");
 		}
 		getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		getDriver().manage().timeouts().setScriptTimeout(4, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
 	}
 	
 	public String getDataConfigProperties(String propertyName) {
