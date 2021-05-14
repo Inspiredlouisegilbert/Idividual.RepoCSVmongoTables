@@ -6,6 +6,7 @@ public class DoWhile {
 		// TODO Auto-generated method stub
 		int i=10;
 		
+		
 		//1 to 10
 		
 		while(i>100)
