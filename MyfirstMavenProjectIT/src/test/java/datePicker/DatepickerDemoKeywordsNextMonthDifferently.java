@@ -76,6 +76,8 @@ public class DatepickerDemoKeywordsNextMonthDifferently {
         List<WebElement> columns=dateWidget.findElements(By.tagName("td"));
         wait.until(ExpectedConditions.elementToBeClickable(dateWidget));
 
+        //"for-each" loop, which is used exclusively to loop through elements in an array:
+        //for (type variableName : arrayName) {
 		for (WebElement cell: columns){
 		   //Select 13th Date 
 		   if (cell.getText().equals("13")){

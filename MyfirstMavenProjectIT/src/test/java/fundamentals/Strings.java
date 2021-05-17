@@ -14,7 +14,7 @@ public class Strings {
 
 		System.out.println(a.charAt(2));
 		System.out.println(a.indexOf("e"));
-		System.out.println(a.substring(3, 6));
+		/*System.out.println(a.substring(3, 6));
 		System.out.println(a.substring(5));
 		System.out.println(a.concat("Louise teaches"));
 		//a.length()
@@ -34,13 +34,14 @@ public class Strings {
 		
 		for (int ii=5; ii>=0;ii--) {
 			
-			ti= ti + bi.charAt(ii);
+			//ti= ti + bi.charAt(ii);
+			bi.charAt(ii);
 			
 			
 		}
 		System.out.println(ti);
 
-
+*/
 
 	}
 

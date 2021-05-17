@@ -10,15 +10,12 @@ public class NestedLoopStepsInverted {
 		//System.out.println( "outer loop started");
 		for(int j=1;j<=4-i;j++) // inner loop
 		{
-		System.out.print( k);
-		System.out.print("\t");
-		k++;
+			System.out.print( k);
+			System.out.print("\t");
+			k++;
 		}
-		System.out.println( "");
+			System.out.println( "");
 		}
-
-		
-
 
 
 	}

@@ -69,21 +69,24 @@ public class DatepickerDemoKeywordsSpecificDate {
 		navigateToURL(pURL);
 		
 		
-		WebElement selectDate = driver.findElement(By.xpath("//span[@aria-controls='datetimepicker_dateview']"));
+		WebElement selectDate = driver.
+				findElement(By.xpath("//span[@aria-controls='datetimepicker_dateview']"));
 		selectDate.click();
 	 
-	    WebElement nextLink = driver.findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-next')]"));
+	    WebElement nextLink = driver.
+	    		findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-next')]"));
 
 	    //button to click in center of calendar header
 
-	    WebElement midLink = driver.findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-fast')]"));
+	    WebElement midLink = driver.
+	    		findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-fast')]"));
 
 	    //button to move previous month in calendar
 
-	    WebElement previousLink = driver.findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-prev')]")); 
+	    WebElement previousLink = driver.
+	    		findElement(By.xpath("//div[@id='datetimepicker_dateview']//div[@class='k-header']//a[contains(@class,'k-nav-prev')]")); 
 
 	        //Split the date time to get only the date part
-
 	        String date_dd_MM_yyyy[] = (dateTime.split(" ")[0]).split("/");
 
 	        //get the year difference between current year and year to set in calander
@@ -129,7 +132,8 @@ public class DatepickerDemoKeywordsSpecificDate {
 	        //Get all months from calendar to select correct one
 	      //ts-monthpicker[2]
 
-	        List<WebElement> list_AllMonthToBook = driver.findElements(By.xpath("//div[@id='datetimepicker_dateview']//table//tbody//td[not(contains(@class,'k-other-month'))]"));
+	        List<WebElement> list_AllMonthToBook = driver.
+	        		findElements(By.xpath("//div[@id='datetimepicker_dateview']//table//tbody//td[not(contains(@class,'k-other-month'))]"));
 	        
 	        list_AllMonthToBook.get(Integer.parseInt(date_dd_MM_yyyy[1])-1).click();
 	        
@@ -137,7 +141,8 @@ public class DatepickerDemoKeywordsSpecificDate {
 
 	        //get all dates from calendar to select correct one
 
-	        List<WebElement> list_AllDateToBook = driver.findElements(By.xpath("//div[@id='datetimepicker_dateview']//table//tbody//td[not(contains(@class,'k-other-month'))]"));
+	        List<WebElement> list_AllDateToBook = driver.findElements(By.
+	        		xpath("//div[@id='datetimepicker_dateview']//table//tbody//td[not(contains(@class,'k-other-month'))]"));
 	        
 	        list_AllDateToBook.get(Integer.parseInt(date_dd_MM_yyyy[0])-1).click();
 	        
@@ -152,7 +157,8 @@ public class DatepickerDemoKeywordsSpecificDate {
 
 	        //get list of times
 
-	        List<WebElement> allTime = driver.findElements(By.xpath("//div[@data-role='popup'][contains(@style,'display: block')]//ul//li[@role='option']"));
+	        List<WebElement> allTime = driver.findElements(By.
+	        		xpath("//div[@data-role='popup'][contains(@style,'display: block')]//ul//li[@role='option']"));
 	      
 	        dateTime = dateTime.split(" ")[1]+" "+dateTime.split(" ")[2];
 

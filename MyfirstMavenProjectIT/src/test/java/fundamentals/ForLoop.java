@@ -22,15 +22,9 @@ public class ForLoop {
 		i--;//i=2
 		}*/
 		
+	}
+		
 	
-		int j=20;
-		do
-		{
-		System.out.println(j);
-		j++;
-	
-		}while(j<=29);// 1 loop of execution is guarantee
-		}
 
 
 
