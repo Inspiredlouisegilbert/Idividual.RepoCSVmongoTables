@@ -4,14 +4,15 @@
 <test name="ChromeTest">
 <parameter name="browser" value="Chrome" />
 <classes>
-<class name="frameworkclasses.demoTest"></class>
-<class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
+	<class name="frameworkclasses.demoTest"></class>
+	<class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
 </classes>
 </test>
 <test name="FirefoxTest">
 <parameter name="browser" value="Firefox" />
 <classes>
 	<class name="frameworkclasses.demoTest"/>
+	<class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
 </classes>
 </test>
 </suite>
