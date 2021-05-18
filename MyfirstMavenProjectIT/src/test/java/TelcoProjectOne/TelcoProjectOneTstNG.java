@@ -100,8 +100,42 @@ public class TelcoProjectOneTstNG {
 		catch(NoSuchElementException e) {
 			System.out.println(e);
 		}
-		
-		//ASSERT FOR INVALID ADDRESS
+	}
+	
+	public void clickSubmit()
+	{
+		//CLICK SUBMIT BUTTON
+		driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	}
+	
+	public void generatevalidInput()
+	{
+		driver.findElement(By.xpath("//label[@for='done']")).click();										//SELECT RADIO BUTTON
+		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys(sFirstname);						//INPUT VALID FIRST NAME
+		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);							//INPUT VALID LAST NAME NAME
+		driver.findElement(By.id("email")).sendKeys(sEmailValid);											//INPUT INVALID EMAIL ADDRESS
+		driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressValid);	//INPUT INVALID ADDRESS
+	}
+	
+	//HANDLE THE POPUP MESSAGE
+	public void handlePopup()
+	{	
+		try {
+			clickSubmit();
+			String pExpectedMessage = "please fill all fields";
+			Alert alert = this.driver.switchTo().alert();
+			String sAlertMessage = alert.getText();
+			System.out.println("Actual message: " + sAlertMessage);
+			System.out.println("Expected message: " + pExpectedMessage);
+
+			alert.accept();
+			eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
+			
+			Thread.sleep(500);
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
 	}
 	
 	// Run Test Section
@@ -126,10 +160,18 @@ public class TelcoProjectOneTstNG {
 	
 	@Test
 	public void testTwo() throws Exception {
+		sfSelenium.startReport("Telco  Project", "Add New Customer");
+		sfSelenium.createTest("Start Test");
+		this.driver = sfSelenium.getDriver();
+		navigateToURL(pURL);
+		clickBankProject();
+		generatevalidInput();
+		clickSubmit();
 		System.out.println("Test Two");
 	}
 	
 	@Test
+	//ASSERT THAT CLIENT ID HAS BEEN GENERATED AND PRINT THE VALUE
 	public void testThree() throws Exception {
 		System.out.println("Test Three");
 	}
