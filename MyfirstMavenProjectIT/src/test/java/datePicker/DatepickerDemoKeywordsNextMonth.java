@@ -68,7 +68,7 @@ public class DatepickerDemoKeywordsNextMonth {
 		
 		
 		// Click the 26th day
-		WebElement selectDate3 = driver.findElement(By.xpath("//a[contains(text(),'26')]"));
+		WebElement selectDate3 = driver.findElement(By.xpath("//a[contains(text(),'17')]"));
 		selectDate3.click();
 
 		sfSelenium.logScreenShot();	

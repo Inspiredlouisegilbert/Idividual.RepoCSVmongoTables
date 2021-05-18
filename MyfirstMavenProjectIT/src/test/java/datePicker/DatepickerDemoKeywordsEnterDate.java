@@ -58,7 +58,7 @@ public class DatepickerDemoKeywordsEnterDate {
 		
 		//Find the date time picker control
 
-        WebElement dateBox = driver.findElement(By.xpath("//form//input[@name='bdaytime']"));
+        WebElement dateBox = driver.findElement(By.xpath("//input[@name='bdaytime']"));
 
         //Enter the year
         dateBox.sendKeys("1980");
