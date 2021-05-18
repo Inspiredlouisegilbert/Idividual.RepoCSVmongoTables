@@ -43,63 +43,7 @@ import com.mongodb.DB;
 // This class manages all Selenium Functions and the Driver
 public class ReusableFunctions extends DriverSetup
 {
-	// Class Private Variables
-	//private  WebDriver driver;
 	ExtentReportClass extReports = new ExtentReportClass();
-	public String gatewayurl;
-	
-	//private ReportingClass reports = new ReportingClass();
-	
-	
-//	// Constructor
-//	public SeleniumFunctions2()  {
-//		
-//		// Tell Java where the chromedriver.exe sits & Create a new instance of Chrome Driver
-//		SetupSelenium();
-//		
-//	}
-//
-//	public void SetupSelenium() {
-//		
-//		
-//		// Properties setup
-//		Properties p = new Properties();
-//		InputStream is = null;
-//		try {
-//			is = new FileInputStream("dataConfig.properties");
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			p.load(is);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		//System.out.println(p.getProperty("driverdir"));
-//		//System.out.println(p.getProperty("gatewayurl"));
-//
-//		System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir")); 
-//		//System.setProperty("webdriver.chrome.driver", p.getProperty("driverdir"));
-//		// For Mac
-//		//System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-//		
-//		// For Window
-//				//System.setProperty("webdriver.chrome.driver", "c:\\chromedriver_win32\\chromedriver.exe"); 
-//
-//		// Create an instance of ChromeDriver to execute our tests
-//		 this.driver = new ChromeDriver();	
-//	}
-	
-
-	public void startReport(String sReportName, String sTitle) {
-		extReports.startReport(sReportName, sTitle);
-	}
-	
-	public void createTest(String sName) {
-		extReports.createTest(sName);
-	}
 	
 	// Generate random number
 	public int generateRandomData(int pMin, int pMax) {		
@@ -108,75 +52,11 @@ public class ReusableFunctions extends DriverSetup
 		return randomNum;
 	}
 	
-	// Reusable method to perform validations for us
-	public void doValidation (String sActualValue, String sExpectedValue) {
-		
-		// Output to Console and Extent Report
-		if (sActualValue.contentEquals(sExpectedValue)) {
-			// If condition is true, execute this code
-			// output to console
-			System.out.println("Test passed. Expected Value = " + sExpectedValue + " Actual Value = " + sActualValue);
-			
-			// output to extent Reports
-			extReports.logPass(sActualValue, sExpectedValue);
-			
-		}
-		else {
-			// If condition is false, execute this code
-			System.out.println("Test failed. Expected Value = " + sExpectedValue + " Actual Value = " + sActualValue);
-			
-			// output to extent Reports
-			extReports.logFail(sActualValue, sExpectedValue);
-		}
 
-	}
-	
-
-	// Get for chromedriver
-	public WebDriver getDriver() {
-		return this.driver;
-				
-	}
-	
-	// Set for chromedriver
-	public void setDriver(WebDriver pDriver) {
-		this.driver = pDriver;
-	}
-	
-	
-	// function to populate dropdown and validate the text
-	public void populateDropDown (String pByName, String pValue) {
-		// Creates an instance of the dropdown object
-		Select sDrpDown = new Select (this.driver.findElement(By.name(pByName)));
-		
-		// Populates the Dropdown
-		sDrpDown.selectByVisibleText(pValue);
-		
-		WebElement selectedoption = sDrpDown.getFirstSelectedOption();
-		String sActualValue = selectedoption.getText();
-		String sExpectedValue = pValue;
-		this.doValidation(sActualValue, sExpectedValue);
-	}
-	
-	public void updateReport (String sActualValue, String sExpectedValue) {
-		
-		this.doValidation(sActualValue, sExpectedValue);
-	}
 	
 	// function to populate an input field using multiple By clauses
 	public void populateInputField(By byClause, String inputValue,WebDriver driver) {
-		//this.driver.findElement(byClause).sendKeys(inputValue);
 		driver.findElement(byClause).sendKeys(inputValue);
-		
-		// Reads the value that was typed into the field
-		//String sActualValue = this.driver.findElement(byClause).getText();
-		//String sActualValue = this.driver.findElement(byClause).getAttribute("value");
-		
-		// set the value for ExpectedValue 
-		//String sExpectedValue = inputValue;
-		
-		//this.doValidation(sExpectedValue, sActualValue);
-		
 	}
 	
 	// function to select a radio button option
@@ -185,24 +65,12 @@ public class ReusableFunctions extends DriverSetup
 	}
 	
 	// function to click on a hyperlink
-	public void clickLink(String pLinkText) {
+	public void clickLink(String pLinkText,WebDriver driver) {
 		driver.findElement(By.linkText(pLinkText)).click();
-		
-		// in future we will add validations and screenshots to this method
 	}
 	
-	public void logScreenShot() throws IOException {
-		this.extReports.logScreenshot(this.driver);
-	}
-	
-	public void CloseSelenium() {
-		//this.reports.FinaliseExtentReport();
-		////driver.close will close the original browser window
-		//this.driver.close();
-		////driver.quit will close the original and all subsequent browser tabs
-		this.driver.quit();
-		// Also finalise and close the test report for us
-		extReports.closeReport();
+	public void CloseSelenium(WebDriver driver) {
+		driver.quit();
 	}
 	
 	// Switch between tabs
@@ -219,19 +87,19 @@ public class ReusableFunctions extends DriverSetup
 	// Get last Digits
 	public String getLastDigits(int iLastDigits, String pStringName) {
 		String sLastdigits = pStringName.substring(pStringName.length() - iLastDigits);
-	    System.out.println(sLastdigits);
+	    System.out.println("sLastdigits" + sLastdigits);
 	    return sLastdigits;
 	}
 	
 	// Get first Digits
 	public String getFirstDigits(int iFirstDigits, String pStringName) {
 		String sFirstdigits = pStringName.substring(0,iFirstDigits);
-	    System.out.println(sFirstdigits);
+	    System.out.println("sFirstdigits" + sFirstdigits);
 	    return sFirstdigits;
 	}
 	
 	// Maximise Browser Window
-	public void maximiseBrowserWindow() {
+	public void maximiseBrowserWindow(WebDriver driver) {
 		driver.manage().window().maximize();
 	}
 	
