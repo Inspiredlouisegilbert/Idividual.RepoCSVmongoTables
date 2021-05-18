@@ -55,11 +55,21 @@ public class TelcoProjectOneTstNG {
 		
 	public void generateInvalidInputData() {
 		
+		String sActualValue = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).getAttribute("value");
+		
 		//ASSERTION THAT GURU99 TELECOM TEXT IS VISIBLE
 		try {
+			
+			//ATTEMPT 1
 			eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
 			System.out.println("Assertion One: Guru99 telecom text is visible: " + eleDisplayed);
 			sfSelenium.createTest("Guru99 telecom text is visible");
+			
+//			//ATTEMPT2
+//			System.out.println("Test passed: Excpected value is: Guru99 telecom " + " Actual value is: " + sActualValue);
+			
+			boolean eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
+			System.out.println("Additional assertion for text (used boolean) test passed: " + eleDisplayed);
 		}
 		catch(NoSuchElementException e) {
 			System.out.println(e);
@@ -86,7 +96,6 @@ public class TelcoProjectOneTstNG {
 		boolean eleDisplayed = driver.findElement(By.cssSelector("#message9")).isDisplayed();
 		System.out.println("Assertion Three: Invalid email address check passed: " + eleDisplayed);
 		sfSelenium.createTest("Invalid email address check passed");
-		System.out.println(eleDisplayed);
 		}
 		catch(NoSuchElementException e) {
 			System.out.println(e);
