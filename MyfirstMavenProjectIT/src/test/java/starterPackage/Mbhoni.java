@@ -97,16 +97,15 @@ public class Mbhoni {
 		
 	}
 	
-	// Clicking Done in Add Customer page
-	
-	
 	
 	// Capture New User Details
 	public void CaptureUserDetails(String sFirstname, String sLastname,
 			String sEmail, String sAddress, String sPhone)throws IOException {
-		
-		// populate input data
 
+		// Clicking Done in Add Customer page
+		driver.findElement(By.cssSelector("done")).click();
+
+		// populate input data
 		sfSelenium.populateInputField(By.name("fname"), sFirstname);
 		sfSelenium.populateInputField(By.name("lname"), sLastname);
 		sfSelenium.populateInputField(By.name("emailid"), sEmail);
