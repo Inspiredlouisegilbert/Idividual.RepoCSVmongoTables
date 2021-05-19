@@ -103,14 +103,26 @@ public class TelcoProjectOneTstNG {
 		catch(NoSuchElementException e) {
 			System.out.println(e);
 		}
+		
+		clickSubmit();
+		
+		//HANDLE POPUP
+		try {
+			//handle the alert
+				Alert alert = this.driver.switchTo().alert();
+				String sAlertMessage = alert.getText();
+				Assert.assertEquals("please fill all fields", sAlertMessage);
+				System.out.println("Expected popup message: " + sAlertMessage);
+				alert.accept();
+			}
+		catch(Exception e) {
+				System.out.println(e);
+			}
 	}
 	
 	public void clickSubmit()
 	{
 		//String sAccessDetails = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
-
-		
-		
 		//CLICK SUBMIT BUTTON
 		//driver.findElement(By.xpath("//input[@value='Submit']")).click();
 		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
