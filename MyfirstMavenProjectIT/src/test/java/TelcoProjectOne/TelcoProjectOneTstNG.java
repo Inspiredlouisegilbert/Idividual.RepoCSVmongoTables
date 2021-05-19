@@ -65,8 +65,10 @@ public class TelcoProjectOneTstNG {
 			System.out.println("Assertion One: Guru99 telecom text is visible: " + eleDisplayed);
 			sfSelenium.createTest("Guru99 telecom text is visible");
 			
-//			//ATTEMPT2
-//			System.out.println("Test passed: Excpected value is: Guru99 telecom " + " Actual value is: " + sActualValue);
+			//ATTEMPT2
+			System.out.println("Test passed: Excpected value is: Guru99 telecom " + " Actual value is: " + sActualValue);
+//			String sLogotext = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
+//			Assert.assertEquals("Guru99 telecom", sLogotext);
 			
 			boolean eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
 			System.out.println("Additional assertion for text (used boolean) test passed: " + eleDisplayed);
@@ -90,6 +92,7 @@ public class TelcoProjectOneTstNG {
 		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);							//INPUT VALID LAST NAME NAME
 		driver.findElement(By.id("email")).sendKeys(sEmailInvalid);											//INPUT INVALID EMAIL ADDRESS
 		driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressInvalid);	//INPUT INVALID ADDRESS
+		driver.findElement(By.cssSelector("#telephoneno")).sendKeys(sContactnumber);
 		
 		//ASSERTIONS FOR INVALID EMAIL ADDRESS
 		try {
@@ -104,38 +107,59 @@ public class TelcoProjectOneTstNG {
 	
 	public void clickSubmit()
 	{
+		//String sAccessDetails = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
+
+		
+		
 		//CLICK SUBMIT BUTTON
 		driver.findElement(By.xpath("//input[@value='Submit']")).click();
+		//Assert.assertEquals("Access Details to Guru99 Telecom", eleDisplayed);
 	}
 	
 	public void generatevalidInput()
 	{
-		driver.findElement(By.xpath("//label[@for='done']")).click();										//SELECT RADIO BUTTON
-		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys(sFirstname);						//INPUT VALID FIRST NAME
-		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);							//INPUT VALID LAST NAME NAME
-		driver.findElement(By.id("email")).sendKeys(sEmailValid);											//INPUT INVALID EMAIL ADDRESS
-		driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressValid);	//INPUT INVALID ADDRESS
+		//CLEAR VALUES
+		driver.findElement(By.cssSelector("#email")).clear();
+		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]")).clear();
+		
+		driver.findElement(By.id("email")).sendKeys(sEmailValid);											//INPUT VALID EMAIL ADDRESS
+		driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressValid);	//INPUT VALID ADDRESS
+		driver.findElement(By.cssSelector("#telephoneno")).sendKeys(sContactnumber);
+		
+		clickSubmit();
+		
+//		//HANDLE POPUP
+//		try {
+//			//handle the alert
+//				Alert alert = this.driver.switchTo().alert();
+//				String sAlertMessage = alert.getText();
+//				Assert.assertEquals("please fill all fields", sAlertMessage);
+//				System.out.println("Expected popup message: " + sAlertMessage);
+//				alert.accept();
+//			}
+//		catch(Exception e) {
+//				System.out.println(e);
+//			}
 	}
 	
-	//HANDLE THE POPUP MESSAGE
-	public void handlePopup()
-	{	
-		try {
-			clickSubmit();
-			String pExpectedMessage = "please fill all fields";
-			Alert alert = this.driver.switchTo().alert();
-			String sAlertMessage = alert.getText();
-			System.out.println("Actual message: " + sAlertMessage);
-			System.out.println("Expected message: " + pExpectedMessage);
-
-			alert.accept();
-			eleDisplayed = driver.findElement(By.cssSelector("table.layout:nth-child(5) tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) center:nth-child(1) > img:nth-child(1)")).isDisplayed();
-			
-			Thread.sleep(500);
-	}
-	catch(Exception e) {
-		System.out.println(e);
-	}
+	public void getUserID()
+	{
+//		String sTextVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
+//		Assert.assertEquals("Access Details to Guru99 Telecom", sTextVisible);
+//		String sCustomerID;
+//		Boolean bExpectedValue = true;
+//		Boolean bActualValue = false;
+//		
+//		sCustomerID = driver.findElement(By.xpath("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+//		if (sCustomerID.length() > 1) {
+//			bActualValue = true;
+//			System.out.println("Customer ID: " + sCustomerID);
+//		}
+//		Assert.assertEquals(bExpectedValue, bActualValue);
+		
+//		String sHomeVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper ul.actions li:nth-child(1) > a.button")).getText();
+//		Assert.assertEquals("Home", sHomeVisible);
+//		System.out.println("Home button visible");
 	}
 	
 	// Run Test Section
@@ -148,31 +172,29 @@ public class TelcoProjectOneTstNG {
 	
 	@Test
 	public void testOne() throws Exception {
-		sfSelenium.startReport("Telco  Project", "Add New Customer");
+		sfSelenium.startReport("Telco  Project", "Generate invalid input data");
 		sfSelenium.createTest("Start Test");
 		this.driver = sfSelenium.getDriver();
 		navigateToURL(pURL);
 		clickBankProject();
 		generateInvalidInputData();
-		System.out.println("Test One");
-		Thread.sleep(5000);
+		System.out.println("Invalid data test passed");
 	}
 	
 	@Test
 	public void testTwo() throws Exception {
-		sfSelenium.startReport("Telco  Project", "Add New Customer");
+		sfSelenium.startReport("Telco  Project", "Generate valid input data");
 		sfSelenium.createTest("Start Test");
 		this.driver = sfSelenium.getDriver();
-		navigateToURL(pURL);
-		clickBankProject();
 		generatevalidInput();
 		clickSubmit();
-		System.out.println("Test Two");
+		System.out.println("Valid data test passed");
 	}
 	
 	@Test
 	//ASSERT THAT CLIENT ID HAS BEEN GENERATED AND PRINT THE VALUE
 	public void testThree() throws Exception {
+		getUserID();
 		System.out.println("Test Three");
 	}
 	
