@@ -112,11 +112,12 @@ public class TelcoProjectOneTstNG {
 		
 		
 		//CLICK SUBMIT BUTTON
-		driver.findElement(By.xpath("//input[@value='Submit']")).click();
+		//driver.findElement(By.xpath("//input[@value='Submit']")).click();
+		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
 		//Assert.assertEquals("Access Details to Guru99 Telecom", eleDisplayed);
 	}
 	
-	public void generatevalidInput()
+	public void generatevalidInput() throws InterruptedException
 	{
 		//CLEAR VALUES
 		driver.findElement(By.cssSelector("#email")).clear();
@@ -127,6 +128,7 @@ public class TelcoProjectOneTstNG {
 		driver.findElement(By.cssSelector("#telephoneno")).sendKeys(sContactnumber);
 		
 		clickSubmit();
+		Thread.sleep(5000);
 		
 //		//HANDLE POPUP
 //		try {
@@ -146,20 +148,29 @@ public class TelcoProjectOneTstNG {
 	{
 //		String sTextVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
 //		Assert.assertEquals("Access Details to Guru99 Telecom", sTextVisible);
+//		System.out.println("Access details to Guru99 Telecom text is visible");
 //		String sCustomerID;
 //		Boolean bExpectedValue = true;
 //		Boolean bActualValue = false;
 //		
-//		sCustomerID = driver.findElement(By.xpath("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+//		sCustomerID = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/h3[1]")).getText();
 //		if (sCustomerID.length() > 1) {
 //			bActualValue = true;
 //			System.out.println("Customer ID: " + sCustomerID);
 //		}
 //		Assert.assertEquals(bExpectedValue, bActualValue);
 		
-//		String sHomeVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper ul.actions li:nth-child(1) > a.button")).getText();
-//		Assert.assertEquals("Home", sHomeVisible);
+//		sCustomerID = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+//		if (sCustomerID.length() > 1) {
+//			bActualValue = true;
+//			System.out.println("Customer ID: " + sCustomerID);
+//		}
+//		Assert.assertEquals(bExpectedValue, bActualValue);
+		
+		//String sHomeVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper ul.actions li:nth-child(1) > a.button")).getText();
+		//Assert.assertEquals("Home", sHomeVisible);
 //		System.out.println("Home button visible");
+		
 	}
 	
 	// Run Test Section
@@ -187,7 +198,6 @@ public class TelcoProjectOneTstNG {
 		sfSelenium.createTest("Start Test");
 		this.driver = sfSelenium.getDriver();
 		generatevalidInput();
-		clickSubmit();
 		System.out.println("Valid data test passed");
 	}
 	
@@ -195,7 +205,7 @@ public class TelcoProjectOneTstNG {
 	//ASSERT THAT CLIENT ID HAS BEEN GENERATED AND PRINT THE VALUE
 	public void testThree() throws Exception {
 		getUserID();
-		System.out.println("Test Three");
+		System.out.println("Test Three passed");
 	}
 	
 	@AfterTest
