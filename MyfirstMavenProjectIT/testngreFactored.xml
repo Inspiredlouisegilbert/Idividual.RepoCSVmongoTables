@@ -4,15 +4,17 @@
 <test name="ChromeTest">
 <parameter name="browser" value="Chrome" />
 <classes>
-<class name="frameworkclasses.demoTest"></class>
-<class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
-<class name="toolTipDemo.ToolTipDemo"></class>
+<!-- <class name="frameworkclasses.demoTest"></class> -->
+<!-- <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class> -->
+<!-- <class name="toolTipDemo.ToolTipDemo"></class> -->
+<class name="Assignments.assignment1"></class>
 </classes>
 </test>
 <test name="FirefoxTest">
 <parameter name="browser" value="Firefox" />
 <classes>
-	<class name="frameworkclasses.demoTest"/>
+	<!-- <class name="frameworkclasses.demoTest"/> -->
+	<class name="Assignments.assignment1"></class>
 </classes>
 </test>
 </suite>

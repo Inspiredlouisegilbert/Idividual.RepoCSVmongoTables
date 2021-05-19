@@ -1,5 +1,9 @@
 package Assignments;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +12,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import frameworkclasses.DriverSetup;
+import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
 import junit.framework.Assert;
 
-public class assignment1 {
+public class assignment1  extends DriverSetup{
 	
 String pURL = "http://demo.guru99.com/telecom/index.html";
 	
 	//Instantiate Selenium Functions
-	SeleniumFunctions sfSelenium = new SeleniumFunctions();
-	
+	ReusableFunctions sfSelenium = new ReusableFunctions();
 	// driver variable
 	WebDriver driver;
 	
@@ -25,12 +30,12 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	@BeforeTest
 	public void beforeTest() throws Exception {
 		this.driver = sfSelenium.getDriver();
-		sfSelenium.startReport("Read From PDF Report", "PDF Report");
-		sfSelenium.createTest("Test Started: Read From PDF Report");
 	}
 	
+	//navigate to URL and assert logo
 	@BeforeClass
 	public void beforeClass() throws Exception {
+		//Navigate to URL a
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);
@@ -39,7 +44,6 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		driver.findElement(By.xpath("//label[contains(text(),'Done')]")).click();
 	}
 	
-	//navigate to URL and assert logo
 	@Test
 	public void testFirst() throws Exception {
 		//instantiate variables
@@ -51,11 +55,11 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		Boolean bExpectedValue = true;
 		
 		//populate input fields
-		sfSelenium.populateInputField(By.cssSelector("#fname"), "!not valid!");
-		sfSelenium.populateInputField(By.cssSelector("#lname"), "1not valid1");
-		sfSelenium.populateInputField(By.cssSelector("#email"), "Not@Valid");
-		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), " ");
-		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "!not valid!");
+		sfSelenium.populateInputField(By.cssSelector("#fname"), "!not valid!", driver);
+		sfSelenium.populateInputField(By.cssSelector("#lname"), "1not valid1", driver);
+		sfSelenium.populateInputField(By.cssSelector("#email"), "Not@Valid", driver);
+		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), " ", driver);
+		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "!not valid!", driver);
 		
 		//check if warning messages are displayed
 		bFnameValid = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[4]/label[1]")).isDisplayed();
@@ -99,11 +103,11 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
 		//populate input fields
-		sfSelenium.populateInputField(By.cssSelector("#fname"), "valid");
-		sfSelenium.populateInputField(By.cssSelector("#lname"), "name");
-		sfSelenium.populateInputField(By.cssSelector("#email"), "Valid@test.com");
-		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), "37 Test Street Suburb");
-		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "0112223333");
+		sfSelenium.populateInputField(By.cssSelector("#fname"), "valid", driver);
+		sfSelenium.populateInputField(By.cssSelector("#lname"), "name", driver);
+		sfSelenium.populateInputField(By.cssSelector("#email"), "Valid@test.com", driver);
+		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), "37 Test Street Suburb", driver);
+		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "0112223333", driver);
 		
 		//click the Submit Button
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[9]/ul[1]/li[1]/input[1]")).click();
@@ -111,8 +115,14 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		//Store Customer ID and validate that it is not empty
 		sCustomerID = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/h3[1]")).getText();
 		if (sCustomerID.length() > 1) {
-			bActualValue = true;
+			bActualValue = true;		
 			System.out.println("Customer ID: " + sCustomerID);
+			
+			FileWriter myWriter = new FileWriter("CustomerID.csv");
+		    myWriter.write(sCustomerID);
+		    myWriter.close();
+		     
+		    
 		}
 		Assert.assertEquals(bExpectedValue, bActualValue);
 	}
@@ -120,7 +130,7 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	
 	@AfterTest
 	public void afterTest() throws Exception {
-		sfSelenium.CloseSelenium();
+		sfSelenium.CloseSelenium(driver);
 	}
 
 }
