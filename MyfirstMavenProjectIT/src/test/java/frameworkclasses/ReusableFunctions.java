@@ -52,8 +52,6 @@ public class ReusableFunctions extends DriverSetup
 		return randomNum;
 	}
 	
-
-	
 	// function to populate an input field using multiple By clauses
 	public void populateInputField(By byClause, String inputValue,WebDriver driver) {
 		driver.findElement(byClause).sendKeys(inputValue);
