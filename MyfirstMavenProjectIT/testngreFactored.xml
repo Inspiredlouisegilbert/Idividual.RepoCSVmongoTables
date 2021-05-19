@@ -4,14 +4,9 @@
 <test name="ChromeTest">
 <parameter name="browser" value="Chrome" />
 <classes>
-<<<<<<< HEAD
-	<class name="frameworkclasses.demoTest"></class>
-	<class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
-=======
 <class name="frameworkclasses.demoTest"></class>
 <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
 <class name="toolTipDemo.ToolTipDemo"></class>
->>>>>>> 3fc913c (	modified:   MyfirstMavenProjectIT/testngreFactored.xml)
 </classes>
 </test>
 <test name="FirefoxTest">
