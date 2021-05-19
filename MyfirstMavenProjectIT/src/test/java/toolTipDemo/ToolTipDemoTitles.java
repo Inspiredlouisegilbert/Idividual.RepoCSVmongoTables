@@ -20,13 +20,13 @@ import frameworkclasses.DriverSetup;
 import frameworkclasses.ReusableFunctions;
 
 
-public class ToolTipDemo extends DriverSetup{
+public class ToolTipDemoTitles extends DriverSetup{
 
 	//INSTANTIATE NEW INSTANCE OF SELENIUM FUNCTIONS
 	ReusableFunctions sfSelenium = new ReusableFunctions();
 	
 	// Set URL
-	String pURL = "http://demo.guru99.com/test/tooltip.html";
+	String pURL = "http://www.takealot.com/";
 
 	//Set invalid data
 	String sInvalidId = "test@test";
@@ -42,7 +42,7 @@ public class ToolTipDemo extends DriverSetup{
 	
 	//NAVIGATE TO BANK PROJECT
 	public void toolTipDemo() {
-			String expectedTooltip = "What's new in 3.2";	
+			String expectedTooltip = "Facebook";	
 			
 			/*
 			 * 	moveToElement(element) of Actions class is used to mouse hover an element.
@@ -50,17 +50,15 @@ public class ToolTipDemo extends DriverSetup{
 				Build() method of Actions class builds the sequence of user actions into an Action object.
 				Perform() of Action class executes all the sequence of user actions at once.
 			 */
-					
-	        WebElement download = driver.findElement(By.xpath(".//*[@id='download_now']"));							
-	        Actions builder = new Actions (driver);							
-
-	        			
-	        //builder.clickAndHold().moveToElement(download).build().perform(); 
-	        builder.moveToElement(download).build().perform(); 	
+			//a[@title='Facebook']
+			WebElement github = driver.findElement(By.xpath("//a[@class='responsive-footer-module_facebook_2op82']"));	
 	        
+	        //get the value of the "title" attribute of the github icon		
+	        String actualTooltip = github.getAttribute("title");	
+	        System.out.print(actualTooltip);
 	        
-	        WebElement toolTipElement = driver.findElement(By.xpath(".//*[@class='box']/div/a"));							
-	        String actualTooltip = toolTipElement.getText();			
+	       
+		
 	        Assert.assertEquals(expectedTooltip, actualTooltip);
 	}
 		

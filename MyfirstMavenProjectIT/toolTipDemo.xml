@@ -5,6 +5,7 @@
 <parameter name="browser" value="Chrome" />
 <classes>
 <class name="toolTipDemo.ToolTipDemo"></class>
+<class name="toolTipDemo.ToolTipDemoTitles"></class>
 </classes>
 </test>
 </suite>
