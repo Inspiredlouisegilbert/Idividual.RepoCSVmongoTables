@@ -6,6 +6,7 @@
 <classes>
 <class name="frameworkclasses.demoTest"></class>
 <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class>
+<class name="toolTipDemo.ToolTipDemo"></class>
 </classes>
 </test>
 <test name="FirefoxTest">
