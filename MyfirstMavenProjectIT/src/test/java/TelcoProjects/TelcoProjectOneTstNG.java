@@ -1,4 +1,4 @@
-package TelcoProjectOne;
+package TelcoProjects;
 
 import static org.testng.Assert.fail;
 
@@ -161,16 +161,17 @@ public class TelcoProjectOneTstNG {
 //		String sTextVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
 //		Assert.assertEquals("Access Details to Guru99 Telecom", sTextVisible);
 //		System.out.println("Access details to Guru99 Telecom text is visible");
-//		String sCustomerID;
-//		Boolean bExpectedValue = true;
-//		Boolean bActualValue = false;
+		String sCustomerID;
+		Boolean bExpectedValue = true;
+		Boolean bActualValue = false;
 //		
 //		sCustomerID = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/h3[1]")).getText();
-//		if (sCustomerID.length() > 1) {
-//			bActualValue = true;
-//			System.out.println("Customer ID: " + sCustomerID);
-//		}
-//		Assert.assertEquals(bExpectedValue, bActualValue);
+		sCustomerID = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+		if (sCustomerID.length() > 1) {
+			bActualValue = true;
+			System.out.println("Customer ID: " + sCustomerID);
+		}
+		Assert.assertEquals(bExpectedValue, bActualValue);
 		
 //		sCustomerID = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
 //		if (sCustomerID.length() > 1) {
@@ -211,13 +212,18 @@ public class TelcoProjectOneTstNG {
 		this.driver = sfSelenium.getDriver();
 		generatevalidInput();
 		System.out.println("Valid data test passed");
+		getUserID();
+		System.out.println("Get User ID test passed");
 	}
 	
 	@Test
 	//ASSERT THAT CLIENT ID HAS BEEN GENERATED AND PRINT THE VALUE
 	public void testThree() throws Exception {
-		getUserID();
-		System.out.println("Test Three passed");
+//		sfSelenium.startReport("Telco  Project", "Get the User ID");
+//		sfSelenium.createTest("Start Test");
+//		this.driver = sfSelenium.getDriver();
+//		getUserID();
+//		System.out.println("Get User ID test passed");
 	}
 	
 	@AfterTest
