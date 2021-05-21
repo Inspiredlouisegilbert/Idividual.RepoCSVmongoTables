@@ -2,6 +2,8 @@ package TelcoProjects;
 
 import static org.testng.Assert.fail;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,6 +16,7 @@ import frameworkclasses.SeleniumFunctions;
 public class TelcoProjectTwoTstNG {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	boolean eleDisplayed;
+	boolean eleDisplayed2;
 	
 	//Instantiate Selenium Functions
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
@@ -41,6 +44,22 @@ public class TelcoProjectTwoTstNG {
 		//CLICK SUBMIT
 		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
 		getUserID();
+		
+		try
+		{
+			//EXPECTED TEXT VISIBLE
+			eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='ACTIVE']")).isDisplayed();
+			System.out.println("Expected text \'ACTIVE\' is visible: " + eleDisplayed);
+			sfSelenium.createTest("Active text visible as expected");
+			
+			//SELECT TARIFF PLAN
+			driver.findElement(By.xpath("//section[@id='main']//form[@action='inserttariffplantocustomer.php']//input[@name='submit']")).click();
+			eleDisplayed2 = driver.findElement(By.xpath("//section[@id='main']//h2[.='Congratulation Tariff Plan assigned']")).isDisplayed();
+			System.out.println("Expected text \'Congratulation Tariff Plan assigned\' is visible: " + eleDisplayed2);
+		}
+		catch(NoSuchElementException e) {
+			System.out.println(e);
+		}
 		
 //		driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
 //		//eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='ACTIVE']")).isDisplayed();
@@ -72,6 +91,22 @@ public class TelcoProjectTwoTstNG {
 		//CLICK SUBMIT
 		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
 		getUserID();
+		
+		try
+		{
+			//EXPECTED TEXT VISIBLE
+			eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='INACTIVE']")).isDisplayed();
+			System.out.println("Expected text \'INACTIVE\' is visible: " + eleDisplayed);
+			sfSelenium.createTest("Inactive text visible as expected");
+			
+			//SELECT TARIFF PLAN
+			driver.findElement(By.xpath("//section[@id='main']//form[@action='inserttariffplantocustomer.php']//input[@name='submit']")).click();
+			eleDisplayed2 = driver.findElement(By.xpath("//section[@id='main']//h2[.='Congratulation Tariff Plan assigned']")).isDisplayed();
+			System.out.println("Expected text \'Congratulation Tariff Plan assigned\' is visible: " + eleDisplayed2);
+		}
+		catch(NoSuchElementException e) {
+			System.out.println(e);
+		}
 
 //		driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
 //		//eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='INACTIVE']")).isDisplayed();
@@ -121,14 +156,15 @@ public class TelcoProjectTwoTstNG {
 		System.out.println("Background check has been completed: Pending");
 	}
 	
-	@Test
-	public void testThree() throws Exception {
-
-		System.out.println("Customer has been added successfully");
-	}
+//	@Test
+//	public void testThree() throws Exception {
+//
+//		System.out.println("Customer has been added successfully");
+//	}
 	
 	@AfterTest
 	public void afterTest() throws Exception {
+		System.out.println("All tests has passed");
 		sfSelenium.CloseSelenium();
 	}
 }
