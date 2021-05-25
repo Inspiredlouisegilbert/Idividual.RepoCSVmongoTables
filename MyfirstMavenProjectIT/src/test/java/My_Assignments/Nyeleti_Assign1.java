@@ -42,8 +42,6 @@ public class Nyeleti_Assign1 {
 	}
 
 	
-	
-	
 	@Test
 
 	
@@ -95,18 +93,28 @@ public void populateInput() throws InterruptedException {
 	driver.findElement(By.linkText("Add Customer")).click();
 	 
 	 
-	//  String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
-      //assertTrue(actualString.contains("Add Customer"));
+	//String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
+    //assertTrue(actualString.contains("Add Customer"));
       
 	
+	//select done radio button
 	driver.findElement(By.cssSelector("[for='done']")).click();
+	
+	Thread.sleep(5000);
+	
+	//Populate the billing details
 	driver.findElement(By.name("fname")).sendKeys("Nyeleti");
     driver.findElement(By.name("lname")).sendKeys("Baloyi");
     driver.findElement(By.name("emailid")).sendKeys("baloyibene@gmail.com");
     driver.findElement(By.name("addr")).sendKeys("eqeqwe12424324324^%%");
     driver.findElement(By.name("telephoneno")).sendKeys("5021yutyt4");
+    
+    //click on submit
     driver.findElement(By.name("submit")).click();
     
+	Thread.sleep(5000);
+	
+	
   //HANDLE UNSUCCESSFUL POPUP ALERT
 	sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test");
 	String pExpectedMessage = "please fill all fields";
@@ -117,19 +125,23 @@ public void populateInput() throws InterruptedException {
 	String sAlertMessage = alert.getText();
 	System.out.println(sAlertMessage);
 
+	//Click on OK button
 	alert.accept();
 	sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
 	//eleDisplayed = driver.findElement(By.????"")).isDisplayed();
 	
-	//Thread.sleep(8000);
-	wait(5000);
+	Thread.sleep(5000);
+	//wait(5000);
 	
 	// Second attempt
 	
 	
-	  String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
-     assertTrue(actualString.contains("Add Customer"));
+	  //String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
+     //assertTrue(actualString.contains("Add Customer"));
      
+	//Click reset button to clear screen
+	driver.findElement(By.cssSelector("input[value='Reset']")).click();
+	Thread.sleep(5000);
 	
 	driver.findElement(By.cssSelector("[for='done']")).click();
 	driver.findElement(By.name("fname")).sendKeys("Nyeleti");
@@ -137,7 +149,11 @@ public void populateInput() throws InterruptedException {
    driver.findElement(By.name("emailid")).sendKeys("baloyibene@gmail.com");
    driver.findElement(By.name("addr")).sendKeys("Star Street");
    driver.findElement(By.name("telephoneno")).sendKeys("5021321414");
-	
+ 
+   //click on submit
+   driver.findElement(By.name("submit")).click();
+   
+   
 	  String expectedString = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div[@class='table-wrapper']/table//b[.='Customer ID']")).getText();
      assertTrue(expectedString.contains("Customer ID"));
      
@@ -150,10 +166,10 @@ public void populateInput() throws InterruptedException {
 	
 		
 	
-	@AfterTest
-	public void afterTest() throws Exception {
-		sfSelenium.CloseSelenium();
-	}
+	//@AfterTest
+	//public void afterTest() throws Exception {
+		//sfSelenium.CloseSelenium();
+	//}
 	
 	}
 
