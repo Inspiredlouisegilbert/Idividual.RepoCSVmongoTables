@@ -10,12 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import frameworkclasses.DriverSetup;
 import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class assignment1  extends DriverSetup{
 	
@@ -23,8 +24,8 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	
 	//Instantiate Selenium Functions
 	ReusableFunctions sfSelenium = new ReusableFunctions();
-	// driver variable
-	WebDriver driver;
+	//global variable
+	String sBackgroundCheck;
 	
 	// Run Test Section
 	@BeforeTest
@@ -33,15 +34,21 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	}
 	
 	//navigate to URL and assert logo
+	@Parameters ({ "BackgroundCheck" })
 	@BeforeClass
-	public void beforeClass() throws Exception {
+	public void beforeClass(String pBackgroundCheck) throws Exception {
 		//Navigate to URL a
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);
+		//click add customer
 		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
 		Thread.sleep(500);
-		driver.findElement(By.xpath("//label[contains(text(),'Done')]")).click();
+		//click submit
+		driver.findElement(By.xpath("//label[contains(text(),'" + pBackgroundCheck +"')]")).click();
+		//sets the global variable to the value of the parameter passed
+		sBackgroundCheck = pBackgroundCheck;
+		 
 	}
 	
 	@Test
@@ -88,7 +95,7 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		alert.accept();
 	}
 	
-	@Test
+	@Test (priority = 1)
 	public void testThird() throws Exception {
 		//instantiate variables
 		String sCustomerID;
@@ -116,13 +123,11 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		sCustomerID = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/h3[1]")).getText();
 		if (sCustomerID.length() > 1) {
 			bActualValue = true;		
-			System.out.println("Customer ID: " + sCustomerID);
+			//System.out.println("Customer ID: " + sCustomerID);
 			
 			FileWriter myWriter = new FileWriter("CustomerID.csv");
 		    myWriter.write(sCustomerID);
 		    myWriter.close();
-		     
-		    
 		}
 		Assert.assertEquals(bExpectedValue, bActualValue);
 	}
