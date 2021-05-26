@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestSuite" thread-count="2" parallel="tests" configfailurepolicy="continue" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression101" thread-count="2" parallel="tests" configfailurepolicy="continue" >
+<listeners>
+	<listener 
+		class-name="testngListeners.TestNGlisteners">
+	</listener>
+</listeners>
 <test name="ChromeTest">
-<parameter name="browser" value="Chrome" />
+<parameter name="xyz" value="some text from the testng xml file" />
 <classes>
-<!-- <class name="frameworkclasses.demoTest"></class> -->
-<!-- <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class> -->
-<!-- <class name="toolTipDemo.ToolTipDemo"></class> -->
-<class name="Assignments.assignment1"></class>
-</classes>
-</test>
-<test name="FirefoxTest">
-<parameter name="browser" value="Firefox" />
-<classes>
-	<!-- <class name="frameworkclasses.demoTest"/> -->
-	<class name="Assignments.assignment1"></class>
+	<class name="tests.LandingPageTest"/>
 </classes>
 </test>
 </suite>
