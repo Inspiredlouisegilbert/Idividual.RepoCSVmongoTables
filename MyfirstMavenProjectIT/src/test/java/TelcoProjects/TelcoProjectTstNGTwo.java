@@ -13,23 +13,20 @@ import org.testng.annotations.Test;
 
 import frameworkclasses.SeleniumFunctions;
 
-public class TelcoProjectTwoTstNG {
+public class TelcoProjectTstNGTwo {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	boolean eleDisplayed;
 	boolean eleDisplayed2;
 	
-	//Instantiate Selenium Functions
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
-	
-	// driver variable
 	WebDriver driver;
 	
 	public void backgroundDone() throws InterruptedException
 	{
 		this.driver = sfSelenium.getDriver();
-		driver.get(pURL);													//NAVIGATE TO URL
-		sfSelenium.clickLink("Telecom Project");							//CLICK TELECOM LINK
-		sfSelenium.clickLink("Add Customer");								//ADD VALID CUSTOMER
+		driver.get(pURL);													
+		sfSelenium.clickLink("Telecom Project");							
+		sfSelenium.clickLink("Add Customer");								
 		sfSelenium.startReport("Read From PDF Report", "PDF Report");
 		sfSelenium.createTest("Test Started: Read From PDF Report");
 		
@@ -60,23 +57,14 @@ public class TelcoProjectTwoTstNG {
 		catch(NoSuchElementException e) {
 			System.out.println(e);
 		}
-		
-//		driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
-//		//eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='ACTIVE']")).isDisplayed();
-//		//Assert.assertEquals("Expected text: ACTIVE", eleDisplayed);
-//		driver.findElement(By.xpath("//section[@id='main']//form[@action='inserttariffplantocustomer.php']//table[@class='alt']/tbody/tr/td[1]/label")).click();
-//		System.out.println("Active text is visible");
-//		driver.findElement(By.xpath("//section[@id='main']//form[@action='inserttariffplantocustomer.php']//input[@name='submit']")).click();
-//		System.out.println("Rate tariff has been added");
-//		Thread.sleep(5000);
 	}
 	
 	public void backgroundPending() throws InterruptedException
 	{
 		this.driver = sfSelenium.getDriver();
-		driver.get(pURL);													//NAVIGATE TO URL
-		sfSelenium.clickLink("Telecom Project");							//CLICK TELECOM LINK
-		sfSelenium.clickLink("Add Customer");								//ADD VALID CUSTOMER
+		driver.get(pURL);													
+		sfSelenium.clickLink("Telecom Project");							
+		sfSelenium.clickLink("Add Customer");								
 		sfSelenium.startReport("Read From PDF Report", "PDF Report");
 		sfSelenium.createTest("Test Started: Read From PDF Report");
 		
@@ -107,15 +95,6 @@ public class TelcoProjectTwoTstNG {
 		catch(NoSuchElementException e) {
 			System.out.println(e);
 		}
-
-//		driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
-//		//eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//font[.='INACTIVE']")).isDisplayed();
-//		//Assert.assertEquals("Expected text: INACTIVE", eleDisplayed);
-//		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
-//		System.out.println("Inactive text is visible");
-//		driver.findElement(By.xpath("//section[@id='main']//form[@action='inserttariffplantocustomer.php']//input[@name='submit']")).click();
-//		System.out.println("Rate tariff has been added");
-//		Thread.sleep(5000);
 	}
 	
 	public void getUserID() throws InterruptedException
@@ -155,12 +134,6 @@ public class TelcoProjectTwoTstNG {
 		backgroundPending();
 		System.out.println("Background check has been completed: Pending");
 	}
-	
-//	@Test
-//	public void testThree() throws Exception {
-//
-//		System.out.println("Customer has been added successfully");
-//	}
 	
 	@AfterTest
 	public void afterTest() throws Exception {

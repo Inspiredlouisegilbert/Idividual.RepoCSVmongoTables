@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 
 import frameworkclasses.SeleniumFunctions;
 
-public class TelcoProjectOneTstNG {
+public class TelcoProjectTstNGOne {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	String sFirstname = "Eon";
 	String sLastname = "Kruger";
