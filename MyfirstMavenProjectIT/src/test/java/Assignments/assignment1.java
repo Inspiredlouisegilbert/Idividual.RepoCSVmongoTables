@@ -13,6 +13,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.beust.jcommander.Parameter;
+
 import frameworkclasses.DriverSetup;
 import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
@@ -34,25 +36,21 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	}
 	
 	//navigate to URL and assert logo
-	@Parameters ({ "BackgroundCheck" })
 	@BeforeClass
-	public void beforeClass(String pBackgroundCheck) throws Exception {
+	public void beforeClass() throws Exception {
 		//Navigate to URL a
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);
 		//click add customer
 		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
-		Thread.sleep(500);
-		//click submit
-		driver.findElement(By.xpath("//label[contains(text(),'" + pBackgroundCheck +"')]")).click();
-		//sets the global variable to the value of the parameter passed
-		sBackgroundCheck = pBackgroundCheck;
-		 
+		Thread.sleep(500);	 
 	}
 	
 	@Test
 	public void testFirst() throws Exception {
+		
+		this.driver = sfSelenium.getDriver();
 		//instantiate variables
 		Boolean bFnameValid;
 		Boolean bLnameValid;
@@ -60,6 +58,13 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		Boolean bAddressValid;
 		Boolean bTelephonenoValid;
 		Boolean bExpectedValue = true;
+		
+		//clear input fields
+		driver.findElement(By.cssSelector("#fname")).clear();
+		driver.findElement(By.cssSelector("#lname")).clear();
+		driver.findElement(By.cssSelector("#email")).clear();
+		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]")).clear();
+		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
 		//populate input fields
 		sfSelenium.populateInputField(By.cssSelector("#fname"), "!not valid!", driver);
@@ -95,8 +100,9 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		alert.accept();
 	}
 	
-	@Test (priority = 1)
-	public void testThird() throws Exception {
+	@Parameters({ "BackgroundCheck" })
+	@Test 
+	public void testThird(String pBackgroundCheck) throws Exception {
 		//instantiate variables
 		String sCustomerID;
 		Boolean bExpectedValue = true;
@@ -115,6 +121,11 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		sfSelenium.populateInputField(By.cssSelector("#email"), "Valid@test.com", driver);
 		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), "37 Test Street Suburb", driver);
 		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "0112223333", driver);
+		
+		//select Background Check
+		driver.findElement(By.xpath("//label[contains(text(),'" + pBackgroundCheck +"')]")).click();
+		//sets the global variable to the value of the parameter passed
+		sBackgroundCheck = pBackgroundCheck;
 		
 		//click the Submit Button
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[9]/ul[1]/li[1]/input[1]")).click();

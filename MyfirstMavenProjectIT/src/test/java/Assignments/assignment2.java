@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -24,10 +25,11 @@ public class assignment2 extends DriverSetup{
 	
 	//Instantiate Selenium Functions
 	ReusableFunctions sfSelenium = new ReusableFunctions();
+	assignment1 clAssignment1 = new assignment1();
 	
 	//global variables
 	String sCustomerID;
-	String sBackgroundCheck;
+	String sBackgroundCheck = "Done";
 	
 	// Run Test Section
 	@BeforeTest
@@ -35,19 +37,25 @@ public class assignment2 extends DriverSetup{
 		this.driver = sfSelenium.getDriver();
 	}
 	
-	//navigate to URL and assert logo
-	@BeforeClass
-	public void beforeClass() throws Exception {
+	@BeforeMethod
+	public void beforeMethod() throws Exception {
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);
-		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
+		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
+		//driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
 		Thread.sleep(500);
 	}
 	
-	@Parameters ({ "BackgroundCheck" })
-	@Test (priority = 2)
-	public void testFirst(String pBackgroundCheck) throws Exception {
+	@Test 
+	public void testFirst() throws Exception {
+		
+		clAssignment1.testThird(sBackgroundCheck);
+		
+	}
+	
+	@Test 
+	public void submitCustomerID(String pBackgroundCheck) throws Exception {
 		//instantiate variables
 		String sCustomerID;
 		String sActualValue;
@@ -76,7 +84,7 @@ public class assignment2 extends DriverSetup{
 		
 	}
 	
-	@Test (priority = 3)
+	@Test 
 	public void testSecond() throws Exception {
 		Boolean bAvaliableTariffPlan;
 		try {
