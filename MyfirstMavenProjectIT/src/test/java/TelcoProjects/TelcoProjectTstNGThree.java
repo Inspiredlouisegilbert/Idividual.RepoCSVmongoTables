@@ -43,26 +43,22 @@ public class TelcoProjectTstNGThree {
 		//CLICK SUBMIT
 		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
 		getUserID();
+		//getClientName();
 		
 		try
 		{
-			String path = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner > h3:nth-child(2)")).getText();
-			if (path.length() > 30)
-				path = path.substring(0,130);
-			System.out.println(path);
-			String segments[] = path.split("-");
-			String document = segments[segments.length-1];
-			System.out.println("Stripped client ID is: " + document);
+//			String path = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner > h3:nth-child(2)")).getText();
+//			if (path.length() > 30)
+//				path = path.substring(0,130);
+//			System.out.println(path);
+//			String segments[] = path.split("-");
+//			String document = segments[segments.length-1];
+//			System.out.println("Stripped client ID is: " + document);
 			
 			//EXPECTED TEXT VISIBLE
 			eleDisplayed = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//h1[.='Pay Billing']")).isDisplayed();
 			System.out.println("Expected text \'Pay Billing\' is visible: " + eleDisplayed);
 			sfSelenium.createTest("Active text visible as expected");
-			
-
-			
-			//ASSERT CLIENT NAME IS CORRECT
-			
 			
 			//ROW4 COLUMN 2 VALLUE IS 500
 			WebElement getTariffPlanAmount = driver.findElement(By.xpath("//tbody/tr[4]/td[2]"));
@@ -127,6 +123,7 @@ public class TelcoProjectTstNGThree {
 		//CLICK SUBMIT
 		driver.findElement(By.xpath("//section[@id='main']//form[@action='insertcustomer.php']/div[@class='row uniform']//ul[@class='actions']//input[@name='submit']")).click();
 		getUserID();
+		//getClientName();
 		
 		try
 		{
@@ -160,8 +157,9 @@ public class TelcoProjectTstNGThree {
 		sCustomerID = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
 		if (sCustomerID.length() > 1) {
 			bActualValue = true;
-			System.out.println("Customer ID: " + sCustomerID);
-			
+			System.out.println("Actual Customer ID: " + sCustomerID);
+			System.out.println("Expected Customer ID: " + sCustomerID);
+			getClientName();
 		}
 		Assert.assertEquals(bExpectedValue, bActualValue);
 		sfSelenium.clickLink("Telecom Project");
@@ -169,6 +167,20 @@ public class TelcoProjectTstNGThree {
 		driver.findElement(By.cssSelector("#customer_id")).sendKeys(sCustomerID);
 		driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='billing.php']//input[@name='submit']")).click();
 		Thread.sleep(5000);
+	}
+	
+	public void getClientName()
+	{
+//		String sstrippedclientname = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+//		sstrippedclientname = sstrippedclientname.substring(sstrippedclientname.lastIndexOf(" ")+1);
+//		System.out.println("Client Name is: " + sstrippedclientname);
+		
+//		String myString = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();;
+//		String[] splitString = myString.split(":- ");
+//
+//		for (String s : splitString) {
+//		    System.out.println(s);
+//		}
 	}
 	
 	// Run Test Section
