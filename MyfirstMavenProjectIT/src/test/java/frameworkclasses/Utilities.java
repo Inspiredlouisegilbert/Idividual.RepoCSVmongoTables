@@ -17,11 +17,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.reporters.jq.Main;
 
-import frameworkclasses.BasePage;
+import Assignments.driverSetup;
 
-public class Utilities extends BasePage {
-
-		
+public class Utilities extends driverSetup {
 
 		public void takeSnapShot(String fileWithPath) throws Exception{
 
