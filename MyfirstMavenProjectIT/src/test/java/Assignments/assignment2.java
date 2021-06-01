@@ -36,6 +36,9 @@ public class assignment2 extends DriverSetup{
 		String sCustomerID;
 		String sActualValue;
 		
+		//click Add Tariff Plan to Customer
+		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
+		
 		//creates a file object
 		File CustomerID = new File("CustomerID.csv");	
 		CustomerID.createNewFile();
@@ -60,7 +63,7 @@ public class assignment2 extends DriverSetup{
 		
 	}
 	
-	public void testSecond() throws Exception {
+	public void CheckForTariffPlan() throws Exception {
 		Boolean bAvaliableTariffPlan;
 		try {
 			bAvaliableTariffPlan = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]")).isDisplayed();

@@ -24,7 +24,7 @@ public class driverSetup {
         	
         	// Get parameter values
         	String browser = getDataConfigProperties("browser");
-        	String systemUnderTest = getDataConfigProperties("systemUnderTest");
+//        	String systemUnderTest = getDataConfigProperties("systemUnderTest");
             String pdriverDir = getDataConfigProperties("driverdir");
             
     		//Check if parameter passed is 'firefox'
@@ -32,7 +32,7 @@ public class driverSetup {
     		//create firefox instance
     			System.setProperty("webdriver.gecko.driver", pdriverDir+"geckodriver.exe");
     			driver     = new FirefoxDriver();
-    			driver.get(systemUnderTest);
+//    			driver.get(systemUnderTest);
                 driver.manage().window().maximize();
     			
     		}
@@ -42,7 +42,7 @@ public class driverSetup {
     			System.setProperty("webdriver.chrome.driver",pdriverDir+"chromedriver.exe");
     			//create chrome instance
     			driver     = new ChromeDriver();
-    			driver.get(systemUnderTest);
+//    			driver.get(systemUnderTest);
                 driver.manage().window().maximize();
     			
     		}
@@ -52,7 +52,7 @@ public class driverSetup {
     			System.setProperty("webdriver.edge.driver",pdriverDir+"MicrosoftWebDriver.exe");
     			//create Edge instance
     			driver     = new EdgeDriver();
-    			driver.get(systemUnderTest);
+//    			driver.get(systemUnderTest);
     	        driver.manage().window().maximize();
     			
     		}

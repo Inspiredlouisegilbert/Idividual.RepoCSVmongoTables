@@ -12,7 +12,6 @@ import frameworkclasses.Utilities;
 
 public class Assignment1Tests {
 	// Instantiate class objects
-	driverSetup clDriverSetup = new driverSetup();
 	assignment1 clAssignment1 = new assignment1();
 	Utilities clUtilities = new Utilities();
 	

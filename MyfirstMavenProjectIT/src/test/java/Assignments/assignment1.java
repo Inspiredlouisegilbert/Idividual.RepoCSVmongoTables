@@ -95,6 +95,8 @@ public class assignment1  extends driverSetup{
 		Boolean bExpectedValue = true;
 		Boolean bActualValue = false;
 		
+		driver.get("http://demo.guru99.com/telecom/addcustomer.php");
+		
 		//clear input fields
 		driver.findElement(By.cssSelector("#fname")).clear();
 		driver.findElement(By.cssSelector("#lname")).clear();

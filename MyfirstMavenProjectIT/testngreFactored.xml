@@ -8,6 +8,7 @@
 			<!-- <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored"></class> -->
 			<!-- <class name="toolTipDemo.ToolTipDemo"></class> -->
 			<class name="telcoTests.Assignment1Tests"></class>
+			<class name="telcoTests.Assignment2Tests"></class>
 		</classes>
 	</test>
 </suite>
