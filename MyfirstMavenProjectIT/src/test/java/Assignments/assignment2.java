@@ -29,26 +29,8 @@ public class assignment2 extends DriverSetup{
 	
 	//global variables
 	String sCustomerID;
-	String sBackgroundCheck = "Done";
+	String sBackgroundCheck = "Done"; 
 	
-	// Run Test Section
-	@BeforeTest
-	public void beforeTest() throws Exception {
-		clAssignment1.Setup();
-	}
-	
-	@Test 
-	public void testFirst(WebDriver driver) throws Exception {
-		
-		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
-		//driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
-		Thread.sleep(500);
-		
-		clAssignment1.testThird(sBackgroundCheck);
-		
-	}
-	
-	@Test 
 	public void submitCustomerID(String pBackgroundCheck) throws Exception {
 		//instantiate variables
 		String sCustomerID;
@@ -78,7 +60,6 @@ public class assignment2 extends DriverSetup{
 		
 	}
 	
-	@Test 
 	public void testSecond() throws Exception {
 		Boolean bAvaliableTariffPlan;
 		try {
@@ -92,7 +73,6 @@ public class assignment2 extends DriverSetup{
 		Thread.sleep(10000);
 	}
 	
-	@AfterTest
 	public void afterTest() throws Exception {
 		sfSelenium.CloseSelenium(driver);
 	}

@@ -20,9 +20,7 @@ import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
 import org.junit.Assert;
 
-public class assignment1  extends DriverSetup{
-	
-String pURL = "http://demo.guru99.com/telecom/index.html";
+public class assignment1  extends driverSetup{
 	
 	//Instantiate Selenium Functions
 	ReusableFunctions sfSelenium = new ReusableFunctions();
@@ -30,15 +28,13 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	String sBackgroundCheck;
 
 	//navigate to URL and assert logo
-	@BeforeClass
-	public void Setup() throws Exception {
+	public void Setup(String pURL) throws Exception {
 		//Navigate to URL a
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);		 
 	}
-	
-	@Test
+
 	public void testFirst() throws Exception {
 
 		//instantiate variables
@@ -82,7 +78,6 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		Assert.assertEquals(bExpectedValue, bTelephonenoValid);
 	}
 	
-	@Test
 	public void testSecond() throws Exception {
 		//click the Submit Button
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[9]/ul[1]/li[1]/input[1]")).click();
@@ -94,8 +89,6 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		alert.accept();
 	}
 	
-	@Parameters({ "BackgroundCheck" })
-	@Test 
 	public void testThird(String pBackgroundCheck)throws Exception {
 		//instantiate variables
 		String sCustomerID;
@@ -105,7 +98,7 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		//clear input fields
 		driver.findElement(By.cssSelector("#fname")).clear();
 		driver.findElement(By.cssSelector("#lname")).clear();
-		driver.findElement(By.cssSelector("#email")).clear();
+		driver.findElement(By.cssSelector("#email")).clear(); 
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]")).clear();
 		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
@@ -137,8 +130,6 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		Assert.assertEquals(bExpectedValue, bActualValue);
 	}
 	
-	
-	@AfterTest
 	public void afterTest() throws Exception {
 		sfSelenium.CloseSelenium(driver);
 	}
