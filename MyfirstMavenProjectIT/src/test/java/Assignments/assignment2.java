@@ -34,21 +34,15 @@ public class assignment2 extends DriverSetup{
 	// Run Test Section
 	@BeforeTest
 	public void beforeTest() throws Exception {
-		this.driver = sfSelenium.getDriver();
-	}
-	
-	@BeforeMethod
-	public void beforeMethod() throws Exception {
-		driver.get(pURL);
-		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
-		Assert.assertEquals("Guru99 telecom", sLogoTxt);
-		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
-		//driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
-		Thread.sleep(500);
+		clAssignment1.Setup();
 	}
 	
 	@Test 
-	public void testFirst() throws Exception {
+	public void testFirst(WebDriver driver) throws Exception {
+		
+		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
+		//driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
+		Thread.sleep(500);
 		
 		clAssignment1.testThird(sBackgroundCheck);
 		

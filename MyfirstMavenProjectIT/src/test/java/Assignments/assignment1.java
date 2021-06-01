@@ -28,29 +28,19 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	ReusableFunctions sfSelenium = new ReusableFunctions();
 	//global variable
 	String sBackgroundCheck;
-	
-	// Run Test Section
-	@BeforeTest
-	public void beforeTest() throws Exception {
-		this.driver = sfSelenium.getDriver();
-	}
-	
+
 	//navigate to URL and assert logo
 	@BeforeClass
-	public void beforeClass() throws Exception {
+	public void Setup() throws Exception {
 		//Navigate to URL a
 		driver.get(pURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
-		Assert.assertEquals("Guru99 telecom", sLogoTxt);
-		//click add customer
-		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
-		Thread.sleep(500);	 
+		Assert.assertEquals("Guru99 telecom", sLogoTxt);		 
 	}
 	
 	@Test
 	public void testFirst() throws Exception {
-		
-		this.driver = sfSelenium.getDriver();
+
 		//instantiate variables
 		Boolean bFnameValid;
 		Boolean bLnameValid;
@@ -58,6 +48,10 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 		Boolean bAddressValid;
 		Boolean bTelephonenoValid;
 		Boolean bExpectedValue = true;
+		
+		//click add customer
+		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
+		Thread.sleep(500);	
 		
 		//clear input fields
 		driver.findElement(By.cssSelector("#fname")).clear();
@@ -102,7 +96,7 @@ String pURL = "http://demo.guru99.com/telecom/index.html";
 	
 	@Parameters({ "BackgroundCheck" })
 	@Test 
-	public void testThird(String pBackgroundCheck) throws Exception {
+	public void testThird(String pBackgroundCheck)throws Exception {
 		//instantiate variables
 		String sCustomerID;
 		Boolean bExpectedValue = true;
