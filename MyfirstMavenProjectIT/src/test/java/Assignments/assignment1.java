@@ -7,6 +7,8 @@ import java.util.Scanner;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -96,6 +98,7 @@ public class assignment1  extends driverSetup{
 		Boolean bActualValue = false;
 		
 		driver.get("http://demo.guru99.com/telecom/addcustomer.php");
+		Thread.sleep(500);
 		
 		//clear input fields
 		driver.findElement(By.cssSelector("#fname")).clear();
@@ -115,12 +118,16 @@ public class assignment1  extends driverSetup{
 		driver.findElement(By.xpath("//label[contains(text(),'" + pBackgroundCheck +"')]")).click();
 		//sets the global variable to the value of the parameter passed
 		sBackgroundCheck = pBackgroundCheck;
+		Thread.sleep(500);
 		
 		//click the Submit Button
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[9]/ul[1]/li[1]/input[1]")).click();
+
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h3")));
 		
 		//Store Customer ID and validate that it is not empty
-		sCustomerID = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/h3[1]")).getText();
+		sCustomerID = driver.findElement(By.tagName("h3")).getText();
 		if (sCustomerID.length() > 1) {
 			bActualValue = true;		
 			//System.out.println("Customer ID: " + sCustomerID);

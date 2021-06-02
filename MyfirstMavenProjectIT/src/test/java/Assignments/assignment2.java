@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 import org.junit.Assert;
 
-public class assignment2 extends DriverSetup{
+public class assignment2 extends driverSetup{
 	
 	String pURL = "http://demo.guru99.com/telecom/index.html";
 	
@@ -72,8 +72,8 @@ public class assignment2 extends DriverSetup{
 			bAvaliableTariffPlan = false;
 		}
 		Assert.assertEquals(true, bAvaliableTariffPlan);
+		
 		driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper:nth-child(2) table.alt tbody:nth-child(2) tr:nth-child(1) td:nth-child(1) > label:nth-child(2)")).click();
-		Thread.sleep(10000);
 	}
 	
 	public void afterTest() throws Exception {
