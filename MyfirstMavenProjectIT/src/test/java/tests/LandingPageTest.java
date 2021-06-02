@@ -33,6 +33,11 @@ public class LandingPageTest {
 
 	
 
+	@Test (priority=1)
+    public void aUse_utilities() {
+		String browserValue = landingPage.getDataConfigProperties("browser");
+		Reporter.log("aaaaThe browser we are using is "+browserValue);
+	}
 	
 	@Test
     public void GIVEN_navigateToURL_THEN_TitleMyStore() {
@@ -100,16 +105,12 @@ public class LandingPageTest {
 	}
 	
 	@Parameters({"xyz"})
-	@Test
+	@Test (priority =1, dependsOnMethods = "aUse_utilities")
     public void Use_Parameters_from_testng_XML_file(String xyz) {
 		Reporter.log("This parameter comes from the testNG xml file: "+xyz);
 	}
 	
-	@Test  
-    public void Use_utilities() {
-		String browserValue = landingPage.getDataConfigProperties("browser");
-		Reporter.log("The browser we are using is "+browserValue);
-	}
+
 	
 	@BeforeSuite
 	public void setup() {
