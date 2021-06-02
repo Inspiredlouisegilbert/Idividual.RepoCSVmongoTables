@@ -70,17 +70,6 @@ public class Mbhoni {
 	//NAVIGATE TO URL
 	public void navigateToURL(String pURL) {
 		driver.get(pURL);
-	//		sfSelenium.maximiseBrowserWindow();
-			
-			//ASSERT Before you Click Add Customer
-			try {
-				eleDisplayed = driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).isDisplayed();
-				System.out.println("Successful Landed In Telecom: " + eleDisplayed);
-				sfSelenium.createTest("Successful Landed In Telecom");
-			}
-			catch(NoSuchElementException e) {
-				System.out.println(e);
-			}
 		}
 	
 	
@@ -88,17 +77,7 @@ public class Mbhoni {
 	public void clickAddCustomer() {
 		sfSelenium.clickLink("Add Customer");
 	}
-	
-//	public void clickReset() {
-//		sfSelenium.clickLink("");
-//	}
-	
-	//CLICK ON THE Add Customer Button
-//	public void clickSubmit() {
-//			sfSelenium("submit");
-//		}
-	
-	
+		
 
 	
 	// Assert after your Clicked Add Customer
@@ -175,7 +154,7 @@ public class Mbhoni {
 		softAssert.assertAll(); 
 		
 		// Clicking Submit
-		driver.findElement(By.xpath("//input[@name='submit']")).click();
+		//driver.findElement(By.xpath("//input[@name='submit']")).click();
 				
 		// Capture a screenshot into the report
 		sfSelenium.logScreenShot();
@@ -205,12 +184,11 @@ public class Mbhoni {
 	}
 	
 	
-//	@AfterTest
-//	public void afterTest() throws Exception {
-//		sfSelenium.CloseSelenium();
-//	}
+	@AfterTest
+	public void afterTest() throws Exception {
+		sfSelenium.CloseSelenium();
+	}
 	
-	// body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)
 
 }
 
