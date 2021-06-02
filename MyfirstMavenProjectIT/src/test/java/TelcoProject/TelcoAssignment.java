@@ -169,7 +169,6 @@ Thread.sleep(1000);
       
       sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
       //eleDisplayed = driver.findElement(By.????"")).isDisplayed();
-  
       Thread.sleep(1000);
   
   }
@@ -191,7 +190,7 @@ Thread.sleep(1000);
     //Click on Reset button to Clear the fields
     driver.findElement(By.cssSelector("input[value='Reset']")).click();
     //wait for 5 seconds
-    Thread.sleep(5000);
+    Thread.sleep(10000);
     
     //Then on Click on the Done radio buttons
     driver.findElement(By.cssSelector("[for='done']")).click();
@@ -212,14 +211,14 @@ Thread.sleep(1000);
 
     Reporter.log("The expected result is "+"Access Details to Guru99 Telecom");
     
-    
-    
+        
     // Asset for the Customer ID that keeps on Changing
       String actualString3 = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
      int length = 0;
 	// assertTrue(actualString.contains("400963"));
      Assert.assertTrue(length >0);
-      
+     
+     Assert.assertEquals(actualString3, "400963");
       //Assert.assertEquals(actualString1, "400963");
       //Reporter.log("The actual result is "+actualString1);
 
