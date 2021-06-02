@@ -185,8 +185,8 @@ public class TelcoProjectTstNGThree {
 		sstrippedclientname = sstrippedclientname.substring(sstrippedclientname.lastIndexOf(":- ")+1);
 //		System.out.println(sstrippedclientname.substring(sstrippedclientname.lastIndexOf(":- ") + 1).trim());
 //		System.out.println(sstrippedclientname.substring(sstrippedclientname.lastIndexOf(" ") + 2));
-		sstrippedclientname.substring(sstrippedclientname.indexOf(":- ") + 3 , sstrippedclientname.length());
-		System.out.println("Customer Name ATTEMPT: " + sstrippedclientname);
+//		sstrippedclientname.substring(sstrippedclientname.indexOf(":- ") + 3 , sstrippedclientname.length());
+//		System.out.println("Customer Name ATTEMPT: " + sstrippedclientname);
 		System.out.println("Customer Name extracted: " + sstrippedclientname);
 	}
 	
