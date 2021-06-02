@@ -27,12 +27,20 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import frameworkclasses.SeleniumFunctions;
 
 
 public class Mbhoni {
 	String pURL = "http://demo.guru99.com/telecom/index.html";
+	String sFirstname = "Mb";
+	String sLastname = "Van";
+	String sEmailInvalid = "ts@gmail";		    					//INVALID EMAIL ADDRESS FOR ASSERTION
+	String sEmailValid = "ts@gmail.com";
+	String sAddressInvalid = "123 main drive, polokwane";		//INVALID ADDRESS FOR ASSERTION		//ESCAPE THE SPECIAL CHARACTER
+	String sAddressValid = "123 main drive polokwne";
+	String sContactnumber = "0158124578";
 	
 	//Instantiate Selenium Functions
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
@@ -62,56 +70,113 @@ public class Mbhoni {
 	//NAVIGATE TO URL
 	public void navigateToURL(String pURL) {
 		driver.get(pURL);
-			sfSelenium.maximiseBrowserWindow();
+	//		sfSelenium.maximiseBrowserWindow();
+			
+			//ASSERT Before you Click Add Customer
+			try {
+				eleDisplayed = driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).isDisplayed();
+				System.out.println("Successful Landed In Telecom: " + eleDisplayed);
+				sfSelenium.createTest("Successful Landed In Telecom");
+			}
+			catch(NoSuchElementException e) {
+				System.out.println(e);
+			}
 		}
 	
 	
-	public void landedInTelecom() {
-		//ASSERT Before you Click Add Customer
-		try {
-			eleDisplayed = driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).isDisplayed();
-			System.out.println("Successful Landed In Telecom: " + eleDisplayed);
-			sfSelenium.createTest("Successful Landed In Telecom");
-		}
-		catch(NoSuchElementException e) {
-			System.out.println(e);
-		}
+	//CLICK ON THE Add Customer Button
+	public void clickAddCustomer() {
+		sfSelenium.clickLink("Add Customer");
 	}
 	
-	//CLICK ON THE BANKING LINK
-	public void clickBankProject() {
-		sfSelenium.clickLink("Add customer");
-	}
+//	public void clickReset() {
+//		sfSelenium.clickLink("");
+//	}
+	
+	//CLICK ON THE Add Customer Button
+//	public void clickSubmit() {
+//			sfSelenium("submit");
+//		}
+	
+	
 
 	
 	// Assert after your Clicked Add Customer
-	public void landedInAddCusmtoer() {
-		try {
-			eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
-			System.out.println("Successful Landed In Add Customer: " + eleDisplayed);
-			sfSelenium.createTest("Successful Landed In Add Customer");
-		}
-		catch(NoSuchElementException e) {
-			System.out.println(e);
-		}
-		
-	}
+//	public void landedInAddCusmtoer() {
+//		try {
+//			eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
+//			System.out.println("Successful Landed In Add Customer: " + eleDisplayed);
+//			sfSelenium.createTest("Successful Landed In Add Customer");
+//		}
+//		catch(NoSuchElementException e) {
+//			System.out.println(e);
+//		}
+//		
+//	}
 	
 	
 	// Capture New User Details
-	public void CaptureUserDetails(String sFirstname, String sLastname,
-			String sEmail, String sAddress, String sPhone)throws IOException {
+	public void CaptureUserDetailsInvalid(String sFirstname, String sLastname,String sEmailValid,
+			String sEmailInvalid, String sAddressInvalid, String sContactnumber)throws IOException {
+		
+		sfSelenium.createTest("Test 1");
 
 		// Clicking Done in Add Customer page
-		driver.findElement(By.cssSelector("done")).click();
+		driver.findElement(By.xpath("//label[@for='done']")).click();
 
 		// populate input data
 		sfSelenium.populateInputField(By.name("fname"), sFirstname);
 		sfSelenium.populateInputField(By.name("lname"), sLastname);
-		sfSelenium.populateInputField(By.name("emailid"), sEmail);
-		sfSelenium.populateInputField(By.name("addr"),sAddress);
-		sfSelenium.populateInputField(By.name("telephoneno"), sPhone);
+		sfSelenium.populateInputField(By.name("emailid"), sEmailInvalid);
+		sfSelenium.populateInputField(By.name("addr"),sAddressInvalid);
+		sfSelenium.populateInputField(By.name("telephoneno"), sContactnumber);
+		
+		
+		boolean isMessageDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
+		String expectedErrorMessage = "Email-ID is not valid";
+		String actualEmailErrorMessage = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).getText();
+			
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(isMessageDisplayed);
+		softAssert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
+		softAssert.assertAll(); 		
 
+		// Capture a screenshot into the report
+		sfSelenium.logScreenShot();
+	}
+	
+	
+	// Capture New User Details
+	public void CaptureUserDetailsValid(String sFirstname, String sLastname,String sEmailValid,
+			String sAddressValid, String sContactnumber)throws IOException {
+		
+		sfSelenium.createTest("Test 2");
+		
+		// Refresh the Page
+		driver.navigate().refresh();
+		
+		// Clicking Done in Add Customer page
+		driver.findElement(By.xpath("//label[@for='done']")).click();
+
+		// populate input data
+		sfSelenium.populateInputField(By.name("fname"), sFirstname);
+		sfSelenium.populateInputField(By.name("lname"), sLastname);
+		sfSelenium.populateInputField(By.name("emailid"), sEmailValid);
+		sfSelenium.populateInputField(By.name("addr"),sAddressValid);
+		sfSelenium.populateInputField(By.name("telephoneno"), sContactnumber);
+		
+		boolean isMessageDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center > h1:nth-child(1)")).isDisplayed();
+		String expectedErrorMessage = "Access Details to Guru99 Telecom";
+		String actualEmailErrorMessage = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center > h1:nth-child(1)")).getText();
+		
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(isMessageDisplayed);
+		softAssert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
+		softAssert.assertAll(); 
+		
+		// Clicking Submit
+		driver.findElement(By.xpath("//input[@name='submit']")).click();
+				
 		// Capture a screenshot into the report
 		sfSelenium.logScreenShot();
 	}
@@ -120,29 +185,32 @@ public class Mbhoni {
 	@BeforeTest
 	public void beforeClass() throws Exception {
 		this.driver = sfSelenium.getDriver();
-		sfSelenium.startReport("Read From PDF Report", "PDF Report");
-		sfSelenium.createTest("Test Started: Read From PDF Report");
+		sfSelenium.startReport("Telco  Project", "Add New Customer");
+		sfSelenium.createTest("Ass1");
 	}
-	
 	
 	// Invalid Address
 	@Test
-	public void testFirst() throws Exception {
-		
-		String sFirstname = "Mb";
-		String sSurname = "Baloyi";
-		String sEmail = "pt@gmail.com";
-		String sAddress = "123 Com,the";
-		String sPhone = "0831231234";
-		
-		System.out.println("Test");
+	public void test() throws Exception {
+		sfSelenium.startReport("Telco  Project", "Add New Customer");
+		sfSelenium.createTest("Ass1");
+		this.driver = sfSelenium.getDriver();
+		navigateToURL(pURL);
+		clickAddCustomer();
+		CaptureUserDetailsValid(sFirstname, sLastname, sEmailInvalid, sAddressInvalid, sContactnumber);		
+		CaptureUserDetailsValid(sFirstname, sLastname, sEmailValid, sAddressValid, sContactnumber);
+		//clickSubmit();
+	
+		System.out.println("Test 1" + "Test 2");
 	}
 	
 	
-	@AfterTest
-	public void afterTest() throws Exception {
-		sfSelenium.CloseSelenium();
-	}
+//	@AfterTest
+//	public void afterTest() throws Exception {
+//		sfSelenium.CloseSelenium();
+//	}
+	
+	// body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)
 
 }
 
