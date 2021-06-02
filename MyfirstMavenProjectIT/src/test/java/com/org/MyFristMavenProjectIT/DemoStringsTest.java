@@ -105,7 +105,8 @@ public class DemoStringsTest {
 		
 		String ssecond = "Customer ID:- 661431               Customer Name:- Thisismylongname";
 		ssecond = ssecond.substring(ssecond.lastIndexOf(" ")+1);
-		System.out.println(ssecond);
+		System.out.println("Customer Name extracted: " + ssecond);
+		System.out.println(ssecond.substring(ssecond.lastIndexOf(":- ") + 1).trim());
 		
 //		String str = "Customer ID:- 661431               Customer Name:- drgdg";
 //		String substr = " ";

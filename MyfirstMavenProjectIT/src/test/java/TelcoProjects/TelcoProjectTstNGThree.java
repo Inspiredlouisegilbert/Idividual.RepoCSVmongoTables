@@ -171,7 +171,7 @@ public class TelcoProjectTstNGThree {
 	
 	public void getClientName()
 	{
-//		String sstrippedclientname = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
+		String sstrippedclientname = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
 //		sstrippedclientname = sstrippedclientname.substring(sstrippedclientname.lastIndexOf(" ")+1);
 //		System.out.println("Client Name is: " + sstrippedclientname);
 		
@@ -181,6 +181,13 @@ public class TelcoProjectTstNGThree {
 //		for (String s : splitString) {
 //		    System.out.println(s);
 //		}
+		
+		sstrippedclientname = sstrippedclientname.substring(sstrippedclientname.lastIndexOf(":- ")+1);
+//		System.out.println(sstrippedclientname.substring(sstrippedclientname.lastIndexOf(":- ") + 1).trim());
+//		System.out.println(sstrippedclientname.substring(sstrippedclientname.lastIndexOf(" ") + 2));
+		sstrippedclientname.substring(sstrippedclientname.indexOf(":- ") + 3 , sstrippedclientname.length());
+		System.out.println("Customer Name ATTEMPT: " + sstrippedclientname);
+		System.out.println("Customer Name extracted: " + sstrippedclientname);
 	}
 	
 	// Run Test Section
