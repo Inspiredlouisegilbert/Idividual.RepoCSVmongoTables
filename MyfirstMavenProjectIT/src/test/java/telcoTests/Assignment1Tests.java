@@ -15,14 +15,6 @@ public class Assignment1Tests {
 	assignment1 clAssignment1 = new assignment1();
 	Utilities clUtilities = new Utilities();
 	
-	//instantiate variables
-	String pURL = "http://demo.guru99.com/telecom/index.html";
-	
-	@BeforeTest
-    public void NavigateToURL() throws Exception {
-         clAssignment1.Setup(pURL);
-	}
-	
 	@Test
 	public void test1() throws Exception {
 		clAssignment1.testFirst();
@@ -35,7 +27,7 @@ public class Assignment1Tests {
 	
 	@Test
 	public void test3() throws Exception {
-		clAssignment1.testThird("Done");
+		clAssignment1.AddCustomer("Done");
 	}
 	
 	@AfterTest

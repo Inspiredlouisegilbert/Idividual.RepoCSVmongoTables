@@ -28,16 +28,19 @@ public class assignment1  extends driverSetup{
 	ReusableFunctions sfSelenium = new ReusableFunctions();
 	//global variable
 	String sBackgroundCheck;
+	String sURL = "http://demo.guru99.com/telecom/index.html";
 
 	//navigate to URL and assert logo
-	public void Setup(String pURL) throws Exception {
-		//Navigate to URL a
-		driver.get(pURL);
+	public void Setup() throws Exception {
+		//Navigate to URL
+		driver.get(sURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);		 
 	}
 
 	public void testFirst() throws Exception {
+		//Navigate to URL
+		Setup();
 
 		//instantiate variables
 		Boolean bFnameValid;
@@ -78,26 +81,34 @@ public class assignment1  extends driverSetup{
 		Assert.assertEquals(bExpectedValue, bEmailValid);
 		Assert.assertEquals(bExpectedValue, bAddressValid);
 		Assert.assertEquals(bExpectedValue, bTelephonenoValid);
+
 	}
 	
 	public void testSecond() throws Exception {
+		//run the first test
+		testFirst();
+		
 		//click the Submit Button
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[9]/ul[1]/li[1]/input[1]")).click();
 		
 		//handle the alert
-		Alert alert = this.driver.switchTo().alert();
+		Alert alert = driver.switchTo().alert();
 		String sAlertMessage = alert.getText();
 		Assert.assertEquals("please fill all fields", sAlertMessage);
 		alert.accept();
 	}
 	
-	public void testThird(String pBackgroundCheck)throws Exception {
+	public void AddCustomer(String pBackgroundCheck)throws Exception {
 		//instantiate variables
 		String sCustomerID;
 		Boolean bExpectedValue = true;
 		Boolean bActualValue = false;
 		
-		driver.get("http://demo.guru99.com/telecom/addcustomer.php");
+		//Navigate to URL
+		Setup();
+		
+		//click add customer
+		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(1) h3:nth-child(1) > a:nth-child(1)")).click();
 		Thread.sleep(500);
 		
 		//clear input fields

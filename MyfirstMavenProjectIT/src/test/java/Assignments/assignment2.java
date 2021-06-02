@@ -3,6 +3,8 @@ package Assignments;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -36,6 +38,12 @@ public class assignment2 extends driverSetup{
 		String sCustomerID;
 		String sActualValue;
 		
+		//call testThird 
+		clAssignment1.AddCustomer(pBackgroundCheck);
+		
+		//Navigate to URL
+		clAssignment1.Setup();
+		
 		//click Add Tariff Plan to Customer
 		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
 		
@@ -52,6 +60,10 @@ public class assignment2 extends driverSetup{
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[6]/input[1]")).click();
 		Thread.sleep(500);
 
+		//Wait
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("font")));
+		
 		//assert that the user is active/inactive 
 		sActualValue = driver.findElement(By.tagName("font")).getText();
 		if (pBackgroundCheck.equals("Done")) {
@@ -60,11 +72,18 @@ public class assignment2 extends driverSetup{
 		else {
 			Assert.assertEquals("INACTIVE", sActualValue);
 		}
-		
+		Thread.sleep(500);	
 	}
 	
-	public void CheckForTariffPlan() throws Exception {
+	public void CheckForTariffPlan(String pBackgroundCheck) throws Exception {
+		//instantiate variables
+		String sBackgroundCheck = pBackgroundCheck;
+		String sExpectedValue = "Congratulation Tariff Plan assigned";
+		String sActualValue;
 		Boolean bAvaliableTariffPlan;
+		
+		submitCustomerID(sBackgroundCheck);
+		
 		try {
 			bAvaliableTariffPlan = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]")).isDisplayed();
 		}
@@ -73,7 +92,12 @@ public class assignment2 extends driverSetup{
 		}
 		Assert.assertEquals(true, bAvaliableTariffPlan);
 		
-		driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper:nth-child(2) table.alt tbody:nth-child(2) tr:nth-child(1) td:nth-child(1) > label:nth-child(2)")).click();
+		//click add tariff plan
+		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[2]/input[1]")).click();
+		
+		//assert successful addition of tariff plan
+		sActualValue = driver.findElement(By.tagName("h2")).getText();
+		Assert.assertEquals(sExpectedValue, sActualValue);
 	}
 	
 	public void afterTest() throws Exception {
