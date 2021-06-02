@@ -169,7 +169,7 @@ Thread.sleep(1000);
       
       sfSelenium.updateReport(sAlertMessage,pExpectedMessage);
       //eleDisplayed = driver.findElement(By.????"")).isDisplayed();
-      Thread.sleep(1000);
+      Thread.sleep(5000);
   
   }
 
