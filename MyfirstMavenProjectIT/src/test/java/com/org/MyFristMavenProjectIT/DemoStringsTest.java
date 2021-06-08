@@ -81,9 +81,9 @@ public class DemoStringsTest {
 //	      System.out.println(i);
 //	    }
 
-		String stoSeperate = "Customer ID:- 661431               Customer Name:- drgdg";
+//		String stoSeperate = "Customer ID:- 661431               Customer Name:- drgdg";
 //		String sSeperator = "-";
-		String getcustomername = "";     //substring containing last 4 characters
+//		String getcustomername = "";     //substring containing last 4 characters
 		 
 //		if (stoSeperate.length() > 4) 
 //		{
@@ -103,10 +103,10 @@ public class DemoStringsTest {
 //		System.out.println(sfirst.substring(0, splitAfter));
 //		System.out.println(sfirst);
 		
-		String ssecond = "Customer ID:- 661431               Customer Name:- Thisismylongname";
-		ssecond = ssecond.substring(ssecond.lastIndexOf(" ")+1);
-		System.out.println("Customer Name extracted: " + ssecond);
-		System.out.println(ssecond.substring(ssecond.lastIndexOf(":- ") + 1).trim());
+//		String ssecond = "Customer ID:- 661431               Customer Name:- Thisismylongname";
+//		ssecond = ssecond.substring(ssecond.lastIndexOf(" ")+1);
+//		System.out.println("Customer Name extracted: " + ssecond);
+//		System.out.println(ssecond.substring(ssecond.lastIndexOf(":- ") + 1).trim());
 		
 //		String str = "Customer ID:- 661431               Customer Name:- drgdg";
 //		String substr = " ";
@@ -114,11 +114,21 @@ public class DemoStringsTest {
 //		String after = str.substring(str.indexOf(substr) + substr.length());
 //		System.out.println(before + after);
 
+//		String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
+//		String[] splitString = myString.split(":- ");
+//
+//		for (String s : splitString) {
+//		    System.out.println(s);
+//		}
+		
 		String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
-		String[] splitString = myString.split(":- ");
-
-		for (String s : splitString) {
-		    System.out.println(s);
-		}
+		int vFirst = myString.indexOf("Customer");
+		int vSecond = myString.indexOf("Customer", myString.indexOf("Customer") + 1);
+		String vFirstStr = myString.substring(vFirst, vSecond);
+		String vSecondStr = myString.substring(vSecond);
+		String[] vSplitFirst = vFirstStr.split(":- ");
+		String[] vSplitSecondSpl = vSecondStr.split(":- ");
+		System.out.println(vSplitFirst[0].trim() + " - " + vSplitFirst[1].trim());
+		System.out.println(vSplitSecondSpl[0].trim() + " - "+ vSplitSecondSpl[1].trim());
 	}
 }
