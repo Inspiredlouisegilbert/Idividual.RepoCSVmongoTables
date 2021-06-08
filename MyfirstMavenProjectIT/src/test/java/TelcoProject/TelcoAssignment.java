@@ -53,34 +53,15 @@ System.out.println("Test");
 
 
     //CLICK ON THE Add Customer
-
-    //  public void clickAddCustomer() {
-
-    //  sfSelenium.clickLink("Add Customer");
-               
+    //  public void clickAddCustomer() {         
      // driver.findElement(By.class("logo")) >Guru99 telecom</a>);
     //span[@id='header']//a[@href='index.html']
-      
-     // Add customer xpath from guru.com 
+    // Add customer xpath from guru.com 
     //section[@id='main']/div[@class='inner']//h1[.='Add Customer']
-      
-      //String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
-    //  assertTrue(actualString.contains("Add Customer"));
-      
+    //String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
+    //  assertTrue(actualString.contains("Add Customer"));  
     //  }
     
-
-    
-//Populate the billing details
-// public void populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
-// 
-// sfSelenium.populateInputField(By.name("fname"),sfname);
-// sfSelenium.populateInputField(By.name("lname"),slname);
-// sfSelenium.populateInputField(By.name("emailid"),semailid);
-// sfSelenium.populateInputField(By.name("addr"),saddr);
-// sfSelenium.populateInputField(By.name("telephoneno"),stelephoneno);
-// }
- 
 //Populate the billing details
 public void populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
 
@@ -176,7 +157,7 @@ Thread.sleep(1000);
     // Second attempt 
 	//Click reset button to clear screen
     
-    @Test
+    @Test 
     public void Capture_correct_data() throws InterruptedException    {
     
     //Populate the billing details
@@ -210,22 +191,17 @@ Thread.sleep(1000);
     Reporter.log("The actual result is "+actualString2);
 
     Reporter.log("The expected result is "+"Access Details to Guru99 Telecom");
-    
         
     // Asset for the Customer ID that keeps on Changing
-      String actualString3 = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
-     int length = 0;
-	// assertTrue(actualString.contains("400963"));
-     Assert.assertTrue(length >0);
-     
-     Assert.assertEquals(actualString3, "400963");
-      //Assert.assertEquals(actualString1, "400963");
+      boolean actualString3 = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
+      String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
+      System.out.println(actualSlength);
+      Assert.assertTrue(actualSlength.length() > 0);
+      Assert.assertEquals(actualString3, true);
+      
       //Reporter.log("The actual result is "+actualString1);
-
-      Reporter.log("The expected result is "+"Special characters are not allowed"); 
+      //Reporter.log("The expected result is "+"Special characters are not allowed"); 
                 
-    
-    //String CustomerID ="";
       
     }
 
