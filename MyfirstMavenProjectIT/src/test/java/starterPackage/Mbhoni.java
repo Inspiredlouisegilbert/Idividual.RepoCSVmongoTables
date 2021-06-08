@@ -96,7 +96,7 @@ public class Mbhoni {
 	
 	// Capture New User Details
 	public void CaptureUserDetailsInvalid(String sFirstname, String sLastname,String sEmailValid,
-			String sEmailInvalid, String sAddressInvalid, String sContactnumber)throws IOException {
+			String sEmailInvalid, String sAddressInvalid, String sContactnumber)throws IOException, InterruptedException {
 		
 		sfSelenium.createTest("Test 1");
 
@@ -120,6 +120,8 @@ public class Mbhoni {
 		softAssert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
 		softAssert.assertAll(); 		
 
+		Thread.sleep(500);
+		
 		// Capture a screenshot into the report
 		sfSelenium.logScreenShot();
 	}
@@ -127,7 +129,7 @@ public class Mbhoni {
 	
 	// Capture New User Details
 	public void CaptureUserDetailsValid(String sFirstname, String sLastname,String sEmailValid,
-			String sAddressValid, String sContactnumber)throws IOException {
+			String sAddressValid, String sContactnumber)throws IOException, InterruptedException {
 		
 		sfSelenium.createTest("Test 2");
 		
@@ -144,6 +146,11 @@ public class Mbhoni {
 		sfSelenium.populateInputField(By.name("addr"),sAddressValid);
 		sfSelenium.populateInputField(By.name("telephoneno"), sContactnumber);
 		
+		Thread.sleep(500);
+		
+		// Clicking Submit
+		driver.findElement(By.name("submit")).click();
+		
 		boolean isMessageDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center > h1:nth-child(1)")).isDisplayed();
 		String expectedErrorMessage = "Access Details to Guru99 Telecom";
 		String actualEmailErrorMessage = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center > h1:nth-child(1)")).getText();
@@ -152,9 +159,6 @@ public class Mbhoni {
 		softAssert.assertTrue(isMessageDisplayed);
 		softAssert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
 		softAssert.assertAll(); 
-		
-		// Clicking Submit
-		//driver.findElement(By.xpath("//input[@name='submit']")).click();
 				
 		// Capture a screenshot into the report
 		sfSelenium.logScreenShot();
@@ -176,11 +180,18 @@ public class Mbhoni {
 		this.driver = sfSelenium.getDriver();
 		navigateToURL(pURL);
 		clickAddCustomer();
-		CaptureUserDetailsValid(sFirstname, sLastname, sEmailInvalid, sAddressInvalid, sContactnumber);		
+		CaptureUserDetailsInValid(sFirstname, sLastname, sEmailInvalid, sAddressInvalid, sContactnumber);		
 		CaptureUserDetailsValid(sFirstname, sLastname, sEmailValid, sAddressValid, sContactnumber);
 		//clickSubmit();
 	
 		System.out.println("Test 1" + "Test 2");
+	}
+
+
+	private void CaptureUserDetailsInValid(String sFirstname2, String sLastname2, String sEmailInvalid2,
+			String sAddressInvalid2, String sContactnumber2) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
