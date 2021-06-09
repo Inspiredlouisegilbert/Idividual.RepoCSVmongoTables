@@ -46,21 +46,10 @@ sfSelenium.createTest("Test Started: Read From PDF Report");
 
 
 @Test
-
 public void testFirst() throws Exception {
 System.out.println("Test");
 }
 
-
-    //CLICK ON THE Add Customer
-    //  public void clickAddCustomer() {         
-     // driver.findElement(By.class("logo")) >Guru99 telecom</a>);
-    //span[@id='header']//a[@href='index.html']
-    // Add customer xpath from guru.com 
-    //section[@id='main']/div[@class='inner']//h1[.='Add Customer']
-    //String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
-    //  assertTrue(actualString.contains("Add Customer"));  
-    //  }
     
 //Populate the billing details
 public void populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
@@ -79,6 +68,16 @@ public void Given_Invalid_Data_Entered_Then_warning_message_Displayed() throws I
 //String pURL;
 driver.get(pURL); 
 sfSelenium.maximiseBrowserWindow();
+
+//CLICK ON THE Add Customer
+//public void clickAddCustomer() {         
+//driver.findElement(By.class("logo")) >Guru99 telecom</a>);
+//span[@id='header']//a[@href='index.html']
+// Add customer xpath from guru.com 
+//section[@id='main']/div[@class='inner']//h1[.='Add Customer']
+//String actualString = driver.findElement(By.xpath("section[@id='main']/div[@class='inner']//h1[.='Add Customer']")).getText();
+//  assertTrue(actualString.contains("Add Customer"));  
+//}
 
 
 // Click on Add Customer
