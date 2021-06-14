@@ -189,7 +189,8 @@ public class TelcoProjectTstNGThree {
 //		System.out.println("Customer Name ATTEMPT: " + sstrippedclientname);
 //		System.out.println("Customer Name extracted: " + sstrippedclientname);
 	
-		String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
+		//String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
+		String myString = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner div.table-wrapper table.alt.access tbody:nth-child(1) tr:nth-child(1) td:nth-child(2) > h3:nth-child(1)")).getText();
 		int vFirst = myString.indexOf("Customer");
 		int vSecond = myString.indexOf("Customer", myString.indexOf("Customer") + 1);
 		String vFirstStr = myString.substring(vFirst, vSecond);

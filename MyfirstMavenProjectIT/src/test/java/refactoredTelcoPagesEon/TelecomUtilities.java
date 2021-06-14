@@ -1,4 +1,4 @@
-package frameworkclasses;
+package refactoredTelcoPagesEon;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +19,7 @@ import org.testng.reporters.jq.Main;
 
 import frameworkclasses.BasePage;
 
-public class Utilities extends BasePage {
+public class TelecomUtilities extends BasePage {
 
 		
 
@@ -32,6 +32,9 @@ public class Utilities extends BasePage {
 	        //Call getScreenshotAs method to create image file
 	        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 	        
+	        
+	       
+
 	       //Move image file to new destination
 	       File DestFile=new File("target//"+"surefire-reports-" + getAppConfigProperties("build.timestamp") +"//images//"+ fileWithPath);
 

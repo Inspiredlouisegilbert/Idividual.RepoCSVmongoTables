@@ -23,17 +23,10 @@ import pages.LandingPage;
 import pages.SignInPage;
 import frameworkclasses.Utilities;
 
-
-
-
-
 public class TestNGlisteners extends BasePage implements ITestListener 
 {
 	Utilities uts = new Utilities();
 
-	
-
-	
 //	public String timereturn() {
 //		
 //	    LocalDateTime now = LocalDateTime.now(); 
@@ -42,9 +35,7 @@ public class TestNGlisteners extends BasePage implements ITestListener
 //	    return dtf.format(now);
 //	    		//System.out.println(dtf.format(now));  
 //	}
-//	
 
-	
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 		 
@@ -68,8 +59,7 @@ public class TestNGlisteners extends BasePage implements ITestListener
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
+		}	
 	}
 
 	public void onTestFailure(ITestResult result) {
