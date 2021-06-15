@@ -4,6 +4,7 @@
 	<parameter name="browser" value="Chrome" />
 	<test name="Assignments1-4">
 		<classes>
+		<!-- hrwghorekgleg -->
 			<class name="telcoTests.Assignment1Tests"></class>
 			<class name="telcoTests.Assignment2Tests"></class>
 			<class name="telcoTests.Assignment3Tests"></class>
