@@ -10,8 +10,7 @@ import Assignments.driverSetup;
 import frameworkclasses.Utilities;
 
 public class Assignment2Tests {
-	
-	driverSetup clDriverSetup = new driverSetup();
+	// Instantiate class objects
 	assignment1 clAssignment1 = new assignment1();
 	assignment2 clAssignment2 = new assignment2();
 	Utilities clUtilities = new Utilities();
@@ -28,16 +27,17 @@ public class Assignment2Tests {
 	
 	@Test
 	public void test3() throws Exception {
-		clAssignment2.submitCustomerID("Done");
+		clAssignment2.CheckForTariffPlan("Done");
 	}
 	
 	@Test
 	public void test4() throws Exception {
 		clAssignment2.CheckForTariffPlan("Done");
+		clAssignment2.AssertAddedTariffPlan();
 	}
 	
 	@AfterTest
 	public void CloseSelenium() throws Exception {
-		clAssignment2.afterTest();
+		clAssignment1.afterTest();
 	}
 }

@@ -23,10 +23,9 @@ import frameworkclasses.SeleniumFunctions;
 import org.junit.Assert;
 
 public class assignment1  extends driverSetup{
-	
 	//Instantiate Selenium Functions
 	ReusableFunctions sfSelenium = new ReusableFunctions();
-	//global variable
+	//global variables
 	String sBackgroundCheck;
 	String sURL = "http://demo.guru99.com/telecom/index.html";
 

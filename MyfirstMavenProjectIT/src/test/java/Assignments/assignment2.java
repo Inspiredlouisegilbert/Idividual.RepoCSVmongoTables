@@ -17,28 +17,27 @@ import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.junit.Assert;
 
 public class assignment2 extends driverSetup{
-	
-	String pURL = "http://demo.guru99.com/telecom/index.html";
-	
 	//Instantiate Selenium Functions
 	ReusableFunctions sfSelenium = new ReusableFunctions();
 	assignment1 clAssignment1 = new assignment1();
 	
 	//global variables
-	String sCustomerID;
+	//String sCustomerID;
 	String sBackgroundCheck = "Done"; 
+	Boolean bAvaliableTariffPlan;
 	
 	public void submitCustomerID(String pBackgroundCheck) throws Exception {
 		//instantiate variables
 		String sCustomerID;
 		String sActualValue;
 		
-		//call testThird 
+		//call AddCustomer 
 		clAssignment1.AddCustomer(pBackgroundCheck);
 		
 		//Navigate to URL
@@ -47,18 +46,11 @@ public class assignment2 extends driverSetup{
 		//click Add Tariff Plan to Customer
 		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.left:nth-child(1) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
 		
-		//creates a file object
-		File CustomerID = new File("CustomerID.csv");	
-		CustomerID.createNewFile();
-		//read Customer ID from file
-		Scanner myReader = new Scanner(CustomerID);
-		sCustomerID = myReader.nextLine();
-	    myReader.close();
+		//reads Customer ID from file
+		sCustomerID = ReadCustomerIDFromFile();
 		
 	    //populate Customer ID and submit
-		sfSelenium.populateInputField(By.cssSelector("#customer_id"), sCustomerID, driver);
-		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[6]/input[1]")).click();
-		Thread.sleep(500);
+		SubmitCustomerID(sCustomerID);
 
 		//Wait
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -69,7 +61,7 @@ public class assignment2 extends driverSetup{
 		if (pBackgroundCheck.equals("Done")) {
 			Assert.assertEquals("ACTIVE", sActualValue);
 		}
-		else {
+		else { 
 			Assert.assertEquals("INACTIVE", sActualValue);
 		}
 		Thread.sleep(500);	
@@ -78,9 +70,6 @@ public class assignment2 extends driverSetup{
 	public void CheckForTariffPlan(String pBackgroundCheck) throws Exception {
 		//instantiate variables
 		String sBackgroundCheck = pBackgroundCheck;
-		String sExpectedValue = "Congratulation Tariff Plan assigned";
-		String sActualValue;
-		Boolean bAvaliableTariffPlan;
 		
 		submitCustomerID(sBackgroundCheck);
 		
@@ -91,16 +80,48 @@ public class assignment2 extends driverSetup{
 			bAvaliableTariffPlan = false;
 		}
 		Assert.assertEquals(true, bAvaliableTariffPlan);
-		
-		//click add tariff plan
-		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[2]/input[1]")).click();
-		
-		//assert successful addition of tariff plan
-		sActualValue = driver.findElement(By.tagName("h2")).getText();
-		Assert.assertEquals(sExpectedValue, sActualValue);
 	}
 	
-	public void afterTest() throws Exception {
-		sfSelenium.CloseSelenium(driver);
+	public void AssertAddedTariffPlan() throws Exception {
+		//instantiate variables
+		String sExpectedValue = "Congratulation Tariff Plan assigned";
+		String sActualValue;
+
+		if (bAvaliableTariffPlan = true) {
+			//click add tariff plan
+			driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[2]/input[1]")).click();
+					
+			//assert successful addition of tariff plan
+			sActualValue = driver.findElement(By.tagName("h2")).getText();
+			Assert.assertEquals(sExpectedValue, sActualValue);
+		}
+		else {
+			throw new Exception("Tariff Plan not added successfully!");
+		}
+		
+	}
+	
+	public String ReadCustomerIDFromFile() throws IOException {
+		//instantiate variables
+		String sCustomerID;
+		
+		//creates a file object
+		File CustomerID = new File("CustomerID.csv");	
+		CustomerID.createNewFile();
+		
+		//read Customer ID from file
+		Scanner myReader = new Scanner(CustomerID);
+		sCustomerID = myReader.nextLine();
+		myReader.close();
+		
+		//returns the Customer ID
+		return sCustomerID;
+	}
+	
+	public void SubmitCustomerID(String pCustomerID) throws InterruptedException {
+		//populate Customer ID and submit
+		sfSelenium.populateInputField(By.cssSelector("#customer_id"), pCustomerID, driver);
+		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[6]/input[1]")).click();
+		Thread.sleep(500);
 	}
 }
