@@ -18,7 +18,7 @@ public class testsAssignment1 {
 	
 	// Declare an object of classes and
 	// Instantiate class objects
-	AddCustomerPage addCustomer = new AddCustomerPage();
+	TelecomAddCustomerPage addCustomer = new TelecomAddCustomerPage();
 	
   @Test
 

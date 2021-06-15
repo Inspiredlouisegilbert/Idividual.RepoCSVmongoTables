@@ -34,7 +34,7 @@ public class DatepickerDemoKeywordsSpecificDate {
 	// Navigate to demo.guru99.com
 	public void navigateToURL(String pURL) {
 		driver.get(pURL);
-		sfSelenium.maximiseBrowserWindow();
+		//sfSelenium.maximiseBrowserWindow();
 	}
 	
 	

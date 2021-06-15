@@ -23,7 +23,7 @@ public class TelecomHome extends TelecomBasePage{
 	String sLastname = "Kruger";
 	String sEmailInvalid = "email@gmail";		//INVALID EMAIL ADDRESS FOR ASSERTION
 	String sEmailValid = "email@gmail.com";
-	String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION		//ESCAPE THE SPECIAL CHARACTER
+	String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION	
 	String sAddressValid = "1010 hollywood drive new york";
 	String sContactnumber = "0115678989";
 	boolean eleDisplayed;

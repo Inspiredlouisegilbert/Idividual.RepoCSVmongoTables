@@ -46,7 +46,7 @@ public class TablesTestEON {
 		this.driver = sfSelenium.getDriver();
 		//start the test
 		// Set up the report
-		sfSelenium.startReport("Payment Gateway Project", "Playing with the date picker");
+		sfSelenium.startReport("Eon Tables Tests", "Playing with the tables");
 		sfSelenium.createTest("Start Test");
 	}
 	

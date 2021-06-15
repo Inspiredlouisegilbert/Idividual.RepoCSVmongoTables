@@ -31,9 +31,8 @@ public class Assignment8Eon {
 		// Navigate to demo.guru99.com
 		public void navigateToURL(String pURL) {
 			driver.get(pURL);
-			sfSelenium.maximiseBrowserWindow();
+			//sfSelenium.maximiseBrowserWindow();
 		}
-		
 		
 		///// Run tests /////
 		@BeforeTest
@@ -68,10 +67,21 @@ public class Assignment8Eon {
 //			System.out.println("The cell value of row 4 column 3 is: " + getValueCell2.getText());
 //			WebElement getValueCell3 = driver.findElement(By.xpath("//tbody/tr[1]/td[2]"));
 //			System.out.println("The cell value of row 1 column 2 is: " + getValueCell3.getText());
+			
+			printtofile();
 		}
 		
 		public void printtofile() {
 			//PRINT ALL RECORDS THAT HAVE A PERCENTAGE CHANGE BIGGER THAN 4
+//			int i= 0, j=0, max=0;
+//			for(int RowNumber=1; RowNumber<=rows.size(); RowNumber++) {
+//			String col=driver.findElement(By.xpath("//*/table[1]/tbody/tr["+RowNumber+"]/td[5]")).getText();
+//			i=Integer.parseInt(col);
+//			if(i>j){
+//			max=j=i;
+//			}	
+//			}
+//			System.out.println("Highest percentage change is:"+max);
 		}
 
 		@AfterTest

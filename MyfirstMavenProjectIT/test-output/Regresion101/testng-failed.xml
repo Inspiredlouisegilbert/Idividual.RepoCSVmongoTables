@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Regresion101]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Demo101(failed)">
+    <classes>
+      <class name="testngdemo.Testngdemo2">
+        <methods>
+          <include name="test4"/>
+          <include name="test5"/>
+        </methods>
+      </class> <!-- testngdemo.Testngdemo2 -->
+      <class name="testngdemo.Testngdemo">
+        <methods>
+          <include name="test2"/>
+          <include name="test1"/>
+          <include name="tearDownTest"/>
+          <include name="setUpTest"/>
+        </methods>
+      </class> <!-- testngdemo.Testngdemo -->
+    </classes>
+  </test> <!-- Demo101(failed) -->
+</suite> <!-- Failed suite [Regresion101] -->

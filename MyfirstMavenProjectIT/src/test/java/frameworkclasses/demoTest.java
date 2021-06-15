@@ -63,7 +63,6 @@ public class demoTest extends DriverSetup {
 		System.out.println(getDataConfigProperties("logFileDir"));
 		//System.out.println(randomisednumber);
 		//sfSelenium.CloseSelenium(driver);
-
 	}
 	
 	@AfterClass

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="continue" thread-count="2" parallel="tests" name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="tests" name="FirefoxTest(failed)">
+    <parameter name="browser" value="Firefox"/>
+    <classes>
+      <class name="frameworkclasses.demoTest">
+        <methods>
+          <include name="setup"/>
+          <include name="demoRefactoredFunctions"/>
+          <include name="cleanup"/>
+        </methods>
+      </class> <!-- frameworkclasses.demoTest -->
+    </classes>
+  </test> <!-- FirefoxTest(failed) -->
+  <test thread-count="2" parallel="tests" name="ChromeTest(failed)">
+    <parameter name="browser" value="Chrome"/>
+    <classes>
+      <class name="BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored">
+        <methods>
+          <include name="testCase2"/>
+          <include name="cleanup"/>
+          <include name="setup"/>
+          <include name="testCase1"/>
+        </methods>
+      </class> <!-- BankProjectGenerateDataTstNG.BankProjectGenerateDataKeywordsRefactored -->
+      <class name="frameworkclasses.demoTest">
+        <methods>
+          <include name="setup"/>
+          <include name="demoRefactoredFunctions"/>
+          <include name="cleanup"/>
+        </methods>
+      </class> <!-- frameworkclasses.demoTest -->
+    </classes>
+  </test> <!-- ChromeTest(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->
