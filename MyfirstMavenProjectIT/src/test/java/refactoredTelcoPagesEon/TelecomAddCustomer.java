@@ -181,7 +181,7 @@ public class TelecomAddCustomer extends DriverSetup{
 			System.out.println("Invalid data test passed");
 	}
 		public static void testTwo() throws Exception {
-			sfSelenium.startReport("Telco  Project", "Generate valid input data");
+			sfSelenium.startReport("Telco  Project", "Generate valid input data"); 
 			sfSelenium.createTest("Start Test");
 			generatevalidInput();
 			System.out.println("Valid data test passed");
