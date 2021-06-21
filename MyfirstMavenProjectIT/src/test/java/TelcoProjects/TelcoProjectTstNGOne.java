@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
@@ -156,7 +157,7 @@ public class TelcoProjectTstNGOne {
 //			}
 	}
 	
-	public void getUserID()
+	public void getUserID() throws IOException
 	{
 //		String sTextVisible = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(7) div.inner header.align-center > h1:nth-child(1)")).getText();
 //		Assert.assertEquals("Access Details to Guru99 Telecom", sTextVisible);
@@ -184,6 +185,18 @@ public class TelcoProjectTstNGOne {
 		//Assert.assertEquals("Home", sHomeVisible);
 //		System.out.println("Home button visible");
 		
+		//STORE CUSTOMER ID
+		sCustomerID = driver.findElement(By.tagName("h3")).getText();
+		if (sCustomerID.length() > 1) {
+			bActualValue = true;		
+			//System.out.println("Customer ID: " + sCustomerID);
+			
+			FileWriter myWriter = new FileWriter("temp.csv");
+		    myWriter.write(sCustomerID);
+		    myWriter.close();
+		}
+		Assert.assertEquals(bExpectedValue, bActualValue);
+		System.out.println("CustomerID successfully written to \"temp.csv\"");
 	}
 	
 	// Run Test Section
