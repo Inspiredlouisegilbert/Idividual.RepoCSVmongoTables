@@ -24,9 +24,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import frameworkclasses.BasePage;
+import frameworkclasses.DriverSetup;
 import frameworkclasses.SeleniumFunctions;
 
-public class TelcoProjectTstNGOne {
+public class TelcoProjectTstNGOne extends BasePage{
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	String sFirstname = "Eon";
 	String sLastname = "Kruger";
@@ -41,7 +43,8 @@ public class TelcoProjectTstNGOne {
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
 	
 	// driver variable
-	WebDriver driver;
+	//DRIVER NO LONGER NEEDED AS WE ARE EXTENDING THE DRIVER SETUPs
+	//WebDriver driver;
 	
 	//NAVIGATE TO URL
 	public void navigateToURL(String pURL) {
@@ -202,7 +205,7 @@ public class TelcoProjectTstNGOne {
 	// Run Test Section
 	@BeforeTest
 	public void beforeClass() throws Exception {
-		this.driver = sfSelenium.getDriver();
+		//this.driver = sfSelenium.getDriver();
 		sfSelenium.startReport("Read From PDF Report", "PDF Report");
 		sfSelenium.createTest("Test Started: Read From PDF Report");
 	}

@@ -7,10 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import frameworkclasses.BasePage;
 import frameworkclasses.DriverSetup;
 import frameworkclasses.SeleniumFunctions;
 
-public class TelecomAddCustomer extends DriverSetup{
+public class TelecomAddCustomer extends BasePage{
 
 		String pURL = "http://demo.guru99.com/V1/index.php";
 		String sFirstname = "Eon";
@@ -26,7 +27,7 @@ public class TelecomAddCustomer extends DriverSetup{
 		static SeleniumFunctions sfSelenium = new SeleniumFunctions();
 		
 		// driver variable
-		WebDriver driver;
+		//WebDriver driver;
 		
 		//NAVIGATE TO URL
 		public void navigateToURL(String pURL) {
@@ -34,7 +35,7 @@ public class TelecomAddCustomer extends DriverSetup{
 			//sfSelenium.maximiseBrowserWindow();
 		}
 			
-		public static void clickBankProject() {
+		public void clickBankProject() {
 			sfSelenium.clickLink("Telecom Project");
 			sfSelenium.clickLink("Add Customer");
 		}
@@ -172,20 +173,5 @@ public class TelecomAddCustomer extends DriverSetup{
 			
 		}
 		
-		public static void testOne() throws Exception {
-			sfSelenium.startReport("Telco  Project", "Generate invalid input data");
-			sfSelenium.createTest("Start Test");
-			navigateToURL(pURL);
-			clickBankProject();
-			generateInvalidInputData();
-			System.out.println("Invalid data test passed");
-	}
-		public static void testTwo() throws Exception {
-			sfSelenium.startReport("Telco  Project", "Generate valid input data"); 
-			sfSelenium.createTest("Start Test");
-			generatevalidInput();
-			System.out.println("Valid data test passed");
-			getUserID();
-			System.out.println("Get User ID test passed");
-		}
+
 }

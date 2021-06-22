@@ -39,17 +39,17 @@ public class BasePage {
     		//create firefox instance
     			System.setProperty("webdriver.gecko.driver", pdriverDir+"geckodriver.exe");
     			driver     = new FirefoxDriver();
-    			driver.get(systemUnderTest);
+    			//driver.get(systemUnderTest);
                 driver.manage().window().maximize();
     			
     		}
     		//Check if parameter passed as 'chrome'
     		else if(browser.equalsIgnoreCase("chrome")){
     			//set path to chromedriver.exe
-    			System.setProperty("webdriver.chrome.driver",pdriverDir+"chromedriver.exe");
+    			System.setProperty("webdriver.chrome.driver",pdriverDir+"chromedriver");	//MAC BOOK DONT NEED .EXE
     			//create chrome instance
     			driver     = new ChromeDriver();
-    			driver.get(systemUnderTest);
+    			//driver.get(systemUnderTest);		//ALREADY BEING CALLED IN MY PROJECT
                 driver.manage().window().maximize();
     			
     		}
@@ -59,7 +59,7 @@ public class BasePage {
     			System.setProperty("webdriver.edge.driver",pdriverDir+"MicrosoftWebDriver.exe");
     			//create Edge instance
     			driver     = new EdgeDriver();
-    			driver.get(systemUnderTest);
+    			//driver.get(systemUnderTest);
     	        driver.manage().window().maximize();
     			
     		}
