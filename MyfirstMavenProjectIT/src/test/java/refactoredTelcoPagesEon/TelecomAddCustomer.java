@@ -18,7 +18,7 @@ public class TelecomAddCustomer extends BasePage{
 		String sLastname = "Kruger";
 		String sEmailInvalid = "email@gmail";		//INVALID EMAIL ADDRESS FOR ASSERTION
 		String sEmailValid = "email@gmail.com";
-		String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION		//ESCAPE THE SPECIAL CHARACTER
+		String sAddressInvalid = "1010 hollywood drive, new york";		//INVALID ADDRESS FOR ASSERTION
 		String sAddressValid = "1010 hollywood drive new york";
 		String sContactnumber = "0115678989";
 		boolean eleDisplayed;
@@ -50,7 +50,7 @@ public class TelecomAddCustomer extends BasePage{
 				//ATTEMPT 1
 				eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).isDisplayed();
 				System.out.println("Assertion One: Guru99 telecom text is visible: " + eleDisplayed);
-				sfSelenium.createTest("Guru99 telecom text is visible");
+				//sfSelenium.createTest("Guru99 telecom text is visible");
 				
 				//ATTEMPT2
 				System.out.println("Test passed: Excpected value is: Guru99 telecom " + " Actual value is: " + sActualValue);
@@ -68,7 +68,7 @@ public class TelecomAddCustomer extends BasePage{
 			try {
 				eleDisplayed = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center:nth-child(1) > h1:nth-child(1)")).isDisplayed();
 				System.out.println("Assertion Two: Add customer text is visible: " + eleDisplayed);
-				sfSelenium.createTest("Add customer text is visible");
+				//sfSelenium.createTest("Add customer text is visible");
 			}
 				catch(NoSuchElementException e) {
 					System.out.println(e);
@@ -85,7 +85,7 @@ public class TelecomAddCustomer extends BasePage{
 			try {
 			boolean eleDisplayed = driver.findElement(By.cssSelector("#message9")).isDisplayed();
 			System.out.println("Assertion Three: Invalid email address check passed: " + eleDisplayed);
-			sfSelenium.createTest("Invalid email address check passed");
+			//sfSelenium.createTest("Invalid email address check passed");
 			}
 			catch(NoSuchElementException e) {
 				System.out.println(e);

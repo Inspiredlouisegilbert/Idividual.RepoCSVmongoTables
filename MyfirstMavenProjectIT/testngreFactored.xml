@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="TestSuite" thread-count="2" parallel="tests" configfailurepolicy="continue" >
 <test name="Assignments Keywordsdriven">
 <parameter name="browser" value="Chrome" />
 <classes>
-<class name="TelcoProjects.TelcoProjectTsNGOne"></class>
-<class name="TelcoProjects.TelcoProjectTsNGTwo"></class>
-<class name="TelcoProjects.TelcoProjectTsNGThree"></class>
-</classes>
-</test>
-<test name="Assignments PageObjects">
-<parameter name="browser" value="Firefox" />
-<classes>
-	<class name="Refactored.testsAssignment1"/>
+<class name="Refactored.testsAssignment1"/>
 </classes>
 </test>
 </suite>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Telco Projects Keywords Driven]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="TelcoProjects Keywords Driven Demo(failed)">
+    <classes>
+      <class name="TelcoProjects.TelcoProjectTstNGTwo">
+        <methods>
+          <include name="testTwo"/>
+          <include name="beforeClass"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- TelcoProjects.TelcoProjectTstNGTwo -->
+      <class name="TelcoProjects.TelcoProjectTstNGThree">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="testOne"/>
+          <include name="testTwo"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- TelcoProjects.TelcoProjectTstNGThree -->
+      <class name="TelcoProjects.TelcoProjectTstNGOne">
+        <methods>
+          <include name="testTwo"/>
+          <include name="afterTest"/>
+          <include name="setup"/>
+          <include name="testThree"/>
+          <include name="beforeClass"/>
+          <include name="testOne"/>
+        </methods>
+      </class> <!-- TelcoProjects.TelcoProjectTstNGOne -->
+    </classes>
+  </test> <!-- TelcoProjects Keywords Driven Demo(failed) -->
+</suite> <!-- Failed suite [Telco Projects Keywords Driven] -->

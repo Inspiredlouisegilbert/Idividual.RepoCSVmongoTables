@@ -42,9 +42,9 @@ import com.mongodb.DB;
 
 
 // This class manages all Selenium Functions and the Driver
-public class SeleniumFunctions {
+public class SeleniumFunctions extends BasePage{
 	// Class Private Variables
-	private  WebDriver driver;
+	//private  WebDriver driver;
 	ExtentReportClass extReports = new ExtentReportClass();
 	public String gatewayurl;
 	
@@ -52,19 +52,19 @@ public class SeleniumFunctions {
 	
 	
 	// Constructor
-	public SeleniumFunctions()  {
-		
-		// Tell Java where the chromedriver.exe sits & Create a new instance of Chrome Driver
-		SetupSelenium();
-		
-	}
+//	public SeleniumFunctions()  {
+//		
+//		// Tell Java where the chromedriver.exe sits & Create a new instance of Chrome Driver
+//		SetupSelenium();
+//		
+//	}
 	
 	public String getDataConfigProperties(String propertyName) {
 				// Properties setup
 				Properties p = new Properties();
 				InputStream is = null;
 				try {
-					is = new FileInputStream("dataConfig.properties");
+					is = new FileInputStream("config.properties");
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -206,9 +206,9 @@ public class SeleniumFunctions {
 		////driver.close will close the original browser window
 		//this.driver.close();
 		////driver.quit will close the original and all subsequent browser tabs
-		this.driver.quit();
+		driver.quit();
 		// Also finalise and close the test report for us
-		extReports.closeReport();
+		//extReports.closeReport();
 
 		//Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
 		//Runtime.getRuntime().exec("taskkill /F /IM chromeDriver.exe");
