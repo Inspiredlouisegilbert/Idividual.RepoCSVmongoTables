@@ -29,11 +29,17 @@ public class TelecomAddCustomer extends BasePage{
 		// driver variable
 		//WebDriver driver;
 		
-		//NAVIGATE TO URL
-		public void navigateToURL(String pURL) {
+		public void setup() {
 			driver.get(pURL);
-			//sfSelenium.maximiseBrowserWindow();
+			//String sLogoText = driver.findElement(By.cssSelector("body.subpage:nth-child(2) span:nth-child(5) nav.left > a.logo:nth-child(2)")).getText();
+			//Assert.assertEquals("Guru99 telecom", sLogoText);
 		}
+		
+//		//NAVIGATE TO URL
+//		public void navigateToURL(String pURL) {
+//			driver.get(pURL);
+//			//sfSelenium.maximiseBrowserWindow();
+//		}
 			
 		public void clickBankProject() {
 			sfSelenium.clickLink("Telecom Project");

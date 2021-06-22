@@ -1,5 +1,7 @@
 package Refactored;
 
+import java.io.IOException;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -17,21 +19,30 @@ public class testsAssignment1 {
 	String pURL = "http://demo.guru99.com/V1/index.php";
 	
 	@Test
-	public void testsOne()
+	public void testsOne() throws InterruptedException
 	{
 //		sfSelenium.startReport("Telco  Project", "Generate invalid input data");
 //		sfSelenium.createTest("Start Test");
-		addCustomer.navigateToURL(pURL);
+		addCustomer.setup();
 		addCustomer.clickBankProject();
 		addCustomer.generateInvalidInputData();
 		System.out.println("Invalid data test passed");
+		
+		//VALID INPUTS
+		addCustomer.clickBankProject();
+		addCustomer.generatevalidInput();
+		System.out.println("Valid data test passed");
+		addCustomer.getUserID();
+		System.out.println("Get User ID test passed");
 	}
 	
-	@Test
-	public void testTwo() throws InterruptedException
+//	@Test
+	public void testTwo() throws InterruptedException, IOException
 	{
 //		sfSelenium.startReport("Telco  Project", "Generate valid input data"); 
 //		sfSelenium.createTest("Start Test");
+		addCustomer.setup();
+		addCustomer.clickBankProject();
 		addCustomer.generatevalidInput();
 		System.out.println("Valid data test passed");
 		addCustomer.getUserID();
