@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -31,6 +32,62 @@ public class LandingPageTest {
         Assert.assertEquals(actualTitle, expectedTitle ); 
         
 	}
+	
+	@Test
+	
+	//Copied from Add customer page
+	
+		
+	// function to populate an input field using multiple By clauses
+
+		public void populateInputField(By byClause, String inputValue) {
+		driver.findElement(byClause).sendKeys(inputValue);    //*********** Question= do we need to use driver.find in a test?
+	}
+		//Populate the billing details
+		public void GIVEN_populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
+
+		populateInputField(By.name("fname"),sfname);
+		populateInputField(By.name("lname"),slname);
+		populateInputField(By.name("emailid"),semailid);
+		populateInputField(By.name("addr"),saddr);
+		populateInputField(By.name("telephoneno"),stelephoneno);
+		
+		}
+
+		
+		@Test
+		
+		public void  Given_Invalid_Data_Populate_inputfields_for_billing() {
+	//Populate the billing details with the INVALID Data
+			String sfname= "Nyeleti";
+			String slname = "Chauke";
+			String semailid = "123@gmail.com";
+			String saddr= "!#@### Smit steet";
+			String stelephoneno= "0242353454";
+			
+			//call a method to populate the fields
+			Given_Invalid_Data_Populate_inputfields_for_billing(sfname,slname,semailid,saddr,stelephoneno);
+			//wait
+			Thread.sleep(5000);
+		
+		}
+		
+		@Test
+		
+		public void  Given_Valid_Data_Populate_inputfields_for_billing() {
+	//Populate the billing details with the INVALID Data
+			String sfname= "Nyeleti";
+			String slname = "Chauke";
+			String semailid = "123@gmail.com";
+			String saddr= "Smit steet";
+			String stelephoneno= "0242353454";
+			
+			//call a method to populate the fields
+			Given_Valid_Data_Populate_inputfields_for_billing(sfname,slname,semailid,saddr,stelephoneno);
+			//wait
+			Thread.sleep(5000);
+		
+		}
 	
 	@Test
     public void GIVEN_navigateToURL_WHEN_searchProduct_THEN_ProductDisplayed() {
