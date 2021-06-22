@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Parameters;
 
+import pages.Guru99Telcom_LandingPage;
 import pages.HomePage;
 import pages.LandingPage;
-import pages.ProductSearchPage;
+//import pages.ProductSearchPage;
 import pages.SignInPage;
 
 
@@ -17,12 +18,13 @@ public class LandingPageTest {
 	
 	// Declare an object of classes and
 	// Instantiate class objects
-	SignInPage inPage = new SignInPage();
-	LandingPage landingPage = new LandingPage();
-	ProductSearchPage pr = new ProductSearchPage();
+	SignInPage inPage = new SignInPage();              
+	LandingPage landingPage = new LandingPage();     
+	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
+	//ProductSearchPage pr = new ProductSearchPage();
 	HomePage homePage = new HomePage();
 	
-	@Test
+	//@Test
     public void GIVEN_navigateToURL_THEN_TitleMyStore() {
         String expectedTitle = "My Store";
         String actualTitle = landingPage.getTitle();
@@ -89,19 +91,36 @@ public class LandingPageTest {
 		
 		}
 	
+	@Test 
+	public void navigateToGuru99TelcomLandingPage () {
+		
+		GuruLanding.navigateToGuru99LandingPage();
+		
+		GuruLanding.getTitle();
+		 String expectedTitle = "Guru99 Telecom";
+	     String actualTitle = landingPage.getTitle();
+	     
+	     Reporter.log("expected ------------------"+expectedTitle);
+	     Reporter.log("actual --------------------"+actualTitle);
+	     Assert.assertEquals(actualTitle, expectedTitle ); 
+	}
+	
+	
+	
+	
 	@Test
     public void GIVEN_navigateToURL_WHEN_searchProduct_THEN_ProductDisplayed() {
 
-        landingPage.searchProduct();
+       // landingPage.searchProduct();
         String expected = "Printed Summer Dress";
-        String actual = pr.getProductSearchResult();
+       // String actual = pr.getProductSearchResult();
         
         Reporter.log("expected ------------------"+expected);
-        Reporter.log("actual --------------------"+actual);
-        Assert.assertEquals(actual, expected); 
+       // Reporter.log("actual --------------------"+actual);
+       // Assert.assertEquals(actual, expected); 
 	}
         
-	@Test
+	//@Test
 	public void GIVEN_navigateToURL_WHEN_CorrectLogin_THEN_LoginSuccessful() {
 
 
@@ -115,7 +134,7 @@ public class LandingPageTest {
             Assert.assertEquals(actual, expected);
         }
 	
-	@Test
+	//@Test
 	public void GIVEN_navigateToURL_WHEN_InCorrectLogin_THEN_LoginUnSuccessful() {
 
 
@@ -131,7 +150,7 @@ public class LandingPageTest {
             Assert.assertEquals(actual, expected);
         }
 	
-	@Test
+	//@Test
     public void GIVEN_navigateToURL_THEN_ExpectedTofail() {
         String expectedTitle = "My St";
         Reporter.log("expected ------------------"+expectedTitle);
@@ -144,12 +163,12 @@ public class LandingPageTest {
 	}
 	
 	@Parameters({"xyz"})
-	@Test
+	//@Test
     public void Use_Parameters_from_testng_XML_file(String xyz) {
 		Reporter.log("This parameter comes from the testNG xml file: "+xyz);
 	}
 	
-	@Test  
+	//@Test  
     public void Use_utilities() {
 		String browserValue = landingPage.getDataConfigProperties("browser");
 		Reporter.log("The browser we are using is "+browserValue);
