@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -7,6 +8,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Parameters;
 
+import pages.AddCustomerPage;
 import pages.Guru99Telcom_LandingPage;
 import pages.HomePage;
 import pages.LandingPage;
@@ -21,6 +23,8 @@ public class LandingPageTest {
 	SignInPage inPage = new SignInPage();              
 	LandingPage landingPage = new LandingPage();     
 	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
+	AddCustomerPage AddCustomer = new AddCustomerPage();
+	
 	//ProductSearchPage pr = new ProductSearchPage();
 	HomePage homePage = new HomePage();
 	
@@ -35,42 +39,57 @@ public class LandingPageTest {
         
 	}
 	
-	@Test
+
 	
 	//Copied from Add customer page
 	
 		
-	// function to populate an input field using multiple By clauses
-
-		public void populateInputField(By byClause, String inputValue) {
-		driver.findElement(byClause).sendKeys(inputValue);    //*********** Question= do we need to use driver.find in a test?
-	}
-		//Populate the billing details
-		public void GIVEN_populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
-
-		populateInputField(By.name("fname"),sfname);
-		populateInputField(By.name("lname"),slname);
-		populateInputField(By.name("emailid"),semailid);
-		populateInputField(By.name("addr"),saddr);
-		populateInputField(By.name("telephoneno"),stelephoneno);
-		
-		}
+	/*
+	 * // function to populate an input field using multiple By clauses
+	 * 
+	 * public void populateInputField(By byClause, String inputValue) {
+	 * driver.findElement(byClause).sendKeys(inputValue); //*********** Question= do
+	 * we need to use driver.find in a test? }
+	 */
+	
+	/*
+	 * //Populate the billing details public void GIVEN_populate_biling_data(String
+	 * sfname,String slname, String semailid,String saddr,String stelephoneno ) {
+	 * 
+	 * populateInputField(By.name("fname"),sfname);
+	 * populateInputField(By.name("lname"),slname);
+	 * populateInputField(By.name("emailid"),semailid);
+	 * populateInputField(By.name("addr"),saddr);
+	 * populateInputField(By.name("telephoneno"),stelephoneno);
+	 * 
+	 * }
+	 */
 
 		
 		@Test
 		
-		public void  Given_Invalid_Data_Populate_inputfields_for_billing() {
+		public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 	//Populate the billing details with the INVALID Data
-			String sfname= "Nyeleti";
-			String slname = "Chauke";
-			String semailid = "123@gmail.com";
-			String saddr= "!#@### Smit steet";
-			String stelephoneno= "0242353454";
+		String sfname= "Nyeleti";
+		String slname = "Chauke";
+		String semailid = "123@gmail.com";
+		String saddr= "!#@### Smit steet";
+		String stelephoneno= "0242353454";
 			
 			//call a method to populate the fields
-			Given_Invalid_Data_Populate_inputfields_for_billing(sfname,slname,semailid,saddr,stelephoneno);
-			//wait
+		AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
+		
+		AddCustomer.Given_Submit_button_isClicked();
+		   //wait
 			Thread.sleep(5000);
+			
+		String pExpectedMessage = "please fill all fields";
+		String pActualMessage = AddCustomer.Given_Invalid_Data_When_submit_Button_IsPresedOn_Then_Alert();
+			
+		Reporter.log("expected ------------------"+pExpectedMessage);
+	    Reporter.log("actual --------------------"+pActualMessage);
+	    Assert.assertEquals(pActualMessage, pExpectedMessage );
+	    
 		
 		}
 		
@@ -88,6 +107,7 @@ public class LandingPageTest {
 			Given_Valid_Data_Populate_inputfields_for_billing(sfname,slname,semailid,saddr,stelephoneno);
 			//wait
 			Thread.sleep(5000);
+			
 		
 		}
 	

@@ -35,6 +35,17 @@ public class AddCustomerPage extends BasePage{
 										
 	}
 	
+	//Populate the billing details
+	public void GIVEN_populate_biling_data(String sfname,String slname, String semailid,String saddr,String stelephoneno ) {
+
+	populateInputField(By.name("fname"),sfname);
+	populateInputField(By.name("lname"),slname);
+	populateInputField(By.name("emailid"),semailid);
+	populateInputField(By.name("addr"),saddr);
+	populateInputField(By.name("telephoneno"),stelephoneno);
+			
+	}
+	
 	public void  Given_Submit_button_isClicked() {
 		//click on Submit
 	     driver.findElement(By.name("submit")).click();
@@ -76,23 +87,23 @@ public class AddCustomerPage extends BasePage{
 	
 	  //==========================
 	
-	  	public void Given_Invalid_Data_When_submit_Button_IsPresedOn_Then_Alert() throws InterruptedException {
+	  	public String Given_Invalid_Data_When_submit_Button_IsPresedOn_Then_Alert() throws InterruptedException {
 	  
-		//click on Submit
-	    // driver.findElement(By.name("submit")).click();
-	      
+		//click on Submit   
 	       //HANDLE UNSUCCESSFUL POPUP ALERT
-	      sfSelenium.createTest("Run Alert Failure: Unsuccessful login popup text test"); // we need help on this function
-	      String pExpectedMessage = "please fill all fields";
+	      
 	      Alert alert = this.driver.switchTo().alert();
 	      String sAlertMessage = alert.getText();
-	      Assert.assertEquals(sAlertMessage, "please fill all fields");
+	      
+	      //Assert.assertEquals(sAlertMessage, "please fill all fields");
 	      //write to the console
 	      System.out.println(sAlertMessage);
 	    	      
 	      //Click on OK button on the POP-UP
 	      alert.accept();
 	      Thread.sleep(5000);
+	      
+	      return sAlertMessage;
 	  
 	  }
 
