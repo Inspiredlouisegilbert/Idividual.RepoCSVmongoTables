@@ -5,6 +5,11 @@
 <parameter name="browser" value="Chrome" />
 <classes>
 <class name="Refactored.testsAssignment1"/>
+<!--<class name="Refactored.testsAssignment2"/> -->
+<!--<class name="Refactored.testsAssignment3"/> -->
+<!--<class name="Refactored.testsAssignment4"/> -->
+<!--<class name="Refactored.testsAssignment5"/> -->
+<!--<class name="Refactored.testsAssignment6"/> -->
 </classes>
 </test>
 </suite>

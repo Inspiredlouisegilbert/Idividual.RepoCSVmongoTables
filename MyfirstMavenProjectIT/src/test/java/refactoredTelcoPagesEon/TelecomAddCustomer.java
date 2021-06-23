@@ -99,6 +99,10 @@ public class TelecomAddCustomer extends BasePage{
 			
 			clickSubmit();
 			
+		}
+		
+		public void handlePopup()
+		{
 			//HANDLE POPUP
 			try {
 				//handle the alert
@@ -128,8 +132,11 @@ public class TelecomAddCustomer extends BasePage{
 			driver.findElement(By.cssSelector("#email")).clear();
 			driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]")).clear();
 			
-			driver.findElement(By.id("email")).sendKeys(sEmailValid);											//INPUT VALID EMAIL ADDRESS
-			driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressValid);	//INPUT VALID ADDRESS
+			driver.findElement(By.xpath("//label[@for='done']")).click();
+			driver.findElement(By.xpath("//input[@name='fname']")).sendKeys(sFirstname);						//INPUT VALID FIRST NAME
+			driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(sLastname);							//INPUT VALID LAST NAME NAME
+			driver.findElement(By.id("email")).sendKeys(sEmailValid);											//INPUT INVALID EMAIL ADDRESS
+			driver.findElement(By.xpath("//textarea[@name='addr'][@id='message']")).sendKeys(sAddressValid);	//INPUT INVALID ADDRESS
 			driver.findElement(By.cssSelector("#telephoneno")).sendKeys(sContactnumber);
 			
 			clickSubmit();

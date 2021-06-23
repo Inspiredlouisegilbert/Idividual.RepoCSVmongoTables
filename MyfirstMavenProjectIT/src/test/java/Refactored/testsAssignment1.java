@@ -27,26 +27,32 @@ public class testsAssignment1 {
 		addCustomer.clickBankProject();
 		addCustomer.generateInvalidInputData();
 		System.out.println("Invalid data test passed");
+		addCustomer.handlePopup();
+		Thread.sleep(5000);
 		
-		//VALID INPUTS
+//		//VALID INPUTS
+		addCustomer.setup();
+		Thread.sleep(5000);
 		addCustomer.clickBankProject();
 		addCustomer.generatevalidInput();
-		System.out.println("Valid data test passed");
-		addCustomer.getUserID();
-		System.out.println("Get User ID test passed");
+//		System.out.println("Valid data test passed");
+//		addCustomer.getUserID();
+//		System.out.println("Get User ID test passed");
 	}
 	
-//	@Test
+	@Test
 	public void testTwo() throws InterruptedException, IOException
 	{
 //		sfSelenium.startReport("Telco  Project", "Generate valid input data"); 
 //		sfSelenium.createTest("Start Test");
-		addCustomer.setup();
-		addCustomer.clickBankProject();
-		addCustomer.generatevalidInput();
-		System.out.println("Valid data test passed");
-		addCustomer.getUserID();
-		System.out.println("Get User ID test passed");
+//		addCustomer.setup();
+//		Thread.sleep(5000);
+//		addCustomer.clickBankProject();
+//		addCustomer.handlePopup();
+//		addCustomer.generatevalidInput();
+//		System.out.println("Valid data test passed");
+//		addCustomer.getUserID();
+//		System.out.println("Get User ID test passed");
 	}
 	
   @AfterTest
