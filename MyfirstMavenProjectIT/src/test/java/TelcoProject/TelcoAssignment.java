@@ -183,7 +183,7 @@ Thread.sleep(1000);
     driver.findElement(By.name("submit")).click();
     
     
-    // verify that the Customer ID is message displays below the field  // 
+    // verify that the Customer ID message is displayed below the field  // 
     String actualString2 = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//h1[.='Access Details to Guru99 Telecom']")).getText();
     //assertTrue(expectedString.contains("Customer ID"));
     Assert.assertEquals(actualString2, "Access Details to Guru99 Telecom");

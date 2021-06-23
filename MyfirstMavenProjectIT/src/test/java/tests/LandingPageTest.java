@@ -9,6 +9,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Parameters;
 
 import pages.AddCustomerPage;
+import pages.CustomerIDPage;
 import pages.Guru99Telcom_LandingPage;
 import pages.HomePage;
 import pages.LandingPage;
@@ -24,7 +25,7 @@ public class LandingPageTest {
 	LandingPage landingPage = new LandingPage();     
 	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
 	AddCustomerPage AddCustomer = new AddCustomerPage();
-	
+	CustomerIDPage CustomerID = new CustomerIDPage ();
 	//ProductSearchPage pr = new ProductSearchPage();
 	HomePage homePage = new HomePage();
 	
@@ -39,32 +40,6 @@ public class LandingPageTest {
         
 	}
 	
-
-	
-	//Copied from Add customer page
-	
-		
-	/*
-	 * // function to populate an input field using multiple By clauses
-	 * 
-	 * public void populateInputField(By byClause, String inputValue) {
-	 * driver.findElement(byClause).sendKeys(inputValue); //*********** Question= do
-	 * we need to use driver.find in a test? }
-	 */
-	
-	/*
-	 * //Populate the billing details public void GIVEN_populate_biling_data(String
-	 * sfname,String slname, String semailid,String saddr,String stelephoneno ) {
-	 * 
-	 * populateInputField(By.name("fname"),sfname);
-	 * populateInputField(By.name("lname"),slname);
-	 * populateInputField(By.name("emailid"),semailid);
-	 * populateInputField(By.name("addr"),saddr);
-	 * populateInputField(By.name("telephoneno"),stelephoneno);
-	 * 
-	 * }
-	 */
-
 		
 		@Test
 		
@@ -79,6 +54,7 @@ public class LandingPageTest {
 			//call a method to populate the fields
 		AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
 		
+		//Call a method to click submit button
 		AddCustomer.Given_Submit_button_isClicked();
 		   //wait
 			Thread.sleep(5000);
@@ -90,25 +66,62 @@ public class LandingPageTest {
 	    Reporter.log("actual --------------------"+pActualMessage);
 	    Assert.assertEquals(pActualMessage, pExpectedMessage );
 	    
-		
+	    //Call method to click ok on the pop-up
+	    AddCustomer.Click_OK_button_on_the_popo_up();
+	          
+	    
 		}
-		
-		@Test
-		
-		public void  Given_Valid_Data_Populate_inputfields_for_billing() {
-	//Populate the billing details with the INVALID Data
-			String sfname= "Nyeleti";
-			String slname = "Chauke";
-			String semailid = "123@gmail.com";
-			String saddr= "Smit steet";
-			String stelephoneno= "0242353454";
 			
-			//call a method to populate the fields
-			Given_Valid_Data_Populate_inputfields_for_billing(sfname,slname,semailid,saddr,stelephoneno);
-			//wait
-			Thread.sleep(5000);
-			
+	
+@Test
 		
+		public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
+	
+		// Call a method to click rest button
+		AddCustomer.Given_Reset_button_isClicked();
+	
+		//Call a method to click Done option
+		AddCustomer.Given_Done_radio_Option_button();
+		
+		//Populate the billing details with the VALID Data
+		String sfname= "Nyeleti";
+		String slname = "Chauke";
+		String semailid = "123@gmail.com";
+		String saddr= "Smit steet";
+		String stelephoneno= "0242353454";
+			
+		//call a method to populate the fields
+		AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
+		
+		//Call a method to click submit button
+		AddCustomer.Given_Submit_button_isClicked();
+		  //wait
+		Thread.sleep(5000);
+			
+	    // Verify that the Customer ID Page is displayed  
+		String ExpectedMessage = "Access Details to Guru99 Telecom";
+		String ActualMessage = CustomerID.verifyCustomerID_Heading();
+		
+		//CustomerID.verifyCustomerID_Heading();	
+		
+		Reporter.log("expected ------------------"+ExpectedMessage);
+	    Reporter.log("actual --------------------"+ActualMessage);
+	    Assert.assertEquals(ActualMessage, ExpectedMessage );
+	    
+	    //Reporter.log("The expected result is "+"Access Details to Guru99 Telecom");
+	        
+	    // Asset for the Customer ID that keeps on Changing
+	    // Verify that the Customer ID Page is displayed  
+	 	boolean sCustID = CustomerID.Generated_Customer_ID();
+	 	//String ActualMessage = CustomerID.verifyCustomerID_Heading();
+	 			      
+	    Reporter.log("expected Customer ID is displayed");
+	    Reporter.log("actual --------------------"+sCustID);
+	    Assert.assertEquals(sCustID, true);
+	    
+	    //Call method to click Ok on the pop-up
+	    //AddCustomer.Click_OK_button_on_the_popo_up();
+	    
 		}
 	
 	@Test 

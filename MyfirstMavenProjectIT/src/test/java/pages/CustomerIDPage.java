@@ -18,24 +18,32 @@ import org.testng.asserts.SoftAssert;
 import frameworkclasses.BasePage;
 import frameworkclasses.SeleniumFunctions;
 
+//boolean eleDisplayed;
+
 public class CustomerIDPage extends BasePage {
 	
-	public void  verifyCustomerID() {
+	public String  verifyCustomerID_Heading() throws InterruptedException {
 		
 	// verify that the Access Details to Guru99 Telecom Heading is displays //
-	String actualHeading = driver.findElement(By.cssSelector("h1")).getText();
-    //assertTrue(expectedString.contains("Customer ID"));
-     Assert.assertEquals(actualHeading, "Access Details to Guru99 Telecom");
+		 String actualHeading = driver.findElement(By.cssSelector("h1")).getText();
+		//Assert.assertEquals(actualHeading, "Access Details to Guru99 Telecom");
+		 
+		return actualHeading;
+	}
     
-        
+	public boolean Generated_Customer_ID() throws InterruptedException {
+		
+		
+		
     // Asset for the Customer ID that keeps on Changing
-      boolean actualString3 = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
-      String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
-      System.out.println(actualSlength);
+      boolean CustomerID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
+      //String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
+      //System.out.println(actualSlength);
       
-      Assert.assertTrue(actualSlength.length() > 0);
-      Assert.assertEquals(actualString3, true);
+      //Assert.assertTrue(actualSlength.length() > 0);
+      //Assert.assertEquals(CustomerID, true);
       
+      return CustomerID;
 
 	}
 	

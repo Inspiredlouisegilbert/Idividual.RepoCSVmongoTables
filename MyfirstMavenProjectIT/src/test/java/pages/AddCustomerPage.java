@@ -64,6 +64,13 @@ public class AddCustomerPage extends BasePage{
 		
 	}
 	
+	
+    public void  Click_OK_button_on_the_popo_up() {
+    	Alert alert = driver.switchTo().alert();
+    	//Click on OK button
+        alert.accept();
+		
+	}
 	 
 	public void Given_verifyAddCustomerPage() throws InterruptedException {
 	
