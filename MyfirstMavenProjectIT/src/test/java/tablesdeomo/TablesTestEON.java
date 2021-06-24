@@ -38,6 +38,47 @@ public class TablesTestEON {
 		sfSelenium.maximiseBrowserWindow();
 	}
 	
+	public void getmaxValues() {
+		
+		String maxURL = "http://demo.guru99.com/test/web-table-element.php#";
+		int max=0;
+		
+		navigateToURL(maxURL);
+		String tablexpath = "//table/tbody";
+		WebElement TogetRows = driver.findElement(By.xpath(tablexpath));
+		List<WebElement>TotalRowsList = TogetRows.findElements(By.tagName("tr"));
+		System.out.println("Total number of Rows in the table are : "+ TotalRowsList.size());
+		
+		WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
+		List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
+		System.out.println("Total Number of cells in the table are: "+ TotalColsList.size());
+		
+		//STORE TABLE SIZE
+		WebElement percentagecolumn = driver.findElement(By.cssSelector("tr:nth-of-type(1) > td:nth-of-type(5) > .green"));
+		
+		//GET DATA FROM PERCENTAGE CHANGE COLUMN
+		List<WebElement> colsWithData = percentagecolumn.findElements(By.cssSelector("tr:nth-of-type(1) > td:nth-of-type(5) > .green"));
+		
+
+		//PRINT DATA
+		System.out.println("Percentage change column: " + colsWithData);
+        for(int index =0; index<colsWithData.size(); index++) {
+         System.out.println(colsWithData.get(index).getText());
+        }
+//		
+//		int max=0;
+//		String percentagechange = null;
+//		List<WebElement> storeRows = storesTable.findElements(By.cssSelctor("table tr"));
+//		for(int i=0; i<storeRows.size();i++{
+//		WebElement columnValue = storeRows.findElement(By.xpath("\td[3]"));
+//		WebElement percentageElem = storeRows.findElement(By.xpath("\td[1]"));
+//		if(Integer.parseInt(columnValue.getText()) > max){
+//			percentagechange = percentageElem.getText();
+//		   max = Integer.parseInt(columnValue.getText());
+//		    }
+//		}
+//		System.out.println("For Percentage Change " + percentagechange + " are the highest change = " + max);
+	}
 	
 	///// Run tests /////
 	@BeforeTest
@@ -50,9 +91,7 @@ public class TablesTestEON {
 		sfSelenium.createTest("Start Test");
 	}
 	
-	@Test
-	public void datepicker() throws IOException, InterruptedException {
-		
+	public void eontables() throws IOException {
 
 		sfSelenium.createTest("Run Test: Tables");
 		navigateToURL(pURL);
@@ -83,7 +122,7 @@ public class TablesTestEON {
 		//DO CALCULATION INCORRECT
 		String valueone = driver.findElement(By.xpath("//tbody/tr[1]/td[2]")).getText().toString();
 		String valuetwo = driver.findElement(By.xpath("//tbody/tr[2]/td[3]")).getText().toString();
-		String combined = valueone + valuetwo;		//SIMPLY ADS TEH TWO NEXT TO EACH OTHER
+		String combined = valueone + valuetwo;		//SIMPLY ADS THE TWO NEXT TO EACH OTHER
 		System.out.println("Sum: " + combined);
 		
 		//DO CALCULATION CORRECT
@@ -102,6 +141,12 @@ public class TablesTestEON {
 		}
 		
 		sfSelenium.logScreenShot();	
+	}
+	
+	@Test
+	public void datepicker() throws IOException, InterruptedException {
+		getmaxValues();
+		//eontables();
 	}
 
 	@AfterTest
