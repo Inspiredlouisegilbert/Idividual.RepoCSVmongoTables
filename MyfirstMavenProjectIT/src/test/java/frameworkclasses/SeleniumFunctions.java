@@ -45,7 +45,7 @@ import com.mongodb.DB;
 public class SeleniumFunctions extends BasePage{
 	// Class Private Variables
 	//private  WebDriver driver;
-	ExtentReportClass extReports = new ExtentReportClass();
+//	ExtentReportClass extReports = new ExtentReportClass();
 	public String gatewayurl;
 	
 	//private ReportingClass reports = new ReportingClass();
@@ -101,11 +101,11 @@ public class SeleniumFunctions extends BasePage{
 	
 
 	public void startReport(String sReportName, String sTitle) {
-		extReports.startReport(sReportName, sTitle);
+//		extReports.startReport(sReportName, sTitle);
 	}
 	
 	public void createTest(String sName) {
-		extReports.createTest(sName);
+//		extReports.createTest(sName);
 	}
 	
 	// Generate random number
@@ -125,7 +125,7 @@ public class SeleniumFunctions extends BasePage{
 			System.out.println("Test passed. Expected Value = " + sExpectedValue + " Actual Value = " + sActualValue);
 			
 			// output to extent Reports
-			extReports.logPass(sActualValue, sExpectedValue);
+//			extReports.logPass(sActualValue, sExpectedValue);
 			
 		}
 		else {
@@ -133,7 +133,7 @@ public class SeleniumFunctions extends BasePage{
 			System.out.println("Test failed. Expected Value = " + sExpectedValue + " Actual Value = " + sActualValue);
 			
 			// output to extent Reports
-			extReports.logFail(sActualValue, sExpectedValue);
+//			extReports.logFail(sActualValue, sExpectedValue);
 		}
 
 	}
@@ -198,7 +198,7 @@ public class SeleniumFunctions extends BasePage{
 	}
 	
 	public void logScreenShot() throws IOException {
-		this.extReports.logScreenshot(this.driver);
+//		this.extReports.logScreenshot(this.driver);
 	}
 	
 	public void CloseSelenium() throws IOException {

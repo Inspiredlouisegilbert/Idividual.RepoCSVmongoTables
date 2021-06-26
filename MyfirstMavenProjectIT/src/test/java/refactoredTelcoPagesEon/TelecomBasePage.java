@@ -71,13 +71,11 @@ public class TelecomBasePage {
 			//is = new FileInputStream("config.properties");
 			is = new FileInputStream("dataconfig.properties");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			p.load(is);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
