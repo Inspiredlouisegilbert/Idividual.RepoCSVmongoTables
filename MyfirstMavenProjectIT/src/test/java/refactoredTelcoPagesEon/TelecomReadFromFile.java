@@ -9,6 +9,9 @@ import frameworkclasses.DriverSetup;
 import frameworkclasses.ReusableFunctions;
 import frameworkclasses.SeleniumFunctions;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 import org.junit.Assert;
@@ -32,7 +35,35 @@ public class TelecomReadFromFile extends BasePage{
 		driver.get(pURL);
 	}
 	
-	public void readfromfile() {
+	public void readfromfile() throws IOException 
+	{
+		String readfromdir = getDataConfigProperties("readfromdir");
+		String pCustomerID = "";
 		
+		BufferedReader br = new BufferedReader(new FileReader(readfromdir)); 
+		String line;
+		while ((line = br.readLine()) != null) { 
+			if(line.length() > 0) {
+		    // use xx as separator.
+			    String[] cols = line.split(";"); 
+			    System.out.println(cols[0]); 
+				pCustomerID = cols[0];
+				
+				captureID(line);
+				submit();   
+				System.out.println("CustomerID successfully imported from selected CSV file");
+			}
+		}
+		// close the buffer
+		br.close();
+	}
+	
+	public void captureID(String pClientID) {
+		sfSelenium.populateInputField(By.cssSelector("#customer_id"), pClientID);
+		submit();
+	}
+	
+	public void submit() {
+		this.driver.findElement(By.tagName("input")).click();
 	}
 }
