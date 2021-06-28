@@ -31,6 +31,7 @@ public class TablesTestEON {
 	
 	
 	String pURL = "http://demo.guru99.com/test/table.html";
+	String mURL = "http://demo.guru99.com/telecom/assigntariffplantocustomer.php";
 	
 	// Navigate to demo.guru99.com
 	public void navigateToURL(String pURL) {
@@ -143,10 +144,24 @@ public class TablesTestEON {
 		sfSelenium.logScreenShot();	
 	}
 	
+	public void getMaxvalues() {
+		driver.get(mURL);
+		
+		String tablexpath = "//table/tbody";
+		WebElement TogetRows = driver.findElement(By.xpath(tablexpath));
+		List<WebElement>TotalRowsList = TogetRows.findElements(By.tagName("tr"));
+		System.out.println("Total number of Rows in the table are : "+ TotalRowsList.size());
+		
+		WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
+		List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
+		System.out.println("Total Number of cells in the table are: "+TotalColsList.size());
+	}
+	
 	@Test
 	public void datepicker() throws IOException, InterruptedException {
-		getmaxValues();
-		//eontables();
+//		getmaxValues();
+//		eontables();
+		getMaxvalues();
 	}
 
 	@AfterTest

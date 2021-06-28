@@ -2,7 +2,6 @@ package refactoredTelcoPagesEon;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import pages.SignInPage;
 import frameworkclasses.BasePage;
@@ -13,7 +12,6 @@ import frameworkclasses.SeleniumFunctions;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.Assert;
@@ -24,10 +22,11 @@ import org.testng.annotations.Test;
 
 import Refactored.testsAssignment3;
 
-public class TelecomReadFromFile extends BasePage{
+public class TelecomMaxFieldValues extends BasePage{
 	
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
 	testsAssignment3 clAssignment3 = new testsAssignment3();
+	TelecomPayBilling clPayBilling = new TelecomPayBilling();
 	
 	String pURL = "http://demo.guru99.com/telecom/assigntariffplantocustomer.php";
 
@@ -36,7 +35,7 @@ public class TelecomReadFromFile extends BasePage{
 		driver.get(pURL);
 	}
 	
-	public void readfromfile() throws IOException 
+	public void readfromfile() throws IOException, InterruptedException 
 	{
 		String readfromdir = getDataConfigProperties("readfromdir");
 		String pCustomerID = "";
@@ -59,34 +58,12 @@ public class TelecomReadFromFile extends BasePage{
 		br.close();
 	}
 	
-	public void captureID(String pClientID) {
+	public void captureID(String pClientID) throws InterruptedException {
 		sfSelenium.populateInputField(By.cssSelector("#customer_id"), pClientID);
 		submit();
 	}
 	
-	public void submit() {
+	public void submit() throws InterruptedException {
 		this.driver.findElement(By.tagName("input")).click();
 	}
-	
-	public void getMaxMonthlyRental() {
-		
-		String tablexpath = "//table/tbody";
-		WebElement TogetRows = driver.findElement(By.xpath(tablexpath));
-		List<WebElement>TotalRowsList = TogetRows.findElements(By.tagName("tr"));
-		System.out.println("Total number of Rows in the table are : "+ TotalRowsList.size());
-		
-		WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
-		List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
-		System.out.println("Total Number of cells in the table are: "+TotalColsList.size());
-		
-
-	}
-	
-	//GET MAX MONTHLY RENTAL
-	//GET MAX LOCAL MINUTES
-	//GET MAX INTERNATIONAL MINUTES
-	//GET MAX SMS PACK
-	//GET MAX PER LOCAL MINUTES CHARGES
-	//GET MAX PER INTERNATIONAL MINUTES CHANGRES
-	//GET MAX PER SMS PACK
 }

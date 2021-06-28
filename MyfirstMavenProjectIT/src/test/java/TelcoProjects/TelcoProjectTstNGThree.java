@@ -29,8 +29,8 @@ public class TelcoProjectTstNGThree {
 		driver.get(pURL);													
 		sfSelenium.clickLink("Telecom Project");							
 		sfSelenium.clickLink("Add Customer");								
-		sfSelenium.startReport("Read From PDF Report", "PDF Report");
-		sfSelenium.createTest("Test Started: Read From PDF Report");
+//		sfSelenium.startReport("Read From PDF Report", "PDF Report");
+//		sfSelenium.createTest("Test Started: Read From PDF Report");
 		
 		//POPULATE VALID INPUT FIELDS
 		driver.findElement(By.xpath("//label[@for='done']")).click();
