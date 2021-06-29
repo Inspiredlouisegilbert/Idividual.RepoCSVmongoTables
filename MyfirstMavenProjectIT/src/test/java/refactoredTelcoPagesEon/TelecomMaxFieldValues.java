@@ -103,4 +103,190 @@ public class TelecomMaxFieldValues extends BasePage{
 	        }
 	        System.out.println("Maximum value is : "+ r);
 	}
+	
+	public void getMaxvaluesLocalMinutes() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[2]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
+	
+	public void getMaxvaluesInternationalMinutes() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[3]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
+	
+	public void getMaxvaluesSMSPack() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[4]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
+	
+	public void getMaxvaluesPerLocalMinutesCharges() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[5]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
+	
+	public void getMaxvaluesPerInternationalMinutesCharges() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[6]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
+	
+	public void getMaxvaluesPerSMSCharge() throws ParseException, InterruptedException {
+		 driver.get("http://demo.guru99.com/telecom/assigntariffplantocustomer.php"); 
+		 driver.findElement(By.xpath("//input[@id='customer_id']")).sendKeys(sClientID);
+		 this.driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/form[@action='assigntariffplantocustomer.php']//input[@name='submit']")).click();
+		 String max;
+	     double m=0,r=0;
+		 
+	        //No. of Columns
+	        List  col = driver.findElements(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[1]/tr[1]/td"));		//TOTAL COLUMNS
+	        System.out.println("Total No of columns are : " +col.size());
+	        
+	        //No.of rows
+	        List  rows = driver.findElements(By.xpath ("//section[@id='main']/div[@class='inner']/div//tr/td[1]"));		//TOTAL ROWS
+	        System.out.println("Total No of rows are : " + rows.size());
+	        
+	        for (int i =1;i<rows.size();i++)
+	        {    
+//	            max= driver.findElement(By.xpath("section[@id='main']/div[@class='inner']/div//tr[" + (i+1) + "]/td[1]")).getText();
+	            max= driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/div/table[@class='alt']/tbody[" + (i+1) + "]/tr/td[7]")).getText();
+	            NumberFormat f =NumberFormat.getNumberInstance(); 
+	            Number num = f.parse(max);
+	            max = num.toString();
+	            m = Double.parseDouble(max);
+	            if(m>r)
+	             {    
+	                r=m;
+	             }
+	        }
+	        System.out.println("Maximum value is : "+ r);
+	}
 }

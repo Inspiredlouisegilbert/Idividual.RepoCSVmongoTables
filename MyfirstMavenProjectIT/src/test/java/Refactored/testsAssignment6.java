@@ -30,6 +30,12 @@ public class testsAssignment6 {
 //	  clMaxFieldvalues.readfromfile();
 //	  clMaxFieldvalues.captureID(null);
 	  clMaxFieldvalues.getMaxvaluesMonthlyRentals();
+	  clMaxFieldvalues.getMaxvaluesLocalMinutes();
+	  clMaxFieldvalues.getMaxvaluesInternationalMinutes();
+	  clMaxFieldvalues.getMaxvaluesSMSPack();
+	  clMaxFieldvalues.getMaxvaluesPerLocalMinutesCharges();
+	  clMaxFieldvalues.getMaxvaluesPerInternationalMinutesCharges();
+	  clMaxFieldvalues.getMaxvaluesPerSMSCharge();
   }
 
   
