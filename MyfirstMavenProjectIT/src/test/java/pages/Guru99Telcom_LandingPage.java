@@ -28,6 +28,10 @@ public class Guru99Telcom_LandingPage extends BasePage {
 	 	String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
 	 	Assert.assertEquals(actual_link, "Add Customer");
 	    
+	 	 	
+	 	
+	 	
+	 	
 		// Click on Add Customer
 		driver.findElement(By.linkText("Add Customer")).click();  
 		

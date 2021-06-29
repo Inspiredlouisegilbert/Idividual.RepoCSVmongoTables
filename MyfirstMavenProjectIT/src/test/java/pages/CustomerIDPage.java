@@ -37,14 +37,26 @@ public class CustomerIDPage extends BasePage {
     // Asset for the Customer ID that keeps on Changing
       boolean CustomerID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
       //String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
-      //System.out.println(actualSlength);
-      
-      //Assert.assertTrue(actualSlength.length() > 0);
-      //Assert.assertEquals(CustomerID, true);
-      
+          
       return CustomerID;
 
 	}
 	
+	public String Generated_Cust_ID() throws InterruptedException {
+		
+		
+	    // Copy the Customer ID that keeps on Changing
+	     
+	    String Cust_ID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();	      
+	      return Cust_ID;
+
+		}
+	
+	public void  Click_Home_button_CustomerIDPage() {
+		
+	    //Click on Home button to navigate to Guru99Telcom_Landing page
+	    driver.findElement(By.cssSelector(".button")).click();
+		
+	}
 }
 

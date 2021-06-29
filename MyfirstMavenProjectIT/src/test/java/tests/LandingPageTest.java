@@ -123,22 +123,68 @@ public class LandingPageTest {
 	    
 		}
 	
-	@Test 
-	public void navigateToGuru99TelcomLandingPage () {
+// Copy generated Customer ID on CustomerIDPage(This is a step in the test)
+@Test
+public void GIVEN_active_customer_WHEN_submit_THEN_active_is_displayed () {
+	
+	//String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();	
+   // Fix line 135 and 136 below
+     String Cust_ID = CustomerID.Generated_Cust_ID();
+     System.out.println(Cust_ID);
+	
+	
+}
+
+// Click on Home button on CustomerIDPage (update CustomerIDPage)
+
+
+@Test
+
+public void  Click_Home_button_CustomerIDPage() throws InterruptedException {
+
+// Call a method to click rest button
+CustomerID.Click_Home_button_CustomerIDPage();
+
+Thread.sleep(5000);
+
+// Verify that Guru99TelcomPage is displayed  
+ String ExpectedMessage = " Guru99 telecom";
+String ActualMessage = Guru99Telcom_LandingPage.verifyTelcomLandingPage();
+
+//Verify that Guru99 Telcom Heading is available //
+		String actualHeading = driver.findElement(By.cssSelector("#header .logo")).getText();
+	    Assert.assertEquals(actualHeading, "Guru99 telecom");
 		
-		GuruLanding.navigateToGuru99LandingPage();
-		
-		GuruLanding.getTitle();
-		 String expectedTitle = "Guru99 Telecom";
-	     String actualTitle = landingPage.getTitle();
-	     
-	     Reporter.log("expected ------------------"+expectedTitle);
-	     Reporter.log("actual --------------------"+actualTitle);
-	     Assert.assertEquals(actualTitle, expectedTitle ); 
-	}
+	  //Verify that Add Customer Heading is available //
+	 	String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
+	 	Assert.assertEquals(actual_link, "Add Customer");
+
+	 	//Fix line 151 to 168 tomorrow 
+	 	String pExpectedMessage = "please fill all fields";
+		String pActualMessage = AddCustomer.Given_Invalid_Data_When_submit_Button_IsPresedOn_Then_Alert();
+			
+		Reporter.log("expected ------------------"+pExpectedMessage);
+	    Reporter.log("actual --------------------"+pActualMessage);
+	    Assert.assertEquals(pActualMessage, pExpectedMessage );
+
+
+
+
+
+
+
+
+
+//CustomerID.verifyCustomerID_Heading();	
+
+Reporter.log("expected ------------------"+ExpectedMessage);
+Reporter.log("actual --------------------"+ActualMessage);
+Assert.assertEquals(ActualMessage, ExpectedMessage );
+
 	
-	
-	
+//Continue to Add Tariff Plan to Customer
+
+
 	
 	@Test
     public void GIVEN_navigateToURL_WHEN_searchProduct_THEN_ProductDisplayed() {
