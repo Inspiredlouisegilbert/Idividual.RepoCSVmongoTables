@@ -10,6 +10,7 @@ import refactoredTelcoPagesEon.TelecomPayBilling;
 import refactoredTelcoPagesEon.TelecomReadFromFile;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.testng.annotations.AfterTest;
 
@@ -23,15 +24,17 @@ public class testsAssignment6 {
 	TelecomMaxFieldValues clMaxFieldvalues = new TelecomMaxFieldValues();
 	
   @Test
-  public void Readfromfile() throws InterruptedException, IOException
+  public void getMaxvalues() throws InterruptedException, IOException, ParseException
   {
-	  clMaxFieldvalues.navigatetourl();
-	  clMaxFieldvalues.readfromfile();
+//	  clMaxFieldvalues.navigatetourl();
+//	  clMaxFieldvalues.readfromfile();
+//	  clMaxFieldvalues.captureID(null);
+	  clMaxFieldvalues.getMaxvaluesMonthlyRentals();
   }
 
   
   @AfterTest
-  public void afterTest() throws IOException {
+  public void afterTest() throws IOException, InterruptedException {
 	  sfSelenium.CloseSelenium();
   }
 }
