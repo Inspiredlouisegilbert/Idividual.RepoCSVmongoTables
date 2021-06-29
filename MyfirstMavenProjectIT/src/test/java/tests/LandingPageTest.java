@@ -39,8 +39,7 @@ public class LandingPageTest {
         Assert.assertEquals(actualTitle, expectedTitle ); 
         
 	}
-	
-		
+			
 		@Test
 		
 		public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {
@@ -72,7 +71,7 @@ public class LandingPageTest {
 	    
 		}
 			
-	
+
 @Test
 		
 		public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {

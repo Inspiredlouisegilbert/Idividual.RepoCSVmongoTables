@@ -34,7 +34,6 @@ public class CustomerIDPage extends BasePage {
 	public boolean Generated_Customer_ID() throws InterruptedException {
 		
 		
-		
     // Asset for the Customer ID that keeps on Changing
       boolean CustomerID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
       //String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
