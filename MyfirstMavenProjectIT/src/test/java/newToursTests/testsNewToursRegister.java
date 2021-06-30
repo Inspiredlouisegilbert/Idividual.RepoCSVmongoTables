@@ -26,7 +26,7 @@ public class testsNewToursRegister {
 		clRegister.captureUserDetailsTwo();
 		clRegister.captureUserDetailsThree();
 		clRegister.captureUserDetailsFour();
-		System.out.println("All users has been successfully registered");
+		System.out.println("All users has been successfully registered"); 
 	}
 	
 	@Test
