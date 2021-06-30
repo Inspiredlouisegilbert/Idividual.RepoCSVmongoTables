@@ -57,10 +57,11 @@ public class NewToursRegisterUsers extends BasePage{
 		String pState = "";
 		String pPostalCode = "";
 		String pCountry = "";
+		String pCOUNTRY = "";
 		String pUsername = "";
 		String pPassword = "";
 		String PConfirmPassword = "";
-		String mercurytoursnewusers = getProperties("MTlogin.csv"); 
+		String mercurytoursnewusers = getProperties("mercurytourslogin"); 
 		
 		BufferedReader br = new BufferedReader(new FileReader(mercurytoursnewusers)); 
 		String line;
@@ -82,12 +83,12 @@ public class NewToursRegisterUsers extends BasePage{
 			    pState = cols[6];
 			    pPostalCode = cols[7];
 			    pCountry = cols[8];
+			    pCOUNTRY = pCountry.toUpperCase();
 			    pUsername = cols[9];
 			    pPassword = cols[10];
-			    PConfirmPassword = cols[11];
+			    //PConfirmPassword = cols[11];
 			    
-			    captureUserDetailsCSV(pFname, pLastname, pPhone, pEmail, pAddress, pCity, pState, pPostalCode, pCountry, pUsername, pPassword, PConfirmPassword);
-			    
+			    captureUserDetailsCSV(pFname, pLastname, pPhone, pEmail, pAddress, pCity, pState, pPostalCode, pCOUNTRY, pUsername, pPassword, PConfirmPassword);
 			}
 			
 		} 

@@ -21,7 +21,7 @@ public class testsNewToursRegister {
 	public void GIVEN_RegisterNewUser_THEN_SaveDetails() throws InterruptedException, IOException
 	{
 		clRegister.setup();
-//		clRegister.runTestFromFile();
+		clRegister.runTestFromFile();
 		clRegister.captureUserDetailsOne();
 		clRegister.captureUserDetailsTwo();
 		clRegister.captureUserDetailsThree();
