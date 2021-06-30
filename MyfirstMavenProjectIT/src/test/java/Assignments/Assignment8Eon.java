@@ -46,7 +46,7 @@ public class Assignment8Eon {
 		}
 		
 		@Test
-		public void datepicker() throws IOException, InterruptedException {
+		public void assignment8() throws IOException, InterruptedException {
 
 			sfSelenium.createTest("Run Test: Tables");
 			navigateToURL(pURL);
