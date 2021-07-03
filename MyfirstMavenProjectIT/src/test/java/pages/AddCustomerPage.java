@@ -58,6 +58,12 @@ public class AddCustomerPage extends BasePage{
 		driver.findElement(By.cssSelector("[for='done']")).click();
 	}
 	
+		public void  Given_Pending_radio_Option_button() {
+			
+			//Select On Pending radio button
+			driver.findElement(By.cssSelector("[for='pending']")).click();
+		}
+		
 	public void  Given_Reset_button_isClicked() {
 	    //Click on Reset button to Clear the fields
 	    driver.findElement(By.cssSelector("input[value='Reset']")).click();
