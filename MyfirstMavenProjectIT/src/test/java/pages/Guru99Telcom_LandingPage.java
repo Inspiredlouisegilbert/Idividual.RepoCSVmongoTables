@@ -37,7 +37,7 @@ public class Guru99Telcom_LandingPage extends BasePage {
  
     }
 	
-public String Click_AddTariffPlanToCustomerPage() {       
+	public String verify_AddTariffPlanToCustomerLink() {       
        	
 	//Verify that Add Tariff Plan to Customer Link is available //
  	String actual_link = driver.findElement(By.linkText ("Add Tariff Plan to Customer")).getText(); 
@@ -47,7 +47,17 @@ public String Click_AddTariffPlanToCustomerPage() {
 		// Click on Add Tariff Plan to Customer
 		driver.findElement(By.linkText("Add Tariff Plan to Customer")).click();  
 		
-		return Click_AddTariffPlanToCustomerPage();
+		return verify_AddTariffPlanToCustomerLink();
 		 
 	}
+
+	public void ClickAddTariffPlanToCustomer_Link() {       
+       		 	
+		// Click on Add Tariff Plan to Customer
+		driver.findElement(By.linkText("Add Tariff Plan to Customer")).click();  
+			
+			 
+	}
+	
+
 }
