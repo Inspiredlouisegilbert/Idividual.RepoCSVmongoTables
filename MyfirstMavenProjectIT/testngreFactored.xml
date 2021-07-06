@@ -5,7 +5,7 @@
 	<test name="Assignments1-4">
 		<classes>
 			
-			<class name="telcoTests.Assignment6Tests"></class>
+			<class name="telcoTests.Assignment1Tests"></class>
 		</classes>
 	</test>
 </suite>
