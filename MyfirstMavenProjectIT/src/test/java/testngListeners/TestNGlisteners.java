@@ -17,6 +17,7 @@ import org.testng.annotations.BeforeTest;
 
 import com.mongodb.MapReduceCommand.OutputType;
 
+import Assignments.driverSetup;
 import frameworkclasses.BasePage;
 import frameworkclasses.DriverSetup;
 import pages.LandingPage;
@@ -27,7 +28,7 @@ import frameworkclasses.Utilities;
 
 
 
-public class TestNGlisteners extends BasePage implements ITestListener 
+public class TestNGlisteners extends driverSetup implements ITestListener 
 {
 	Utilities uts = new Utilities();
 
@@ -117,6 +118,7 @@ public class TestNGlisteners extends BasePage implements ITestListener
 		System.out.println("****** onFinish: ");
 		try {
 			uts.takeSnapShot("onFinish.png");
+			driver.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

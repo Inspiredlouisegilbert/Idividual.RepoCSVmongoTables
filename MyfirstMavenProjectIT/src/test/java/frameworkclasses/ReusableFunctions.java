@@ -32,6 +32,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import Assignments.driverSetup;
+
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -41,9 +44,9 @@ import com.mongodb.DB;
 
 
 // This class manages all Selenium Functions and the Driver
-public class ReusableFunctions extends DriverSetup
+public class ReusableFunctions extends driverSetup
 {
-	ExtentReportClass extReports = new ExtentReportClass();
+	//ExtentReportClass extReports = new ExtentReportClass();
 	
 	// Generate random number
 	public int generateRandomData(int pMin, int pMax) {		
@@ -53,7 +56,7 @@ public class ReusableFunctions extends DriverSetup
 	}
 	
 	// function to populate an input field using multiple By clauses
-	public void populateInputField(By byClause, String inputValue,WebDriver driver) {
+	public void populateInputField(By byClause, String inputValue) {
 		driver.findElement(byClause).sendKeys(inputValue);
 	}
 	
@@ -63,11 +66,11 @@ public class ReusableFunctions extends DriverSetup
 	}
 	
 	// function to click on a hyperlink
-	public void clickLink(String pLinkText,WebDriver driver) {
+	public void clickLink(String pLinkText) {
 		driver.findElement(By.linkText(pLinkText)).click();
 	}
 	
-	public void CloseSelenium(WebDriver driver) {
+	public void CloseSelenium() {
 		driver.quit();
 	}
 	
@@ -97,7 +100,7 @@ public class ReusableFunctions extends DriverSetup
 	}
 	
 	// Maximise Browser Window
-	public void maximiseBrowserWindow(WebDriver driver) {
+	public void maximiseBrowserWindow() {
 		driver.manage().window().maximize();
 	}
 	

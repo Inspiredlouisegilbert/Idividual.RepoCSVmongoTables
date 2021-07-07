@@ -35,9 +35,4 @@ public class Assignment2Tests {
 		clAssignment2.CheckForTariffPlan("Done");
 		clAssignment2.AssertAddedTariffPlan();
 	}
-	
-	@AfterTest
-	public void CloseSelenium() throws Exception {
-		clAssignment1.afterTest();
-	}
 }

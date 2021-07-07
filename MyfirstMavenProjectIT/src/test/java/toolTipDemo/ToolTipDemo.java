@@ -64,6 +64,6 @@ public class ToolTipDemo extends DriverSetup{
 		
 		@AfterSuite
 		public void cleanup () throws IOException, InterruptedException {
-			sfSelenium.CloseSelenium(driver);
+			sfSelenium.CloseSelenium();
 		}
 }

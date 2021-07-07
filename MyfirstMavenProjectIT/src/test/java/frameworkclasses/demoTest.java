@@ -55,9 +55,9 @@ public class demoTest extends DriverSetup {
 	@Test
 	public void demoRefactoredFunctions() throws InterruptedException{
 		driver.get("http://demo.guru99.com/V4/");
-		sfSelenium.populateInputField(By.name("uid"), "guru99",driver);
-		sfSelenium.populateInputField(By.name("password"), "guru99",driver);
-		sfSelenium.clickLink("Bank Project",driver);
+		sfSelenium.populateInputField(By.name("uid"), "guru99");
+		sfSelenium.populateInputField(By.name("password"), "guru99");
+		sfSelenium.clickLink("Bank Project");
 		
 		System.out.println("Random number" + randomisednumber );
 		System.out.println(getDataConfigProperties("logFileDir"));
@@ -68,7 +68,7 @@ public class demoTest extends DriverSetup {
 	
 	@AfterClass
 	public void cleanup() throws InterruptedException{
-		sfSelenium.CloseSelenium(driver);
+		sfSelenium.CloseSelenium();
 
 	}
 }

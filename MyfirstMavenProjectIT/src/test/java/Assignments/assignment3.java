@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 import frameworkclasses.ReusableFunctions;
 
@@ -25,6 +26,8 @@ public class assignment3 extends driverSetup{
 		//select pay billing and assert that the heading is correct
 		driver.findElement(By.cssSelector("section.wrapper:nth-child(4) div.inner.flex.flex-3 div.flex-item.right:nth-child(3) div:nth-child(2) h3:nth-child(1) > a:nth-child(1)")).click();
 		String sHeadingTxt = driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner header.align-center:nth-child(1) > h1:nth-child(1)")).getText();
+		Reporter.log("expected ------------------"+ "Pay Billing");
+	    Reporter.log("actual --------------------"+ sHeadingTxt);
 		Assert.assertEquals("Pay Billing", sHeadingTxt);
 	}
 	
@@ -56,6 +59,8 @@ public class assignment3 extends driverSetup{
 			sExpectedValue = "Customer ID:- " + sCustomerID;
 			sActualValue = driver.findElement(By.tagName("h3")).getText();
 			sActualValue = sActualValue.substring(0, 20);
+			Reporter.log("expected ------------------"+ sExpectedValue);
+		    Reporter.log("actual --------------------"+ sActualValue);
 			Assert.assertEquals(sExpectedValue, sActualValue);
 			Thread.sleep(500);	
 		}
@@ -63,6 +68,8 @@ public class assignment3 extends driverSetup{
 			sExpectedValue = "Customer Name:- valid";
 			sActualValue = driver.findElement(By.tagName("h3")).getText();
 			sActualValue = sActualValue.substring(sActualValue.length() -21);
+			Reporter.log("expected ------------------"+ sExpectedValue);
+		    Reporter.log("actual --------------------"+ sActualValue);
 			Assert.assertEquals(sExpectedValue, sActualValue);
 			Thread.sleep(500);	
 		}
@@ -82,6 +89,9 @@ public class assignment3 extends driverSetup{
 		iSMSPack = Integer.parseInt(driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper:nth-child(5) table.alt tbody:nth-child(2) tr:nth-child(3) td:nth-child(5) > b:nth-child(1)")).getText());
 		
 		//Check that the Charges add up
+		int temp = iLocalMinutes + iInternationalMinutes + iSMSPack;
+		Reporter.log("expected ------------------"+ iUsageCharges);
+	    Reporter.log("actual --------------------"+ temp);
 		Assert.assertEquals(iUsageCharges, iLocalMinutes + iInternationalMinutes + iSMSPack);
 	}
 	
@@ -97,6 +107,9 @@ public class assignment3 extends driverSetup{
 		iTotalBill = Integer.parseInt(driver.findElement(By.cssSelector("body.subpage:nth-child(2) section.wrapper:nth-child(6) div.inner div.table-wrapper:nth-child(5) table.alt tbody:nth-child(2) tr:nth-child(6) td:nth-child(2) > b:nth-child(1)")).getText());
 	
 		//Check that the Total adds up
+		int temp = iUsageCharges + iTariffPlanAmount;
+		Reporter.log("expected ------------------"+ iTotalBill);
+	    Reporter.log("actual --------------------"+ temp);
 		Assert.assertEquals(iTotalBill, iUsageCharges + iTariffPlanAmount);
 	}
 	

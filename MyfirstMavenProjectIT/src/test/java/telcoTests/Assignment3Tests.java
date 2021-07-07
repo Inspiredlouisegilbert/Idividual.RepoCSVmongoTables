@@ -35,9 +35,5 @@ public class Assignment3Tests {
 			clAssignment3.WHEN_submit_THEN_CustomerID_Displayed("CustomerID");
 			clAssignment3.CheckTotalAmount();
 		}
-		
-		@AfterTest
-		public void CloseSelenium() throws Exception {
-			clAssignment1.afterTest();
-		}
+
 }

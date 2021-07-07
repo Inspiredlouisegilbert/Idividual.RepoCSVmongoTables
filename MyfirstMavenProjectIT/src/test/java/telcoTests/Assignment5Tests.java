@@ -36,9 +36,4 @@ public class Assignment5Tests {
 		clAssignment5.CreateCustomerCSV(sFirstName, sLastName, sEmail, sAddress, sNumber, sBackgroundCheck);
 		clAssignment5.AddCustomerFromCSV("valid");
 	}
-	
-	@AfterTest
-	public void CloseSelenium() throws Exception {
-		clAssignment1.afterTest();
-	}
 }

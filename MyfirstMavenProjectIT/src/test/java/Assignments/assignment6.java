@@ -2,7 +2,9 @@ package Assignments;
 
 import java.util.Scanner;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.testng.Reporter;
 
 import frameworkclasses.ReusableFunctions;
 
@@ -11,6 +13,8 @@ public class assignment6 extends driverSetup{
 	ReusableFunctions sfSelenium = new ReusableFunctions();
 	assignment1 clAssignment1 = new assignment1();
 	assignment2 clAssignment2 = new assignment2();
+	
+	int iTariffPlanExistsFlag = 0;
 	
 	int iHighestMonthlyRentalValue = 0;
 	int iHighestLocalMinutesValue = 0;
@@ -29,6 +33,7 @@ public class assignment6 extends driverSetup{
 	int iLowestPerSMSChargesValue = -1;
 	
 	public void GetTariffPlanTable() throws Exception {
+		clAssignment1.Setup();
 		//Initialize variables 
 		String sTariffTable;
 		
@@ -103,29 +108,48 @@ public class assignment6 extends driverSetup{
 			 }
 		}
 		scanner.close();
+		
+		//Construct MaxValue Tariffplan
+		String MaxValueString =  String.valueOf(iHighestMonthlyRentalValue) + " " + String.valueOf(iHighestLocalMinutesValue) + " " + String.valueOf(iHighestInternationalMinutesValue) + " " + String.valueOf(iHighestSMSPackValue) + " " + String.valueOf(iHighestPerLocalMinutesChargesValue) + " " + String.valueOf(iHighestPerInternationalMinutesChargesValue) + " " + String.valueOf(iHighestPerSMSChargesValue);
+		
+		//Creates new scanner to check if Tariff plan exists
+		Scanner scanner2 = new Scanner(sTariffTable);
+		while (scanner2.hasNextLine()) {
+			String sline = scanner2.nextLine();
+			
+			if (sline.equals(MaxValueString)) {
+			    iTariffPlanExistsFlag = 1;
+			}
+		}
+		if (iTariffPlanExistsFlag == 1) {
+			Reporter.log("Tariff Plan already exists!");
+		}
+		else {
+			Reporter.log("Tariff Plan Added");
+			AddTariffPlan();
+		}
 	}
 	
 	public void AddTariffPlan() throws Exception {
 		clAssignment1.Setup();
-		GetTariffPlanTable();
 		
 		//click on add Tariff plan
 		driver.findElement(By.linkText("Add Tariff Plan")).click();
 		
 		//populate Monthly Rental input field
-		sfSelenium.populateInputField(By.cssSelector("#rental1"), Integer.toString(iHighestMonthlyRentalValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#rental1"), Integer.toString(iHighestMonthlyRentalValue));
 		//populate Free Local Minutes input field
-		sfSelenium.populateInputField(By.cssSelector("#local_minutes"), Integer.toString(iHighestLocalMinutesValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#local_minutes"), Integer.toString(iHighestLocalMinutesValue));
 		//populate Free International Minutes input field
-		sfSelenium.populateInputField(By.cssSelector("#inter_minutes"), Integer.toString(iHighestInternationalMinutesValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#inter_minutes"), Integer.toString(iHighestInternationalMinutesValue));
 		//populate Free SMS Pack input field
-		sfSelenium.populateInputField(By.cssSelector("#sms_pack"), Integer.toString(iHighestSMSPackValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#sms_pack"), Integer.toString(iHighestSMSPackValue));
 		//populate Local Per Minutes Charges input field
-		sfSelenium.populateInputField(By.cssSelector("#minutes_charges"), Integer.toString(iHighestPerLocalMinutesChargesValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#minutes_charges"), Integer.toString(iHighestPerLocalMinutesChargesValue));
 		//populate International Per Minutes Charges input field
-		sfSelenium.populateInputField(By.cssSelector("#inter_charges"), Integer.toString(iHighestPerInternationalMinutesChargesValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#inter_charges"), Integer.toString(iHighestPerInternationalMinutesChargesValue));
 		//populate SMS Per Charges input field
-		sfSelenium.populateInputField(By.cssSelector("#sms_charges"), Integer.toString(iHighestPerSMSChargesValue), driver);
+		sfSelenium.populateInputField(By.cssSelector("#sms_charges"), Integer.toString(iHighestPerSMSChargesValue));
 		
 		//click submit
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[36]/ul[1]/li[1]/input[1]")).click();

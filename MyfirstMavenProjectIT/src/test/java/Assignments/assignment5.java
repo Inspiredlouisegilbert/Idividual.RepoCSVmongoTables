@@ -9,6 +9,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 import frameworkclasses.ReusableFunctions;
 
@@ -74,11 +75,11 @@ public class assignment5 extends driverSetup{
 		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
 		//populate input fields
-		sfSelenium.populateInputField(By.cssSelector("#fname"), sFirstName, driver);
-		sfSelenium.populateInputField(By.cssSelector("#lname"), sLastName, driver);
-		sfSelenium.populateInputField(By.cssSelector("#email"), sEmail, driver);
-		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), sAddress, driver);
-		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), sNumber, driver);
+		sfSelenium.populateInputField(By.cssSelector("#fname"), sFirstName);
+		sfSelenium.populateInputField(By.cssSelector("#lname"), sLastName);
+		sfSelenium.populateInputField(By.cssSelector("#email"), sEmail);
+		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), sAddress);
+		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), sNumber);
 		
 		//select Background Check
 		driver.findElement(By.xpath("//label[contains(text(),'" + sBackgroundCheck +"')]")).click();
@@ -93,10 +94,20 @@ public class assignment5 extends driverSetup{
 			bTelephonenoValid = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[8]/label[1]")).isDisplayed();
 			
 			//do assertions on the warning messages
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bFnameValid);
 			Assert.assertEquals(bExpectedValue, bFnameValid);
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bLnameValid);
 			Assert.assertEquals(bExpectedValue, bLnameValid);
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bEmailValid);
 			Assert.assertEquals(bExpectedValue, bEmailValid);
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bAddressValid);
 			Assert.assertEquals(bExpectedValue, bAddressValid);
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bTelephonenoValid);
 			Assert.assertEquals(bExpectedValue, bTelephonenoValid);
 			
 			//click the Submit Button
@@ -105,6 +116,8 @@ public class assignment5 extends driverSetup{
 			//handle the alert
 			Alert alert = driver.switchTo().alert();
 			String sAlertMessage = alert.getText();
+			Reporter.log("expected ------------------"+ "please fill all fields");
+		    Reporter.log("actual --------------------"+ sAlertMessage);
 			Assert.assertEquals("please fill all fields", sAlertMessage);
 			alert.accept();
 		}
@@ -125,6 +138,8 @@ public class assignment5 extends driverSetup{
 			    myWriter.write(sCustomerID);
 			    myWriter.close();
 			}
+			Reporter.log("expected ------------------"+ bExpectedValue);
+		    Reporter.log("actual --------------------"+ bActualValue);
 			Assert.assertEquals(bExpectedValue, bActualValue);
 		}
 		

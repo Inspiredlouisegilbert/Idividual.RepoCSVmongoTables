@@ -20,9 +20,4 @@ public class Assignment6Tests {
 		public void test1() throws Exception {
 			clAssignment6.GetTariffPlanTable();
 		}
-		
-		@AfterTest
-		public void CloseSelenium() throws Exception {
-			clAssignment1.afterTest();
-		}
 }

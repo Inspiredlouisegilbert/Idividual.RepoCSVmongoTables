@@ -19,9 +19,4 @@ public class Assignment4Tests {
 		clAssignment3.WHEN_submit_THEN_CustomerID_Displayed("CustomerID");
 		clAssignment3.StoreBillingInfo();
 	}
-	
-	@AfterTest
-	public void CloseSelenium() throws Exception {
-		clAssignment1.afterTest();
-	}
 }

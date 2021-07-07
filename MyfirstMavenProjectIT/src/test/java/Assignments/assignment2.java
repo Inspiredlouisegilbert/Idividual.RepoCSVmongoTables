@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -59,9 +60,13 @@ public class assignment2 extends driverSetup{
 		//assert that the user is active/inactive 
 		sActualValue = driver.findElement(By.tagName("font")).getText();
 		if (pBackgroundCheck.equals("Done")) {
+			Reporter.log("expected ------------------"+ "ACTIVE");
+		    Reporter.log("actual --------------------"+ sActualValue);
 			Assert.assertEquals("ACTIVE", sActualValue);
 		}
 		else { 
+			Reporter.log("expected ------------------"+ "INACTIVE");
+		    Reporter.log("actual --------------------"+ sActualValue);
 			Assert.assertEquals("INACTIVE", sActualValue);
 		}
 		Thread.sleep(500);	
@@ -79,6 +84,8 @@ public class assignment2 extends driverSetup{
 		catch(Exception e) {
 			bAvaliableTariffPlan = false;
 		}
+		Reporter.log("expected ------------------"+ true);
+	    Reporter.log("actual --------------------"+ bAvaliableTariffPlan);
 		Assert.assertEquals(true, bAvaliableTariffPlan);
 	}
 	
@@ -93,6 +100,8 @@ public class assignment2 extends driverSetup{
 					
 			//assert successful addition of tariff plan
 			sActualValue = driver.findElement(By.tagName("h2")).getText();
+			Reporter.log("expected ------------------"+ sExpectedValue);
+		    Reporter.log("actual --------------------"+ sActualValue);
 			Assert.assertEquals(sExpectedValue, sActualValue);
 		}
 		else {
@@ -120,7 +129,7 @@ public class assignment2 extends driverSetup{
 	
 	public void SubmitCustomerID(String pCustomerID) throws InterruptedException {
 		//populate Customer ID and submit
-		sfSelenium.populateInputField(By.cssSelector("#customer_id"), pCustomerID, driver);
+		sfSelenium.populateInputField(By.cssSelector("#customer_id"), pCustomerID);
 		driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[6]/input[1]")).click();
 		Thread.sleep(500);
 	}

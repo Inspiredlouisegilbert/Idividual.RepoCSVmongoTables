@@ -53,13 +53,13 @@ public class BankProjectGenerateDataKeywordsRefactored extends DriverSetup{
 	
 		//NAVIGATE TO BANK PROJECT
 		public void clickBankProject() {
-			sfSelenium.clickLink("Bank Project",driver);
+			sfSelenium.clickLink("Bank Project");
 			
 		}
 		
 		public void validateEmailAddress(String sValidateEmailAddress) {
 			//CREATE TEST TO VALIDATE EMAIL ADRESS
-			sfSelenium.clickLink("here",driver);
+			sfSelenium.clickLink("here");
 			driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(sValidateEmailAddress);
 			driver.findElement(By.name("btnLogin")).click();
 		}
@@ -75,7 +75,7 @@ public class BankProjectGenerateDataKeywordsRefactored extends DriverSetup{
 			String pOutcome = "";
 			
 			//NAVIGATE BACK TO THE BANK PROJECT
-			sfSelenium.clickLink("Bank Project",driver);
+			sfSelenium.clickLink("Bank Project");
 			populateInpute(sUserID,sPassword);
 			successfulLogin();
 			writeToFile(sUserID,sPassword,randomisednumber, eleDisplayed);
@@ -83,8 +83,8 @@ public class BankProjectGenerateDataKeywordsRefactored extends DriverSetup{
 			
 		//POPULATE INPUT FIELDS
 		public void populateInpute(String pUsersID ,String pPassword) {
-			sfSelenium.populateInputField(By.name("uid"), pUsersID,driver);
-			sfSelenium.populateInputField(By.name("password"), pPassword,driver);
+			sfSelenium.populateInputField(By.name("uid"), pUsersID);
+			sfSelenium.populateInputField(By.name("password"), pPassword);
 			driver.findElement(By.name("btnLogin")).click();
 			
 		}
@@ -170,6 +170,6 @@ public class BankProjectGenerateDataKeywordsRefactored extends DriverSetup{
 		
 		@AfterSuite
 		public void cleanup () throws IOException, InterruptedException {
-			sfSelenium.CloseSelenium(driver);
+			sfSelenium.CloseSelenium();
 		}
 }

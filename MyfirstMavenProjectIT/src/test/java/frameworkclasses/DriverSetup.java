@@ -18,7 +18,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DriverSetup {
-	public WebDriver driver;
+	public static WebDriver driver;
 	
 	//ReusableFunctions sfSelenium = new ReusableFunctions();
 
@@ -36,28 +36,28 @@ public class DriverSetup {
 		if(browser.equalsIgnoreCase("firefox")){
 		//create firefox instance
 			System.setProperty("webdriver.gecko.driver", pdriverDir+"geckodriver.exe");
-			setDriver(new FirefoxDriver());
+			driver = new FirefoxDriver();
 		}
 		//Check if parameter passed as 'chrome'
-		else if(browser.equalsIgnoreCase("chrome")){
+		else if(browser.equalsIgnoreCase("Chrome")){
 			//set path to chromedriver.exe
 			System.setProperty("webdriver.chrome.driver",pdriverDir+"chromedriver.exe");
 			//create chrome instance
-			setDriver(new ChromeDriver());
+			driver = new ChromeDriver();
 		}
 		//Check if parameter passed as 'Edge'
-				else if(browser.equalsIgnoreCase("Edge")){
-					//set path to Edge.exe
-					System.setProperty("webdriver.edge.driver",pdriverDir+"MicrosoftWebDriver.exe");
-					//create Edge instance
-					setDriver(new EdgeDriver());
-				}
+//				else if(browser.equalsIgnoreCase("Edge")){
+//					//set path to Edge.exe
+//					System.setProperty("webdriver.edge.driver",pdriverDir+"MicrosoftWebDriver.exe");
+//					//create Edge instance
+//					setDriver(new EdgeDriver());
+//				}
 		else{
 			//If no browser passed throw exception
 			throw new Exception("Browser is not correct");
 		}
-		getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		getDriver().manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
 	}
 	
 	public String getDataConfigProperties(String propertyName) {
@@ -81,11 +81,11 @@ public class DriverSetup {
 
 	}
 
-	public WebDriver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(WebDriver driver) {
-		this.driver = driver;
-	}
+//	public WebDriver getDriver() {
+//		return driver;
+//	}
+//
+//	public void setDriver(WebDriver driver) {
+//		this.driver = driver;
+//	}
 }

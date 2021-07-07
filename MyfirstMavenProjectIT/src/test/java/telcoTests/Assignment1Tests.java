@@ -28,11 +28,5 @@ public class Assignment1Tests {
 	@Test
 	public void test3() throws Exception {
 		clAssignment1.AddCustomer("Done");
-	}
-	
-	@AfterTest
-	public void CloseSelenium() throws Exception {
-		clAssignment1.afterTest();
-	}
-	
+	}	
 }

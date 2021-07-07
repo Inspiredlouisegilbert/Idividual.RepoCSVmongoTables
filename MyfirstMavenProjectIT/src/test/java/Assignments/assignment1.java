@@ -35,6 +35,8 @@ public class assignment1  extends driverSetup{
 		//Navigate to URL
 		driver.get(sURL);
 		String sLogoTxt = driver.findElement(By.cssSelector("body:nth-child(2) span:nth-child(3) nav.left > a.logo:nth-child(2)")).getText();
+		Reporter.log("expected ------------------"+ "Guru99 telecom");
+	    Reporter.log("actual --------------------"+ sLogoTxt);
 		Assert.assertEquals("Guru99 telecom", sLogoTxt);		 
 	}
 
@@ -62,11 +64,11 @@ public class assignment1  extends driverSetup{
 		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
 		//populate input fields
-		sfSelenium.populateInputField(By.cssSelector("#fname"), "!not valid!", driver);
-		sfSelenium.populateInputField(By.cssSelector("#lname"), "1not valid1", driver);
-		sfSelenium.populateInputField(By.cssSelector("#email"), "Not@Valid", driver);
-		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), " ", driver);
-		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "!not valid!", driver);
+		sfSelenium.populateInputField(By.cssSelector("#fname"), "!not valid!");
+		sfSelenium.populateInputField(By.cssSelector("#lname"), "1not valid1");
+		sfSelenium.populateInputField(By.cssSelector("#email"), "Not@Valid");
+		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), " ");
+		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "!not valid!");
 		
 		//check if warning messages are displayed
 		bFnameValid = driver.findElement(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[4]/label[1]")).isDisplayed();
@@ -133,11 +135,11 @@ public class assignment1  extends driverSetup{
 		driver.findElement(By.cssSelector("#telephoneno")).clear();
 		
 		//populate input fields
-		sfSelenium.populateInputField(By.cssSelector("#fname"), "valid", driver);
-		sfSelenium.populateInputField(By.cssSelector("#lname"), "name", driver);
-		sfSelenium.populateInputField(By.cssSelector("#email"), "Valid@test.com", driver);
-		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), "37 Test Street Suburb", driver);
-		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "0112223333", driver);
+		sfSelenium.populateInputField(By.cssSelector("#fname"), "valid");
+		sfSelenium.populateInputField(By.cssSelector("#lname"), "name");
+		sfSelenium.populateInputField(By.cssSelector("#email"), "Valid@test.com");
+		sfSelenium.populateInputField(By.xpath("/html[1]/body[1]/section[1]/div[1]/form[1]/div[1]/div[7]/textarea[1]"), "37 Test Street Suburb");
+		sfSelenium.populateInputField(By.cssSelector("#telephoneno"), "0112223333");
 		
 		//select Background Check
 		driver.findElement(By.xpath("//label[contains(text(),'" + pBackgroundCheck +"')]")).click();
@@ -167,7 +169,7 @@ public class assignment1  extends driverSetup{
 	}
 	
 	public void afterTest() throws Exception {
-		sfSelenium.CloseSelenium(driver);
+		sfSelenium.CloseSelenium();
 	}
 
 }

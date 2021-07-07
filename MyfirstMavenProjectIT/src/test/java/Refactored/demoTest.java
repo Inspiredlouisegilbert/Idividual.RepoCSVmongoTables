@@ -56,8 +56,8 @@ public class demoTest extends DriverSetup {
 	@Test
 	public void testParameterWithXML() throws InterruptedException{
 		driver.get("http://demo.guru99.com/V4/");
-		sfSelenium.populateInputField(By.name("uid"), "guru99",driver);
-		sfSelenium.populateInputField(By.name("password"), "guru99",driver);
+		sfSelenium.populateInputField(By.name("uid"), "guru99");
+		sfSelenium.populateInputField(By.name("password"), "guru99");
 
 	}
 }
