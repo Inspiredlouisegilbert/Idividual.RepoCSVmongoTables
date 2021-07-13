@@ -50,14 +50,21 @@ public class Guru99Telcom_LandingPage extends BasePage {
 		return verify_AddTariffPlanToCustomerLink();
 		 
 	}
-
+// line 56 to line 57 is the same as line  47-48
 	public void ClickAddTariffPlanToCustomer_Link() {       
        		 	
 		// Click on Add Tariff Plan to Customer
 		driver.findElement(By.linkText("Add Tariff Plan to Customer")).click();  
 			
-			 
-	}
+		}
+	public void Click_Pay_Billing_Link() {       
+		 	
+		// Click on Pay billing
+		driver.findElement(By.linkText("Pay Billing")).click();  
+			
+		}
+	
+	
 	
 
 }

@@ -46,7 +46,7 @@
 
 	   // Add the generated Customer ID   
 	   //String Cust_ID = driver.findElement(By.cssSelector("#customer_id")).getText();
-	   populateInputField(By.name("#customer_id"),sCustID);
+	   populateInputField(By.name("customer_id"),sCustID);
 	 //Populate the billing details
 
 	}

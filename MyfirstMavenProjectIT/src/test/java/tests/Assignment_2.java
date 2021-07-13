@@ -195,7 +195,7 @@ public class Assignment_2 {
 		
 	//*************///*******************************    //*******************************	
 		
-		//test cese 2
+		//test case 2
 			
 		@Test
 		public void  GIVEN_Inactive_customer_WHEN_submit_THEN_INactive_is_displayed () throws InterruptedException {
