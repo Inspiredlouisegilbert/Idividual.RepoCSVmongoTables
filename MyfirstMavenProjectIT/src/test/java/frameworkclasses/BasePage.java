@@ -31,7 +31,7 @@ public class BasePage {
         	
         	// Get parameter values
         	String browser = getDataConfigProperties("browser");
-        	String systemUnderTest = getDataConfigProperties("systemUnderTest");
+        	String systemUnderTest = getDataConfigProperties("systemUnderTestAss");
             String pdriverDir = getDataConfigProperties("driverdir");
             
     		//Check if parameter passed is 'firefox'
