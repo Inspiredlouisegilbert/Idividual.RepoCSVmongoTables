@@ -48,7 +48,14 @@ public class MbhoniAssTest {
 		landingPage.clickSearchButton();
 		landingPage.clickDropDown();
 		landingPage.selectFromDropDown();
-		
+		landingPage.clickFirstResult();
+		landingPage.enterQuanity("50");
+		landingPage.lowStockPopWindow();
+		landingPage.enterQuanity("2");
+		landingPage.addToCart();
+		// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
+		landingPage.addToCart();
+		landingPage.clickContinueShopping();
 		
 	}
 

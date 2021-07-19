@@ -16,13 +16,13 @@ public class GeewizLandingPageObjects extends BasePage {
     }
      
      public void clickSearchButton() throws InterruptedException {
-    	 Thread.sleep(500);
     	 driver.findElement(By.xpath("//div[@id='search_widget']/form/button/i")).click();
+    	 Thread.sleep(500);
      }
      
      public void clickDropDown() throws InterruptedException {
-    	WebElement element = driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/button"));
-    	Thread.sleep(2000);
+    	driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/button")).click();
+    	Thread.sleep(500);
      }
      
      
@@ -30,8 +30,41 @@ public class GeewizLandingPageObjects extends BasePage {
     	 WebElement element = driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/div/a[5]"));
     	 Actions actions = new Actions(driver);
     	 actions.moveToElement(element).click().perform();
+    	 Thread.sleep(500);
+     }
+     
+     public void clickFirstResult () throws InterruptedException {
+    	 Thread.sleep(2500);
+    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .h3 > a")).click();
     	 Thread.sleep(2000);
      }
-	
+     
+     public void enterQuanity(String enterQuanity) throws InterruptedException {
+    	 driver.findElement(By.id("quantity_wanted")).clear();
+    	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);  
+         Thread.sleep(500);
+     }
+     
+     public void lowStockPopWindow() throws InterruptedException {
+    	 //driver.findElement(By.cssSelector(".cancel-button > span")).clear();
+    	 
+    	 WebElement element = driver.findElement(By.cssSelector(".cancel-button > span"));
+    	 Actions actions = new Actions(driver);
+    	 actions.moveToElement(element).click().perform();
+    	 Thread.sleep(2000);
+     }
+     
+     public void addToCart() throws InterruptedException {
+    	 Thread.sleep(2000);
+    	 driver.findElement(By.cssSelector(".add-to-cart-geewiz")).click();
+    	 Thread.sleep(2000);
+     }
+     
+     public void clickContinueShopping() throws InterruptedException {
+    	 Thread.sleep(2000);
+    	 driver.findElement(By.cssSelector(".cart-content-btn > .btn-secondary")).clear();
+    	 Thread.sleep(2000);
+     }
+     
 
 }
