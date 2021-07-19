@@ -80,18 +80,17 @@ public class MbhoniAssTest {
 				landingPage.searchProduct(cols[0]);
 				landingPage.clickSearchButton();
 				landingPage.clickDropDown();
-				landingPage.selectFromDropDown(cols[1]);
-				landingPage.clickFirstResult();
-				landingPage.enterQuanity(cols[2]);
-				landingPage.lowStockPopWindow();
+				landingPage.selectFromDropDownCsv(cols[1]);
+				//landingPage.clickFirstResult();
+				landingPage.clickFirstResultCsv(cols[2]);
 				landingPage.enterQuanity(cols[3]);
+				landingPage.lowStockPopWindow();
+				landingPage.enterQuanity(cols[4]);
 				landingPage.addToCart();
 				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
 				landingPage.addToCart();
 				landingPage.clickContinueShopping();
-				landingPage.vaildateCartAmount();		    
-			    
-			    
+				landingPage.vaildateCartAmount();		    			    
 			}
 			
 			br.close();

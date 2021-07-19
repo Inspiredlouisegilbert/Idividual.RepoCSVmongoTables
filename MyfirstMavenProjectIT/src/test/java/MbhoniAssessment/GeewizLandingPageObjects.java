@@ -33,6 +33,7 @@ public class GeewizLandingPageObjects extends BasePage {
     	Thread.sleep(500);
      }
      
+     // Over Load method
      
      public void selectFromDropDown() throws InterruptedException {
     	 WebElement element = driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/div/a[5]"));
@@ -41,14 +42,31 @@ public class GeewizLandingPageObjects extends BasePage {
     	 Thread.sleep(500);
      }
      
+     public void selectFromDropDownCsv(String selectSortBy) throws InterruptedException {
+    	 WebElement element = driver.findElement(By.xpath(selectSortBy));
+    	 Actions actions = new Actions(driver);
+    	 actions.moveToElement(element).click().perform();
+    	 Thread.sleep(500);
+     }
+     
+     // Over Load method
+     
      public void clickFirstResult () throws InterruptedException {
     	 Thread.sleep(2500);
     	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .h3 > a")).click();
     	 Thread.sleep(2000);
      }
      
+     public void clickFirstResultCsv(String selectFistResults) throws InterruptedException {
+    	 WebElement element = driver.findElement(By.xpath(selectFistResults));
+    	 Actions actions = new Actions(driver);
+    	 actions.moveToElement(element).click().perform();
+    	 Thread.sleep(500);
+     }
+     
      public void enterQuanity(String enterQuanity) throws InterruptedException {
     	 driver.findElement(By.id("quantity_wanted")).clear();
+    	 Thread.sleep(5000);
     	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);  
          Thread.sleep(500);
      }
