@@ -62,7 +62,7 @@ public class GeewizLandingPageObjects extends BasePage {
      
      public void clickContinueShopping() throws InterruptedException {
     	 Thread.sleep(2000);
-    	 driver.findElement(By.cssSelector(".cart-content-btn > .btn-secondary")).clear();
+    	 driver.findElement(By.cssSelector(".cart-content-btn > .btn-secondary")).click();
     	 Thread.sleep(2000);
      }
      
