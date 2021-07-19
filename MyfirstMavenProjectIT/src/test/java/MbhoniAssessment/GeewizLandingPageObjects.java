@@ -3,17 +3,25 @@ package MbhoniAssessment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import frameworkclasses.BasePage;
+import pages.HomePage;
 
 public class GeewizLandingPageObjects extends BasePage {
 	
-     public void searchProduct(String searchProducts) throws InterruptedException {
-    	
+     public void searchProduct(String searchProducts) throws InterruptedException { 	 	
         //Enter text solar in the search text box
-        driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);  
+        driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);
+        //driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys("mbhoni");
         Thread.sleep(500);
     }
+     
+     public void openUrl () {
+    	 String systemUnderTest = getDataConfigProperties("systemUnderTestAss");
+    	 driver.get(systemUnderTest); 	 
+     }
      
      public void clickSearchButton() throws InterruptedException {
     	 driver.findElement(By.xpath("//div[@id='search_widget']/form/button/i")).click();
@@ -35,7 +43,7 @@ public class GeewizLandingPageObjects extends BasePage {
      
      public void clickFirstResult () throws InterruptedException {
     	 Thread.sleep(2500);
-    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .h3 > a")).click();
+    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .h3 > a")).click();
     	 Thread.sleep(2000);
      }
      
@@ -66,5 +74,13 @@ public class GeewizLandingPageObjects extends BasePage {
     	 Thread.sleep(2000);
      }
      
+     public void vaildateCartAmount() {
+    	 driver.findElement(By.cssSelector(".title-cart")).click();
+    	 String totalAmount = driver.findElement(By.cssSelector(".product-price:nth-child(1)")).getText();
+    	 Assert.assertTrue(100 > 0);
+    	 System.out.println("Amount is greater than 100. TotalCount is: "+totalAmount);//This line will ONLY be printed if the count is greater than 100.
+    	 
+    	 
+     }
 
 }

@@ -1,5 +1,8 @@
 package tests;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.testng.Assert;
@@ -35,7 +38,7 @@ public class MbhoniAssTest {
 
 	
 	@Test
-    public void Search_Products () throws InterruptedException {
+    public void search_Products () throws InterruptedException {
 //        String expectedTitle = "My Store";
 //        String actualTitle = landingPage.getTitle();
 //         
@@ -56,9 +59,54 @@ public class MbhoniAssTest {
 		// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
 		landingPage.addToCart();
 		landingPage.clickContinueShopping();
+		landingPage.vaildateCartAmount();
 		
 	}
+	@Test
+    public void runTestReadFromFile() throws IOException, InterruptedException {
+	
+		landingPage.openUrl();
+		
+		String Ass = uts.getDataConfigProperties("Ass");
+		BufferedReader br = new BufferedReader(new FileReader(Ass)); 
+		
+		String line;
+		while ((line = br.readLine()) != null) { 
+			if(line.length() > 0) {
+				
+				String[] cols = line.split(";"); 
+			    System.out.println(cols[0]);
+			    
+				landingPage.searchProduct(cols[0]);
+				landingPage.clickSearchButton();
+				landingPage.clickDropDown();
+				landingPage.selectFromDropDown(cols[1]);
+				landingPage.clickFirstResult();
+				landingPage.enterQuanity(cols[2]);
+				landingPage.lowStockPopWindow();
+				landingPage.enterQuanity(cols[3]);
+				landingPage.addToCart();
+				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
+				landingPage.addToCart();
+				landingPage.clickContinueShopping();
+				landingPage.vaildateCartAmount();		    
+			    
+			    
+			}
+			
+			br.close();
+		}
+		
+	}
+		
+		@AfterSuite
+	    public void cleanup() {
+	         
+	        //Instantiate SignInPage class object
+	        SignInPage inPage = new SignInPage();
 
-	
-	
+	        inPage.cleanUp();
+	        
+
+	}
 }
