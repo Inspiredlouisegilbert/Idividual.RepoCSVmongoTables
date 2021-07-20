@@ -92,7 +92,7 @@ public class assessmentLandingPage extends BasePage{
 				String sAlertMessage = alert.getText();
 				Assert.assertEquals("Please note the current stock status is:", sAlertMessage);
 				System.out.println("Expected popup message: " + sAlertMessage); 
-				alert.accept();
+				alert.accept(); 
 			}
 		catch(Exception e) {
 				System.out.println(e);
