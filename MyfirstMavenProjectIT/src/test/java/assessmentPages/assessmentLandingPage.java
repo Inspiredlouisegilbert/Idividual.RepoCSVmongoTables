@@ -91,7 +91,7 @@ public class assessmentLandingPage extends BasePage{
 				Alert alert = this.driver.switchTo().alert();
 				String sAlertMessage = alert.getText();
 				Assert.assertEquals("Please note the current stock status is:", sAlertMessage);
-				System.out.println("Expected popup message: " + sAlertMessage);
+				System.out.println("Expected popup message: " + sAlertMessage); 
 				alert.accept();
 			}
 		catch(Exception e) {
