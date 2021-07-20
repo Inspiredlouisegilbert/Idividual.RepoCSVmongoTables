@@ -18,6 +18,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import pages.HomePage;
 import pages.LandingPage;
@@ -33,6 +34,7 @@ public class MbhoniAssTest {
 	ProductSearchPage pr = new ProductSearchPage();
 	HomePage homePage = new HomePage();
 	Utilities uts = new Utilities();
+	SoftAssert softAssert = new SoftAssert();
 
 	
 
@@ -61,12 +63,12 @@ public class MbhoniAssTest {
 		landingPage.clickContinueShopping();
 		landingPage.vaildateCartAmount();
 		
+		softAssert.assertAll();
+		
 	}
 	@Test
     public void runTestReadFromFile() throws IOException, InterruptedException {
-	
-		landingPage.openUrl();
-		
+
 		String Ass = uts.getDataConfigProperties("Ass");
 		BufferedReader br = new BufferedReader(new FileReader(Ass)); 
 		
@@ -79,6 +81,7 @@ public class MbhoniAssTest {
 			    
 				landingPage.searchProduct(cols[0]);
 				landingPage.clickSearchButton();
+				
 				landingPage.clickDropDown();
 				landingPage.selectFromDropDownCsv(cols[1]);
 				//landingPage.clickFirstResult();
@@ -90,17 +93,59 @@ public class MbhoniAssTest {
 				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
 				landingPage.addToCart();
 				landingPage.clickContinueShopping();
-				landingPage.vaildateCartAmount();		    			    
+				//landingPage.vaildateCartAmount();
+				
+				softAssert.assertAll();
 			}
 			
-			br.close();
+
 		}
+		
+			br.close();
+		
+	}
+	
+	@Test
+    public void runTestReadFromFile1() throws IOException, InterruptedException {
+
+		String Ass1 = uts.getDataConfigProperties("Ass1");
+		BufferedReader br = new BufferedReader(new FileReader(Ass1)); 
+		
+		String line;
+		while ((line = br.readLine()) != null) { 
+			if(line.length() > 0) {
+				
+				String[] cols = line.split(";"); 
+			    System.out.println(cols[0]);
+			    
+				landingPage.searchProduct(cols[0]);
+				landingPage.clickSearchButton();
+				
+				landingPage.clickDropDown();
+				landingPage.selectFromDropDownCsv(cols[1]);
+				landingPage.clickFirstResultCsv(cols[2]);
+				landingPage.enterQuanity(cols[3]);
+				landingPage.lowStockPopWindow();
+				landingPage.enterQuanity(cols[4]);
+				landingPage.addToCart();
+				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
+				landingPage.addToCart();
+				landingPage.clickContinueShopping();
+				landingPage.vaildateCartAmount();
+				
+				softAssert.assertAll();
+			}
+			
+
+		}
+		
+			br.close();
 		
 	}
 		
 		@AfterSuite
 	    public void cleanup() {
-	         
+			
 	        //Instantiate SignInPage class object
 	        SignInPage inPage = new SignInPage();
 

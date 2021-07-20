@@ -1,8 +1,13 @@
 package MbhoniAssessment;
 
+import java.util.concurrent.TimeUnit;
+
+import org.hamcrest.core.Is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -13,7 +18,8 @@ public class GeewizLandingPageObjects extends BasePage {
 	
      public void searchProduct(String searchProducts) throws InterruptedException { 	 	
         //Enter text solar in the search text box
-        driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);
+    	//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    	driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);
         //driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys("mbhoni");
         Thread.sleep(500);
     }
@@ -32,10 +38,11 @@ public class GeewizLandingPageObjects extends BasePage {
     	driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/button")).click();
     	Thread.sleep(500);
      }
-     
+     // -------------------------------------------------------------------
      // Over Load method
      
      public void selectFromDropDown() throws InterruptedException {
+    	 Thread.sleep(3000);
     	 WebElement element = driver.findElement(By.xpath("//div[@id='js-product-list-top']/div/div[2]/div/div/div/div/a[5]"));
     	 Actions actions = new Actions(driver);
     	 actions.moveToElement(element).click().perform();
@@ -43,27 +50,29 @@ public class GeewizLandingPageObjects extends BasePage {
      }
      
      public void selectFromDropDownCsv(String selectSortBy) throws InterruptedException {
+    	 Thread.sleep(4000);
     	 WebElement element = driver.findElement(By.xpath(selectSortBy));
     	 Actions actions = new Actions(driver);
     	 actions.moveToElement(element).click().perform();
     	 Thread.sleep(500);
      }
-     
+    // --------------------------------------------------------------------
      // Over Load method
      
      public void clickFirstResult () throws InterruptedException {
-    	 Thread.sleep(2500);
+    	 Thread.sleep(4000);
     	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .h3 > a")).click();
     	 Thread.sleep(2000);
      }
      
      public void clickFirstResultCsv(String selectFistResults) throws InterruptedException {
-    	 WebElement element = driver.findElement(By.xpath(selectFistResults));
+    	 Thread.sleep(3000);
+    	 WebElement element = driver.findElement(By.cssSelector(selectFistResults));
     	 Actions actions = new Actions(driver);
     	 actions.moveToElement(element).click().perform();
     	 Thread.sleep(500);
      }
-     
+     // ----------------------------------------------------------------------
      public void enterQuanity(String enterQuanity) throws InterruptedException {
     	 driver.findElement(By.id("quantity_wanted")).clear();
     	 Thread.sleep(5000);
@@ -90,15 +99,23 @@ public class GeewizLandingPageObjects extends BasePage {
     	 Thread.sleep(2000);
     	 driver.findElement(By.cssSelector(".cart-content-btn > .btn-secondary")).click();
     	 Thread.sleep(2000);
+    	 System.out.println("Continue Shopping is clicked");
      }
      
      public void vaildateCartAmount() {
     	 driver.findElement(By.cssSelector(".title-cart")).click();
     	 String totalAmount = driver.findElement(By.cssSelector(".product-price:nth-child(1)")).getText();
-    	 Assert.assertTrue(100 > 0);
-    	 System.out.println("Amount is greater than 100. TotalCount is: "+totalAmount);//This line will ONLY be printed if the count is greater than 100.
-    	 
-    	 
+    	 String totalAmountStrip = totalAmount.replaceAll(",", ""); 	 
+    	 String s= totalAmountStrip.substring(1);  
+    		
+    	 float f=Float.parseFloat(s); 
+    	 System.out.println(f);
+    	 Assert.assertTrue(f > 10.0);
      }
 
+	public void waitForClick(int elementWait,By pLocator) {
+    	WebDriverWait wait = new WebDriverWait(BasePage.driver,elementWait);
+    	wait.until(ExpectedConditions.elementToBeClickable(pLocator));
+    }
+	
 }
