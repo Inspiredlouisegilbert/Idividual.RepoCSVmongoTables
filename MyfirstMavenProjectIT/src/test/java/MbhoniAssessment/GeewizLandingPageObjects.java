@@ -1,5 +1,6 @@
 package MbhoniAssessment;
 
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.hamcrest.core.Is;
@@ -15,12 +16,11 @@ import frameworkclasses.BasePage;
 import pages.HomePage;
 
 public class GeewizLandingPageObjects extends BasePage {
+	boolean eleDisplayed;
 	
      public void searchProduct(String searchProducts) throws InterruptedException { 	 	
-        //Enter text solar in the search text box
     	//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     	driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);
-        //driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys("mbhoni");
         Thread.sleep(500);
     }
      
@@ -76,7 +76,15 @@ public class GeewizLandingPageObjects extends BasePage {
      public void enterQuanity(String enterQuanity) throws InterruptedException {
     	 driver.findElement(By.id("quantity_wanted")).clear();
     	 Thread.sleep(5000);
-    	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);  
+    	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);
+    	 try {
+				eleDisplayed = driver.findElement(By.id("quantity_wanted")).isDisplayed();
+				System.out.println("Successful Inserted quantity: " + eleDisplayed);
+				//sfSelenium.createTest("Successful Login");
+			}
+			catch(NoSuchElementException e) {
+				System.out.println(e);
+			}
          Thread.sleep(500);
      }
      

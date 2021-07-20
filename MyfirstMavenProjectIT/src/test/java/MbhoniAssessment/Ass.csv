@@ -1,0 +1,3 @@
+royal;//a[contains(text(),'Price, low to high')];.ajax_block_product:nth-child(1) .h3 > a;50;2
+sonic;//a[contains(text(),'Name, A to Z')];.ajax_block_product:nth-child(1) .h3 > a;50;2
+xbox;//a[contains(text(),'Relevance')];.ajax_block_product:nth-child(1) .h3 > a;50;2
