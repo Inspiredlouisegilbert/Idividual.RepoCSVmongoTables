@@ -72,6 +72,7 @@ public class AssessmentReadFromFile extends BasePage{
 		driver.findElement(By.cssSelector("#quantity_wanted")).clear();
 		sfSelenium.populateInputField(By.cssSelector("#quantity_wanted"), pQuantity);
 		System.out.println("Quantity updated successfully");
+		Thread.sleep(5000);
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
 		System.out.println("Product has been added to the cart");
 		System.out.println("Product search from file completed successfully");

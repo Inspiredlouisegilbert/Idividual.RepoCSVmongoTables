@@ -63,8 +63,9 @@ public class assessmentLandingPage extends BasePage{
 		}
 		
 		public void viewcart() throws InterruptedException {
-
-			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+			
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
 			
 		//HANDLE POPUP NOT VALID FOR THIS ASSESSMENT
 		//I USED ELEMENT DISPLAYED WITH BOOLEAN VALUE
