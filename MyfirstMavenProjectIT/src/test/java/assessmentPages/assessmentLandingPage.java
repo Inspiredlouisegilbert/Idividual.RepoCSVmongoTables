@@ -21,6 +21,7 @@ public class assessmentLandingPage extends BasePage{
 		String sProductsearch = "Solar";
 		String sProductLowStock = "DJI Osmo Pocket Charging Case, Open Box";
 		String sQuantity = "10";
+		String sQuantityTwo = "1";
 		boolean eleDisplayed;
 		
 		//Instantiate Selenium Functions
@@ -51,10 +52,26 @@ public class assessmentLandingPage extends BasePage{
 			Thread.sleep(5000);
 			driver.findElement(By.linkText("SwitchBot Curtain")).click();
 			Thread.sleep(5000);
-//			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).clear();
+			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).clear();
 			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).sendKeys(sQuantity);
-			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']/div[@class='product-add-to-cart']//span[@class='input-group-btn-vertical']/button[1]/i[@class='material-icons touchspin-up']")).click();
 			Thread.sleep(5000);
+			
+			//QUANTITY VALUE IN TABLE
+			WebElement getQuantity = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='5']"));
+			System.out.println("Quantity: " + getQuantity.getText());
+			
+			//QUANTITY AMOUNT IN TABLE
+			WebElement getAmount = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='R2,255']"));
+			System.out.println("Amount: " + getAmount.getText());
+		
+			
+			
+//			//click on continue shopping
+//			driver.findElement(By.xpath("/html//div[@id='product_confirmation_modal']/div[@class='actions']/button[1]/span")).click();
+//			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).clear();
+//			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).sendKeys(sQuantityTwo);
+//			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+//			driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
 }
 		
 		public void submit() throws InterruptedException {
@@ -66,6 +83,7 @@ public class assessmentLandingPage extends BasePage{
 			
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+		//driver.findElement(By.xpath("//div[@id='cart-block']//a[@href='//www.geewiz.co.za/cart?action=show']/i[@class='shopping-cart']")).click();
 			
 		//HANDLE POPUP NOT VALID FOR THIS ASSESSMENT
 		//I USED ELEMENT DISPLAYED WITH BOOLEAN VALUE
@@ -80,14 +98,14 @@ public class assessmentLandingPage extends BasePage{
 				System.out.println(e);
 			}
 		
-			//QUANTITY VALUE IN TABLE
-			WebElement getQuantity = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='5']"));
-			System.out.println("Quantity: " + getQuantity.getText());
+//			//QUANTITY VALUE IN TABLE
+//			WebElement getQuantity = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='5']"));
+//			System.out.println("Quantity: " + getQuantity.getText());
+//			
+//			//QUANTITY AMOUNT IN TABLE
+//			WebElement getAmount = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='R2,255']"));
+//			System.out.println("Amount: " + getAmount.getText());
 			
-			//QUANTITY AMOUNT IN TABLE
-			WebElement getAmount = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='R2,255']"));
-			System.out.println("Amount: " + getAmount.getText());
-		
 			Thread.sleep(5000);
 			eleDisplayed = driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/div[@class='confirmations']/p")).isDisplayed();
 			System.out.println("Expected text: IN STOCK AT OVERSEAS SUPPLIER - DISPATCHED/COLLECTION IN 14-20 DAYS " + eleDisplayed);
@@ -119,9 +137,5 @@ public class assessmentLandingPage extends BasePage{
 			myWriter.write(scarttotal);
 			myWriter.close();
 			System.out.println("Cart total has been exported to file: " + "CartTotal.csv");
-		}
-		
-		public void getcarttotalLessThan() {
-			
 		}
 }
