@@ -88,7 +88,7 @@ public class assessmentLandingPage extends BasePage{
 		//HANDLE POPUP NOT VALID FOR THIS ASSESSMENT
 		//I USED ELEMENT DISPLAYED WITH BOOLEAN VALUE
 		try {
-				Alert alert = this.driver.switchTo().alert();
+				Alert alert = this.driver.switchTo().alert(); 
 				String sAlertMessage = alert.getText();
 				Assert.assertEquals("Please note the current stock status is:", sAlertMessage);
 				System.out.println("Expected popup message: " + sAlertMessage); 
