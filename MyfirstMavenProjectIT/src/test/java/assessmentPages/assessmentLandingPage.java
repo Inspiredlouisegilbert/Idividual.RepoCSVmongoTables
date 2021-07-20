@@ -3,6 +3,7 @@ package assessmentPages;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -56,6 +57,8 @@ public class assessmentLandingPage extends BasePage{
 			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).sendKeys(sQuantity);
 			Thread.sleep(5000);
 			
+			
+			
 			//QUANTITY VALUE IN TABLE
 			WebElement getQuantity = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='5']"));
 			System.out.println("Quantity: " + getQuantity.getText());
@@ -64,7 +67,9 @@ public class assessmentLandingPage extends BasePage{
 			WebElement getAmount = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='R2,255']"));
 			System.out.println("Amount: " + getAmount.getText());
 		
-			
+			driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+			Thread.sleep(5000);
 			
 //			//click on continue shopping
 //			driver.findElement(By.xpath("/html//div[@id='product_confirmation_modal']/div[@class='actions']/button[1]/span")).click();
