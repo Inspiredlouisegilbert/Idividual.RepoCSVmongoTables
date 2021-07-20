@@ -97,6 +97,7 @@ public class GeewizLandingPageObjects extends BasePage {
      
      public void clickContinueShopping() throws InterruptedException {
     	 Thread.sleep(2000);
+    	 //check for  an element if is displayed
     	 driver.findElement(By.cssSelector(".cart-content-btn > .btn-secondary")).click();
     	 Thread.sleep(2000);
     	 System.out.println("Continue Shopping is clicked");
