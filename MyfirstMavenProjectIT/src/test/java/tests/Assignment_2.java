@@ -307,7 +307,6 @@ public class Assignment_2 {
 		}
 
 		
-		
 		public void  Given_InActive_Customer_Populate_CustID() throws InterruptedException {
 
 			//call a method to capture the Cust ID field on the Add Tariff Plan To Customer Page
