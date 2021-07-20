@@ -81,13 +81,13 @@ public class DemoStringsTest {
 //	      System.out.println(i);
 //	    }
 
-//		String stoSeperate = "Customer ID:- 661431               Customer Name:- drgdg";
-//		String sSeperator = "-";
+//		String stoSeperate = "R2550,00";
+//		String sSeperator = ",";
 //		String getcustomername = "";     //substring containing last 4 characters
-		 
-//		if (stoSeperate.length() > 4) 
+//		 
+//		if (stoSeperate.length() > 8) 
 //		{
-//			getcustomername = stoSeperate.substring(stoSeperate.length() - 6);
+//			getcustomername = stoSeperate.substring(stoSeperate.length() - 10);
 //		} 
 //		else
 //		{
@@ -121,14 +121,18 @@ public class DemoStringsTest {
 //		    System.out.println(s);
 //		}
 		
-		String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
-		int vFirst = myString.indexOf("Customer");
-		int vSecond = myString.indexOf("Customer", myString.indexOf("Customer") + 1);
-		String vFirstStr = myString.substring(vFirst, vSecond);
-		String vSecondStr = myString.substring(vSecond);
-		String[] vSplitFirst = vFirstStr.split(":- ");
-		String[] vSplitSecondSpl = vSecondStr.split(":- ");
-		System.out.println(vSplitFirst[0].trim() + " - " + vSplitFirst[1].trim());
-		System.out.println(vSplitSecondSpl[0].trim() + " - "+ vSplitSecondSpl[1].trim());
+//		String myString = "Customer ID:- 661431               Customer Name:- Thisismylongname";
+//		int vFirst = myString.indexOf("Customer");
+//		int vSecond = myString.indexOf("Customer", myString.indexOf("Customer") + 1);
+//		String vFirstStr = myString.substring(vFirst, vSecond);
+//		String vSecondStr = myString.substring(vSecond);
+//		String[] vSplitFirst = vFirstStr.split(":- ");
+//		String[] vSplitSecondSpl = vSecondStr.split(":- ");
+//		System.out.println(vSplitFirst[0].trim() + " - " + vSplitFirst[1].trim());
+//		System.out.println(vSplitSecondSpl[0].trim() + " - "+ vSplitSecondSpl[1].trim());
+		
+		String target = "R2550.00";
+		int x= target.indexOf("R");
+		System.out.println(target.substring(x+1));
 	}
 }

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite configfailurepolicy="continue" thread-count="2" parallel="tests" name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT">
-  <test thread-count="2" parallel="tests" name="Assignments Keywordsdriven(failed)">
-    <parameter name="browser" value="Chrome"/>
+  <parameter name="browser" value="Chrome"/>
+  <listeners>
+    <listener class-name="testngListeners.TestNGlisteners"/>
+  </listeners>
+  <test thread-count="2" parallel="tests" name="Inspired Testing Assessment(failed)">
     <classes>
-      <class name="Refactored.testsAssignment1">
+      <class name="assessmentTests.testsAssessmentReadFromFile">
         <methods>
-          <include name="testsOne"/>
+          <include name="Readfromfile"/>
           <include name="afterTest"/>
         </methods>
-      </class> <!-- Refactored.testsAssignment1 -->
+      </class> <!-- assessmentTests.testsAssessmentReadFromFile -->
     </classes>
-  </test> <!-- Assignments Keywordsdriven(failed) -->
+  </test> <!-- Inspired Testing Assessment(failed) -->
 </suite> <!-- Failed suite [TestSuite] -->

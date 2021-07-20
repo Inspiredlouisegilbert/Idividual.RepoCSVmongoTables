@@ -2,9 +2,9 @@ package tests;
 
 import java.io.IOException;
 
-import org.testng.Assert;
+import org.testng.Assert;						//IMPORT FROM TESTNG
 import org.testng.ITestContext;
-import org.testng.Reporter;
+import org.testng.Reporter;						//IMPORT FROM TESTNG
 import org.testng.TestRunner;
 import org.testng.annotations.Test;
 

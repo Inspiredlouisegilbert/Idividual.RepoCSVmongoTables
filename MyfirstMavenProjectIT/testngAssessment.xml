@@ -7,9 +7,10 @@
         class-name="testngListeners.TestNGlisteners">
     </listener>
 </listeners>
-<test name="Assignments Keywordsdriven">
+<test name="Inspired Testing Assessment">
 <classes>
-<class name="Refactored.testsAssignment1"/>
+<class name="assessmentTests.testsAssessment"/>
+<class name="assessmentTests.testsAssessmentReadFromFile"/>
 <!--<class name="Refactored.testsAssignment2"/> -->
 <!--<class name="Refactored.testsAssignment3"/> -->
 <!--<class name="Refactored.testsAssignment4"/> -->

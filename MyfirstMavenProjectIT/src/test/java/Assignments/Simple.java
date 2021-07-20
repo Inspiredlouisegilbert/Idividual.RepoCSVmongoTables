@@ -1,4 +1,4 @@
-package covidRelatedTests;
+package Assignments;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,70 +13,60 @@ import org.testng.annotations.Test;
 
 import com.google.common.collect.Table.Cell;
 
-import CovidPage.HomePage;
-import CovidPage.Introduction;
-import CovidPage.PatientDetails;
-import CovidPage.Results;
-import CovidPage.Symptoms;
-import CovidPage.TermsAndConditions;
-
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Simple {
-	//instantiate needed pages
-	HomePage newHomePage = new HomePage();
-	PatientDetails newPatientDetails = new PatientDetails();
-	Symptoms newSymptoms = new Symptoms();
-	Results newResults = new Results();
-	Introduction newIntroduction = new Introduction();
-	TermsAndConditions newTermsAndConditions = new TermsAndConditions();
+//	//instantiate needed pages
+	pages.HomePage hpPages = new pages.HomePage();
+//	HomePage newHomePage = new HomePage();
+//	PatientDetails newPatientDetails = new PatientDetails();
+//	Symptoms newSymptoms = new Symptoms();
+//	Results newResults = new Results();
+//	Introduction newIntroduction = new Introduction();
+//	TermsAndConditions newTermsAndConditions = new TermsAndConditions();
+//	
+//	//@Test
+//	public void GIVEN_age70_AND_genderMale_AND_userNavigatedtoCovidCheckLanding_WHEN_userEntersDetails_THEN_HeIsAskedtoGoToHospital() throws InterruptedException {
+//		//Given	User open browsed to Symptomate
+//		String  actualHomeButton =  newHomePage.checkStartCheckup();
+//		String expectedHomeButton = "COVID-19 checkup";
+//		
+//		Assert.assertEquals(actualHomeButton, expectedHomeButton);
+//		
+//		Reporter.log("expected ------------------"+expectedHomeButton);
+//      Reporter.log("actual --------------------"+actualHomeButton);
+//	}
 	
-	//@Test
-	public void GIVEN_age70_AND_genderMale_AND_userNavigatedtoCovidCheckLanding_WHEN_userEntersDetails_THEN_HeIsAskedtoGoToHospital() throws InterruptedException {
-		//Given	User open browsed to Symptomate
-		String  actualHomeButton =  newHomePage.checkStartCheckup();
-		String expectedHomeButton = "COVID-19 checkup";
-		
-		Assert.assertEquals(actualHomeButton, expectedHomeButton);
-		
-		Reporter.log("expected ------------------"+expectedHomeButton);
-        Reporter.log("actual --------------------"+actualHomeButton);
-		
-	}
-	
-	//@Test(dataProvider="SearchProvider")
+	@Test(dataProvider="SearchProvider")
     public void testMethod(String author,String searchKey) throws InterruptedException{
     {
         System.out.println("Welcome ->"+author+" Your search key is->"+searchKey);
     }
     }
 	
-	//@Test(dataProvider="SearchProviderDifferent")
+	@Test(dataProvider="SearchProviderDifferent")
     public void testMethodDifferentData(String GreenGrocer) throws InterruptedException{
     {
         System.out.println("Would you like "+ GreenGrocer);
     }
     }
 	
-	//@Test(dataProvider="SearchProviderClass", dataProviderClass=dataProviders.DemoDataProviders.class)
+	@Test(dataProvider="SearchProviderClass", dataProviderClass=DataProviders.DemoDataProviders.class)
     public void testMethodClass(String author,String searchKey, String aa) throws InterruptedException{
     {
         System.out.println("Welcome ->"+author+" Your search key is->"+aa);
     }
     }
 	
-	//@Test(dataProvider="SearchProviderDifferentClass", dataProviderClass=dataProviders.DemoDataProviders.class)
+	@Test(dataProvider="SearchProviderDifferentClass", dataProviderClass=DataProviders.DemoDataProviders.class)
     public void testMethodDifferentDataClass(String GreenGrocer) throws InterruptedException{
     {
         System.out.println("Would you like "+ GreenGrocer);
     }
     }
-	
-	
-	
 	
     @DataProvider(name="SearchProvider")
     public Object[][] getDataFromDataprovider(){
@@ -98,15 +88,13 @@ public class Simple {
         };
     }
     
-    
-  
     @DataProvider(name ="excel-data")
 
     public Object[][] excelDP() throws IOException{
 
             //We are creating an object from the excel sheet data by calling a method that reads data from the excel stored locally in our system
     		// Get the directory where the excel file is placed
-    		String excelDirectory = newHomePage.getDataConfigProperties("xlsDir");
+    		String excelDirectory = hpPages.getDataConfigProperties("registerlogin");
             Object[][] arrObj = getExcelData(excelDirectory+"registerAndLogin.xlsx","Sheet1");
 
             return arrObj;
@@ -146,11 +134,8 @@ public class Simple {
 
                    data[i-1][j] = cell.getStringCellValue();
                    //System.out.println(data[i-1][j]);
-                   
-                 
 
                }
-
         }
 
         }
@@ -165,7 +150,6 @@ public class Simple {
 
     }
     
-  
     @Test(dataProvider ="excel-data")
 
     public void search(String keyWord1, String keyWord2,String keyWord3, String keyWord4){

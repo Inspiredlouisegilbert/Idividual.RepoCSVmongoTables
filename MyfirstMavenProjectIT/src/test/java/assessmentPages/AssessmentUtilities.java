@@ -1,4 +1,4 @@
-package frameworkclasses;
+package assessmentPages;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +19,7 @@ import org.testng.reporters.jq.Main;
 
 import frameworkclasses.BasePage;
 
-public class Utilities extends BasePage {
+public class AssessmentUtilities extends BasePage {
 
 		
 
@@ -32,6 +32,9 @@ public class Utilities extends BasePage {
 	        //Call getScreenshotAs method to create image file
 	        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 	        
+	        
+	       
+
 	       //Move image file to new destination
 	       File DestFile=new File("target//"+"surefire-reports-" + getAppConfigProperties("build.timestamp") +"//images//"+ fileWithPath);
 
@@ -57,7 +60,7 @@ public class Utilities extends BasePage {
 			Properties p = new Properties();
 			InputStream is = null;
 			try {
-				is = new FileInputStream(".//target//app.properties");
+				is = new FileInputStream(".\\target\\app.properties");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
