@@ -75,13 +75,31 @@ public class AssessmentReadFromFile extends BasePage{
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
 		System.out.println("Product has been added to the cart");
+		
 		System.out.println("Product search from file completed successfully");
 		Thread.sleep(5000);
 		submit();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
 		driver.get(pURL);
 		}
 	
-	public void submit() {
+	public void submit() throws InterruptedException {
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//div[@id='cart-block']//a[@href='//www.geewiz.co.za/cart?action=show']/i[@class='shopping-cart']")).click();
+	}
+	
+	public void getcarttotal() {
+		String sCartTotal = driver.findElement(By.xpath("//div[@id='cart-subtotal-products']/span[@class='value']")).getText();
+		int x= sCartTotal.indexOf("R");
+		
+		System.out.println("Cart total is: " + sCartTotal);
+		
+		if (x > 100) {
+			System.out.println("Cart total is greater than R100.00 cart amount is: " + sCartTotal);
+		}
+		else
+			System.out.println("Cart total is not greater than R100.00 cart amount is: " + sCartTotal);
 	}
 }

@@ -33,6 +33,7 @@ public class testsAssessmentReadFromFile {
 		  readFromFile.navigatetourl();
 		  readFromFile.readfromfile();
 		  readFromFile.submit();
+		  readFromFile.getcarttotal();
 	  }
 
 	  
