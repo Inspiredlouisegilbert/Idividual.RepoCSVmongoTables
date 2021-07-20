@@ -12,6 +12,8 @@ import org.testng.TestRunner;
 import org.testng.annotations.Test;
 
 import MbhoniAssessment.GeewizLandingPageObjects;
+import MbhoniAssessment.GeewizLandingPageObjectsForLessThan100;
+import MbhoniAssessment.GeewizLandingPageObjectsReadFromCsv;
 import frameworkclasses.Utilities;
 
 import org.testng.annotations.AfterSuite;
@@ -31,32 +33,22 @@ public class MbhoniAssTest {
 	// Declare an object of classes and
 	// Instantiate class objects
 	GeewizLandingPageObjects landingPage = new GeewizLandingPageObjects();
-	ProductSearchPage pr = new ProductSearchPage();
-	HomePage homePage = new HomePage();
+	GeewizLandingPageObjectsReadFromCsv landingPageReadCsv = new GeewizLandingPageObjectsReadFromCsv();
+	GeewizLandingPageObjectsForLessThan100 landingPageLessThan = new GeewizLandingPageObjectsForLessThan100();
 	Utilities uts = new Utilities();
 	SoftAssert softAssert = new SoftAssert();
 
-	
-
-	
 	@Test
-    public void search_Products () throws InterruptedException {
-//        String expectedTitle = "My Store";
-//        String actualTitle = landingPage.getTitle();
-//         
-//        Reporter.log("expected ------------------"+expectedTitle);
-//        Reporter.log("actual --------------------"+actualTitle);
-//        Assert.assertEquals(actualTitle, expectedTitle ); 
-//        
+    public void search_For_Products_Greater_Than_100 () throws InterruptedException, IOException {
 		
-		landingPage.searchProduct("solar");
+		landingPage.searchProduct("royal");
 		landingPage.clickSearchButton();
 		landingPage.clickDropDown();
 		landingPage.selectFromDropDown();
 		landingPage.clickFirstResult();
 		landingPage.enterQuanity("50");
 		landingPage.lowStockPopWindow();
-		landingPage.enterQuanity("2");
+		landingPage.enterQuanity("1");
 		landingPage.addToCart();
 		// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
 		landingPage.addToCart();
@@ -66,6 +58,7 @@ public class MbhoniAssTest {
 		softAssert.assertAll();
 		
 	}
+	
 	@Test
     public void runTestReadFromFile() throws IOException, InterruptedException {
 
@@ -79,21 +72,21 @@ public class MbhoniAssTest {
 				String[] cols = line.split(";"); 
 			    System.out.println(cols[0]);
 			    
-				landingPage.searchProduct(cols[0]);
-				landingPage.clickSearchButton();
+			    landingPageReadCsv.searchProduct(cols[0]);
+			    landingPageReadCsv.clickSearchButton();
 				
-				landingPage.clickDropDown();
-				landingPage.selectFromDropDownCsv(cols[1]);
+			    landingPageReadCsv.clickDropDown();
+			    landingPageReadCsv.selectFromDropDownCsv(cols[1]);
 				//landingPage.clickFirstResult();
-				landingPage.clickFirstResultCsv(cols[2]);
-				landingPage.enterQuanity(cols[3]);
-				landingPage.lowStockPopWindow();
-				landingPage.enterQuanity(cols[4]);
-				landingPage.addToCart();
+			    landingPageReadCsv.clickFirstResultCsv(cols[2]);
+			    landingPageReadCsv.enterQuanityCsv(cols[3]);
+			    landingPageReadCsv.lowStockPopWindow();
+			    landingPageReadCsv.enterQuanityCsv(cols[4]);
+			    landingPageReadCsv.addToCart();
 				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
-				landingPage.addToCart();
-				landingPage.clickContinueShopping();
-				//landingPage.vaildateCartAmount();
+			    landingPageReadCsv.addToCart();
+			    landingPageReadCsv.clickContinueShopping();
+			    landingPageReadCsv.vaildateCartAmount();
 				
 				softAssert.assertAll();
 			}
@@ -101,48 +94,33 @@ public class MbhoniAssTest {
 
 		}
 		
-			br.close();
+			br.close();	
+	}
+			
+	
+	@Test
+    public void search_For_Products_Less_Than_100 () throws InterruptedException, IOException {
+		
+		//landingPageLessThan.Refresh();
+		landingPageLessThan.searchProduct("pan");
+		landingPageLessThan.clickSearchButton();
+		landingPageLessThan.clickDropDown();
+		landingPageLessThan.selectFromDropDown();
+		landingPageLessThan.clickFirstResult();
+		landingPageLessThan.enterQuanity("5000");
+		landingPageLessThan.lowStockPopWindow();
+		landingPageLessThan.enterQuanity("1");
+		landingPageLessThan.addToCart();
+		// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
+		landingPageLessThan.addToCart();
+		landingPageLessThan.clickContinueShopping();
+		landingPageLessThan.vaildateCartAmount();
+		
+		softAssert.assertAll();
 		
 	}
 	
-	@Test
-    public void runTestReadFromFile1() throws IOException, InterruptedException {
 
-		String Ass1 = uts.getDataConfigProperties("Ass1");
-		BufferedReader br = new BufferedReader(new FileReader(Ass1)); 
-		
-		String line;
-		while ((line = br.readLine()) != null) { 
-			if(line.length() > 0) {
-				
-				String[] cols = line.split(";"); 
-			    System.out.println(cols[0]);
-			    
-				landingPage.searchProduct(cols[0]);
-				landingPage.clickSearchButton();
-				
-				landingPage.clickDropDown();
-				landingPage.selectFromDropDownCsv(cols[1]);
-				landingPage.clickFirstResultCsv(cols[2]);
-				landingPage.enterQuanity(cols[3]);
-				landingPage.lowStockPopWindow();
-				landingPage.enterQuanity(cols[4]);
-				landingPage.addToCart();
-				// I have added the 2nd click due to: the 1st click is clicked but it looks like nothing is added to the cart.
-				landingPage.addToCart();
-				landingPage.clickContinueShopping();
-				landingPage.vaildateCartAmount();
-				
-				softAssert.assertAll();
-			}
-			
-
-		}
-		
-			br.close();
-		
-	}
-		
 		@AfterSuite
 	    public void cleanup() {
 			
