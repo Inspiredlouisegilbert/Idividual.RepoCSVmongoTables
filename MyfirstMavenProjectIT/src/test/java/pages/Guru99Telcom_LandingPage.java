@@ -42,7 +42,7 @@ public class Guru99Telcom_LandingPage extends BasePage {
 		//driver.findElement(By.linkText("Add Customer")).click(); 
 		//Verify that Add Customer Heading is available //
 		String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
-		//Assert.assertEquals(actual_link, "Add Customer");  	 	 	
+		 	 	 	
 		return veriy_AddCustomer_Link();
 	}
 	
@@ -50,9 +50,7 @@ public class Guru99Telcom_LandingPage extends BasePage {
        	
 	//Verify that Add Tariff Plan to Customer Link is available //
  	String actual_link = driver.findElement(By.linkText ("Add Tariff Plan to Customer")).getText(); 
- 	Assert.assertEquals(actual_link, "Add Tariff Plan to Customer");  
- 	
- 	
+ 	 	
 		// Click on Add Tariff Plan to Customer
 		driver.findElement(By.linkText("Add Tariff Plan to Customer")).click();  
 		

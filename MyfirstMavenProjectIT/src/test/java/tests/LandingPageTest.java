@@ -146,7 +146,6 @@ public class LandingPageTest {
 	    
 	    //Reporter.log("The expected result is "+"Access Details to Guru99 Telecom");
 	        
-	    // Asset for the Customer ID that keeps on Changing
 	    // Verify that the Customer ID Page is displayed  
 	 	boolean sCustID = CustomerID.Generated_Customer_ID();
 	 	//String ActualMessage = CustomerID.verifyCustomerID_Heading();
