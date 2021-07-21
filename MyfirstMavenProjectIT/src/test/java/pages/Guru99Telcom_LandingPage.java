@@ -12,30 +12,38 @@ public class Guru99Telcom_LandingPage extends BasePage {
 
 	//First Test. This title should be verified in LandingPageTest class
     public String getTitle() {
-        return driver.getTitle();
+    	//Instantiate Selenium Functions
+    	String pUrl = "http://demo.guru99.com/telecom/index.html";
+        //return driver.getTitle();
+        return  getTitle();
 		} 
 	
 	public String verifyTelcomLandingPage() {
-        
-       	//Instantiate Selenium Functions
-		String pURL = "http://demo.guru99.com/telecom/index.html";
-		
-		// Verify that Guru99 telecom Heading is available //
-		String verifyTelcomLandingPage = driver.findElement(By.cssSelector("#header .logo")).getText();
-	    Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
-		
-	  //Verify that Add Customer Heading is available //
-	 	String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
-	 	Assert.assertEquals(actual_link, "Add Customer");  
-	 	
-	 		 	
-		// Click on Add Customer
-		driver.findElement(By.linkText("Add Customer")).click();  
-		
+        		
+		String actualPage = driver.findElement(By.cssSelector("#header .logo")).getText();
+	    //Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
+			
 		return verifyTelcomLandingPage();
 		
- 
     }
+	
+	public String ClickAddCustomer_Link() {
+		// Click on Add Customer
+		driver.findElement(By.linkText("Add Customer")).click(); 
+		//Verify that Add Customer Heading is available //
+		//String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
+		//Assert.assertEquals(actual_link, "Add Customer");  	 	 	
+			return ClickAddCustomer_Link();
+	}
+	
+	public String veriy_AddCustomer_Link() {
+		// Click on Add Customer
+		//driver.findElement(By.linkText("Add Customer")).click(); 
+		//Verify that Add Customer Heading is available //
+		String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
+		//Assert.assertEquals(actual_link, "Add Customer");  	 	 	
+		return veriy_AddCustomer_Link();
+	}
 	
 	public String verify_AddTariffPlanToCustomerLink() {       
        	
@@ -57,6 +65,7 @@ public class Guru99Telcom_LandingPage extends BasePage {
 		driver.findElement(By.linkText("Add Tariff Plan to Customer")).click();  
 			
 		}
+	
 	public void Click_Pay_Billing_Link() {       
 		 	
 		// Click on Pay billing

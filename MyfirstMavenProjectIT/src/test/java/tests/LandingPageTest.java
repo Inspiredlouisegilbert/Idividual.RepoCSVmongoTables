@@ -21,26 +21,62 @@ public class LandingPageTest {
 	
 	// Declare an object of classes and
 	// Instantiate class objects
-	SignInPage inPage = new SignInPage();              
-	LandingPage landingPage = new LandingPage();     
+	//SignInPage inPage = new SignInPage();              
+	//LandingPage landingPage = new LandingPage();     
 	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
 	AddCustomerPage AddCustomer = new AddCustomerPage();
 	CustomerIDPage CustomerID = new CustomerIDPage ();
-	//ProductSearchPage pr = new ProductSearchPage();
 	HomePage homePage = new HomePage();
 	
-	//@Test
-    public void GIVEN_navigateToURL_THEN_TitleMyStore() {
-        String expectedTitle = "My Store";
-        String actualTitle = landingPage.getTitle();
+ //@Test
+    
+    public void navigateTo_URL() {
+    	
+		String URL = "http://demo.guru99.com/telecom/index.html";
+    }
+    
+ 	//@Test
+    public void Add_Customer_Link() {
+    	//call a method to click the Add Customer link
+    	GuruLanding.ClickAddCustomer_Link();
+    	
+    }
+    
+    @Test
+    public void GIVEN_navigateToURL_THEN_AddCutomer() {
+    	
+    	//call a method to navigate to url
+    	//navigateTo_URL();
+    	GuruLanding.getTitle();
+    	
+    	// Verify that Guru99 telecom Heading is available //
+    	String expectedTitle = "Guru99 telecom";
+        String actualTitle = GuruLanding.verifyTelcomLandingPage();
          
         Reporter.log("expected ------------------"+expectedTitle);
         Reporter.log("actual --------------------"+actualTitle);
-        Assert.assertEquals(actualTitle, expectedTitle ); 
-        
-	}
-			
-		@Test
+        Assert.assertEquals(actualTitle, expectedTitle );
+          				  
+		
+    }
+    
+    
+   // @Test
+    public  void verifyAddCustomer() {
+    	//call a method to click the Add Customer link
+    	GuruLanding.ClickAddCustomer_Link();
+    	
+	  //Verify that Add Customer Heading is available //
+    	String expectedLink = "Add Customer";
+	 	String actuaLink = GuruLanding.veriy_AddCustomer_Link(); 
+	 	
+	 	Reporter.log("expected ------------------"+expectedLink);
+        Reporter.log("actual --------------------"+actuaLink);
+        Assert.assertEquals(actuaLink, expectedLink );
+    }
+     
+    
+		//@Test
 		
 		public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 	//Populate the billing details with the INVALID Data
@@ -72,7 +108,7 @@ public class LandingPageTest {
 		}
 			
 
-@Test
+//@Test
 		
 		public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 	
@@ -123,24 +159,22 @@ public class LandingPageTest {
 	    
 		}
 	
-// Copy generated Customer ID on CustomerIDPage(This is a step in the test)
-@Test
-public void GIVEN_active_customer_WHEN_submit_THEN_active_is_displayed () throws InterruptedException {
+		
+		//@Test
+		public void GIVEN_active_customer_WHEN_submit_THEN_active_is_displayed () throws InterruptedException {
 	
-	//String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();	
-   // Fix line 135 and 136 below
-     String Cust_ID = CustomerID.Generated_Cust_ID();
-     System.out.println(Cust_ID);
+			//String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();	
+			// Fix line 135 and 136 below
+			String Cust_ID = CustomerID.Generated_Cust_ID();
+			System.out.println(Cust_ID);
 	
 	
-}
-
-// Click on Home button on CustomerIDPage (update CustomerIDPage)
+		}
 
 
-@Test
+		// @Test
 
-public void  Click_Home_button_CustomerIDPage() throws InterruptedException {
+		public void  Click_Home_button_CustomerIDPage() throws InterruptedException {
 
 		// Call a method to click rest button
 		CustomerID.Click_Home_button_CustomerIDPage();
@@ -159,101 +193,31 @@ public void  Click_Home_button_CustomerIDPage() throws InterruptedException {
 
 }
 
-
-
-	
-//Continue to Add Tariff Plan to Customer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	@Test
-    public void GIVEN_navigateToURL_WHEN_searchProduct_THEN_ProductDisplayed() {
-
-       // landingPage.searchProduct();
-        String expected = "Printed Summer Dress";
-       // String actual = pr.getProductSearchResult();
-        
-        Reporter.log("expected ------------------"+expected);
-       // Reporter.log("actual --------------------"+actual);
-       // Assert.assertEquals(actual, expected); 
-	}
-        
-	//@Test
-	public void GIVEN_navigateToURL_WHEN_CorrectLogin_THEN_LoginSuccessful() {
-
-
-          inPage.userSignIn("abc11001@xyz.com", "abcxyz");
-          
-            boolean expected = true;
-            boolean actual = homePage.verifyCorrectLogin().equals("abc xyz");
-            
-            Reporter.log("expected ------------------"+expected);
-            Reporter.log("actual --------------------"+actual);
-            Assert.assertEquals(actual, expected);
-        }
-	
-	//@Test
-	public void GIVEN_navigateToURL_WHEN_InCorrectLogin_THEN_LoginUnSuccessful() {
-
-
-          inPage.userSignIn("abc11001@xyz.com", "abcxyz");
-         
-
-            
-            boolean expected = true;
-            boolean actual = inPage.verifyInCorrectLogin().equals("AUTHENTICATION");
-            
-            Reporter.log("expected to find the AUTHENTICATION error "+expected);
-            Reporter.log("actual --------------------"+actual);
-            Assert.assertEquals(actual, expected);
-        }
-	
-	//@Test
-    public void GIVEN_navigateToURL_THEN_ExpectedTofail() {
-        String expectedTitle = "My St";
-        Reporter.log("expected ------------------"+expectedTitle);
-        String actualTitle = landingPage.getTitle();
-        
-        
-        Reporter.log("actual --------------------"+actualTitle);
-        Assert.assertEquals(expectedTitle, actualTitle);   
-        
-	}
-	
-	@Parameters({"xyz"})
-	//@Test
-    public void Use_Parameters_from_testng_XML_file(String xyz) {
-		Reporter.log("This parameter comes from the testNG xml file: "+xyz);
-	}
-	
-	//@Test  
-    public void Use_utilities() {
-		String browserValue = landingPage.getDataConfigProperties("browser");
-		Reporter.log("The browser we are using is "+browserValue);
+		@AfterSuite
+	    public void cleanup() {
+	         
+	        //Instantiate SignInPage class object
+	        SignInPage inPage = new SignInPage();
+	        inPage.cleanUp();
+	    }     
 	}
 
-	@AfterSuite
-    public void cleanup() {
-         
-        //Instantiate SignInPage class object
-        SignInPage inPage = new SignInPage();
-        inPage.cleanUp();
-    }     
-}
+
+
+
+
+        
+/*
+ * //@Test public void
+ * GIVEN_navigateToURL_WHEN_CorrectLogin_THEN_LoginSuccessful() {
+ * 
+ * 
+ * inPage.userSignIn("abc11001@xyz.com", "abcxyz");
+ * 
+ * boolean expected = true; boolean actual =
+ * homePage.verifyCorrectLogin().equals("abc xyz");
+ * 
+ * Reporter.log("expected ------------------"+expected);
+ * Reporter.log("actual --------------------"+actual);
+ * Assert.assertEquals(actual, expected); }
+ */
