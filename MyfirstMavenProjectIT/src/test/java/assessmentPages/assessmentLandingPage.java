@@ -15,6 +15,7 @@ import org.testng.Reporter;
 import frameworkclasses.BasePage;
 import frameworkclasses.DriverSetup;
 import frameworkclasses.SeleniumFunctions;
+import frameworkclasses.Utilities;
 
 public class assessmentLandingPage extends BasePage{
 
@@ -27,6 +28,7 @@ public class assessmentLandingPage extends BasePage{
 		
 		//Instantiate Selenium Functions
 		static SeleniumFunctions sfSelenium = new SeleniumFunctions();
+		Utilities uts = new Utilities();
 		
 		// driver variable
 		//WebDriver driver;
@@ -44,20 +46,29 @@ public class assessmentLandingPage extends BasePage{
 				System.out.println(e);
 			}
 		}
+		
+		public void takescreenshot() {
+			try {
+				uts.takeSnapShot("onTestStart"+uts.timereturn()+".png");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		public void searchproduct() throws InterruptedException {
 			driver.findElement(By.xpath("//div[@id='search_widget']/form[@action='//www.geewiz.co.za/search']/input[@name='s']")).sendKeys(sProductsearch);
 			driver.findElement(By.xpath("//div[@id='search_widget']/form[@action='//www.geewiz.co.za/search']//i[@class='material-icons search']")).click();
 			driver.findElement(By.xpath("/html//div[@id='js-product-list-top']/div[@class='row']//button[@class='btn-unstyle select-title']/i[.='']")).click();
 			driver.findElement(By.linkText("PRICE, LOW TO HIGH")).click();
+			takescreenshot();
 			Thread.sleep(5000);
 			driver.findElement(By.linkText("SwitchBot Curtain")).click();
 			Thread.sleep(5000);
 			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).clear();
 			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).sendKeys(sQuantity);
+			takescreenshot();
 			Thread.sleep(5000);
-			
-			
 			
 			//QUANTITY VALUE IN TABLE
 			WebElement getQuantity = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='5']"));
@@ -81,6 +92,7 @@ public class assessmentLandingPage extends BasePage{
 		
 		public void submit() throws InterruptedException {
 			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
+			takescreenshot();
 			Thread.sleep(5000);
 		}
 		
