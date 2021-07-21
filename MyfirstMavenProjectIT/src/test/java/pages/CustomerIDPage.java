@@ -25,7 +25,7 @@ public class CustomerIDPage extends BasePage {
 	public String  verifyCustomerID_Heading() throws InterruptedException {
 		
 	// verify that the Access Details to Guru99 Telecom Heading is displays //
-		 String actualHeading = driver.findElement(By.cssSelector("h1")).getText();
+		 String actualHeading = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//h1[.='Access Details to Guru99 Telecom']")).getText();
 		//Assert.assertEquals(actualHeading, "Access Details to Guru99 Telecom");
 		 
 		return actualHeading;
