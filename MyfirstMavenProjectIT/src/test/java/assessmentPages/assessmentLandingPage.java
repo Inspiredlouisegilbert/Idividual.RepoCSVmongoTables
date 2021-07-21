@@ -35,9 +35,9 @@ public class assessmentLandingPage extends BasePage{
 		
 		public void landingpage() {
 			driver.get(pURL);
-			String sHotInfo = driver.findElement(By.xpath("/html//body[@id='index']/div[@class='hotinfo_top']/table//td/span/span")).getText();
 			
 			try {
+			String sHotInfo = driver.findElement(By.xpath("/html//body[@id='index']/div[@class='hotinfo_top']/table//td/span/span")).getText();
 			Reporter.log("expected ------------------"+ "Please note: Due to the nationwide civil unrest, there may be some unforeseen courier and/or stock delays. We apologise for the inconvenience and will do our best to try keep them to a minimum");
 			Reporter.log("actual ------------------"+ sHotInfo);
 			Assert.assertEquals("Please note: Due to the nationwide civil unrest, there may be some unforeseen courier and/or stock delays. We apologise for the inconvenience and will do our best to try keep them to a minimum", sHotInfo);

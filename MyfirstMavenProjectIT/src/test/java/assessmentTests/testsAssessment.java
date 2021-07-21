@@ -27,7 +27,7 @@ public class testsAssessment {
 //	}
 	
 	@Test
-	public void GIVEN_LandingPage_WHEN_ProductSearch_THEN_AddToCart() throws InterruptedException
+	public void GIVEN_LandingPage_WHEN_ProductSearch_THEN_AddToCart() throws InterruptedException, IOException
 	{
 		asLanding.landingpage();
 		System.out.println("Test passed: Landing page loaded successfully");
@@ -36,9 +36,11 @@ public class testsAssessment {
 		System.out.println("Test passed: Sorted by lowest first");
 //		asLanding.submit();
 		System.out.println("Test passed: Item successfully added to the cart");
+		asLanding.viewcart();
+		asLanding.getcarttotal();
 	}
 	
-	@Test
+//	@Test
 	public void GIVEN_CartTotalChecks_WHEN_GreaterThan100_THEN_ContinueShopping() throws InterruptedException, IOException
 	{
 		asLanding.viewcart();
