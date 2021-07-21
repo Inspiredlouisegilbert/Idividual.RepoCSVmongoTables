@@ -74,10 +74,8 @@ public class MbhoniAssTest {
 			    
 			    landingPageReadCsv.searchProduct(cols[0]);
 			    landingPageReadCsv.clickSearchButton();
-				
 			    landingPageReadCsv.clickDropDown();
 			    landingPageReadCsv.selectFromDropDownCsv(cols[1]);
-				//landingPage.clickFirstResult();
 			    landingPageReadCsv.clickFirstResultCsv(cols[2]);
 			    landingPageReadCsv.enterQuanityCsv(cols[3]);
 			    landingPageReadCsv.lowStockPopWindow();
@@ -87,8 +85,9 @@ public class MbhoniAssTest {
 			    landingPageReadCsv.addToCart();
 			    landingPageReadCsv.clickContinueShopping();
 			    landingPageReadCsv.vaildateCartAmount();
-				
+			    
 				softAssert.assertAll();
+
 			}
 			
 
@@ -101,7 +100,6 @@ public class MbhoniAssTest {
 	@Test
     public void search_For_Products_Less_Than_100 () throws InterruptedException, IOException {
 		
-		//landingPageLessThan.Refresh();
 		landingPageLessThan.searchProduct("pan");
 		landingPageLessThan.clickSearchButton();
 		landingPageLessThan.clickDropDown();

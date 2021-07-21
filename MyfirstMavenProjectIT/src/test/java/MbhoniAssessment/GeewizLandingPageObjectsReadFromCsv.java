@@ -19,7 +19,7 @@ import org.testng.asserts.SoftAssert;
 import frameworkclasses.BasePage;
 import pages.HomePage;
 
-public class GeewizLandingPageObjects extends BasePage {
+public class GeewizLandingPageObjectsReadFromCsv extends BasePage {
 	boolean eleDisplayed;
 	
      public void searchProduct(String searchProducts) throws InterruptedException { 
@@ -27,7 +27,7 @@ public class GeewizLandingPageObjects extends BasePage {
     	//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     	driver.findElement(By.xpath("//input[@name=\"s\"]")).sendKeys(searchProducts);
         Thread.sleep(500);
-        System.out.println("Search For a Product");
+        System.out.println("Search For a Product With Data From CSV");
     }
      
      public void clickSearchButton() throws InterruptedException {
@@ -44,24 +44,26 @@ public class GeewizLandingPageObjects extends BasePage {
     	System.out.println("Click The DropDown");
      }
      
-     public void selectFromDropDown() throws InterruptedException {
-    	 Thread.sleep(3000);
-    	 WebElement element = driver.findElement(By.xpath("//a[contains(text(),'Price, low to high')]"));
+     public void selectFromDropDownCsv(String selectSortBy) throws InterruptedException {
+    	 Thread.sleep(5000);
+    	 WebElement element = driver.findElement(By.xpath(selectSortBy));
     	 Actions actions = new Actions(driver);
     	 actions.moveToElement(element).click().perform();
     	 Thread.sleep(500);
-    	 System.out.println("Select From DropDown");
+    	 System.out.println("Select From DropDown With Data From CSV");
      }
      
-     public void clickFirstResult () throws InterruptedException {
-    	 Thread.sleep(9000);
-    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .h3 > a")).click();
-    	 Thread.sleep(2000);
-    	 System.out.println("First Product Clicked");
+     public void clickFirstResultCsv(String selectFistResults) throws InterruptedException {
+    	 Thread.sleep(7000);
+    	 WebElement element = driver.findElement(By.cssSelector(selectFistResults));
+    	 Actions actions = new Actions(driver);
+    	 actions.moveToElement(element).click().perform();
+    	 Thread.sleep(500);
+    	 System.out.println("First Product Clicked With Data From CSV");
      }
-     
-     public void enterQuanity(String enterQuanity) throws InterruptedException {
-    	 Thread.sleep(2000);
+
+     public void enterQuanityCsv(String enterQuanity) throws InterruptedException {
+    	 Thread.sleep(3000);
     	 driver.findElement(By.id("quantity_wanted")).clear();
     	 Thread.sleep(5000);
     	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);

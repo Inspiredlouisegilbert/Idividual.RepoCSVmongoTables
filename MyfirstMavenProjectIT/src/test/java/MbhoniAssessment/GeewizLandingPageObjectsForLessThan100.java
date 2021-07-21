@@ -19,7 +19,7 @@ import org.testng.asserts.SoftAssert;
 import frameworkclasses.BasePage;
 import pages.HomePage;
 
-public class GeewizLandingPageObjects extends BasePage {
+public class GeewizLandingPageObjectsForLessThan100 extends BasePage {
 	boolean eleDisplayed;
 	
      public void searchProduct(String searchProducts) throws InterruptedException { 
@@ -53,15 +53,17 @@ public class GeewizLandingPageObjects extends BasePage {
     	 System.out.println("Select From DropDown");
      }
      
+     
      public void clickFirstResult () throws InterruptedException {
-    	 Thread.sleep(9000);
-    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .h3 > a")).click();
+    	 Thread.sleep(7000);
+    	 driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .h3 > a")).click();
     	 Thread.sleep(2000);
     	 System.out.println("First Product Clicked");
      }
      
+     
      public void enterQuanity(String enterQuanity) throws InterruptedException {
-    	 Thread.sleep(2000);
+    	 Thread.sleep(3000);
     	 driver.findElement(By.id("quantity_wanted")).clear();
     	 Thread.sleep(5000);
     	 driver.findElement(By.id("quantity_wanted")).sendKeys(enterQuanity);

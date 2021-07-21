@@ -68,8 +68,19 @@ public class BasePage {
     			
     		}
         }
-            
+          
+
     }
+    
+    public void BackToUrl() {
+    	String getUrlAss = getDataConfigProperties("getUrlAss");
+    	driver.get(getUrlAss);
+    }
+    
+    public void Refresh() {
+   	 driver.navigate().refresh();
+    }
+    
     
 	public String getDataConfigProperties(String propertyName) {
 		// Properties setup
