@@ -47,6 +47,7 @@ public class LandingPageTest {
     	
     	//call a method to navigate to url
     	//navigateTo_URL();
+    	
     	GuruLanding.getTitle();
     	
     	// Verify that Guru99 telecom Heading is available //
