@@ -111,15 +111,20 @@ public class AssessmentReadFromFile extends BasePage{
 	}
 	
 	public void getcarttotal() {
-		String sCartTotal = driver.findElement(By.xpath("//div[@id='cart-subtotal-products']/span[@class='value']")).getText();
-		int x= sCartTotal.indexOf("R");
+		String scarttotal = driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content']/p[2]/span[@class='value']")).getText();
+		int x= scarttotal.indexOf("R");
+		String scarttotalstripped = scarttotal.replaceAll(",", "");
+		String s = scarttotalstripped.substring(1);
+		float f = Float.parseFloat(s);
 		
-		System.out.println("Cart total is: " + sCartTotal);
+		System.out.println("Cart total is: " + scarttotal);
 		
-		if (x > 100) {
-			System.out.println("Cart total is greater than R100.00 cart amount is: " + sCartTotal);
+		if (f > 100) {
+			System.out.println("Cart total is greater than R100.00 cart amount is: " + scarttotal);
 		}
 		else
-			System.out.println("Cart total is not greater than R100.00 cart amount is: " + sCartTotal);
+			System.out.println("Cart total is not greater than R100.00 cart amount is: " + scarttotal);
+		
+		driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
 	}
 }

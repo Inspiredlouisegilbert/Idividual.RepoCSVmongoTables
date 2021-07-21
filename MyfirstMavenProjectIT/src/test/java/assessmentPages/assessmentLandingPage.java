@@ -138,10 +138,13 @@ public class assessmentLandingPage extends BasePage{
 		public void getcarttotal() throws IOException {
 			String scarttotal = driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content']/p[2]/span[@class='value']")).getText();
 			int x= scarttotal.indexOf("R");
+			String scarttotalstripped = scarttotal.replaceAll(",", "");
+			String s = scarttotalstripped.substring(1);
+			float f = Float.parseFloat(s);
 			
 			System.out.println("Cart total is: " + scarttotal);
 			
-			if (x > 100) {
+			if (f > 100) {
 				System.out.println("Cart total is greater than R100.00 cart amount is: " + scarttotal);
 			}
 			else
