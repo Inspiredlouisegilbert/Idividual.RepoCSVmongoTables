@@ -12,7 +12,7 @@ public class ReadTofromAssignment5 {
 	Gurulanding_page Gurulanding_page = new Gurulanding_page();
 	NyAddCustomerPage AddCustomer = new NyAddCustomerPage();
 	NyCustomerIDPage CustomerID = new NyCustomerIDPage ();
-	//ProductSearchPage pr = new ProductSearchPage();
+	ReadFromFile_Page ReadFromfile =new ReadFromFile_Page();
 	
     //Navigate to http://demo.guru99.com/telecom/index.html
     public void navigate_to_URL() {
@@ -48,8 +48,38 @@ public class ReadTofromAssignment5 {
     Reporter.log("actual --------------------"+actualTitle);
     Assert.assertEquals(actualTitle, expectedTitle ); 
     
+    
+    AddCustomer.Given_Done_radio_Option_button();
+        
     //wait
 	Thread.sleep(5000);
 	}
+	
+	public void  Testcase1_run_test_from_file() throws InterruptedException {
+		
+	//Populate the billing details with the INVALID Data
+	
+	   ReadFromfile.getDataConfigProperties(null);
+	   
+	    
+		
+		// Click on background check "Done"
+		AddCustomer.Given_Done_radio_Option_button();
+			
+		//call a method to populate the fields
+		AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
+		 //wait
+		Thread.sleep(5000);
+		
+				
+		String pExpectedMessage = "Special characters are not allowed";
+		String pActualMessage = AddCustomer.verifySpeacialChr_warning_message();
+			
+		Reporter.log("expected ------------------"+pExpectedMessage);
+	    Reporter.log("actual --------------------"+pActualMessage);
+	    Assert.assertEquals(pActualMessage, pExpectedMessage );      
+	    
+		}
+
 	
 }
