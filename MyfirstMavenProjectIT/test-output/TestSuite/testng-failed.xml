@@ -13,6 +13,12 @@
           <include name="afterTest"/>
         </methods>
       </class> <!-- assessmentTests.testsAssessmentReadFromFile -->
+      <class name="assessmentTests.testsAssessment">
+        <methods>
+          <include name="GIVEN_LandingPage_WHEN_ProductSearch_THEN_AddToCart"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- assessmentTests.testsAssessment -->
     </classes>
   </test> <!-- Inspired Testing Assessment(failed) -->
 </suite> <!-- Failed suite [TestSuite] -->
