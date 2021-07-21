@@ -28,9 +28,7 @@ public class AssessmentReadFromFile extends BasePage{
 	
 	SeleniumFunctions sfSelenium = new SeleniumFunctions();
 	String pURL = "https://www.geewiz.co.za/";
-	String pProductOneURL = "https://www.geewiz.co.za/batteries/5319-royal-delkor-ns70-65ah-battery-12-volt.html";
-	String pProductTwoURL = "https://www.geewiz.co.za/homeware/115733-totally-washing-dryer-line.html";
-	String pProductThreeURL = "https://www.geewiz.co.za/hand-tools/143450-carolus-socket-wrench-set-1-2-inch-24-piece.html";
+	boolean eleDisplayed;
 
 	public void navigatetourl()
 	{
@@ -74,8 +72,10 @@ public class AssessmentReadFromFile extends BasePage{
 		System.out.println("Quantity updated successfully");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
-		System.out.println("Product has been added to the cart");
 		
+		handlepopup();
+		
+		System.out.println("Product has been added to the cart");
 		System.out.println("Product search from file completed successfully");
 		Thread.sleep(5000);
 		submit();
@@ -83,6 +83,26 @@ public class AssessmentReadFromFile extends BasePage{
 		driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
 		driver.get(pURL);
 		}
+	
+	public void handlepopup() throws InterruptedException {
+		eleDisplayed = driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/p[@class='heading']")).isDisplayed();
+		if (eleDisplayed = true) {
+			driver.findElement(By.xpath("//body[@id='product']/div[17]//a[@title='Close']")).click();
+			Thread.sleep(5000);
+			eleDisplayed = driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/p[@class='heading']")).isDisplayed();
+			System.out.println("Expected text: Please note the current stock status is: " + eleDisplayed);
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/div[@class='actions']/button[1]")).click();
+			System.out.println("Product successfully added to to your shopping cart");
+			Thread.sleep(5000);
+			
+			//CLICK CONTINUE SHOPPING
+			driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
+
+		}
+		else
+			System.out.println("Popup not displayed");
+	}
 	
 	public void submit() throws InterruptedException {
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
