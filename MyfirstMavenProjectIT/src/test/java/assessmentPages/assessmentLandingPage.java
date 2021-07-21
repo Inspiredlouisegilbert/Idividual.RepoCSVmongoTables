@@ -28,12 +28,9 @@ public class assessmentLandingPage extends BasePage{
 		String sQuantityTwo = "1";
 		boolean eleDisplayed;
 		
-		//Instantiate Selenium Functions
+		//SELENIUM FUNCTIOND INSTANTIATE
 		static SeleniumFunctions sfSelenium = new SeleniumFunctions();
 		Utilities uts = new Utilities();
-		
-		// driver variable
-		//WebDriver driver;
 		
 		public void landingpage() {
 			driver.get(pURL);
@@ -69,7 +66,7 @@ public class assessmentLandingPage extends BasePage{
 			Thread.sleep(5000);
 			driver.findElement(By.xpath("/html//input[@id='quantity_wanted']")).clear();
 			
-			//wait for the quantity_wanted element to be visible
+			//IMPLICIT WAIT FOR ELEMENT VISIBE
 			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#quantity_wanted")));
 			
@@ -85,6 +82,7 @@ public class assessmentLandingPage extends BasePage{
 			WebElement getAmount = driver.findElement(By.xpath("//form[@id='add-to-cart-or-refresh']/section[@class='product-discounts']/table[@class='table-product-discounts']//td[.='R2,255']"));
 			System.out.println("Amount: " + getAmount.getText());
 		
+			//IMPLICITLY WAIT FOR ELEMENT
 			driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
 			driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
 			Thread.sleep(5000);
@@ -143,6 +141,26 @@ public class assessmentLandingPage extends BasePage{
 			System.out.println("Product successfully added to to your shopping cart");
 			Thread.sleep(5000);
 
+			//LOW STOCK POPUP VISIBILE
+			boolean bStock;
+			try {
+				bStock = driver.findElement(By.xpath("//p[contains(text(),'Please note the current stock status is:')]")).isDisplayed();
+			}
+			catch(Exception e){
+				bStock = false;
+			}
+			
+			if (bStock) {
+				//HOME PAGE NAVIGATION
+				driver.get("https://www.geewiz.co.za/");
+			}
+			else {
+				//CLICK CHECKOUT
+				driver.findElement(By.xpath("/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/div[2]/button[1]")).click();
+				Thread.sleep(5000);
+				//CLICK CONTINUE SHOPPING
+				driver.findElement(By.xpath("//button[contains(text(),'Continue shopping')]")).click();
+			}
 		}
 		
 		public void getcarttotal() throws IOException {
