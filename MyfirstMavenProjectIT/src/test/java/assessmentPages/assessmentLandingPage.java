@@ -128,6 +128,9 @@ public class assessmentLandingPage extends BasePage{
 			System.out.println("Expected text: IN STOCK AT OVERSEAS SUPPLIER - DISPATCHED/COLLECTION IN 14-20 DAYS " + eleDisplayed);
 			Thread.sleep(5000);
 			
+			Reporter.log("expected ------------------" + "Expected text: IN STOCK AT OVERSEAS SUPPLIER - DISPATCHED/COLLECTION IN 14-20 DAYS");
+		    Reporter.log("actual --------------------"+ eleDisplayed);
+			
 			//CLICK CONTINUE BUTTON
 			driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/div[@class='actions']/button[1]")).click();
 			System.out.println("Product successfully added to to your shopping cart");
@@ -157,5 +160,8 @@ public class assessmentLandingPage extends BasePage{
 			myWriter.write(scarttotal);
 			myWriter.close();
 			System.out.println("Cart total has been exported to file: " + "CartTotal.csv");
+			
+			Reporter.log("expected ------------------" + "Greater than 100");
+		    Reporter.log("actual --------------------"+ scarttotal);
 		}
 }

@@ -80,11 +80,12 @@ public class AssessmentReadFromFile extends BasePage{
 		Thread.sleep(5000);
 		submit();
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
+//		driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content-btn']/button[@type='button']")).click();
 		driver.get(pURL);
 		}
 	
 	public void handlepopup() throws InterruptedException {
+		try {
 		eleDisplayed = driver.findElement(By.xpath("//div[@id='product_confirmation_modal']/p[@class='heading']")).isDisplayed();
 		if (eleDisplayed = true) {
 			driver.findElement(By.xpath("//body[@id='product']/div[17]//a[@title='Close']")).click();
@@ -102,17 +103,22 @@ public class AssessmentReadFromFile extends BasePage{
 		}
 		else
 			System.out.println("Popup not displayed");
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
 	public void submit() throws InterruptedException {
 		driver.findElement(By.xpath("/html//form[@id='add-to-cart-or-refresh']//div[@class='add']/button[1]")).click();
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//div[@id='cart-block']//a[@href='//www.geewiz.co.za/cart?action=show']/i[@class='shopping-cart']")).click();
+//		driver.findElement(By.xpath("//div[@id='cart-block']//a[@href='//www.geewiz.co.za/cart?action=show']/i[@class='shopping-cart']")).click();
 	}
 	
 	public void getcarttotal() {
 		String scarttotal = driver.findElement(By.xpath("/html//div[@id='blockcart-modal']/div[@role='document']/div[@class='modal-content']//div[@class='cart-content']/p[2]/span[@class='value']")).getText();
-		int x= scarttotal.indexOf("R");
+//		int x= scarttotal.indexOf("R");
 		String scarttotalstripped = scarttotal.replaceAll(",", "");
 		String s = scarttotalstripped.substring(1);
 		float f = Float.parseFloat(s);

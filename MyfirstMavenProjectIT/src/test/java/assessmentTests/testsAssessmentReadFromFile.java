@@ -36,7 +36,6 @@ public class testsAssessmentReadFromFile {
 		  readFromFile.getcarttotal();
 	  }
 
-	  
 	  @AfterTest
 	  public void afterTest() throws IOException {
 		  sfSelenium.CloseSelenium();
