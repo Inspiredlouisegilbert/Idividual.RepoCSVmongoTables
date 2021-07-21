@@ -82,55 +82,140 @@ public class PayBillingPage extends BasePage{
 			
 			public String Verify_ValidCustomerName() {
 
-				//Verify that Customer Name is correctly displayed //
+			//Verify that Customer Name is correctly displayed //
 				String pCustomerName = driver.findElement(By.cssSelector ("h3")).getText(); 
 				Assert.assertEquals(pCustomerName,"Customer Name:******");
 
 				return pCustomerName;
+			}
+				
+				
+				
+				public String GETSMSPack() {
 
-			}
-			
-			public String Table_LocalMinutes() {
-			
-				
-			WebElement LocalMinutes = driver.findElement(By.xpath("//table/tbody/tr[1]/td[5]"));
-			
-			return LocalMinutes();
-			}
-			
-			public String Table_InternationalMin() {
-				
-			}
-			WebElement InternationalMin = driver.findElement(By.xpath("//table/tbody/tr[2]/td[5]"));	
-			
-			return InternationalMinutes();
-			
-			}
+			//Expected Result:Usage charge value is equal to local min and int min and sms pack usage charge amount
 
-			public String PayBillingTable_SMSPack() {
 				
-			WebElement SMSPack = driver.findElement(By.xpath("//table/tbody/tr[3/td[5]"));	
+
+			int localmins= 50;
+			int Intermins = 200;
+			int smspack = 0;
 			
-			return SMSPack;
 			
-			}
+			int usagecharge = localmins +  Intermins + smspack ;
 			
-			public String PayBillingTable_UsageCharges() {
+			String Actual_usagecharge = driver.findElement(By.xpath("//table/tbody/tr[5]/td[2]")).getText();
+			Assert.assertEquals(Actual_usagecharge, usagecharge);	
 			
-			WebElement UsageCharges = driver.findElement(By.xpath("//table/tbody/tr[5]/td[5]"));
+			return GETSMSPack();
 			
-			return UsageCharges;
-			
-			}
 				
-	int UsageCharges = LocalMinutes + IntMinutes + SMSPack;
+		 }
+							
+			public String GetBillAmount() {
+
+			//Expected Result:Total Bill amount displayed correctly
+
+				
+			int TarrifPlanAmt= 500;
+			int UsageCharge = 200;
 	
-	Expected_Usage_Charges = driver.findElement(By.xpath("//table/tbody/tr[5]/td[5]"));
-	Assert.assertEquals(UsageCharges,"Customer ID:******");	
 			
-	String UsageCharges = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
-	Assert.assertEquals(actualString1, "Special characters are not allowed");
 			
-	}
+			int TotalBill = TarrifPlanAmt +  UsageCharge;
+			
+			String Actual_TotalBill = driver.findElement(By.xpath("//table/tbody/tr[6]/td[2]")).getText();
+			Assert.assertEquals(Actual_TotalBill, TotalBill);	
+			
+			return GetBillAmount();
+			
+				
+		}
+				
+				
+}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+			//public String Table_LocalMinutes() {
+			
+				
+			//WebElement LocalMinutes = driver.findElement(By.xpath("//table/tbody/tr[1]/td[5]"));
+			
+			//return LocalMinutes();
+			//}
+			
+			//public String Table_InternationalMin() {
+				
+			//}
+			//WebElement InternationalMin = driver.findElement(By.xpath("//table/tbody/tr[2]/td[5]"));	
+			
+			//return InternationalMinutes();
+			
+			//}
+
+			//public String PayBillingTable_SMSPack() {
+				
+			//WebElement SMSPack = driver.findElement(By.xpath("//table/tbody/tr[3/td[5]"));	
+			
+			//return SMSPack;
+			
+			//}
+			
+			//public String PayBillingTable_UsageCharges() {
+			
+			//WebElement UsageCharges = driver.findElement(By.xpath("//table/tbody/tr[5]/td[5]"));
+			
+			//return UsageCharges;
+			
+			//}
+				
+			
+			
+	//int UsageCharges = LocalMinutes + IntMinutes + SMSPack;
+	
+	//Expected_Usage_Charges = driver.findElement(By.xpath("//table/tbody/tr[5]/td[5]"));
+	//Assert.assertEquals(UsageCharges,"Customer ID:******");	
+			
+	//String UsageCharges = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
+	//Assert.assertEquals(actualString1, "Special characters are not allowed");
+			
+	//}
 			
 			

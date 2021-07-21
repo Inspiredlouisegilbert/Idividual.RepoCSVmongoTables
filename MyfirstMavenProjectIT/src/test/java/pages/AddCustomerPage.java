@@ -86,11 +86,14 @@ public class AddCustomerPage extends BasePage{
 	
 		//Select On Done radio button
 		//driver.findElement(By.cssSelector("[for='done']")).click();
-
+	}
 		   
+	
+	public String verifySpeacialChr_warning_message() {
 	    // verify if the validation message displays below the field  // 
 		String actualString1 = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
 		Assert.assertEquals(actualString1, "Special characters are not allowed");
+		return actualString1;
 		
 	  
 	}

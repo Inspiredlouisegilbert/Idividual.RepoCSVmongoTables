@@ -17,29 +17,54 @@ import pages.LandingPage;
 import pages.SignInPage;
 
 
-public class LandingPageTest {
+public class Assignment_1 {
 	
 	// Declare an object of classes and
 	// Instantiate class objects
-	SignInPage inPage = new SignInPage();              
+            
 	LandingPage landingPage = new LandingPage();     
 	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
 	AddCustomerPage AddCustomer = new AddCustomerPage();
 	CustomerIDPage CustomerID = new CustomerIDPage ();
 	//ProductSearchPage pr = new ProductSearchPage();
-	HomePage homePage = new HomePage();
+
+		
 	
-	//@Test
-    public void GIVEN_navigateToURL_THEN_TitleMyStore() {
-        String expectedTitle = "My Store";
-        String actualTitle = landingPage.getTitle();
+	
+	//Ask Louise for help on this not sure if its done right
+	
+		
+	@Test
+    public void GetUrl() {
+        String expectedTitle = "Guru99 telecom";
+        String actualTitle = GuruLanding.GetUrl();
          
         Reporter.log("expected ------------------"+expectedTitle);
         Reporter.log("actual --------------------"+actualTitle);
         Assert.assertEquals(actualTitle, expectedTitle ); 
         
-	}
+	    }
 			
+	@Test
+	
+	public void Add_customer_button() {
+		
+		GuruLanding.Add_customer_Link();
+	}
+	
+	
+	
+	public void Verify_Addcust_Heading() {
+		
+		String ExpectedMessage = "Add Customer";
+		String ActualMessage = GuruLanding.Verify_Addcust_Heading();
+		
+	    Reporter.log("expected ------------------"+ExpectedMessage);
+	    Reporter.log("actual --------------------"+ActualMessage);
+	    Assert.assertEquals(ActualMessage, ExpectedMessage ); 
+				
+	}
+		
 		@Test
 		
 		public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {

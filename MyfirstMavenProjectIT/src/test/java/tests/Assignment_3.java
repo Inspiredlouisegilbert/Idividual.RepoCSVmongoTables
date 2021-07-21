@@ -53,41 +53,65 @@ public class Assignment_3 {
 	//4. GIVEN active customer WHEN submit THEN total bill amount displayed correctly 
 	
 	
+	
+	
+	
+	@Test
+	
+	public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
+
+		// Call a method to click rest button
+		//AddCustomer.Given_Reset_button_isClicked();
+
+		//Call a method to click Done option
+		AddCustomer.Given_Done_radio_Option_button();
+
+		//Populate the billing details with the VALID Data
+		String sfname= "Nyeleti";
+		String slname = "Chauke";
+		String semailid = "123@gmail.com";
+		String saddr= "Smit steet";
+		String stelephoneno= "0242353454";
+
+		//call a method to populate the fields
+		AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
+
+		//Call a method to click submit button
+		AddCustomer.Given_Submit_button_isClicked();
+		 //wait
+		Thread.sleep(5000);
+
+		// Verify that the Customer ID Page is displayed  
+		String ExpectedMessage = "Access Details to Guru99 Telecom";
+		String ActualMessage = CustomerID.verifyCustomerID_Heading();
+
+		//CustomerID.verifyCustomerID_Heading(); 
+		Reporter.log("expected ------------------"+ExpectedMessage);
+		Reporter.log("actual --------------------"+ActualMessage);
+		Assert.assertEquals(ActualMessage, ExpectedMessage );
+		   			       
+		// Asset for the Customer ID that keeps on Changing
+		boolean sCustID = CustomerID.Generated_Customer_ID();
+					     
+		Reporter.log("expected Customer ID is displayed");
+		Reporter.log("actual --------------------"+sCustID);
+		Assert.assertEquals(sCustID, true);
+		
+		   
+      }
+
+	
+	
 @Test
 	public void NavigateTo_LandingPage () {
 			
 	
 	 // call a method to Click on Home button
-	  //CustomerID.Click_Home_button_CustomerIDPage();
-	 
-	//}
-		
-		//Verify the correct Assersetion fo the Landingpage
-	 /* // Verify that Guru99 telecom Heading is available // String expectedTitle =
-	 * "Guru99 telecom"; String actualTitle =
-	 * AddTariffPlan_To_Customer.verify_Guru99telecom_Logo(); //String actualTitle =
-	 * landingPage.getTitle();
-	 * 
-	 * Reporter.log("expected ------------------"+expectedTitle);
-	 * Reporter.log("actual --------------------"+actualTitle);
-	 * Assert.assertEquals(actualTitle, expectedTitle );
-	 * 
-	 * }
-	 * 
-	 * public void VerifyTo_AddTariff_to_Customer () { // Verify that Add Tariff
-	 * Plan To Customer link is available // String expectedTitle =
-	 * "Add Tariff Plan To Customer"; String actualTitle =
-	 * AddTariffPlan_To_Customer.verify_Add_Tariff_PLan_to_Customer_Header();
-	 * //String actualTitle = landingPage.getTitle();
-	 * 
-	 * Reporter.log("expected ------------------"+expectedTitle);
-	 * Reporter.log("actual --------------------"+actualTitle);
-	 * Assert.assertEquals(actualTitle, expectedTitle );
-	 * 
-	 * }
-	 */
-		
-}
+	 CustomerID.Click_Home_button_CustomerIDPage();
+		// Verify that Guru99 telecom Heading is available //
+		String expectedLogo = "Guru99 telecom";
+		String actualLogo = PayBilling.verify_Guru99telecom_Logo();			
+      }
 		
 		@Test
 		//call a method to click on Pay Billing link
