@@ -100,7 +100,7 @@ public class MbhoniAssTest {
 	@Test
     public void search_For_Products_Less_Than_100 () throws InterruptedException, IOException {
 		
-		landingPageLessThan.searchProduct("pan");
+		landingPageLessThan.searchProduct("Switchcom RJ45-B-Y");
 		landingPageLessThan.clickSearchButton();
 		landingPageLessThan.clickDropDown();
 		landingPageLessThan.selectFromDropDown();

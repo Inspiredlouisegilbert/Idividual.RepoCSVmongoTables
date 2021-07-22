@@ -103,10 +103,10 @@ public class GeewizLandingPageObjectsReadFromCsv extends BasePage {
     	 System.out.println("Continue Shopping Is Clicked");
      }
      
-     public void vaildateCartAmount() throws IOException {
+     public void vaildateCartAmount() throws IOException, InterruptedException {
     	 driver.findElement(By.cssSelector(".title-cart")).click();
     	 String totalAmount = driver.findElement(By.cssSelector(".cart-total > .value")).getText();
-    	 
+    	 Thread.sleep(5000);
     	 String totalAmountStrip = totalAmount.replaceAll(",", ""); 	 
     	 String s= totalAmountStrip.substring(1);  	
     	 float f=Float.parseFloat(s); 
