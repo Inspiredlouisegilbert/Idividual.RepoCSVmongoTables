@@ -1,4 +1,4 @@
-package tests;
+package Nyeleti_Continue;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +27,7 @@ import pages.PayBillingPage;
 import pages.SignInPage;
 
 
-public class Assignment_3 {
+public class NyAssignment_3 {
 	
 
 	// Declare an object of classes and
@@ -53,6 +53,7 @@ public class Assignment_3 {
 	//4. GIVEN active customer WHEN submit THEN total bill amount displayed correctly 
 	
 	
+	@Test
 	
 	
 	
@@ -211,13 +212,13 @@ public class Assignment_3 {
 	int SMSPack = 0;
 			
 				
-	int UsageCharges = LocalMinutes + IntMinutes + SMSPack;
+	int UsageCharges = LocalMinutes + InternatinalMin + SMSPack;
 	
 	
 	Assert.assertEquals(UsageCharges, "250");	
 			
-	String UsageCharges = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
-	Assert.assertEquals(actualString1, "Special characters are not allowed");
+	String UsageCharges1 = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
+	Assert.assertEquals(actualString2, "Special characters are not allowed");
 	
 	
 		//***transform string to integer if you get an error = data type mismatch***

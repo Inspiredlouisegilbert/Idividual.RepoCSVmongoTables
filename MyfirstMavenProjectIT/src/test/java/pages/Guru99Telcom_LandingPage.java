@@ -19,14 +19,54 @@ public class Guru99Telcom_LandingPage extends BasePage {
         return  getTitle();
 	} 
 	
+
 	public String verifyTelcomLandingPage() {
         		
 		String actualPage = driver.findElement(By.cssSelector("#header .logo")).getText();
 	    //Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
 			
 		return verifyTelcomLandingPage();
+	}
+
+	public String GetUrl() {
+        
+       	//Instantiate Selenium Functions
+		String pURL = "http://demo.guru99.com/telecom/index.html";
+		//NAVIGATE TO URL
+		//public void navigateToURL(String pURL) {
+		//driver.get(pURL);
+		//sfSelenium.maximiseBrowserWindow();
 		
-    }
+		return GetUrl();
+		}
+
+	public String Guru99_Telcom_Heading () {
+		
+		// Verify that Guru99 telecom Heading is available //
+		String verifyTelcomLandingPage = driver.findElement(By.cssSelector("#header .logo")).getText();
+	    Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
+		return Guru99_Telcom_Heading();
+		
+		    
+	}
+	    
+	    public String Verify_Addcust_Heading() {
+		
+	  //Verify that Add Customer Heading is available //
+	 	String actual_link = driver.findElement(By.linkText ("Add Customer")).getText(); 
+	 	Assert.assertEquals(actual_link, "Add Customer");  
+	 	
+		return Verify_Addcust_Heading();
+	    }
+	    
+	 		 	
+		public String Add_customer_Link() {
+		// Click on Add Customer
+		driver.findElement(By.linkText("Add Customer")).click();  
+		
+		return Add_customer_Link();
+        }
+			
 	
 	public String ClickAddCustomer_Link() {
 		// Click on Add Customer
@@ -46,6 +86,7 @@ public class Guru99Telcom_LandingPage extends BasePage {
 		return veriy_AddCustomer_Link();
 	}
 	
+
 	public String verify_AddTariffPlanToCustomerLink() {       
        	
 	//Verify that Add Tariff Plan to Customer Link is available //
@@ -72,7 +113,9 @@ public class Guru99Telcom_LandingPage extends BasePage {
 			
 		}
 	
-	
+	public void BackgroundChk_done() {   
+	driver.findElement(By.cssSelector("[for='done']")).click();
+	}
 	
 
 }

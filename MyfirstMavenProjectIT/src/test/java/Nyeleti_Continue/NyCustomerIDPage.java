@@ -1,4 +1,4 @@
-package pages;
+package Nyeleti_Continue;
 
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.fail;
@@ -20,13 +20,13 @@ import frameworkclasses.SeleniumFunctions;
 
 //boolean eleDisplayed;
 
-public class CustomerIDPage extends BasePage {
+public class NyCustomerIDPage extends BasePage {
 	
-	public String  verifyCustomerID_Heading() throws InterruptedException {
+	public String  verify_AccessDetails_to_Guru99_Telecomn() throws InterruptedException {
 		
 	// verify that the Access Details to Guru99 Telecom Heading is displays //
 		 String actualHeading = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//h1[.='Access Details to Guru99 Telecom']")).getText();
-		//Assert.assertEquals(actualHeading, "Access Details to Guru99 Telecom");
+		Assert.assertEquals(actualHeading, "Access Details to Guru99 Telecom");
 		 
 		return actualHeading;
 	}
@@ -35,7 +35,7 @@ public class CustomerIDPage extends BasePage {
 		
 		
     // Asset for the Customer ID that keeps on Changing
-      boolean CustomerID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).isDisplayed();
+      boolean CustomerID = driver.findElement(By.cssSelector("h3")).isDisplayed();
       //String actualSlength = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();
           
       return CustomerID;
@@ -47,7 +47,7 @@ public class CustomerIDPage extends BasePage {
 		
 	    // Copy the Customer ID that keeps on Changing
 	     
-	    String Cust_ID = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']/")).getText();	      
+	    String Cust_ID = driver.findElement(By.cssSelector("h3")).getText();	      
 	      return Cust_ID;
 
 		}

@@ -1,4 +1,4 @@
-package pages;
+package Nyeleti_Continue;
 
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.fail;
@@ -27,7 +27,7 @@ import frameworkclasses.SeleniumFunctions;
 5. POM file 
 6. Listeners
 */
-public class AddCustomerPage extends BasePage{
+public class NyAddCustomerPage extends BasePage{
 
 	// function to populate an input field using multiple By clauses
 	public void populateInputField(By byClause, String inputValue) {
@@ -50,6 +50,15 @@ public class AddCustomerPage extends BasePage{
 		//click on Submit
 	     driver.findElement(By.name("submit")).click();
 		
+	}
+	
+	public String verifySpeacialChr_warning_message() {
+	    // verify if the validation message displays below the field  // 
+		String actualString1 = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
+		Assert.assertEquals(actualString1, "Special characters are not allowed");
+		return actualString1;
+		
+	  
 	}
 	
 		public void  Given_Done_radio_Option_button() {
@@ -86,18 +95,13 @@ public class AddCustomerPage extends BasePage{
 	
 		//Select On Done radio button
 		//driver.findElement(By.cssSelector("[for='done']")).click();
-	}
+
 		   
-	
-	public String verifySpeacialChr_warning_message() {
 	    // verify if the validation message displays below the field  // 
 		String actualString1 = driver.findElement(By.xpath("//label[.='Special characters are not allowed']")).getText();
 		Assert.assertEquals(actualString1, "Special characters are not allowed");
-		return actualString1;
 		
-	  
 	}
-	
 	
 	
 	
@@ -122,6 +126,8 @@ public class AddCustomerPage extends BasePage{
 	      return sAlertMessage;
 	  
 	  }
+	  	
+	  	
 
 	
 }

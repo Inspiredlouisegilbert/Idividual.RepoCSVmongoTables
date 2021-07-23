@@ -48,7 +48,7 @@ public class BasePage {
     			System.setProperty("webdriver.chrome.driver",pdriverDir+"chromedriver.exe");
     			//create chrome instance
     			driver     = new ChromeDriver();
-    			driver.get(systemUnderTest);
+    			//driver.get(systemUnderTest);
                 driver.manage().window().maximize();
     			
     		}
@@ -104,6 +104,10 @@ public class BasePage {
 		String h1 = driver.findElement(pLocator).getText();
 		
 		return h1;
+	}
+	
+	public void Cleanup() {
+		driver.close();
 	}
 }
     

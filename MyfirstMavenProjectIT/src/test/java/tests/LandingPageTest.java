@@ -35,14 +35,14 @@ public class LandingPageTest {
 		String URL = "http://demo.guru99.com/telecom/index.html";
     }
     
- 	//@Test
+ //@Test
     public void Add_Customer_Link() {
     	//call a method to click the Add Customer link
     	GuruLanding.ClickAddCustomer_Link();
     	
     }
     
-    @Test
+@Test
     public void GIVEN_navigateToURL_THEN_AddCutomer() {
     	
     	//call a method to navigate to url
@@ -56,13 +56,12 @@ public class LandingPageTest {
          
         Reporter.log("expected ------------------"+expectedTitle);
         Reporter.log("actual --------------------"+actualTitle);
-        Assert.assertEquals(actualTitle, expectedTitle );
-          				  
+        Assert.assertEquals(actualTitle, expectedTitle );        				  
 		
     }
     
     
-   // @Test
+ // @Test
     public  void verifyAddCustomer() {
     	//call a method to click the Add Customer link
     	GuruLanding.ClickAddCustomer_Link();
@@ -77,9 +76,8 @@ public class LandingPageTest {
     }
      
     
-		//@Test
-		
-		public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {
+//@Test
+	public void  Given_Invalid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 	//Populate the billing details with the INVALID Data
 		String sfname= "Nyeleti";
 		String slname = "Chauke";
@@ -110,7 +108,6 @@ public class LandingPageTest {
 			
 
 //@Test
-		
 		public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 	
 		// Call a method to click rest button
@@ -205,8 +202,7 @@ public class LandingPageTest {
 
 
 
-
-        
+      
 /*
  * //@Test public void
  * GIVEN_navigateToURL_WHEN_CorrectLogin_THEN_LoginSuccessful() {
@@ -214,8 +210,7 @@ public class LandingPageTest {
  * 
  * inPage.userSignIn("abc11001@xyz.com", "abcxyz");
  * 
- * boolean expected = true; boolean actual =
- * homePage.verifyCorrectLogin().equals("abc xyz");
+ * boolean expected = true; boolean actual = homePage.verifyCorrectLogin().equals("abc xyz");
  * 
  * Reporter.log("expected ------------------"+expected);
  * Reporter.log("actual --------------------"+actual);
