@@ -83,7 +83,9 @@ public class Gurulanding_page extends BasePage{
 		public void Click_Pay_Billing_Link() {       
 			 	
 			// Click on Pay billing
-			driver.findElement(By.linkText("Pay Billing")).click();  
+
+			driver.findElement(By.cssSelector(".flex-item.right > div:nth-of-type(2) > h3 > a")).click();
+			
 				
 			}
 		
@@ -97,7 +99,16 @@ public class Gurulanding_page extends BasePage{
 
 
 	
+		 public String verify_PayBilling_Heading() {
+			 
+			 
+		//Verify that Pay Billing Heading is available //
+	
+			String actual_link = driver.findElement(By.xpath("//section[@id='main']/div[@class='inner']//h1[.='Pay Billing']")).getText();
+		 	Assert.assertEquals(actual_link, "Pay Billing");
+			return actual_link;
+			
 
 }
 
-
+}

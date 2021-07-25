@@ -53,7 +53,7 @@ public class NyAssignment_3 {
 	//4. GIVEN active customer WHEN submit THEN total bill amount displayed correctly 
 	
 	
-	@Test
+
 	
 	
 	

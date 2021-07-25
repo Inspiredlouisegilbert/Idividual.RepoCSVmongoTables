@@ -26,7 +26,14 @@ public class ReadFromFile_Page extends BasePage {
 	public void populateInputField(By byClause, String inputValue) {
       driver.findElement(byClause).sendKeys(inputValue);
 		}
-												
+				
+	
+	public void Getactive_cust() {
+		
+		driver.findElement(By.name("customer_id")).sendKeys("501465");
+
+		
+	}
 			
 			
 	//Populate the billing details
@@ -39,6 +46,7 @@ public class ReadFromFile_Page extends BasePage {
 	populateInputField(By.name("telephoneno"),stelephoneno);
 					
 	}
+	
 	
 	public void runTestReadFromFile () throws IOException, InterruptedException {
 
