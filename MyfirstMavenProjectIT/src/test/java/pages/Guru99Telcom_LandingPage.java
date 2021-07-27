@@ -11,10 +11,9 @@ import frameworkclasses.SeleniumFunctions;
 public class Guru99Telcom_LandingPage extends BasePage {
 
 	//First Test. This title should be verified in LandingPageTest class
-	
-    public String getTitle() {
+	public String getTitle() {
         return driver.getTitle();
-		} 
+	} 
 	
 	public String Get_Url() {
         
@@ -40,23 +39,22 @@ public class Guru99Telcom_LandingPage extends BasePage {
 		return verifyTelcomLandingPage();
 	}
 
-	public String GetUrl() {
-        
-       	//Instantiate Selenium Functions
-		String pURL = "http://demo.guru99.com/telecom/index.html";
-		//NAVIGATE TO URL
-		//public void navigateToURL(String pURL) {
-		//driver.get(pURL);
-		//sfSelenium.maximiseBrowserWindow();
-		
-		return GetUrl();
-		}
+	/*
+	 * public String GetUrl() {
+	 * 
+	 * //Instantiate Selenium Functions String pURL =
+	 * "http://demo.guru99.com/telecom/index.html"; //NAVIGATE TO URL //public void
+	 * navigateToURL(String pURL) { //driver.get(pURL);
+	 * //sfSelenium.maximiseBrowserWindow();
+	 * 
+	 * return GetUrl(); }
+	 */
 
 	public String Guru99_Telcom_Heading () {
 		
 		// Verify that Guru99 telecom Heading is available //
 		String verifyTelcomLandingPage = driver.findElement(By.cssSelector("#header .logo")).getText();
-	    Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
+	    //Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
 		return Guru99_Telcom_Heading();
 		
 		    
