@@ -13,11 +13,23 @@ public class Guru99Telcom_LandingPage extends BasePage {
 	//First Test. This title should be verified in LandingPageTest class
 	
     public String getTitle() {
-    	//Instantiate Selenium Functions
-    	String pUrl = "http://demo.guru99.com/telecom/index.html";
-        //return driver.getTitle();
-        return  getTitle();
-	} 
+        return driver.getTitle();
+		} 
+	
+	public String Get_Url() {
+        
+       	//Instantiate Selenium Functions
+		String actualURL = driver.getCurrentUrl();
+		return actualURL;		
+	}
+	
+	
+	 public void Navigate_to_URL() {
+		 String pURL = "http://demo.guru99.com/telecom/index.html";
+		 driver.get(pURL);
+		//sfSelenium.maximiseBrowserWindow();
+		
+	}
 	
 
 	public String verifyTelcomLandingPage() {

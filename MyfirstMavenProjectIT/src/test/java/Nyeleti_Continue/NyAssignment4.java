@@ -47,9 +47,10 @@ private static final String StoreBillingInfo = null;
 		HomePage homePage = new HomePage();  
 		
 		// Selenium Functions 
-		SeleniumFunctions sfSelenium = new SeleniumFunctions();
-		// driver variable
-		WebDriver driver;
+		/*
+		 * SeleniumFunctions sfSelenium = new SeleniumFunctions(); // driver variable
+		 * WebDriver driver;
+		 */
 
 		
 		
@@ -65,7 +66,7 @@ private static final String StoreBillingInfo = null;
 		
 		}
 		
-		@Test
+		//@Test
 			
 		//Assert  Add Customer Heading
 		public void Verify_Addcust_Heading1() throws InterruptedException {
@@ -133,7 +134,7 @@ private static final String StoreBillingInfo = null;
 
 		
 		
-	@Test
+	//@Test
 		// call a method to Click on Home button
 		public void NavigateTo_LandingPage () {
 				
@@ -152,7 +153,7 @@ private static final String StoreBillingInfo = null;
 	      }
 	
 			
-	@Test
+	//@Test
 	//Run | Debug
 			//call a method to click on Pay Billing link
 			public void GIVEN_ActiveCustomer_CustID_Displayed_Correctly() throws InterruptedException {
@@ -182,7 +183,7 @@ private static final String StoreBillingInfo = null;
 			}
 
 			
-			@Test
+			//@Test
 			//call a method to capture the Cust ID field on the Add Tariff Plan To Customer Page
 			
 			public void  Given_Active_Customer_Populate_CustID() throws InterruptedException {
@@ -217,9 +218,9 @@ private static final String StoreBillingInfo = null;
 				//CSVWriter writer = new CSVWriter(new FileWriter("TestData//sample1.csv"));
 				
 				//write table data to file
-		        FileWriter myWriter = new FileWriter(("TestData//sample1.csv"));   //StoreBillingInfo.csv
-		        myWriter.write(driver.findElement(By.cssSelector("tbody")).getText());
-		        myWriter.close();
+		        FileWriter myWriter = new FileWriter(("C:\\Users\\tkgotiane\\git\\Individual.RepoCSVmongoTables\\MyfirstMavenProjectIT\\src\\test\\java\\Nyeleti_Continue\\TestData\\sample1.csv"));   //StoreBillingInfo.csv
+		        //myWriter.write(PayBilling.driver.findElement(By.cssSelector("tbody")).getText());
+		        
 				
 				// write  data into csv file by creating an array
 				String set1[] = {"", "Free Usage Limit", "Actual Usage", "Over Free", "Usage Charges"};
@@ -255,13 +256,15 @@ private static final String StoreBillingInfo = null;
 				list.add(set7);
 				
 				//write everything on the list into CSV file //writeAll(list);
-				Writer.writeAll(list);
-				//flush my dat into the csv file
-				Writer.flush();
+				myWriter.append("list");
+				/*
+				 * Writer.writeAll(list); //flush my dat into the csv file Writer.flush();
+				 */
 				
 				
 				System.out.println("data entered");
 				
+				myWriter.close();
 				
 				}
 }
