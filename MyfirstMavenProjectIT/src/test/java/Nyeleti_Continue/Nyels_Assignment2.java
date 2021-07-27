@@ -35,8 +35,8 @@ package Nyeleti_Continue;
 
 	
 		//Navigate to http://demo.guru99.com/telecom/index.html
-	    publi. void navigate_to_URL1() {
-	    	Gurulanding_page.
+	    public void navigate_to_URL1() {
+	    	Gurulanding_page.Navigate_to_URL();
 
 	    	
 	    	}
@@ -68,8 +68,6 @@ package Nyeleti_Continue;
 	         Reporter.log("actual --------------------"+actualTitle);
 	         Assert.assertEquals(actualTitle, expectedTitle ); 
 	            
-	            //Go back to main Menu
-	         AddTarrifPlanToCust.ClickGuru99_link();
 	         Thread.sleep(5000);
 	            
 	    	    }	
@@ -78,7 +76,9 @@ package Nyeleti_Continue;
 			@Test
 		public void  Testcase1_GIVEN_active_customer_WHEN_submit_THEN_active_is_displayed () throws InterruptedException {
 
-				//Click on Add Tariff Plan to Customer
+				//Navigate to URL
+				Gurulanding_page.Navigate_to_URL();
+				//Click on Add  Customer
 				Gurulanding_page.Add_customer_Link();
 
 				//Call a method to click Done option
@@ -98,42 +98,56 @@ package Nyeleti_Continue;
 				AddCustomer.Given_Submit_button_isClicked();
 				 //wait
 				Thread.sleep(5000);
-
+				
+				
+				//Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
+				//AddTarrifPlanToCust.Getactive_cust();
+				//AddTarrifPlanToCust.Click_AddTrariffPlantoCustomerButton();
+				
+				//Verify Active
+				//AddTarrifPlanToCust.Verify_CustomerActive();
+				
+				
+				
+				
 				// Verify that the Customer ID Page is displayed  
-				String ExpectedMessage = "Access Details to Guru99 Telecom";
-				String ActualMessage = CustomerID.verifyCustomerID_Heading();
+				//String ExpectedMessage = "Access Details to Guru99 Telecom";
+				//String ActualMessage = CustomerID.verifyCustomerID_Heading();
 
 				//CustomerID.verifyCustomerID_Heading(); 
-				Reporter.log("expected ------------------"+ExpectedMessage);
-				Reporter.log("actual --------------------"+ActualMessage);
-				Assert.assertEquals(ActualMessage, ExpectedMessage );
+				//Reporter.log("expected ------------------"+ExpectedMessage);
+				//Reporter.log("actual --------------------"+ActualMessage);
+				//Assert.assertEquals(ActualMessage, ExpectedMessage );
 				   			       
 				// Asset for the Customer ID that keeps on Changing
-				boolean sCustID = CustomerID.Generated_Customer_ID();
+				//boolean sCustID = CustomerID.Generated_Customer_ID();
 							     
-				Reporter.log("expected Customer ID is displayed");
-				Reporter.log("actual --------------------"+sCustID);
-				Assert.assertEquals(sCustID, true);
+				//Reporter.log("expected Customer ID is displayed");
+				//Reporter.log("actual --------------------"+sCustID);
+				//Assert.assertEquals(sCustID, true);
 				
 				//Click on Home to get to main page
-				AddTarrifPlanToCust.ClickHomelink();
+				//AddTarrifPlanToCust.ClickHomelink();
 				
 				   
 		}
 
-			
-			
+			@ Test 
+						
 			public void  Enter_Valid_customer_id_and_submit() throws InterruptedException {
-
+				//NAvigate to URL
+				Gurulanding_page.Navigate_to_URL();
 				
-				AddTarrifPlanToCust.ClickOnAddTarrifplanto_customer_link();
+				Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
+				
+				
+				//AddTarrifPlanToCust.ClickOnAddTarrifplanto_customer_link();
 				AddTarrifPlanToCust.Getactive_cust();
 				AddTarrifPlanToCust.Click_Submit_Button_on_AddTrariffPlantoCustomer();
 				
 				//String sCustID= "501465";
 				
-				
-				
+								
 				// Verify that ACTIVE is available //
 				String expectedTitle = "ACTIVE";
 				String actualTitle = AddTarrifPlanToCust.Verify_CustomerActive();
@@ -143,7 +157,7 @@ package Nyeleti_Continue;
 				Reporter.log("actual --------------------"+actualTitle);
 				Assert.assertEquals(actualTitle, expectedTitle ); 
 				
-				AddTarrifPlanToCust.ClickGuru99_link();
+				
 							
 			}
 		/////******************************************************************	
@@ -151,9 +165,11 @@ package Nyeleti_Continue;
 				
 			@Test
 			public void  Testcase2_GIVEN_Inactive_customer_WHEN_submit_THEN_INactive_is_displayed () throws InterruptedException {
-                //Click Add Customer 
+				
+				//Navigate to URL
+				Gurulanding_page.Navigate_to_URL();
+				//Click on Add  Customer
 				Gurulanding_page.Add_customer_Link();
-
 				//Call a method to click Done option
 				AddCustomer.Given_Pending_radio_Option_button();	
 
@@ -173,34 +189,35 @@ package Nyeleti_Continue;
 				Thread.sleep(5000);
 
 				// Verify that the Customer ID Page is displayed  
-				String ExpectedMessage = "Access Details to Guru99 Telecom";
-				String ActualMessage = CustomerID.verifyCustomerID_Heading();
+				//String ExpectedMessage = "Access Details to Guru99 Telecom";
+				//String ActualMessage = CustomerID.verifyCustomerID_Heading();
 
 				//CustomerID.verifyCustomerID_Heading(); 
-				Reporter.log("expected ------------------"+ExpectedMessage);
-				Reporter.log("actual --------------------"+ActualMessage);
-				Assert.assertEquals(ActualMessage, ExpectedMessage );
+				//Reporter.log("expected ------------------"+ExpectedMessage);
+				//Reporter.log("actual --------------------"+ActualMessage);
+				//Assert.assertEquals(ActualMessage, ExpectedMessage );
 				   			       
 				// Asset for the Customer ID that keeps on Changing
-				boolean sCustID = CustomerID.Generated_Customer_ID();
+				//boolean sCustID = CustomerID.Generated_Customer_ID();
 							     
-				Reporter.log("expected Customer ID is displayed");
-				Reporter.log("actual --------------------"+sCustID);
-				Assert.assertEquals(sCustID, true);
+				//Reporter.log("expected Customer ID is displayed");
+				//Reporter.log("actual --------------------"+sCustID);
+				//Assert.assertEquals(sCustID, true);
 				
-				AddTarrifPlanToCust.ClickHomelink();
+				//AddTarrifPlanToCust.ClickHomelink();
 			  	Thread.sleep(5000);
 			}   
 			
-	
-			
-			public void  Given_InActive_Customer_Populate_CustID() throws InterruptedException {
-			      AddTarrifPlanToCust.Click_AddTrariffPlantoCustomerButton();
-			      
+	           @Test
+				public void  Given_InActive_Customer_Populate_CustID() throws InterruptedException {
+		        
+		         Gurulanding_page.Navigate_to_URL();
 		
-				AddTarrifPlanToCust.ClickOnAddTarrifplanto_customer_link();
-				AddTarrifPlanToCust.GetInactive_cust();
-				AddTarrifPlanToCust.Click_Submit_Button_on_AddTrariffPlantoCustomer();
+		        Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
+		        //AddTarrifPlanToCust.ClickOnAddTarrifplanto_customer_link();
+		       
+		        AddTarrifPlanToCust.GetInactive_cust();
+		        AddTarrifPlanToCust.Click_Submit_Button_on_AddTrariffPlantoCustomer();
 				//String sCustID= "651073";
 				
 				
@@ -214,20 +231,19 @@ package Nyeleti_Continue;
 				Reporter.log("actual --------------------"+actualTitle);
 				Assert.assertEquals(actualTitle, expectedTitle ); 
 				
-				//Go back to telecoms homepage
-				AddTarrifPlanToCust.ClickHomelink();
+				
 			}	
 			
 	//*******************************************************************************
-			
+			@Test
 			public void Test_case_3_GIVEN_active_customer_WHEN_submit_THEN_at_least_one_approved_tariff_plan_is_displayed () throws InterruptedException {
 				
 
 			//Enter an active customer id and submit
 				//String sCustID= "501465";
 			
-		
-				AddTarrifPlanToCust.ClickOnAddTarrifplanto_customer_link();
+				Gurulanding_page.Navigate_to_URL();
+				Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
 				AddTarrifPlanToCust.Getactive_cust();
 				AddTarrifPlanToCust.Click_Submit_Button_on_AddTrariffPlantoCustomer();
 				
@@ -241,16 +257,17 @@ package Nyeleti_Continue;
 				Assert.assertEquals(actualTitle, expectedTitle ); 
 				
 				Thread.sleep(5000);
-				//Click on Guru99 heading to go back to main page
-				AddTarrifPlanToCust.ClickGuru99_link();
-				
+	
 								
 			}
 				
-			
-			
+			@Test			
 			public void Testcase4_GIVENat_leastoneapproved_tariff_plan_is_selected_WHEN_add_tariff_THEN_success_message_displayed () {
 			
+				Gurulanding_page.Navigate_to_URL();
+				Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
+				AddTarrifPlanToCust.Getactive_cust();
+				AddTarrifPlanToCust.Click_Submit_Button_on_AddTrariffPlantoCustomer();
 				
 				//Enter an active customer id 
 				//String sCustID= "501465";

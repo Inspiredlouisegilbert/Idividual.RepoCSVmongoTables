@@ -52,11 +52,7 @@ public class NyAssignment_3 {
 	//3. GIVEN active customer WHEN submit THEN tariff plan amount displayed correctly 
 	//4. GIVEN active customer WHEN submit THEN total bill amount displayed correctly 
 	
-	
 
-	
-	
-	
 	@Test
 	
 	public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
@@ -100,8 +96,6 @@ public class NyAssignment_3 {
 		
 		   
       }
-
-	
 	
 @Test
 	public void NavigateTo_LandingPage () {
@@ -227,16 +221,16 @@ public class NyAssignment_3 {
 				
 	//ask Louise//???List<WebElement>TotalRowsList = TogetRows.findElements(By.tagName("<b>50</b>/<b>200</b>/<b>0</b>"));
 				 
-				System.out.println("Total number of Rows in the table are : "+ TotalRowsList.size());
+	System.out.println("Total number of Rows in the table are : "+ TotalRowsList.size());
 				
-				WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
+	WebElement ToGetColumns = driver.findElement(By.xpath(tablexpath));
 				
 	WebElement TotalAmount1 = driver.findElement(By.xpath("//table/tbody/tr[5]/td[5]"));
 				
-				List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
+	List<WebElement> TotalColsList = ToGetColumns.findElements(By.tagName("td"));
 
-				System.out.println("Total Number of cells in the table are: "+TotalColsList.size());
-				sfSelenium.logScreenShot();	
+	System.out.println("Total Number of cells in the table are: "+TotalColsList.size());
+	sfSelenium.logScreenShot();	
 			}
 			   
 		//*****************Test Case 4*******************************************

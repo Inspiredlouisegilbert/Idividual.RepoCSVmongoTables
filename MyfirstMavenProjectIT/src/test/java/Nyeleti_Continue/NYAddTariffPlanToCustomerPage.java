@@ -109,14 +109,12 @@
 	
 	public String Approved_tarrif () {
 		
-		String verifyIntMins = driver.findElement(By.cssSelector("[method] tr th:nth-of-type(3)")).getText();
-		Assert.assertEquals(verifyIntMins,"Local Minutes");
-		return verifyIntMins;
-
-		
+		String verifyLocalMins = driver.findElement(By.cssSelector("[method] tr [align='center']:nth-of-type(3)")).getText();
+		Assert.assertEquals(verifyLocalMins,"Local Minutes");
+		return verifyLocalMins;
+				
 	}
 	
-
 
 	public void  Given_Select_Tariff_Plan_radio_button_selected() {
 
@@ -133,7 +131,6 @@
 	}
 	
 	
-
 	public String Verify_SuccessMessage() {
 
 	//Verify that success message is displayed //
@@ -144,12 +141,10 @@
 	}
 	
 	
-	
-	
+		
 	public void Getactive_cust() {
 		
 		driver.findElement(By.name("customer_id")).sendKeys("501465");
-
 		
 	}
      
