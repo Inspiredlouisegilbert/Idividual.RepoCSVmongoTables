@@ -1,8 +1,13 @@
 package Nyeleti_Continue;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 //import org.junit.Test;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
 public class Assignment_4_writeToFile {
@@ -13,7 +18,7 @@ public class Assignment_4_writeToFile {
 	NyAddCustomerPage AddCustomer = new NyAddCustomerPage();
 	NyCustomerIDPage CustomerID = new NyCustomerIDPage ();
 	ReadFromFile_Page ReadFromfile =new ReadFromFile_Page();
-	Write_to_filePage Write_to_file = new Write_to_filePage();
+	//Write_to_filePage Write_to_file = new Write_to_filePage();
 	Pay_billing_page Pay_billing = new Pay_billing_page();
 	
 	
@@ -60,33 +65,30 @@ public class Assignment_4_writeToFile {
     Assert.assertEquals(actualTitle, expectedTitle ); 
 	}
 	
-    @Test
-    //Create a customer who has done a credit check
-    
-    public void  Create_a_customer_who_has_done_a_credit_check () throws InterruptedException {
-    	
-    	navigate_to_URL();
-	    Add_customer_Link();
-	
-	//Call a method to click Done option
-	AddCustomer.Given_Done_radio_Option_button();
-	
-	//Populate the billing details with the VALID Data
-	String sfname= "Nyeleti";
-	String slname = "Chauke";
-	String semailid = "123@gmail.com";
-	String saddr= "Smit steet";
-	String stelephoneno= "0242353454";
-		
-	//call a method to populate the fields
-	AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,stelephoneno);
-	
-	//Call a method to click submit button
-	AddCustomer.Given_Submit_button_isClicked();
-	  //wait
-	Thread.sleep(5000);
-		    
-	}
+	/*
+	 * // @Test //Create a customer who has done a credit check
+	 * 
+	 * public void Create_a_customer_who_has_done_a_credit_check () throws
+	 * InterruptedException {
+	 * 
+	 * navigate_to_URL(); Add_customer_Link();
+	 * 
+	 * //Call a method to click Done option
+	 * AddCustomer.Given_Done_radio_Option_button();
+	 * 
+	 * //Populate the billing details with the VALID Data String sfname= "Nyeleti";
+	 * String slname = "Chauke"; String semailid = "123@gmail.com"; String saddr=
+	 * "Smit steet"; String stelephoneno= "0242353454";
+	 * 
+	 * //call a method to populate the fields
+	 * AddCustomer.GIVEN_populate_biling_data(sfname,slname,semailid,saddr,
+	 * stelephoneno);
+	 * 
+	 * //Call a method to click submit button
+	 * AddCustomer.Given_Submit_button_isClicked(); //wait Thread.sleep(5000);
+	 * 
+	 * }
+	 */
 
     //********************** Enter the customer id and submit*************************************************
     
@@ -94,8 +96,8 @@ public class Assignment_4_writeToFile {
     
     public void Search_Customer_onPaybilling(){
     	
-    	navigate_to_URL();
-    	Clickpaybilling();
+    	//navigate_to_URL();
+    	//Clickpaybilling();
     	
     	Pay_billing.Getactive_cust();
     	Pay_billing.Click_Submit_Button_on_PayBillingPage();
@@ -113,4 +115,57 @@ public class Assignment_4_writeToFile {
     }
     
     
+  //*****************Write to File  ********************************************************
+    
+    @Test
+	public void Given_active_customer_Write_Data_into_CSVFile() throws IOException {
+		//FileWriter mWriter = new FileWriter("C:\\Users\\tkgotiane\\git\\Individual.RepoCSVmongoTables\\MyfirstMavenProjectIT\\src\\test\\java\\Nyeleti_Continue\\TestData\\sample1.csv");
+		FileWriter mWriter = new FileWriter(AddCustomer.getDataConfigProperties("writefiletocsv") + "sample1.csv"); 
+		
+        BufferedWriter buffer = new BufferedWriter(mWriter);
+        
+        String set1[] = {"", "Free Usage Limit", "Actual Usage", "Over Free", "Usage Charges"};               
+    	Arraymethod(set1, buffer);
+    	
+    	String set2[] = {"Local Minutes", "200", "220", "20", "50"};               
+    	Arraymethod(set2, buffer);
+    	
+    	String set3[] = {"International Minutes", "100", "110", "10", "200"};               
+    	Arraymethod(set3, buffer);
+    	
+    	String set4[] = {"SMS Pack", "500", "400", "0", "0"};               
+    	Arraymethod(set4, buffer);
+    	
+    	String set5[] = {"", "", "", "Tariff Plan Amount", "500"};               
+    	Arraymethod(set5, buffer);
+    	
+    	String set6[] = {"", "", "", "Usage Charges", "250"};               
+    	Arraymethod(set6, buffer);
+    	
+    	String set7[] = {"", "", "", "Total Bill", "750"};               
+    	Arraymethod(set7, buffer);
+    	
+    	buffer.close();
+		
+	}
+	
+	public void Arraymethod(String [] array, BufferedWriter buffer) throws IOException { 
+		
+		for (String line : array) {
+			buffer.write(line);
+			buffer.write(" ; ");
+			
+		}
+		
+		buffer.newLine();
+		
+	}
+	
+@AfterSuite
+	
+	public void cleanup() {
+		AddCustomer.Cleanup();
+	}
+	
 }
+
