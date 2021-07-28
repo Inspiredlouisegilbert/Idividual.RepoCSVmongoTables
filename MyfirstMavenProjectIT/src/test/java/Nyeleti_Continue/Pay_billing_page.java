@@ -71,7 +71,7 @@ package Nyeleti_Continue;
 				    
 				public void Getactive_cust() {
 					
-					driver.findElement(By.name("customer_id")).sendKeys("501465");
+					driver.findElement(By.name("customer_id")).sendKeys("262246");
 
 					
 				}
