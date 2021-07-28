@@ -16,7 +16,7 @@ public class Pay_Billing {
         
 
 		// Verify that Guru99 telecom Heading is available //
-		String verifyTelcomLandingPage = driver.findElement(By.cssSelector("#header .logo")).getText();
+		//String verifyTelcomLandingPage = driver.findElement(By.cssSelector("#header .logo")).getText();
 	    Assert.assertEquals(verifyTelcomLandingPage, "Guru99 telecom");
 	    
 	    return Verify_Guru99Telecom_logo();
@@ -34,8 +34,7 @@ public class Pay_Billing {
 		
  
     }
-	    
-		
+	    		
 	    public void AddGenerated_Cust_ID(String sCustID) {
 
 	 	   // Add the generated Customer ID   
@@ -56,22 +55,24 @@ public class Pay_Billing {
 			   driver.findElement(By.cssSelector("input[name='submit']")).click();
 
 			}
-	
-	
-	
-	//********LETS TRY RUN OUR TEST TOMMOROW AND CONCLUDE ASSIGMENT 3 TESTCASE 3 AND 4
 		
 		
+		public String PayBillingTable_GetUsageCharges() {
 		
-		public void 
+		//Get Usage Charge Amount in the PayBilling Page
+		String UsageCharges = driver.findElement(By.cssSelector("tr:nth-of-type(5) > td:nth-of-type(2) > b")).getText();
 		
+		}
 		
-		
-		
-
-}
+		public String PayBillingTable_GetTotal_Bill() {
+			
+			//Get Usage Charge Amount in the PayBilling Page
+			String TotalBill = driver.findElement(By.cssSelector("tr:nth-of-type(6) > td:nth-of-type(2) > b")).getText();
+			
           // Code to Create a customer who has done a credit check already exist on Add customer page
 
-
+		}
+		
+}
 
 
