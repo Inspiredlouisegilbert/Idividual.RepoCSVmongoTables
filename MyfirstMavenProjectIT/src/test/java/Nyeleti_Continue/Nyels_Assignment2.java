@@ -98,37 +98,7 @@ package Nyeleti_Continue;
 				AddCustomer.Given_Submit_button_isClicked();
 				 //wait
 				Thread.sleep(5000);
-				
-				
-				//Gurulanding_page.ClickAddTariffPlanToCustomer_Link();
-				//AddTarrifPlanToCust.Getactive_cust();
-				//AddTarrifPlanToCust.Click_AddTrariffPlantoCustomerButton();
-				
-				//Verify Active
-				//AddTarrifPlanToCust.Verify_CustomerActive();
-				
-				
-				
-				
-				// Verify that the Customer ID Page is displayed  
-				//String ExpectedMessage = "Access Details to Guru99 Telecom";
-				//String ActualMessage = CustomerID.verifyCustomerID_Heading();
-
-				//CustomerID.verifyCustomerID_Heading(); 
-				//Reporter.log("expected ------------------"+ExpectedMessage);
-				//Reporter.log("actual --------------------"+ActualMessage);
-				//Assert.assertEquals(ActualMessage, ExpectedMessage );
-				   			       
-				// Asset for the Customer ID that keeps on Changing
-				//boolean sCustID = CustomerID.Generated_Customer_ID();
-							     
-				//Reporter.log("expected Customer ID is displayed");
-				//Reporter.log("actual --------------------"+sCustID);
-				//Assert.assertEquals(sCustID, true);
-				
-				//Click on Home to get to main page
-				//AddTarrifPlanToCust.ClickHomelink();
-				
+									
 				   
 		}
 
@@ -188,24 +158,6 @@ package Nyeleti_Continue;
 				 //wait
 				Thread.sleep(5000);
 
-				// Verify that the Customer ID Page is displayed  
-				//String ExpectedMessage = "Access Details to Guru99 Telecom";
-				//String ActualMessage = CustomerID.verifyCustomerID_Heading();
-
-				//CustomerID.verifyCustomerID_Heading(); 
-				//Reporter.log("expected ------------------"+ExpectedMessage);
-				//Reporter.log("actual --------------------"+ActualMessage);
-				//Assert.assertEquals(ActualMessage, ExpectedMessage );
-				   			       
-				// Asset for the Customer ID that keeps on Changing
-				//boolean sCustID = CustomerID.Generated_Customer_ID();
-							     
-				//Reporter.log("expected Customer ID is displayed");
-				//Reporter.log("actual --------------------"+sCustID);
-				//Assert.assertEquals(sCustID, true);
-				
-				//AddTarrifPlanToCust.ClickHomelink();
-			  	Thread.sleep(5000);
 			}   
 			
 	           @Test

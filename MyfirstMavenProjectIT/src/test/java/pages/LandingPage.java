@@ -19,7 +19,7 @@ public class LandingPage extends BasePage{
 
     //Searching for a product at landing page returns (displays) product search page. Hence 
     //the return type is ProductSearchPage and return value is new ProductSearchPage() 
-    public ProductSearchPage searchProduct() {
+     public String ProductSearch () {
         //Enter text dress in the search text box
         driver.findElement(By.id("search_query_top")).sendKeys("dress");
         
@@ -27,7 +27,7 @@ public class LandingPage extends BasePage{
         driver.findElement(By.name("submit_search")).click();
         
         //Product search page is displayed
-        return new ProductSearchPage();
+        return ProductSearch ();
        
     }
     
