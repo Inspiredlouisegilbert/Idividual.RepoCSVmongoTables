@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -15,7 +15,7 @@ import pages.LandingPage;
 import pages.SignInPage;
 
 
-public class Nyels_Assignment1 {
+public class Assignment1_Test {
 	
 	
 	// Declare an object of classes and

@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 import java.io.IOException;
 

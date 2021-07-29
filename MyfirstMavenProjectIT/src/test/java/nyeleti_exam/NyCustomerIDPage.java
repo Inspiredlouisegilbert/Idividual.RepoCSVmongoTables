@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.fail;

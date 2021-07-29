@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 //import java.io.CSVWriter;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import pages.HomePage;
 import pages.PayBillingPage;
 import pages.SignInPage;
 
-public class NyAssignment4 {
+public class NyAssignment4_test {
 
 	private static final String Writer = null;
 	private static final String StoreBillingInfo = null;

@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import frameworkclasses.BasePage;
 import pages.LandingPage;
 
-public class ReadfromAssignment5 {
+public class ReadfromAssignment5_test {
 
 	//LandingPage landingPage = new LandingPage();     
 	Gurulanding_page Gurulanding_page = new Gurulanding_page();

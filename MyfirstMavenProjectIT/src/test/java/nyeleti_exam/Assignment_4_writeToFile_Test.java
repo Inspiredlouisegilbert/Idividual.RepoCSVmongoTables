@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,7 +10,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
-public class Assignment_4_writeToFile {
+public class Assignment_4_writeToFile_Test {
 	
 
 	//LandingPage landingPage = new LandingPage();     

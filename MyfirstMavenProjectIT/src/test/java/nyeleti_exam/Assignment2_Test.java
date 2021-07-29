@@ -1,4 +1,4 @@
-package Nyeleti_Continue;
+package nyeleti_exam;
 
 
 	import org.openqa.selenium.Alert;
@@ -19,7 +19,7 @@ package Nyeleti_Continue;
 	import pages.SignInPage;
 	
 	
-	public class Nyels_Assignment2  {
+	public class Assignment2_Test  {
 	
 			
 			
