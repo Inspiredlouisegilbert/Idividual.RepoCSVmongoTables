@@ -1,24 +1,9 @@
 package Nyeleti_Continue;
 
-import java.io.IOException;
-import java.util.List;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.Test;
-import frameworkclasses.SeleniumFunctions;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.Parameters;
-import pages.AddCustomerPage;
-import pages.AddTariffPlanToCustomerPage;
-import pages.CustomerIDPage;
-import pages.Guru99Telcom_LandingPage;
-import pages.HomePage;
-import pages.LandingPage;
-import pages.PayBillingPage;
+import org.testng.annotations.Test;
 
 	//****Test cases to be done*******
 	//1. GIVEN active customer WHEN submit THEN customer id displayed correctly 
@@ -112,7 +97,7 @@ public class NyAssignment_3 {
 	    Assert.assertEquals(ActualCustomer_ID, ExpectedCustomer_ID );
 	    System.out.println(ExpectedCustomer_ID);
 	    		//close browser
-	            close_browser();  
+	            //close_browser();  
 	            
 	    }
 	    
@@ -120,8 +105,8 @@ public class NyAssignment_3 {
 	    @Test
 	    public void Get_CustomerName(){
 	    
-	    navigate_to_URL();
-	    Clickpaybilling();
+	    //navigate_to_URL();
+	    //Clickpaybilling();
 	    
 	    //call a method to capture the customer ID
 	    Pay_billing.Getactive_cust();   
@@ -148,8 +133,9 @@ public class NyAssignment_3 {
 	 @Test
 	    public void Get_UsageChargesAmount(){
 	   
-	    navigate_to_URL();
-	    Clickpaybilling();
+	    //navigate_to_URL();
+	    //Clickpaybilling();
+		 
 	    //call a method to capture the customer ID
 	    Pay_billing.Getactive_cust();   
 	    //call a method to click the Submit button

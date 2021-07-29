@@ -1,4 +1,4 @@
-package tests;
+package tests.oldtests;
 
 import java.io.IOException;
 import java.util.List;
