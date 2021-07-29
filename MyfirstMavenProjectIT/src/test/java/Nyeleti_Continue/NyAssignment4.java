@@ -33,7 +33,7 @@ public class NyAssignment4 {
 	//** Declare an object of classes and
 	// ** Instantiate class objects
 	SignInPage inPage = new SignInPage();
-	Guru99Telcom_LandingPage GuruLanding = new Guru99Telcom_LandingPage();
+	Guru99Telcom_LandingPage GuruLanding_page = new Guru99Telcom_LandingPage();
 	AddCustomerPage AddCustomer = new AddCustomerPage();
 	AddTariffPlanToCustomerPage AddTariffPlan_To_Customer = new AddTariffPlanToCustomerPage();
 	PayBillingPage PayBilling = new PayBillingPage();
@@ -142,7 +142,8 @@ public class NyAssignment4 {
 	public void GIVEN_ActiveCustomer_CustID_Displayed_Correctly() throws InterruptedException {
 
 		// call a method to click on the Pay Billing link
-		GuruLanding.Click_Pay_Billing_Link();
+
+		Gurulanding_page.Click_Pay_Billing_Link();
 		// wait
 		Thread.sleep(3000);
 

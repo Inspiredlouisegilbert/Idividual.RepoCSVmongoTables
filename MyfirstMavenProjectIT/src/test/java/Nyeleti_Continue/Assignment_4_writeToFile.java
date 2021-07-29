@@ -43,7 +43,7 @@ public class Assignment_4_writeToFile {
 	
 	}
      
-    //@Test
+    @Test
     
 	public void Guru_and_paybillingassertions() throws InterruptedException {
 		navigate_to_URL();

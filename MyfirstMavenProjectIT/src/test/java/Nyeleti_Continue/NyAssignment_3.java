@@ -52,9 +52,12 @@ public class NyAssignment_3 {
 	//3. GIVEN active customer WHEN submit THEN tariff plan amount displayed correctly 
 	//4. GIVEN active customer WHEN submit THEN total bill amount displayed correctly 
 	
-
-	@Test
 	
+	
+	
+	
+	@Test
+		
 	public void  Given_Valid_Data_Populate_inputfields_for_billing() throws InterruptedException {
 
 		// Call a method to click rest button

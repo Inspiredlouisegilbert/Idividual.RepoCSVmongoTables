@@ -50,17 +50,22 @@ package Nyeleti_Continue;
 	    @Test
 	    
 		//Assert Add Tariff plan to customer
-		public void Verify_tarrifPlan_Heading1() {
+		public void Verify_tarrifPlan_Heading1() throws InterruptedException {
 			
-			String ExpectedMessage = "Add Tariff PLan to Customer";
+			Gurulanding_page.Navigate_to_URL();
+			//Click on Add  Customer
+			Gurulanding_page.Add_customer_Link();
+
+		
+	    	String ExpectedMessage = "Add Tariff PLan to Customer";
 			String ActualMessage = AddTarrifPlanToCust.verify_Add_Tariff_PLan_to_Customer_Header();
 			
 		    Reporter.log("expected ------------------"+ExpectedMessage);
 		    Reporter.log("actual --------------------"+ActualMessage);
-		    Assert.assertEquals(ActualMessage, ExpectedMessage ); 
-		}
+		    Assert.assertEquals(ActualMessage, ExpectedMessage );
+		
 		//Assert  Add Guru99 telecom Heading
-	    public void Guru99_Telcom_Heading() throws InterruptedException {
+
 	        String expectedTitle = "Guru99 telecom";
 	        String actualTitle = AddTarrifPlanToCust.verify_Guru99telecom_Logo();
 	             
