@@ -156,7 +156,7 @@ public class assessmentLandingPage extends BasePage{
 			}
 			else {
 				//CLICK CHECKOUT
-				driver.findElement(By.xpath("/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/div[2]/button[1]")).click();
+				driver.findElement(By.xpath("//html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/div[2]/button[1]")).click();
 				Thread.sleep(5000);
 				//CLICK CONTINUE SHOPPING
 				driver.findElement(By.xpath("//button[contains(text(),'Continue shopping')]")).click();
