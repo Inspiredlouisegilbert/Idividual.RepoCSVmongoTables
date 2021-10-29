@@ -28,22 +28,36 @@ public class TechnicalTests {
 //	}
 	
 	@Test
-	public void GIVEN_LandingPage_WHEN_ProductSearch_THEN_AddToCart() throws InterruptedException, IOException
+	public void GIVEN_LandingPage_WHEN_ProductSearchTshirts_THEN_ValidateCategoryName() throws InterruptedException, IOException
 	{
 		techLanding.landingpage();
-		System.out.println("Test passed: ");
+		System.out.println("Test passed: Menu navigation tests passed");
 	}
 	
-//	@Test
-	public void GIVEN_CartTotalChecks_WHEN_GreaterThan100_THEN_ContinueShopping() throws InterruptedException, IOException
+	@Test
+	public void GIVEN_ProductSearch_WHEN_PrintedDress_THEN_ValidateDisplayedResults() throws InterruptedException, IOException
 	{
-
+		techLanding.searchproduct();
+		System.out.println("Test passed: Product search test passed");
 	}
 	
-//	@Test
-	public void lowStock() throws InterruptedException, IOException
+	@Test
+	public void GIVEN_ProductSearch_WHEN_PrintedDress_THEN_ValidateDisplayedResultsNegativeTest() throws InterruptedException, IOException
 	{
-
+		techLanding.searchproductNegativeTest();
+		System.out.println("Test passed: Negative test roduct search test passed");
+	}
+	
+	@Test
+	public void GIVEN_SendMessage_WHEN_Submit_THEN_validateSuccessMessage() throws InterruptedException, IOException
+	{
+		techLanding.ContactUs();
+	}
+	
+	@Test
+	public void GIVEN_Registration_WHEN_RegistrationCompleted_THEN_ValidateSuccess() throws InterruptedException, IOException
+	{
+		techLanding.registration();
 	}
 	
   @AfterTest
